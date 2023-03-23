@@ -1,0 +1,17 @@
+<div class="c-cinema-list">
+
+  <div class="left-bar">
+
+    <h2>Kinos</h2>
+
+    <div *ngFor="let cinema of cinemas">
+      <a href="/cinema/{{ cinema.id }}"><h3>{{ cinema.name }}</h3></a>
+      <p>{{ cinema.street }}</p>
+      <p>{{ cinema.postcode }} {{ cinema.city }}</p>
+    </div>
+
+  </div>
+
+  <div id="ol-map" class="map-container"></div>
+
+</div>

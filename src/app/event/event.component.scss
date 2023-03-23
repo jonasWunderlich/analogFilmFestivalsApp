@@ -1,0 +1,13 @@
+.c-event {
+  display: flex;
+}
+
+.left-bar {
+  padding: 1em;
+  width: 40em;
+  background-color: var(--sidebar-color);
+}
+
+.map-container {
+  flex-grow: 1;
+}

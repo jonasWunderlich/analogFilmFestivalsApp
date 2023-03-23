@@ -1,0 +1,33 @@
+<div class="c-cinema">
+  <div class="left-bar">
+    <h2>{{cinema.name}}</h2>
+
+    <p>{{ cinema.text}}</p>
+
+    <h3>Adresse:</h3>
+    <p>{{ cinema.street }}</p>
+    <p>{{ cinema.postcode }} {{ cinema.city }}</p>
+
+    <h3></h3>
+
+    <h3>Öffnungszeiten</h3>
+    <p>{{ cinema.openingHours }}</p>
+
+    <h3>Kontakt:</h3>
+    <p>Email: {{ cinema.mail }}</p>
+    <p>Telefon: {{ cinema.phone }}</p>
+
+    <h3>Links:</h3>
+    <p>Homepage: <a href="{{ cinema.linkHomepage }}">{{ cinema.linkHomepage }}</a></p>
+    <p>Programm: <a href="{{ cinema.linkProgram }}">{{ cinema.linkProgram }}</a></p>
+
+    <h3>Erfahrungsberichte</h3>
+    <div *ngFor="let report of cinema.reports">
+      <h4>{{ report.title }}</h4>
+      <h4>{{ report.text }}</h4>
+    </div>
+  </div>
+
+  <div id="ol-map" class="map-container"></div>
+
+</div>

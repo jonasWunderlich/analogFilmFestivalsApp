@@ -1,0 +1,38 @@
+<div class="c-event">
+  <div class="left-bar">
+    <h2>{{ event.name }} | {{ event.type }}</h2>
+    <p>{{ event.date | date }} - {{ event.dateEnd | date }}</p>
+
+    <p>{{ event.text}}</p>
+
+    <h3>Aufführungen:</h3>
+    <div *ngFor="let projection of event.projections">
+      <p>{{ projection.date | date }}: <strong>{{ projection.name }}</strong></p>
+    </div>
+
+    <h3>Adresse:</h3>
+    <p>{{ cinema.street }}</p>
+    <p>{{ cinema.postcode }} {{ cinema.city }}</p>
+
+    <h3></h3>
+
+    <h3>Öffnungszeiten</h3>
+    <p>{{ cinema.openingHours }}</p>
+
+    <h3>Kontakt:</h3>
+    <p>Email: {{ cinema.mail }}</p>
+    <p>Telefon: {{ cinema.phone }}</p>
+
+    <h3>Links:</h3>
+    <p>Programm: <a href="{{ event.link }}">{{ event.link }}</a></p>
+
+    <h3>Erfahrungsberichte</h3>
+    <div *ngFor="let report of event.reports">
+      <h4>{{ report.name }}</h4>
+      <h4>{{ report.text }}</h4>
+    </div>
+  </div>
+
+  <div id="ol-map" class="map-container"></div>
+
+</div>

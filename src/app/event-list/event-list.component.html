@@ -1,0 +1,21 @@
+<div class="c-event-list">
+
+  <div class="left-bar">
+
+    <h2>Events</h2>
+
+    <div *ngFor="let screeningEvent of screeningEvents">
+      <a href="/event/{{ screeningEvent.id }}"><h3>{{ screeningEvent.name }} | {{ screeningEvent.type }}</h3></a>
+      <p>{{ screeningEvent.date | date }} - {{ screeningEvent.dateEnd | date }}</p>
+      <p>{{ screeningEvent.text }}</p>
+
+      <div *ngFor="let projection of screeningEvent.projections">
+        <p>{{ projection.date | date }}: <strong>{{ projection.name }}</strong></p>
+      </div>
+    </div>
+
+  </div>
+
+  <div id="ol-map" class="map-container"></div>
+
+</div>

@@ -1,0 +1,14 @@
+.c-cinema-list {
+  display: flex;
+}
+
+.left-bar {
+  padding: 1em;
+  width: 40em;
+  background-color: var(--sidebar-color);
+}
+
+.map-container {
+  flex-grow: 1;
+  max-height: 900px;
+}

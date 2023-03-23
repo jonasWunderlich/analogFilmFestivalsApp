@@ -1,0 +1,20 @@
+<div class="c-report">
+  <div class="left-bar">
+    <h2>{{ report.name }}</h2>
+    <p>{{ report.date | date }}</p>
+
+    <p>{{ report.text }}</p>
+
+    <h3>Aufführung(en):</h3>
+    <div *ngFor="let projection of event.projections">
+      <p>{{ projection.date | date }}: <strong>{{ projection.name }}</strong></p>
+    </div>
+
+    <h3>Kino</h3>
+    <p>{{ cinema.name }} | {{ cinema.city }}</p>
+
+  </div>
+
+  <div id="ol-map" class="map-container"></div>
+
+</div>
