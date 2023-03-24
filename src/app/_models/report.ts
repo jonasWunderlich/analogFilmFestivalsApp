@@ -1,9 +1,9 @@
 export interface Report {
   id: string;
-  createdAt: string,
-  lastModifiedAt: string,
+  createdAt: string;
+  lastModifiedAt: string;
   date: Date;
-  text: string;
+  text?: string;
   name?: string;
   images?: any;
 }

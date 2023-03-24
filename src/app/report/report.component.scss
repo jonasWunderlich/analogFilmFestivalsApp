@@ -1,13 +1,13 @@
+@import '/src/mixins.scss';
+
 .c-report {
   display: flex;
 }
 
 .left-bar {
-  padding: 1em;
-  width: 40em;
-  background-color: var(--sidebar-color);
+  @include left-bar;
 }
 
 .map-container {
-  flex-grow: 1;
+  @include map-container;
 }

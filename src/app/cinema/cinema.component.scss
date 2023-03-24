@@ -1,16 +1,13 @@
+@import '/src/mixins.scss';
+
 .c-cinema {
   display: flex;
-  flex-grow: 1;
 }
 
 .left-bar {
-  width: 20em;
-  padding: 1em;
-  background-color: var(--sidebar-color);
-  height: 100%;
+  @include left-bar;
 }
 
 .map-container {
-  flex-grow: 1;
-  max-height: 900px;
+  @include map-container;
 }

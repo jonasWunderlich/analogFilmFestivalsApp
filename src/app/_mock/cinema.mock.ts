@@ -1,26 +1,12 @@
-import {
-  sample,
-  uniqueId,
-} from 'lodash';
+import { sample, uniqueId } from 'lodash';
 import { DeepPartial } from '@ngneat/reactive-forms/lib/types';
 
 import { Cinema } from '../_models/cinema';
 import { CHAR_NUMBERS, mockCharString, mockNumber } from './helpers.mock';
-import { Auditorium } from '../_models/auditorium';
-
-const MOCKED_CITIES = ['Abensberg', 'Altena', 'Alzey', 'Aschaffenburg', 'Aurich', 'Backnang', 'Backnang', 'Bad Neuenahr', 'Bad Salzungen', 'Bad Schwalbach', 'Bad Vilbel', 'Bad Vilbel', 'Berlin', 'Bernburg', 'Biberach', 'Bocholt', 'Bonn', 'Brake', 'Braunschweig', 'Burgdorf', 'ErlebniskinoBurglengenfeld', 'Buxtehude', 'Chemnitz', 'Damme', 'Dinslaken', 'Düren', 'Essen', 'Finsterwalde', 'Frankenthal', 'Frankfurt am Main', 'Frechen', 'Freudenstadt', 'Geislingen an der Steige', 'Gelnhausen', 'Gera', 'Goch', 'Grünstadt', 'Hachenburg', 'Halle (Saale)', 'Hamburg', 'Hamburg', 'Hannover', 'Herne', 'Hillesheim', 'das KinoHürth', 'Husum', 'Kerpen', 'Kleve', 'Konstanz', 'Langenfeld', 'Lehrte', 'Leipzig', 'Leipzig', 'Lennestadt', 'Leonberg', 'Lohne', 'Marburg', 'Marktheidenfeld', 'Meschede', 'Mönchengladbach', 'Mönchengladbach', 'Mülheim an der Ruhr', 'München', 'Münster', 'Nastätten', 'Neitersen', 'Nettetal', 'Nidda', 'Nürnberg', 'Oberhausen', 'Paderborn', 'Papenburg', 'Plochingen', 'Quakenbrück', 'Quernheim', 'Quickborn', 'Rendsburg', 'Rheine', 'Rinteln', 'Schmelz', 'Schneverdingen', 'Schorndorf', 'Solingen', 'Spenge', 'Straubing', 'Stuttgart', 'Thale', 'Türkheim', 'Uelzen', 'Uetersen', 'Viechtach', 'Walsrode', 'Werne', 'Wildeshausen', 'Wittstock', 'Wolfenbüttel', 'Wolfhagen', 'Wolfsburg', 'Wolnzach', 'Zinnowitz'];
-const MOCKED_CINEMA_NAMES = ['Roxy Kino', 'Apollo Service Kino', 'Bali', 'Casino', 'Carolinenhof-Kino', 'Traumpalast Backnang', 'Kino Universum', 'Kino-Center Rhein-Ahr', 'pab Kinocenter', 'Bambi & Camera', 'Open Air Kino im Bad Vilbeler Freibad', 'Kino Alte Mühle', 'Zoo-Palast', 'Thalia', 'Filmtheater Capitol', 'Traumpalast Biberach', 'Kinodrom Multiplex', 'Woki', 'Centraltheater', 'C1 Cinema', 'Kino Universum', 'Neue Schauburg', 'Starmexx', 'City Kino Buxtehude', 'Metropol', 'Dersa Kino-Center', 'Lichtburg Center', 'Das Lumen Filmtheater', 'Lichtburg und Sabu', 'Weltspiegel', 'Lux', 'Cinema', 'Harmonie', 'Linden-Theater', 'Subiaco im Kurhaus', 'Gloria Kino Center', 'Park-Lichtspiele', 'Casino', 'Metropol Kino', 'Goli Theater Goch', 'Filmwelt Grünstadt', 'Cinexx', 'The Light Cinema', 'Savoy', 'Passage Kino Hamburg', 'Astor Grand Cinema', 'Filmwelt', 'Eifel-Film-Bühne', 'Berli Theater', 'Kino-Center', 'Capitol-Theater', 'Tichelpark Kleve', 'Zebra Kommunales Kino Konstanz e.V.', 'Rex', 'Das Andere Kino', 'Regina-Palast', 'Luru-Kino in der Spinnerei', 'Lichtspielhaus', 'Traumpalast Leonberg', 'Capitol-Kinocenter', 'Cineplex', 'Movie im Luitpoldhaus', 'Linden-Lichtspiele', 'Comet Cine Center', 'Haus Zoar', 'Filmpassage', 'Mathäser Filmpalast', 'Gloria-Palast', 'Cineplex', 'Schlosstheater', 'Kinocenter', 'Wied Scala', 'Corso Film Casino', 'Lumos Lichtspiele & Lounge', 'Cinecitta', 'Lichtburg Filmpalast', 'Pollux', 'Kino Papenburg', 'Union-Theater Plochingen', 'Schauburg Filmtheater', 'Lichtburg', 'Beluga Kino', 'Burgtheater', 'Schauburg', 'Cinetech das Erlebniskino', 'Kinocenter', 'Schmelzer Lichtspiele', 'LichtSpiel e.V.', 'Traumpalast Schorndorf', 'Das Lumen Filmtheater', 'Zentral-Theater', 'Citydom', 'Gloria', 'Central Theater', 'Filmhaus-Huber in Türkheim', 'Central-Theater', 'Burg-Theater', 'Neue Post Lichtspiele', 'Capitol-Theater', 'Capitol-Cinema-Center', 'LiLi-Servicekino', 'Kino Astoria', 'Filmpalast', 'Cinema', 'Delphin Palast', 'Amper-Lichtspiele', 'Club-Kino']
-const MOCKED_STREETS = ['Brnoer Straße', 'Bruno-Leuschner-Straße', 'Bruno-Plache-Straße', 'Dimitroffstraße zwischen Harkort- und Beethovenstraße', 'Dr.-Kurt-Fischer-Straße', 'Erich-Ferl-Straße', 'Ernst-Grube-Straße', 'Ernst-Thälmann-Straße', 'Frieda-Hockauf-Straße', 'Friedrich-Engels-Platz', 'Friedrich-Ludwig-Jahn-Allee', 'Fritz-Austel-Straße', 'Georgi-Dimitroff-Platz', 'Ho-Chi-Minh-Straße', 'Hugo-Joachim-Straße', 'Karl-Marx-Platz', 'Karl-Marx-Städter-Straße', 'Krakower Straße', 'Kurt-Kühn-Straße', 'Leninstraße', 'Maurice-Thorez-Straße', 'Otto-Nuschke-Straße', 'Paul-Heine-Straße', 'Philipp-Müller-Straße', 'Platz der Republik', 'Richard-Sorge-Straße', 'Rudkowskystraße', 'Rudolf-Hartig-Straße', 'Spartakusstraße', 'Straße der Aktivisten', 'Straße der Bauarbeiter', 'Straße der Befreiung', 'Straße der DSF', 'Straße der Jugend', 'Straße der Jungen Pioniere', 'Straße der Nationalen Volksarmee', 'Straße der Solidarität', 'Straße der Völkerfreundschaft', 'Straße der Waffenbrüderschaft', 'Straße des Komsomol', 'Wilhelm-Liebknecht-Platz', 'Wilhelm-Pieck-Allee', ]
+import { MOCKED_AUDITORIUM, MOCKED_CINEMA_NAMES, MOCKED_CITIES, MOCKED_STREETS } from './constants';
 
 
-const MOCKED_AUDITORIUM: Auditorium = {
-  id: 'a0',
-  projectors: ['35mm'],
-  screen: '15m * 12m',
-  sound: ['5.1', 'stereo', 'mono'],
-}
-
-export const CINEMA_DEFAULT_VALUES: Cinema = {
+const CINEMA_DEFAULT_VALUES: Cinema = {
   id: '0',
   createdAt: '2020-10-30T09:32:19.196720000+0000',
   lastModifiedAt: '2020-11-30T10:32:19.196720000+0000',

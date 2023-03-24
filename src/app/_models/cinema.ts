@@ -2,14 +2,14 @@ import { Auditorium } from "./auditorium";
 import { Report } from "./report";
 
 export interface Cinema {
-  id: string,
-  createdAt: string,
-  lastModifiedAt: string,
-  name?: string;
+  id: string;
+  createdAt: string;
+  lastModifiedAt: string;
   lat: number;
   long: number;
+  name?: string;
   text?: string;
-  auditoriums?: Auditorium[]
+  auditoriums?: Auditorium[];
   street?: string;
   postcode?: string;
   city?: string;

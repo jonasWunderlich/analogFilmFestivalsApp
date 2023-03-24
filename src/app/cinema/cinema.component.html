@@ -1,8 +1,8 @@
 <div class="c-cinema">
   <div class="left-bar">
-    <h2>{{cinema.name}}</h2>
+    <h2>{{cinema.name }}</h2>
 
-    <p>{{ cinema.text}}</p>
+    <p>{{ cinema.text }}</p>
 
     <h3>Adresse:</h3>
     <p>{{ cinema.street }}</p>
@@ -23,7 +23,7 @@
 
     <h3>Erfahrungsberichte</h3>
     <div *ngFor="let report of cinema.reports">
-      <h4>{{ report.title }}</h4>
+      <h4>{{ report.name }}</h4>
       <h4>{{ report.text }}</h4>
     </div>
   </div>

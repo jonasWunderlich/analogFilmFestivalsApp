@@ -1,16 +1,13 @@
-import {
-  sample,
-  uniqueId,
-} from 'lodash';
+import { sample, uniqueId } from 'lodash';
 import { DeepPartial } from '@ngneat/reactive-forms/lib/types';
 import { ScreeningEvent } from '../_models/screening-event';
 import { ScreeningEventType } from '../_models/sceening-event-type';
 import { addDays, mockNumber, randomDate, sortByDate } from './helpers.mock';
 import { mockProjections } from './projection.mock';
+import { MOCKED_EVENT_NAMES } from './constants';
 
-const MOCKED_EVENT_NAMES = ['Karacho', 'Terza Visione', 'Hofbauer Kongress', 'Il Cinema Ritrovato', '70mm Festival Varnsdorf', '70mm Festival Karlsruhe', 'Achternbusch Reihe', 'Vorsicht Liebe! Lebensgefahr!', 'Stummfilmkino im Luru-Kino', 'Donis Horror-Doppel', 'George Romero Reihe', 'Luru-Archive', 'Die gelbe Gefahr!', 'Jesus Franco Reihe', 'Pink Weekend', 'Besonders wertlos', 'Giallo Special', 'Berlinale Analog Auswahl'];
 
-export const SCREENING_EVENT_DEFAULT_VALUES: ScreeningEvent = {
+const SCREENING_EVENT_DEFAULT_VALUES: ScreeningEvent = {
   id: '0',
   createdAt: '2020-10-30T09:32:19.196720000+0000',
   lastModifiedAt: '2020-11-30T10:32:19.196720000+0000',
@@ -24,14 +21,14 @@ export const SCREENING_EVENT_DEFAULT_VALUES: ScreeningEvent = {
 
 
 /**
- * Create mocked Event.
+ * Create mocked ScreeningEvent.
  *
  * Simple creation of Event that only needs the most basic information.
- * All data is filled with EVENT_DEFAULT_VALUES and mock values.
+ * All data is filled with SCREENING_EVENT_DEFAULT_VALUES and mock values.
  *
- * @param eventValues: Partial<Event> data to overwrite default values
+ * @param eventValues: Partial<ScreeningEvent> data to overwrite default values
  *
- * @example mockEvent({name: 'Hofbauer Kongress'})
+ * @example mockScreeningEvent({name: 'Hofbauer Kongress'})
  */
 export function mockScreeningEvent(eventValues: DeepPartial<ScreeningEvent>): ScreeningEvent {
   const id = uniqueId();
@@ -57,14 +54,14 @@ export function mockScreeningEvent(eventValues: DeepPartial<ScreeningEvent>): Sc
 }
 
 /**
- * Create mocked list of Events.
+ * Create mocked list of ScreeningEvent.
  *
  * Simple creation of Event list that only needs the most basic information.
- * All data is filled with Event_DEFAULT_VALUES and mock values.
+ * All data is filled with SCREENING_EVENT_DEFAULT_VALUES and mock values.
  *
  * @param amount: Length of List
  *
- * @example mockEvent(10)
+ * @example mockScreeningEvents(10)
  */
 export function mockScreeningEvents(amount: number): ScreeningEvent[] {
   const events: ScreeningEvent[] = [];
