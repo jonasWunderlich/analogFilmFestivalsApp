@@ -1,10 +1,13 @@
 <div class="c-cinema-list">
 
-  <div class="left-bar">
+  <div class="content-container">
 
     <h2>Kinos</h2>
 
-    <div *ngFor="let cinema of cinemas">
+    <div
+      *ngFor="let cinema of cinemas"
+      class="c-cinema-list__cinema"
+    >
       <a href="/cinema/{{ cinema.id }}"><h3>{{ cinema.name }}</h3></a>
       <p>{{ cinema.street }}</p>
       <p>{{ cinema.postcode }} {{ cinema.city }}</p>

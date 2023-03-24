@@ -5,4 +5,5 @@ export interface Projection {
   date: Date;
   name?: string;
   reports?: [];
+  tmdb?: string;
 }

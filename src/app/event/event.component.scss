@@ -1,11 +1,11 @@
 @import '/src/mixins.scss';
 
 .c-event {
-  display: flex;
+  @include container-container;
 }
 
-.left-bar {
-  @include left-bar;
+.content-container {
+  @include content-container;
 }
 
 .map-container {

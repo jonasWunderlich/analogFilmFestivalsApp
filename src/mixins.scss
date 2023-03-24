@@ -1,7 +1,13 @@
-@mixin left-bar {
+@mixin container-container {
+  display: flex;
+  height: 100%;
+}
+
+@mixin content-container {
   padding: 1em;
   width: 40em;
   background-color: var(--sidebar-color);
+  overflow: scroll;
 }
 
 @mixin map-container {

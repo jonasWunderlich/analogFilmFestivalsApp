@@ -7,29 +7,35 @@
 
 header {
   background-color: var(--header-color);
-  padding: 2em;
+  padding: 2em 1em;
 
-  .title {
-    font-size: 28px;
+  h1 {
+    margin: .2em 0;
+  }
+
+  nav {
+    li {
+      display: inline;
+    }
+    a {
+      font-size: 24px;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .active a {
+      color: black;
+    }
   }
 }
 
 main {
-  display: flex;
   flex-grow: 1;
-
-
-  .left-bar {
-    width: 20em;
-    background-color: var(--sidebar-color);
-  }
-
-  .content {
-    flex-grow: 1;
-  }
+  overflow: scroll;
 }
 
 footer {
-  background-color: var(--header-color);
-  padding: 1em;
+  background-color: var(--footer-color);
+  color: white;
+  padding: 2em 1em;
 }

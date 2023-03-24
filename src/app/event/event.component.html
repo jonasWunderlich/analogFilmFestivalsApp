@@ -1,14 +1,16 @@
 <div class="c-event">
-  <div class="left-bar">
+  <div class="content-container">
     <h2>{{ event.name }} | {{ event.type }}</h2>
     <p>{{ event.date | date }} - {{ event.dateEnd | date }}</p>
 
     <p>{{ event.text}}</p>
 
     <h3>Aufführungen:</h3>
-    <div *ngFor="let projection of event.projections">
-      <p>{{ projection.date | date }}: <strong>{{ projection.name }}</strong></p>
-    </div>
+    <ul>
+      <li *ngFor="let projection of event.projections">
+        {{ projection.date | date }}: <strong>{{ projection.name }}</strong>
+      </li>
+    </ul>
 
     <h3>Adresse:</h3>
     <p>{{ cinema.street }}</p>

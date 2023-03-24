@@ -1,17 +1,22 @@
 <div class="c-event-list">
 
-  <div class="left-bar">
+  <div class="content-container">
 
     <h2>Events</h2>
 
-    <div *ngFor="let screeningEvent of screeningEvents">
-      <a href="/event/{{ screeningEvent.id }}"><h3>{{ screeningEvent.name }} | {{ screeningEvent.type }}</h3></a>
-      <p>{{ screeningEvent.date | date }} - {{ screeningEvent.dateEnd | date }}</p>
+    <div
+      *ngFor="let screeningEvent of screeningEvents"
+      class="event"
+    >
+      <p class="date">{{ screeningEvent.date | date }} - {{ screeningEvent.dateEnd | date }}</p>
+      <a class="" href="/event/{{ screeningEvent.id }}"><h3>{{ screeningEvent.type }} | {{ screeningEvent.name }}</h3></a>
       <p>{{ screeningEvent.text }}</p>
 
-      <div *ngFor="let projection of screeningEvent.projections">
-        <p>{{ projection.date | date }}: <strong>{{ projection.name }}</strong></p>
-      </div>
+      <ul>
+        <li *ngFor="let projection of screeningEvent.projections">
+          {{ projection.date | date }}: <strong>{{ projection.name }}</strong>
+        </li>
+      </ul>
     </div>
 
   </div>
