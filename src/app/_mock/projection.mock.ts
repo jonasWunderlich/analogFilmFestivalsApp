@@ -2,7 +2,7 @@ import { sample, uniqueId } from 'lodash';
 import { DeepPartial } from '@ngneat/reactive-forms/lib/types';
 import { Projection } from '../_models/projection';
 import { addDays, mockNumber, randomDate } from './helpers.mock';
-import { MOCKED_PROJECTION_NAMES } from './constants';
+import { MOCKED_PROJECTION_NAMES, MOCKED_TMDBIDS } from './constants';
 
 
 const PROJECTION_DEFAULT_VALUES: Projection = {
@@ -12,6 +12,7 @@ const PROJECTION_DEFAULT_VALUES: Projection = {
   name: MOCKED_PROJECTION_NAMES[1],
   reports: [],
   date: randomDate(new Date(), new Date(2023, 6, 0)),
+  tmdb: MOCKED_TMDBIDS[0],
 };
 
 /**
@@ -34,6 +35,7 @@ export function mockProjection(projectionValues: DeepPartial<Projection>): Proje
     name: sample(MOCKED_PROJECTION_NAMES) || 'Time and Tide',
     reports: PROJECTION_DEFAULT_VALUES.reports,
     date,
+    tmdb: sample(MOCKED_TMDBIDS),
   };
   return {
     ...defaultValues,
@@ -48,6 +50,8 @@ export function mockProjection(projectionValues: DeepPartial<Projection>): Proje
  * All data is filled with PROJECTION_DEFAULT_VALUES and mock values.
  *
  * @param amount: Length of List
+ * @param date: The starting Date of projections
+ * @param amount: the count of days the projections days span to
  *
  * @example mockProjections(10)
  */

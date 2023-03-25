@@ -8,6 +8,13 @@
 
     <p>{{ cinema.text }}</p>
 
+    <h3>Aufführung(en):</h3>
+    <ul>
+      <li *ngFor="let projection of projections">
+        {{ projection.date | date }}: <strong>{{ projection.name }} </strong> <a target="_blank" href="https://www.themoviedb.org/movie/{{projection.tmdb}}">[tmdb]</a>
+      </li>
+    </ul>
+
     <h3>Kinosäle</h3>
     <ul>
       <li *ngFor="let auditorium of cinema.auditoriums">

@@ -11,7 +11,7 @@
     <h3>Aufführung(en):</h3>
     <ul>
       <li *ngFor="let projection of event.projections">
-        {{ projection.date | date }}: <strong>{{ projection.name }}</strong>
+        {{ projection.date | date }}: <strong>{{ projection.name }} </strong> <a target="_blank" href="https://www.themoviedb.org/movie/{{projection.tmdb}}">[tmdb]</a>
       </li>
     </ul>
 
