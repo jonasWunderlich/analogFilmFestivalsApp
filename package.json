@@ -23,6 +23,7 @@
     "@fullcalendar/daygrid": "^6.1.5",
     "@igorissen/ngx-tmdb-api": "1.0.0",
     "@ngneat/reactive-forms": "^5.0.2",
+    "@ngrx/component": "^15.4.0",
     "@ngrx/effects": "^14.3.3",
     "@ngrx/schematics": "^15.4.0",
     "@ngrx/store": "^14.3.3",
