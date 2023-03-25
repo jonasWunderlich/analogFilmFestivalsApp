@@ -23,7 +23,7 @@ export class CinemaComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.map = this.mapService.buildMap(this.cinema.geoCoordinates, 'ol-map')
+    this.map = this.mapService.buildMap(this.cinema.geoCoordinates, 'ol-map-cinema-details')
   }
 
 }

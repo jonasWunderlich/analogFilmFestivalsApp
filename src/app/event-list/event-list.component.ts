@@ -41,7 +41,7 @@ export class EventListComponent implements OnInit {
     this.map = this.mapService.buildMapFromFeatureCollection(
       createCinemaFeatureList(this.cinemas),
       getCoordinatesFromCinemaList(this.cinemas),
-      'ol-map'
+      'ol-map-event-overview'
     )
   }
 

@@ -21,7 +21,7 @@ export class CinemaListComponent implements OnInit {
     this.map = this.mapService.buildMapFromFeatureCollection(
       createCinemaFeatureList(this.cinemas),
       getCoordinatesFromCinemaList(this.cinemas),
-      'ol-map'
+      'ol-map-cinema-overview'
     )
   }
 }
