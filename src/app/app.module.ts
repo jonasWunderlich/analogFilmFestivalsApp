@@ -13,6 +13,7 @@ import { MovieStoreModule } from './+state/movie-store/movie-store.module';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { FullCalendarModule } from '@fullcalendar/angular';
+import { NgxTmdbApiModule } from '@igorissen/ngx-tmdb-api';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { FullCalendarModule } from '@fullcalendar/angular';
     AppRoutingModule,
     StoreModule.forRoot({}),
     EffectsModule.forRoot([]),
+    NgxTmdbApiModule.forRoot({ apiKey: '05180a707de5ada5dc9a38cd1f8da87b' }),
     MovieStoreModule,
     FullCalendarModule,
   ],

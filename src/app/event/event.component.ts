@@ -7,6 +7,9 @@ import { ScreeningEvent } from '../_models/screening-event';
 import { MapService } from '../_services/map.service';
 import { mockNumber } from '../_mock/helpers.mock';
 import { createCinemaFeatureList, getCoordinatesFromCinemaList } from '../_mock/geo.helper';
+import { Store } from '@ngrx/store';
+import { searchMoviesByQuery } from '../+state/movie-store/movie.actions';
+import { selectSearchedMovies } from '../+state/movie-store/movie.selectors';
 
 
 @Component({
@@ -20,12 +23,16 @@ export class EventComponent implements OnInit {
   cinemas: Cinema[] = mockCinemas(mockNumber(1,6));
   map: any;
 
+  someMovies$ = this.store.select(selectSearchedMovies);
+
   constructor(
     private readonly mapService: MapService,
+    private readonly store: Store,
     ) {
   }
 
   ngOnInit(): void {
+    this.store.dispatch(searchMoviesByQuery('ass'));
     this.map = this.mapService.buildMapFromFeatureCollection(
       createCinemaFeatureList(this.cinemas),
       getCoordinatesFromCinemaList(this.cinemas),
