@@ -9,8 +9,13 @@ header {
   background-color: var(--header-color);
   padding: 2em 1em;
 
-  h1 {
-    margin: .2em 0;
+  .brand {
+    color: black;
+    text-decoration: none;
+
+    h1 {
+      margin: .2em 0;
+    }
   }
 
   nav {
