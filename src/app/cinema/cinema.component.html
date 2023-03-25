@@ -11,10 +11,15 @@
     <p>{{ cinema.street }}</p>
     <p>{{ cinema.postcode }} {{ cinema.city }}</p>
 
-    <h3></h3>
+    <h3>Kinosäle</h3>
+    <div *ngFor="let auditorium of cinema.auditoriums">
+      <h4>{{ auditorium.seats }}</h4>
+      <h4>{{ auditorium.screen }}</h4>
+    </div>
 
     <h3>Öffnungszeiten</h3>
     <p>{{ cinema.openingHours }}</p>
+
 
     <h3>Kontakt:</h3>
     <p>Email: {{ cinema.mail }}</p>
@@ -23,6 +28,7 @@
     <h3>Links:</h3>
     <p>Homepage: <a href="{{ cinema.linkHomepage }}">{{ cinema.linkHomepage }}</a></p>
     <p>Programm: <a href="{{ cinema.linkProgram }}">{{ cinema.linkProgram }}</a></p>
+
 
     <h3>Erfahrungsberichte</h3>
     <div *ngFor="let report of cinema.reports">

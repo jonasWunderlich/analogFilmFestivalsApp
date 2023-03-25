@@ -3,7 +3,10 @@ export interface Projection {
   createdAt: string;
   lastModifiedAt: string;
   date: Date;
-  name?: string;
+  name: string;
+  agent?: string;
   reports?: [];
   tmdb?: string;
+  cinema?: string;
+  black?: boolean;
 }

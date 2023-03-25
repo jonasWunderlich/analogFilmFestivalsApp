@@ -5,6 +5,8 @@ import { Cinema } from '../_models/cinema';
 import { mockScreeningEvent } from '../_mock/event.mock';
 import { ScreeningEvent } from '../_models/screening-event';
 import { MapService } from '../_services/map.service';
+import { Store } from '@ngrx/store';
+import { loadMovieById } from '../+state/movie-store/movie.actions';
 
 @Component({
   selector: 'app-event',
@@ -17,11 +19,15 @@ export class EventComponent implements OnInit {
   cinema: Cinema = mockCinema({});
   map: any;
 
-  constructor(private readonly mapService: MapService) {
+  constructor(
+    private readonly mapService: MapService,
+    private readonly store: Store,
+    ) {
   }
 
   ngOnInit(): void {
-    this.map = this.mapService.buildMap(this.cinema.long, this.cinema.lat, 'ol-map')
+    this.map = this.mapService.buildMap(this.cinema.geoCoordinates, 'ol-map');
+    this.store.next(loadMovieById('1'));
   }
 
 }

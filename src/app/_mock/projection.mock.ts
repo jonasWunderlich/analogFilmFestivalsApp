@@ -32,7 +32,7 @@ export function mockProjection(projectionValues: DeepPartial<Projection>): Proje
     id,
     createdAt: PROJECTION_DEFAULT_VALUES.createdAt,
     lastModifiedAt: PROJECTION_DEFAULT_VALUES.lastModifiedAt,
-    name: sample(MOCKED_PROJECTION_NAMES),
+    name: sample(MOCKED_PROJECTION_NAMES) || 'Time and Tide',
     reports: PROJECTION_DEFAULT_VALUES.reports,
     date,
   };

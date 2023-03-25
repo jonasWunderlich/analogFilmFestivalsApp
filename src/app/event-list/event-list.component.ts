@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { mockCinema } from '../_mock/cinema.mock';
+import { mockCinemas } from '../_mock/cinema.mock';
 import { mockScreeningEvents } from '../_mock/event.mock';
 import { sortByDate } from '../_mock/helpers.mock';
 import { Cinema } from '../_models/cinema';
@@ -16,13 +16,16 @@ export class EventListComponent implements OnInit {
   map: any;
   screeningEvents: ScreeningEvent[] = mockScreeningEvents(30)
     .sort((a, b) => sortByDate(a.date, b.date));
-  cinema: Cinema = mockCinema({});
+  cinemas: Cinema[] = mockCinemas(10);
 
   constructor(private readonly mapService: MapService) {
   }
 
   ngOnInit(): void {
-    this.map = this.mapService.buildMap(this.cinema.long, this.cinema.lat, 'ol-map')
+    this.map = this.mapService.buildMultiPointMap(
+        this.cinemas.map(cinema => cinema.geoCoordinates),
+        'ol-map'
+      )
   }
 
 }

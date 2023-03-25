@@ -2,7 +2,7 @@ import { sample, uniqueId } from 'lodash';
 import { DeepPartial } from '@ngneat/reactive-forms/lib/types';
 
 import { Cinema } from '../_models/cinema';
-import { CHAR_NUMBERS, mockCharString, mockNumber } from './helpers.mock';
+import { CHAR_NUMBERS, mockCharString, mockCoordinates, mockNumber } from './helpers.mock';
 import { MOCKED_AUDITORIUM, MOCKED_CINEMA_NAMES, MOCKED_CITIES, MOCKED_STREETS } from './constants';
 
 
@@ -10,8 +10,7 @@ const CINEMA_DEFAULT_VALUES: Cinema = {
   id: '0',
   createdAt: '2020-10-30T09:32:19.196720000+0000',
   lastModifiedAt: '2020-11-30T10:32:19.196720000+0000',
-  lat: 51.32654,
-  long: 12.319058,
+  geoCoordinates: mockCoordinates(),
   name: MOCKED_CINEMA_NAMES[1],
   text: 'Das gut versteckte Arthouse-Kino im weltberühmten Kunstzentrum Alte Baumwollspinnerei.',
   street: 'Spinnereistrasse 1',
@@ -44,9 +43,8 @@ export function mockCinema(cinemaValues: DeepPartial<Cinema>): Cinema {
     createdAt: CINEMA_DEFAULT_VALUES.createdAt,
     lastModifiedAt: CINEMA_DEFAULT_VALUES.lastModifiedAt,
     name: sample(MOCKED_CINEMA_NAMES),
+    geoCoordinates: mockCoordinates(),
     text: CINEMA_DEFAULT_VALUES.text,
-    lat: CINEMA_DEFAULT_VALUES.lat,
-    long: CINEMA_DEFAULT_VALUES.long,
     openingHours: CINEMA_DEFAULT_VALUES.openingHours,
     reports: CINEMA_DEFAULT_VALUES.reports,
     city: sample(MOCKED_CITIES),

@@ -17,6 +17,9 @@ export class CinemaListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.map = this.mapService.buildMap(this.cinemas[0].long, this.cinemas[0].lat, 'ol-map')
+    this.map = this.mapService.buildMultiPointMap(
+      this.cinemas.map(cinema => cinema.geoCoordinates),
+      'ol-map'
+    )
   }
 }

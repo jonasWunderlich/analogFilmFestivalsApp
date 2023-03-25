@@ -1,8 +1,21 @@
+import { Coordinate } from "ol/coordinate";
+
 export const CHAR_NUMBERS = '0123456789'
 export const CHAR_FULL = 'abcdefghijklmnopqrstuvwxyz0123456789';
 
 export function mockNumber(min: number, max: number): number {
   return Math.round(Math.random() * (max - min)) + min;
+}
+
+export function mockFloatNumber(min: number, max: number): number {
+  return Math.random() * (max - min) + min;
+}
+
+export function mockCoordinates(): Coordinate {
+  return [
+    mockFloatNumber(6.3856524, 14.3733412),
+    mockFloatNumber(47.2854497, 53.4669803),
+  ];
 }
 
 export function mockCharString(len: number, charset: string): string {
