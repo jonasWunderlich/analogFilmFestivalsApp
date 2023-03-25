@@ -17,6 +17,6 @@ export interface Cinema {
   phone?: string;
   linkHomepage?: string;
   linkProgram?: string;
-  openingHours?: string;
-  reports: Report[];
+  linkOpeningHours?: string;
+  reports?: Report[];
 }

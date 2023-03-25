@@ -1,17 +1,26 @@
 <div class="c-report">
   <div class="content-container">
+
+    <i>Erfahrungsbericht</i>
+
     <h2>{{ report.name }}</h2>
     <p>{{ report.date | date }}</p>
 
     <p>{{ report.text }}</p>
 
     <h3>Aufführung(en):</h3>
-    <div *ngFor="let projection of event.projections">
-      <p>{{ projection.date | date }}: <strong>{{ projection.name }}</strong></p>
-    </div>
+    <ul>
+      <li *ngFor="let projection of event.projections">
+        {{ projection.date | date }}: <strong>{{ projection.name }}</strong>
+      </li>
+    </ul>
 
-    <h3>Kino</h3>
-    <p>{{ cinema.name }} | {{ cinema.city }}</p>
+    <h3>Kino(s):</h3>
+    <ul>
+      <li *ngFor="let cinema of cinemas">
+        <a [routerLink]="['/', 'cinema', cinema.id]"><strong>{{ cinema.name }}</strong></a> | {{ cinema.street }}<br>
+      </li>
+    </ul>
 
   </div>
 

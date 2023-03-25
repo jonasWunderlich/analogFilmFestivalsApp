@@ -1,41 +1,42 @@
 <div class="c-cinema">
 
-  <div id="ol-map" class="map-container"></div>
-
   <div class="content-container">
+
+    <i>Kino</i>
+
     <h2>{{cinema.name }}</h2>
 
     <p>{{ cinema.text }}</p>
 
-    <h3>Adresse:</h3>
-    <p>{{ cinema.street }}</p>
-    <p>{{ cinema.postcode }} {{ cinema.city }}</p>
-
     <h3>Kinosäle</h3>
-    <div *ngFor="let auditorium of cinema.auditoriums">
-      <h4>{{ auditorium.seats }}</h4>
-      <h4>{{ auditorium.screen }}</h4>
-    </div>
+    <ul>
+      <li *ngFor="let auditorium of cinema.auditoriums">
+        <strong>{{ auditorium.name }}:</strong> Plätze: {{ auditorium.seats }} | Leinwand: {{ auditorium.screen }} |
+        Projektoren {{ auditorium.projectors }} | Sound: {{ auditorium.sound }} | Attribute: {{ auditorium.attributes }}
+      </li>
+    </ul>
 
-    <h3>Öffnungszeiten</h3>
-    <p>{{ cinema.openingHours }}</p>
+    <h3>Adresse:</h3>
+    <p>
+      {{ cinema.name }}<br>
+      {{ cinema.street }}<br>
+      {{ cinema.postcode }} {{ cinema.city }}
+    </p>
 
-
-    <h3>Kontakt:</h3>
-    <p>Email: {{ cinema.mail }}</p>
-    <p>Telefon: {{ cinema.phone }}</p>
-
-    <h3>Links:</h3>
+    <h3>Weiterführende Links:</h3>
     <p>Homepage: <a href="{{ cinema.linkHomepage }}">{{ cinema.linkHomepage }}</a></p>
     <p>Programm: <a href="{{ cinema.linkProgram }}">{{ cinema.linkProgram }}</a></p>
-
+    <p>Öffnungszeiten: <a href="{{ cinema.linkOpeningHours }}">{{ cinema.linkOpeningHours }}</a></p>
+    <p>Email: <a href="mailto://{{ cinema.mail }}">{{ cinema.mail }}</a></p>
+    <p>Telefon: <a href="phone://{{ cinema.phone }}">{{ cinema.phone }}</a></p>
 
     <h3>Erfahrungsberichte</h3>
     <div *ngFor="let report of cinema.reports">
-      <h4>{{ report.name }}</h4>
-      <h4>{{ report.text }}</h4>
+      <a [routerLink]="['/', 'report', report.id]"><h4>[{{ report.date | date }}] {{ report.name }}</h4></a>
+      <p>{{ report.text }}</p>
     </div>
   </div>
 
+  <div id="ol-map" class="map-container"></div>
 
 </div>

@@ -9,6 +9,9 @@ import { EventComponent } from './event/event.component';
 import { EventListComponent } from './event-list/event-list.component';
 import { ReportComponent } from './report/report.component';
 import { ReportListComponent } from './report-list/report-list.component';
+import { MovieStoreModule } from './+state/movie-store/movie-store.module';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
 
 @NgModule({
   declarations: [
@@ -23,6 +26,9 @@ import { ReportListComponent } from './report-list/report-list.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    StoreModule.forRoot({}),
+    EffectsModule.forRoot([]),
+    MovieStoreModule
   ],
   providers: [],
   bootstrap: [AppComponent]

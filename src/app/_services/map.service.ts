@@ -12,7 +12,7 @@ import { Coordinate } from 'ol/coordinate';
 import { boundingExtent } from 'ol/extent';
 
 const POINT_SIZE = 7;
-const POINT_COLOR = 'rgb(255, 77, 0)'; // 'orange';
+const POINT_COLOR = 'rgb(255, 77, 0)';
 
 @Injectable({
  providedIn: 'root',
@@ -79,13 +79,4 @@ export class MapService {
 
     return map;
   }
-
-  private adjust_map_zoom(map: Map, vectorLayer: VectorLayer<any>) {
-    map.getView().fit(
-      vectorLayer.getSource().getExtent(),
-      {size:map.getSize(), maxZoom:16}
-    );
-    const zoom = map.getView().getZoom();
-  }
-
 }

@@ -2,9 +2,10 @@ import { sample, uniqueId } from 'lodash';
 import { DeepPartial } from '@ngneat/reactive-forms/lib/types';
 import { ScreeningEvent } from '../_models/screening-event';
 import { ScreeningEventType } from '../_models/sceening-event-type';
-import { addDays, mockNumber, randomDate, sortByDate } from './helpers.mock';
+import { addDays, CHAR_NUMBERS, mockCharString, mockNumber, randomDate, sortByDate } from './helpers.mock';
 import { mockProjections } from './projection.mock';
-import { MOCKED_EVENT_NAMES, MOCKED_EVENT_TEXTS } from './constants';
+import { MOCKED_CITIES, MOCKED_EVENT_NAMES, MOCKED_EVENT_TEXTS, MOCKED_STREETS } from './constants';
+import { mockReports } from './report.mocks';
 
 
 const SCREENING_EVENT_DEFAULT_VALUES: ScreeningEvent = {
@@ -17,8 +18,14 @@ const SCREENING_EVENT_DEFAULT_VALUES: ScreeningEvent = {
   reports: [],
   date: randomDate(new Date(), new Date(2023, 6, 0)),
   dateEnd: randomDate(new Date(), new Date(2023, 12, 0)),
+  street: 'Spinnereistrasse 1',
+  postcode: '04177',
+  city: 'Leipzig',
+  mail: 'kontakt@mockedcinema.de',
+  phone: '+49123456789',
+  linkHomepage: 'https://www.example.com',
+  linkProgram: 'https://www.example.com',
 };
-
 
 /**
  * Create mocked ScreeningEvent.
@@ -43,11 +50,18 @@ export function mockScreeningEvent(eventValues: DeepPartial<ScreeningEvent>): Sc
     name: sample(MOCKED_EVENT_NAMES),
     type: eventType,
     text: sample(MOCKED_EVENT_TEXTS),
-    reports: SCREENING_EVENT_DEFAULT_VALUES.reports,
+    reports: mockReports(mockNumber(0,3)),
     link: SCREENING_EVENT_DEFAULT_VALUES.link,
     date,
     dateEnd: addDays(date, eventLength),
     projections: mockProjections(projectionCount, date, eventLength).sort((a, b) => sortByDate(a.date, b.date)),
+    city: sample(MOCKED_CITIES),
+    street: `${sample(MOCKED_STREETS)} ${mockNumber(1, 400)}`,
+    postcode: mockCharString(5, CHAR_NUMBERS),
+    linkHomepage: SCREENING_EVENT_DEFAULT_VALUES.linkHomepage,
+    linkProgram: SCREENING_EVENT_DEFAULT_VALUES.linkProgram,
+    mail: SCREENING_EVENT_DEFAULT_VALUES.mail,
+    phone: SCREENING_EVENT_DEFAULT_VALUES.phone,
   };
   return {
     ...defaultValues,

@@ -17,4 +17,11 @@ export interface ScreeningEvent {
   character?: ScreeningEventCharacter[];
   projections?: Projection[];
   reports?: Report[];
+  street?: string;
+  postcode?: string;
+  city?: string;
+  mail?: string;
+  phone?: string;
+  linkHomepage?: string;
+  linkProgram?: string;
 }

@@ -1,9 +1,13 @@
 <div class="c-event">
   <div class="content-container">
+
+    <i>Event</i>
+
     <h2>{{ event.name }} | {{ event.type }}</h2>
     <p>{{ event.date | date }} - {{ event.dateEnd | date }}</p>
-
     <p>{{ event.text}}</p>
+    <p>Homepage: <a href="{{ event.linkHomepage }}">{{ event.linkHomepage }}</a></p>
+    <p>Programm: <a href="{{ event.linkProgram }}">{{ event.linkProgram }}</a></p>
 
     <h3>Aufführungen:</h3>
     <ul>
@@ -12,26 +16,26 @@
       </li>
     </ul>
 
-    <h3>Adresse:</h3>
-    <p>{{ cinema.street }}</p>
-    <p>{{ cinema.postcode }} {{ cinema.city }}</p>
-
-    <h3></h3>
-
-    <h3>Öffnungszeiten</h3>
-    <p>{{ cinema.openingHours }}</p>
-
     <h3>Kontakt:</h3>
-    <p>Email: {{ cinema.mail }}</p>
-    <p>Telefon: {{ cinema.phone }}</p>
+    <p>
+      {{ event.street }}<br>
+      {{ event.postcode }} {{ event.city }}
+    </p>
 
-    <h3>Links:</h3>
-    <p>Programm: <a href="{{ event.link }}">{{ event.link }}</a></p>
+    <p><strong>Email: </strong><a href="mailto://{{ event.mail }}">{{ event.mail }}</a></p>
+    <p><strong>Telefon: </strong><a href="phone://{{ event.phone }}">{{ event.phone }}</a></p>
+
+    <h3>Kino(s):</h3>
+    <ul>
+      <li *ngFor="let cinema of cinemas">
+        <a [routerLink]="['/', 'cinema', cinema.id]"><strong>{{ cinema.name }}</strong></a> | {{ cinema.street }}<br>
+      </li>
+    </ul>
 
     <h3>Erfahrungsberichte</h3>
     <div *ngFor="let report of event.reports">
-      <h4>{{ report.name }}</h4>
-      <h4>{{ report.text }}</h4>
+      <a [routerLink]="['/', 'report', report.id]"><h4>[{{ report.date | date }}] {{ report.name }}</h4></a>
+      <p>{{ report.text }}</p>
     </div>
   </div>
 

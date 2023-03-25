@@ -11,3 +11,18 @@
 .map-container {
   @include map-container;
 }
+
+.report {
+
+  h3 {
+    margin: 0;
+  }
+
+  .prefix-date {
+    font-weight: 300;
+    font-size: .9em;
+    opacity: .6;
+    margin: 3em 0 .5em;
+    padding: 0
+  }
+}

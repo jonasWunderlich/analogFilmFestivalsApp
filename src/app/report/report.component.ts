@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { mockCinema } from '../_mock/cinema.mock';
+import { mockCinemas } from '../_mock/cinema.mock';
 import { mockScreeningEvent } from '../_mock/event.mock';
+import { mockNumber } from '../_mock/helpers.mock';
 import { mockReport } from '../_mock/report.mocks';
 import { Cinema } from '../_models/cinema';
 import { Report } from '../_models/report';
@@ -15,7 +16,7 @@ import { MapService } from '../_services/map.service';
 export class ReportComponent implements OnInit {
 
   report: Report = mockReport({});
-  cinema: Cinema = mockCinema({});
+  cinemas: Cinema[] = mockCinemas(mockNumber(1,6));
   event: ScreeningEvent = mockScreeningEvent({})
   map: any;
 
@@ -23,7 +24,10 @@ export class ReportComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.map = this.mapService.buildMap(this.cinema.geoCoordinates, 'ol-map')
+    this.map = this.mapService.buildMultiPointMap(
+      this.cinemas.map(cinema => cinema.geoCoordinates),
+      'ol-map'
+    )
   }
 
 }

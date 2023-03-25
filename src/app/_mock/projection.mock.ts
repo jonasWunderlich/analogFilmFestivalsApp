@@ -14,7 +14,6 @@ const PROJECTION_DEFAULT_VALUES: Projection = {
   date: randomDate(new Date(), new Date(2023, 6, 0)),
 };
 
-
 /**
  * Create mocked Projection.
  *

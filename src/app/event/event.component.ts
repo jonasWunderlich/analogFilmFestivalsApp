@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
 
-import { mockCinema } from '../_mock/cinema.mock';
+import { mockCinemas } from '../_mock/cinema.mock';
 import { Cinema } from '../_models/cinema';
 import { mockScreeningEvent } from '../_mock/event.mock';
 import { ScreeningEvent } from '../_models/screening-event';
 import { MapService } from '../_services/map.service';
-import { Store } from '@ngrx/store';
-import { loadMovieById } from '../+state/movie-store/movie.actions';
+import { mockNumber } from '../_mock/helpers.mock';
+
 
 @Component({
   selector: 'app-event',
@@ -16,7 +17,7 @@ import { loadMovieById } from '../+state/movie-store/movie.actions';
 export class EventComponent implements OnInit {
 
   event: ScreeningEvent = mockScreeningEvent({});
-  cinema: Cinema = mockCinema({});
+  cinemas: Cinema[] = mockCinemas(mockNumber(1,6));
   map: any;
 
   constructor(
@@ -26,8 +27,9 @@ export class EventComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.map = this.mapService.buildMap(this.cinema.geoCoordinates, 'ol-map');
-    this.store.next(loadMovieById('1'));
+    this.map = this.mapService.buildMultiPointMap(
+      this.cinemas.map(cinema => cinema.geoCoordinates),
+      'ol-map'
+    )
   }
-
 }

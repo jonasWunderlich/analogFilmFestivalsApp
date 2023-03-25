@@ -3,7 +3,9 @@ import { DeepPartial } from '@ngneat/reactive-forms/lib/types';
 
 import { Cinema } from '../_models/cinema';
 import { CHAR_NUMBERS, mockCharString, mockCoordinates, mockNumber } from './helpers.mock';
-import { MOCKED_AUDITORIUM, MOCKED_CINEMA_NAMES, MOCKED_CITIES, MOCKED_STREETS } from './constants';
+import { MOCKED_CINEMA_NAMES, MOCKED_CITIES, MOCKED_STREETS } from './constants';
+import { mockAuditoriums } from './auditorium.mock';
+import { mockReports } from './report.mocks';
 
 
 const CINEMA_DEFAULT_VALUES: Cinema = {
@@ -16,15 +18,14 @@ const CINEMA_DEFAULT_VALUES: Cinema = {
   street: 'Spinnereistrasse 1',
   postcode: '04177',
   city: 'Leipzig',
-  auditoriums: [MOCKED_AUDITORIUM],
+  auditoriums: mockAuditoriums(2),
   mail: 'kontakt@mockedcinema.de',
   phone: '+49123456789',
   linkHomepage: 'https://www.example.com',
   linkProgram: 'https://www.example.com',
-  openingHours: '2021-01-30T10:04:25.196720000+0000',
+  linkOpeningHours: 'https://www.cinema.de/hours',
   reports: [],
 };
-
 
 /**
  * Create mocked Cinema.
@@ -45,8 +46,7 @@ export function mockCinema(cinemaValues: DeepPartial<Cinema>): Cinema {
     name: sample(MOCKED_CINEMA_NAMES),
     geoCoordinates: mockCoordinates(),
     text: CINEMA_DEFAULT_VALUES.text,
-    openingHours: CINEMA_DEFAULT_VALUES.openingHours,
-    reports: CINEMA_DEFAULT_VALUES.reports,
+    linkOpeningHours: CINEMA_DEFAULT_VALUES.linkOpeningHours,
     city: sample(MOCKED_CITIES),
     street: `${sample(MOCKED_STREETS)} ${mockNumber(1, 400)}`,
     postcode: mockCharString(5, CHAR_NUMBERS),
@@ -54,6 +54,8 @@ export function mockCinema(cinemaValues: DeepPartial<Cinema>): Cinema {
     linkProgram: CINEMA_DEFAULT_VALUES.linkProgram,
     mail: CINEMA_DEFAULT_VALUES.mail,
     phone: CINEMA_DEFAULT_VALUES.phone,
+    auditoriums: mockAuditoriums(mockNumber(1, 12)),
+    reports: mockReports(mockNumber(0,3)),
   };
   return {
     ...defaultValues,

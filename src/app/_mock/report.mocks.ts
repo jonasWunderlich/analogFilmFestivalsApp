@@ -19,7 +19,6 @@ const REPORT_DEFAULT_VALUES: Report = {
   images: ['asdf', 'sdfg'],
 };
 
-
 /**
  * Create mocked Report.
  *

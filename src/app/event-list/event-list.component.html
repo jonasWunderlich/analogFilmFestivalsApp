@@ -2,21 +2,24 @@
 
   <div class="content-container">
 
+    <i>Übersicht</i>
+
     <h2>Events</h2>
 
     <div
       *ngFor="let screeningEvent of screeningEvents"
       class="event"
     >
-      <p class="date">{{ screeningEvent.date | date }} - {{ screeningEvent.dateEnd | date }}</p>
-      <a class="" href="/event/{{ screeningEvent.id }}"><h3>{{ screeningEvent.type }} | {{ screeningEvent.name }}</h3></a>
-      <p>{{ screeningEvent.text }}</p>
-
+      <p class="prefix-date">{{ screeningEvent.date | date }} - {{ screeningEvent.dateEnd | date }}</p>
+      <a [routerLink]="['/', 'event', screeningEvent.id]"><h3>{{ screeningEvent.type }} | {{ screeningEvent.name }}</h3></a>
       <ul>
         <li *ngFor="let projection of screeningEvent.projections">
           {{ projection.date | date }}: <strong>{{ projection.name }}</strong>
         </li>
       </ul>
+      <p>{{ screeningEvent.text }}</p>
+      <p><a href="{{ screeningEvent.linkHomepage }}">{{ screeningEvent.linkHomepage }}</a></p>
+
     </div>
 
   </div>
