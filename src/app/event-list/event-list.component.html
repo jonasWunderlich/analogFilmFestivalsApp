@@ -6,12 +6,14 @@
 
     <h2>Events</h2>
 
+    <full-calendar [options]="calendarOptions"></full-calendar>
+
     <div
       *ngFor="let screeningEvent of screeningEvents"
       class="event"
     >
-      <p class="prefix-date">{{ screeningEvent.date | date }} - {{ screeningEvent.dateEnd | date }}</p>
-      <a [routerLink]="['/', 'event', screeningEvent.id]"><h3>{{ screeningEvent.type }} | {{ screeningEvent.name }}</h3></a>
+      <p class="prefix-date">{{ screeningEvent.start | date }} - {{ screeningEvent.end | date }}</p>
+      <a [routerLink]="['/', 'event', screeningEvent.id]"><h3>{{ screeningEvent.type }} | {{ screeningEvent.title }}</h3></a>
       <ul>
         <li *ngFor="let projection of screeningEvent.projections">
           {{ projection.date | date }}: <strong>{{ projection.name }}</strong>

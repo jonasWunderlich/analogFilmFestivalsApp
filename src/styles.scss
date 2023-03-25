@@ -48,3 +48,17 @@ ul {
     font-weight: 600;
   }
 }
+
+
+.fc-theme-standard td, .fc-theme-standard th {
+  border: 2px solid black !important;
+}
+
+.fc-h-event {
+  background-color: black !important;
+  border: 1px solid black !important;
+}
+
+.fc-daygrid-event {
+  border-radius: 0 !important;
+}

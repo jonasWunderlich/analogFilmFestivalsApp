@@ -35,7 +35,7 @@
     <p>Programm: <a href="{{ cinema.linkProgram }}">{{ cinema.linkProgram }}</a></p>
     <p>Öffnungszeiten: <a href="{{ cinema.linkOpeningHours }}">{{ cinema.linkOpeningHours }}</a></p>
     <p>Email: <a href="mailto://{{ cinema.mail }}">{{ cinema.mail }}</a></p>
-    <p>Telefon: <a href="phone://{{ cinema.phone }}">{{ cinema.phone }}</a></p>
+    <p>Telefon: <a href="tel://{{ cinema.phone }}">{{ cinema.phone }}</a></p>
 
     <h3>Erfahrungsberichte</h3>
     <div *ngFor="let report of cinema.reports">

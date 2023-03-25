@@ -7,10 +7,10 @@ export interface ScreeningEvent {
   id: string;
   createdAt: string;
   lastModifiedAt: string;
-  date: Date;
-  dateEnd?: Date;
+  start: Date;
+  end?: Date;
   encrypt?: boolean;
-  name?: string;
+  title?: string;
   text?: string;
   link?: string;
   type?: ScreeningEventType;
@@ -24,4 +24,5 @@ export interface ScreeningEvent {
   phone?: string;
   linkHomepage?: string;
   linkProgram?: string;
+  url?: string;
 }

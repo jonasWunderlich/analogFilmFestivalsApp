@@ -12,6 +12,7 @@ import { ReportListComponent } from './report-list/report-list.component';
 import { MovieStoreModule } from './+state/movie-store/movie-store.module';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
+import { FullCalendarModule } from '@fullcalendar/angular';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { EffectsModule } from '@ngrx/effects';
     AppRoutingModule,
     StoreModule.forRoot({}),
     EffectsModule.forRoot([]),
-    MovieStoreModule
+    MovieStoreModule,
+    FullCalendarModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

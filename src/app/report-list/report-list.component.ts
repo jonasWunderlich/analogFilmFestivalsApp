@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { mockCinemas } from '../_mock/cinema.mock';
+import { createCinemaFeatureList, getCoordinatesFromCinemaList } from '../_mock/geo.helper';
 import { sortByDate } from '../_mock/helpers.mock';
 import { mockReports } from '../_mock/report.mocks';
 import { Cinema } from '../_models/cinema';
@@ -22,8 +23,9 @@ export class ReportListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.map = this.mapService.buildMultiPointMap(
-      this.cinemas.map(cinema => cinema.geoCoordinates),
+    this.map = this.mapService.buildMapFromFeatureCollection(
+      createCinemaFeatureList(this.cinemas),
+      getCoordinatesFromCinemaList(this.cinemas),
       'ol-map'
     )
   }

@@ -3,8 +3,8 @@
 
     <i>Event</i>
 
-    <h2>{{ event.name }} | {{ event.type }}</h2>
-    <p>{{ event.date | date }} - {{ event.dateEnd | date }}</p>
+    <h2>{{ event.title }} | {{ event.type }}</h2>
+    <p>{{ event.start | date }} - {{ event.end | date }}</p>
     <p>{{ event.text}}</p>
     <p>Homepage: <a href="{{ event.linkHomepage }}">{{ event.linkHomepage }}</a></p>
     <p>Programm: <a href="{{ event.linkProgram }}">{{ event.linkProgram }}</a></p>
@@ -16,7 +16,7 @@
     </p>
 
     <p><strong>Email: </strong><a href="mailto://{{ event.mail }}">{{ event.mail }}</a></p>
-    <p><strong>Telefon: </strong><a href="phone://{{ event.phone }}">{{ event.phone }}</a></p>
+    <p><strong>Telefon: </strong><a href="tel://{{ event.phone }}">{{ event.phone }}</a></p>
 
     <h3>Aufführungen:</h3>
     <ul>
