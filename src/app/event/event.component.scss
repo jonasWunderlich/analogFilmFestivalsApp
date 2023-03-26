@@ -11,3 +11,14 @@
 .map-container {
   @include map-container;
 }
+
+.movies-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 20px 20px;
+}
+
+.movie-poster {
+  height: 200px;
+}

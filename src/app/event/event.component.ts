@@ -10,6 +10,8 @@ import { createCinemaFeatureList, getCoordinatesFromCinemaList } from '../_mock/
 import { Store } from '@ngrx/store';
 import { searchMoviesByQuery } from '../+state/movie-store/movie.actions';
 import { selectSearchedMovies } from '../+state/movie-store/movie.selectors';
+import { sample } from 'lodash';
+import { MOCKED_TMDB_QUERIES } from '../_mock/constants';
 
 
 @Component({
@@ -32,7 +34,7 @@ export class EventComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.store.dispatch(searchMoviesByQuery('ass'));
+    this.store.dispatch(searchMoviesByQuery(sample(MOCKED_TMDB_QUERIES) || 'light'));
     this.map = this.mapService.buildMapFromFeatureCollection(
       createCinemaFeatureList(this.cinemas),
       getCoordinatesFromCinemaList(this.cinemas),

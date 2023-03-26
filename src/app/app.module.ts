@@ -14,6 +14,8 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { FullCalendarModule } from '@fullcalendar/angular';
 import { NgxTmdbApiModule } from '@igorissen/ngx-tmdb-api';
+import { LetModule } from '@ngrx/component';
+import { TooltipModule } from './common/ui/tooltip/tooltip.module';
 
 @NgModule({
   declarations: [
@@ -23,16 +25,18 @@ import { NgxTmdbApiModule } from '@igorissen/ngx-tmdb-api';
     EventComponent,
     EventListComponent,
     ReportComponent,
-    ReportListComponent
+    ReportListComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    LetModule,
     StoreModule.forRoot({}),
     EffectsModule.forRoot([]),
     NgxTmdbApiModule.forRoot({ apiKey: '05180a707de5ada5dc9a38cd1f8da87b' }),
     MovieStoreModule,
     FullCalendarModule,
+    TooltipModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

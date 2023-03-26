@@ -37,3 +37,4 @@ export const MOCKED_REPORT_NAMES = [...MOCKED_CINEMA_NAMES, ...MOCKED_EVENT_NAME
 export const MOCKED_REPORT_TEXTS = [REPORT_TEXT_1, REPORT_TEXT_2, REPORT_TEXT_3, REPORT_TEXT_4, REPORT_TEXT_5, REPORT_TEXT_6];
 export const MOCKED_EVENT_TEXTS = [EVENT_TEXT_1, EVENT_TEXT_2, EVENT_TEXT_3, EVENT_TEXT_4, EVENT_TEXT_5, EVENT_TEXT_6];
 export const MOCKED_TMDBIDS = ['18331', '38655', '36818', '42305', '24062', '35189', '18973', '15788', '42581', '43317', '53441', '44747', '58182'];
+export const MOCKED_TMDB_QUERIES = ['fart', 'killer', 'dance', 'underground', 'flight', 'gunfight', 'graveyard', 'water', 'dark', 'sail', 'red', 'blood', 'romance', 'porno', 'sex', 'cobra', 'heaven', 'hold'];

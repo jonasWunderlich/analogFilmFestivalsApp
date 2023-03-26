@@ -26,10 +26,14 @@
       </li>
     </ul>
 
-    <!-- <h3>Filme:</h3>
-    <div *ngrxLet="someMovies$ as someMovies; error as error">
-      {{ someMovies | json }}
-    </div> -->
+    <h3>Filme:</h3>
+    <div *ngrxLet="someMovies$ as someMovies; error as error" class="movies-list">
+      <div *ngFor="let movie of someMovies?.results">
+        <span *ngIf="movie.poster_path" [tooltip]="movie.title + ' (' + movie.release_date  + ')'">
+          <img class="movie-poster"  src="https://www.themoviedb.org/t/p/w1280/{{ movie.poster_path }}" alt="Poster von {{ movie.title }}">
+        </span>
+      </div>
+    </div>
 
     <h3>Kino(s):</h3>
     <ul>
