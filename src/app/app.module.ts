@@ -4,11 +4,11 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CinemaComponent } from './cinema/cinema.component';
-import { CinemaListComponent } from './cinema-list/cinema-list.component';
+import { CinemaOverviewComponent } from './cinema-overview/cinema-overview.component';
 import { EventComponent } from './event/event.component';
-import { EventListComponent } from './event-list/event-list.component';
+import { EventOverviewComponent } from './event-overview/event-overview.component';
 import { ReportComponent } from './report/report.component';
-import { ReportListComponent } from './report-list/report-list.component';
+import { ReportOverviewComponent } from './report-overview/report-overview.component';
 import { MovieStoreModule } from './+state/movie-store/movie-store.module';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
@@ -21,11 +21,11 @@ import { TooltipModule } from './common/ui/tooltip/tooltip.module';
   declarations: [
     AppComponent,
     CinemaComponent,
-    CinemaListComponent,
+    CinemaOverviewComponent,
     EventComponent,
-    EventListComponent,
+    EventOverviewComponent,
     ReportComponent,
-    ReportListComponent,
+    ReportOverviewComponent,
   ],
   imports: [
     BrowserModule,

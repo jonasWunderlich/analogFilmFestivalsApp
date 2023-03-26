@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CinemaListComponent } from './cinema-list/cinema-list.component';
+
 import { CinemaComponent } from './cinema/cinema.component';
-import { EventListComponent } from './event-list/event-list.component';
+import { CinemaOverviewComponent } from './cinema-overview/cinema-overview.component';
 import { EventComponent } from './event/event.component';
-import { ReportListComponent } from './report-list/report-list.component';
+import { EventOverviewComponent } from './event-overview/event-overview.component';
 import { ReportComponent } from './report/report.component';
+import { ReportOverviewComponent } from './report-overview/report-overview.component';
 
 const routes: Routes = [
   {
@@ -15,7 +16,7 @@ const routes: Routes = [
   },
   {
     path: 'event',
-    component: EventListComponent,
+    component: EventOverviewComponent,
   },
   {
     path: 'event/:id',
@@ -23,7 +24,7 @@ const routes: Routes = [
   },
   {
     path: 'cinema',
-    component: CinemaListComponent,
+    component: CinemaOverviewComponent,
   },
   {
     path: 'cinema/:id',
@@ -31,7 +32,7 @@ const routes: Routes = [
   },
   {
     path: 'report',
-    component: ReportListComponent,
+    component: ReportOverviewComponent,
   },
   {
     path: 'report/:id',

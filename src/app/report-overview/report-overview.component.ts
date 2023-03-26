@@ -8,11 +8,11 @@ import { Report } from '../_models/report';
 import { MapService } from '../_services/map.service';
 
 @Component({
-  selector: 'app-report-list',
-  templateUrl: './report-list.component.html',
-  styleUrls: ['./report-list.component.scss']
+  selector: 'app-report-overview',
+  templateUrl: './report-overview.component.html',
+  styleUrls: ['./report-overview.component.scss']
 })
-export class ReportListComponent implements OnInit {
+export class ReportOverviewComponent implements OnInit {
 
   map: any;
   reports: Report[] = mockReports(30)

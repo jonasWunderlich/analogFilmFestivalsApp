@@ -5,11 +5,11 @@ import { Cinema } from '../_models/cinema';
 import { MapService } from '../_services/map.service';
 
 @Component({
-  selector: 'app-cinema-list',
-  templateUrl: './cinema-list.component.html',
-  styleUrls: ['./cinema-list.component.scss']
+  selector: 'app-cinema-overview',
+  templateUrl: './cinema-overview.component.html',
+  styleUrls: ['./cinema-overview.component.scss']
 })
-export class CinemaListComponent implements OnInit {
+export class CinemaOverviewComponent implements OnInit {
 
   cinemas: Cinema[] = mockCinemas(30);
   map: any;

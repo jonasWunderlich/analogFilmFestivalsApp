@@ -10,11 +10,11 @@ import { ScreeningEvent } from '../_models/screening-event';
 import { MapService } from '../_services/map.service';
 
 @Component({
-  selector: 'app-event-list',
-  templateUrl: './event-list.component.html',
-  styleUrls: ['./event-list.component.scss']
+  selector: 'app-event-overview',
+  templateUrl: './event-overview.component.html',
+  styleUrls: ['./event-overview.component.scss']
 })
-export class EventListComponent implements OnInit {
+export class EventOverviewComponent implements OnInit {
 
   map: any;
   screeningEvents: ScreeningEvent[] = mockScreeningEvents(30)
