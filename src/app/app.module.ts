@@ -20,6 +20,7 @@ import { CinemaListComponent } from './common/ui/cinema-list/cinema-list.compone
 import { ProjectionListComponent } from './common/ui/projection-list/projection-list.component';
 import { ReportListComponent } from './common/ui/report-list/report-list.component';
 import { AuditoriumListComponent } from './common/ui/auditorium-list/auditorium-list.component';
+import { MovieListComponent } from './common/ui/movie-list/movie-list.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { AuditoriumListComponent } from './common/ui/auditorium-list/auditorium-
     ProjectionListComponent,
     ReportListComponent,
     AuditoriumListComponent,
+    MovieListComponent,
   ],
   imports: [
     BrowserModule,

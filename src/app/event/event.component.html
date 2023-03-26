@@ -21,14 +21,10 @@
 
     <app-projection-list [projections]="event.projections || []"></app-projection-list>
 
-    <h3>Filme:</h3>
-    <div *ngrxLet="someMovies$ as someMovies; error as error" class="movies-list">
-      <div *ngFor="let movie of someMovies?.results">
-        <span *ngIf="movie.poster_path" [tooltip]="movie.title + ' (' + movie.release_date  + ')'">
-          <img class="movie-poster"  src="https://www.themoviedb.org/t/p/w1280/{{ movie.poster_path }}" alt="Poster von {{ movie.title }}">
-        </span>
-      </div>
-    </div>
+    <app-movie-list
+      *ngrxLet="someMovies$ as someMovies; error as error"
+      [movies]="someMovies?.results"
+    ></app-movie-list>
 
     <app-cinema-list [cinemas]="cinemas"></app-cinema-list>
     <app-report-list [reports]="event.reports || []"></app-report-list>
