@@ -16,6 +16,10 @@ import { FullCalendarModule } from '@fullcalendar/angular';
 import { NgxTmdbApiModule } from '@igorissen/ngx-tmdb-api';
 import { LetModule } from '@ngrx/component';
 import { TooltipModule } from './common/ui/tooltip/tooltip.module';
+import { CinemaListComponent } from './common/ui/cinema-list/cinema-list.component';
+import { ProjectionListComponent } from './common/ui/projection-list/projection-list.component';
+import { ReportListComponent } from './common/ui/report-list/report-list.component';
+import { AuditoriumListComponent } from './common/ui/auditorium-list/auditorium-list.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +30,10 @@ import { TooltipModule } from './common/ui/tooltip/tooltip.module';
     EventOverviewComponent,
     ReportComponent,
     ReportOverviewComponent,
+    CinemaListComponent,
+    ProjectionListComponent,
+    ReportListComponent,
+    AuditoriumListComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,27 +1,12 @@
 <div class="c-cinema">
-
   <div class="content-container">
 
     <i>Kino</i>
-
     <h2>{{cinema.name }}</h2>
-
     <p>{{ cinema.text }}</p>
 
-    <h3>Aufführung(en):</h3>
-    <ul>
-      <li *ngFor="let projection of projections">
-        {{ projection.date | date }}: <strong>{{ projection.name }} </strong> <a target="_blank" href="https://www.themoviedb.org/movie/{{projection.tmdb}}">[tmdb]</a>
-      </li>
-    </ul>
-
-    <h3>Kinosäle</h3>
-    <ul>
-      <li *ngFor="let auditorium of cinema.auditoriums">
-        <strong>{{ auditorium.name }}:</strong> Plätze: {{ auditorium.seats }} | Leinwand: {{ auditorium.screen }} |
-        Projektoren {{ auditorium.projectors }} | Sound: {{ auditorium.sound }} | Attribute: {{ auditorium.attributes }}
-      </li>
-    </ul>
+    <app-projection-list [projections]="projections"></app-projection-list>
+    <app-auditorium-list [auditoriums]="cinema.auditoriums || []"></app-auditorium-list>
 
     <h3>Adresse:</h3>
     <p>
@@ -37,13 +22,8 @@
     <p>Email: <a href="mailto://{{ cinema.mail }}">{{ cinema.mail }}</a></p>
     <p>Telefon: <a href="tel://{{ cinema.phone }}">{{ cinema.phone }}</a></p>
 
-    <h3>Erfahrungsberichte</h3>
-    <div *ngFor="let report of cinema.reports">
-      <a [routerLink]="['/', 'report', report.id]"><h4>[{{ report.date | date }}] {{ report.name }}</h4></a>
-      <p>{{ report.text }}</p>
-    </div>
+    <app-report-list [reports]="cinema.reports || []"></app-report-list>
   </div>
 
   <div id="ol-map-cinema-details" class="map-container"></div>
-
 </div>

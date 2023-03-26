@@ -1,31 +1,30 @@
 <div class="c-event-list">
-
   <div class="content-container">
 
     <i>Übersicht</i>
-
     <h2>Events</h2>
 
     <full-calendar [options]="calendarOptions"></full-calendar>
 
-    <div
-      *ngFor="let screeningEvent of screeningEvents"
-      class="event"
-    >
-      <p class="prefix-date">{{ screeningEvent.start | date }} - {{ screeningEvent.end | date }}</p>
-      <a [routerLink]="['/', 'event', screeningEvent.id]"><h3>{{ screeningEvent.type }} | {{ screeningEvent.title }}</h3></a>
-      <ul>
-        <li *ngFor="let projection of screeningEvent.projections">
-          {{ projection.date | date }}: <strong>{{ projection.name }}</strong>
-        </li>
-      </ul>
-      <p>{{ screeningEvent.text }}</p>
-      <p><a href="{{ screeningEvent.linkHomepage }}">{{ screeningEvent.linkHomepage }}</a></p>
+    <ng-container *ngFor="let screeningEvent of screeningEvents">
+      <div class="event">
 
-    </div>
+        <p class="prefix-date">{{ screeningEvent.start | date }} - {{ screeningEvent.end | date }}</p>
+        <a [routerLink]="['/', 'event', screeningEvent.id]">
+          <h3>{{ screeningEvent.type }} | {{ screeningEvent.title }}</h3>
+        </a>
+        <app-projection-list
+          [projections]="screeningEvent.projections || []"
+          [showTitle]="false"
+        ></app-projection-list>
+        <p>{{ screeningEvent.text }}</p>
+        <p>
+          <a href="{{ screeningEvent.linkHomepage }}">{{ screeningEvent.linkHomepage }}</a>
+        </p>
+
+      </div>
+    </ng-container>
 
   </div>
-
   <div id="ol-map-event-overview" class="map-container"></div>
-
 </div>
