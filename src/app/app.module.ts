@@ -23,6 +23,7 @@ import { AuditoriumListComponent } from './common/ui/auditorium-list/auditorium-
 import { MovieListComponent } from './common/ui/movie-list/movie-list.component';
 import { ReportStoreModule } from './+state/report-store/report.module';
 import { ScreeningEventStoreModule } from './+state/screening-event-store/screening-event-store.module';
+import { CinemaStoreModule } from './+state/cinema-store/cinema-store.module';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import { ScreeningEventStoreModule } from './+state/screening-event-store/screen
     MovieStoreModule,
     ReportStoreModule,
     ScreeningEventStoreModule,
+    CinemaStoreModule,
     FullCalendarModule,
     TooltipModule,
   ],

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { loadCinemas } from '../+state/cinema-store/cinema.actions';
+import { selectCinemas } from '../+state/cinema-store/cinema.selectors';
 import { loadReports } from '../+state/report-store/report.actions';
 import { selectReports } from '../+state/report-store/report.selectors';
 import { mockCinemas } from '../_mock/cinema.mock';
@@ -16,7 +18,8 @@ export class ReportOverviewComponent implements OnInit {
 
   map: any;
   reports$ = this.store.select(selectReports);
-  cinemas: Cinema[] = mockCinemas(20);
+  cinemas$ = this.store.select(selectCinemas);
+  cinemasDeprecated: Cinema[] = mockCinemas(20);
 
   constructor(
     private readonly store: Store,
@@ -26,11 +29,12 @@ export class ReportOverviewComponent implements OnInit {
 
   ngOnInit(): void {
     this.map = this.mapService.buildMapFromFeatureCollection(
-      createCinemaFeatureList(this.cinemas),
-      getCoordinatesFromCinemaList(this.cinemas),
+      createCinemaFeatureList(this.cinemasDeprecated),
+      getCoordinatesFromCinemaList(this.cinemasDeprecated),
       'ol-map-report-overview'
       )
     this.store.dispatch(loadReports());
+    this.store.dispatch(loadCinemas());
   }
 
 }
