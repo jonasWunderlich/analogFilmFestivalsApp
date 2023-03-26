@@ -3,11 +3,9 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { of } from 'rxjs';
 
 import { catchError, filter, map, switchMap, tap } from 'rxjs/operators';
-import { mockCinema, mockCinemas } from 'src/app/_mock/cinema.mock';
+import { AnalogKinoBackendService } from 'src/app/_services/analog-kino-backend.service';
 import { NotificationService } from 'src/app/_services/notification.service';
 import * as CinemaActions from './cinema.actions';
-
-const cinemas = mockCinemas(40);
 
 @Injectable()
 export class CinemaEffects {
@@ -16,7 +14,7 @@ export class CinemaEffects {
     () => this.actions$.pipe(
       ofType(CinemaActions.loadCinemas),
       switchMap(() =>
-        of(cinemas).pipe(
+        this.analogCinemaBackend.getCinemas().pipe(
           map(cinemas => CinemaActions.loadCinemasSucceeded({ cinemas })),
           catchError((error) => of(CinemaActions.loadCinemasFailed({ error })))
         )
@@ -43,7 +41,8 @@ export class CinemaEffects {
       ofType(CinemaActions.loadCinemaById),
       filter(params => params?.id?.length > 0),
       switchMap((params) =>
-        of(mockCinema({id: params.id})).pipe(
+      this.analogCinemaBackend.getCinemaById(params.id)
+        .pipe(
           map(cinema => CinemaActions.loadCinemaByIdSucceeded({ cinema })),
           catchError((error) => of(CinemaActions.loadCinemaByIdFailed({ error })))
         )
@@ -53,5 +52,6 @@ export class CinemaEffects {
 
   constructor(
     private readonly actions$: Actions,
+    private readonly analogCinemaBackend: AnalogKinoBackendService,
     private readonly notificationService: NotificationService) {}
 }

@@ -2,13 +2,9 @@ import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { catchError, filter, map, of, switchMap, tap } from 'rxjs';
 
-import { mockScreeningEvent, mockScreeningEvents } from 'src/app/_mock/event.mock';
-import { sortByDate } from 'src/app/_mock/helpers.mock';
+import { AnalogKinoBackendService } from 'src/app/_services/analog-kino-backend.service';
 import { NotificationService } from 'src/app/_services/notification.service';
 import * as EventActions from './screening-event.actions';
-
-
-const screeningEvents = mockScreeningEvents(40).sort((a, b) => sortByDate(a.start, b.start));
 
 
 @Injectable()
@@ -18,7 +14,7 @@ export class EventEffects {
     () => this.actions$.pipe(
       ofType(EventActions.loadScreeningEvents),
       switchMap(() =>
-        of(screeningEvents).pipe(
+        this.analogCinemaBackend.getScreeningEvents().pipe(
           map(screeningEvents => EventActions.loadScreeningEventsSucceeded({ screeningEvents })),
           catchError((error) => of(EventActions.loadScreeningEventsFailed({ error })))
         )
@@ -45,7 +41,7 @@ export class EventEffects {
       ofType(EventActions.loadScreeningEventById),
       filter(params => params?.id?.length > 0),
       switchMap((params) =>
-        of(mockScreeningEvent({id: params.id})).pipe(
+      this.analogCinemaBackend.getScreeningEventById(params.id).pipe(
           map(screeningEvent => EventActions.loadScreeningEventByIdSucceeded({ screeningEvent })),
           catchError((error) => of(EventActions.loadScreeningEventByIdFailed({ error })))
         )
@@ -55,5 +51,6 @@ export class EventEffects {
 
   constructor(
     private readonly actions$: Actions,
+    private readonly analogCinemaBackend: AnalogKinoBackendService,
     private readonly notificationService: NotificationService) {}
 }

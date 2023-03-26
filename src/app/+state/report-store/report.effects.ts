@@ -4,11 +4,9 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { catchError, map, switchMap, tap } from 'rxjs/operators';
 import { filter, of } from 'rxjs';
 import * as ReportActions from './report.actions';
-import { mockReport, mockReports } from 'src/app/_mock/report.mocks';
-import { sortByDate } from 'src/app/_mock/helpers.mock';
 import { NotificationService } from 'src/app/_services/notification.service';
+import { AnalogKinoBackendService } from 'src/app/_services/analog-kino-backend.service';
 
-const reports = mockReports(40).sort((a, b) => sortByDate(a.date, b.date));
 
 @Injectable()
 export class ReportEffects {
@@ -17,7 +15,7 @@ export class ReportEffects {
     () => this.actions$.pipe(
       ofType(ReportActions.loadReports),
       switchMap(() =>
-        of(reports).pipe(
+        this.analogCinemaBackend.getReports().pipe(
           map(reports => ReportActions.loadReportsSucceeded({ reports })),
           catchError((error) => of(ReportActions.loadReportsFailed({ error })))
         )
@@ -44,7 +42,7 @@ export class ReportEffects {
       ofType(ReportActions.loadReportById),
       filter(params => params?.id?.length > 0),
       switchMap((params) =>
-        of(mockReport({id: params.id})).pipe(
+      this.analogCinemaBackend.getReportById(params.id).pipe(
           map(report => ReportActions.loadReportByIdSucceeded({ report })),
           catchError((error) => of(ReportActions.loadReportByIdFailed({ error })))
         )
@@ -54,5 +52,6 @@ export class ReportEffects {
 
   constructor(
     private readonly actions$: Actions,
+    private readonly analogCinemaBackend: AnalogKinoBackendService,
     private readonly notificationService: NotificationService) {}
 }
