@@ -7,7 +7,7 @@ export const searchMoviesByQuery = createAction(
 );
 
 export const searchedMoviesSuccess = createAction(
-  '[Movie] searched Movies loaded',
+  '[Movie] searched Movies successfully loaded',
   props<{ movies: TMDbMovieDetails | null }>()
 );
 

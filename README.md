@@ -1,6 +1,6 @@
 # AnalogCinemaApp
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.6.
+Angular Frontend App für eine Archiv von analogen Filmevents
 
 ## Development server
 
@@ -25,3 +25,39 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+
+## TODOs
+
+- Mocks einmalig generieren
+- Popup in Kalender
+- Popup in Karte
+- Festival als einheitliche Punkte in Karte
+- Punkte in Karte schöner gestalten
+- Events in Festivals, Reihe und Specials aufteilen
+
+## Geplante Backend Endpunkte
+
+Events: 
+`analogkino.net/backend/event`
+`analogkino.net/backend/event/:id`
+`analogkino.net/backend/event/:id/auditoriums`
+`analogkino.net/backend/event/:id/projections`
+`analogkino.net/backend/event/:id/reports`
+`analogkino.net/backend/event/type/:type`
+
+Kinos:
+`analogkino.net/backend/cinema/`
+`analogkino.net/backend/cinema/:id`
+`analogkino.net/backend/cinema/:id/auditoriums`
+`analogkino.net/backend/cinema/:id/projections`
+`analogkino.net/backend/cinema/:id/reports`
+
+Erfahrungsberichte:
+`analogkino.net/backend/report/`
+`analogkino.net/backend/report/:id`
+
+Aufführungen:
+`analogkino.net/backend/projection/`
+`analogkino.net/backend/projection/:id`
+`analogkino.net/backend/cinprojectionema/:id/reports`

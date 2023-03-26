@@ -35,4 +35,3 @@ export const movieFeature = createFeature({
   name: movieFeatureKey,
   reducer,
 });
-

@@ -1,6 +1,9 @@
 <div class="c-report-list">
 
-  <div class="content-container">
+  <div
+    class="content-container"
+    *ngrxLet="reports$ as reports; error as error"
+  >
 
     <i>Übersicht</i>
     <h2>Erfahrungsberichte</h2>

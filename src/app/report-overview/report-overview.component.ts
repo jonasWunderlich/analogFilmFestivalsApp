@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { loadReports } from '../+state/report-store/report.actions';
+import { selectReports } from '../+state/report-store/report.selectors';
 import { mockCinemas } from '../_mock/cinema.mock';
 import { createCinemaFeatureList, getCoordinatesFromCinemaList } from '../_mock/geo.helper';
-import { sortByDate } from '../_mock/helpers.mock';
-import { mockReports } from '../_mock/report.mocks';
 import { Cinema } from '../_models/cinema';
-import { Report } from '../_models/report';
 import { MapService } from '../_services/map.service';
 
 @Component({
@@ -15,11 +15,13 @@ import { MapService } from '../_services/map.service';
 export class ReportOverviewComponent implements OnInit {
 
   map: any;
-  reports: Report[] = mockReports(30)
-    .sort((a, b) => sortByDate(a.date, b.date));
+  reports$ = this.store.select(selectReports);
   cinemas: Cinema[] = mockCinemas(20);
 
-  constructor(private readonly mapService: MapService) {
+  constructor(
+    private readonly store: Store,
+    private readonly mapService: MapService,
+    ) {
   }
 
   ngOnInit(): void {
@@ -27,7 +29,8 @@ export class ReportOverviewComponent implements OnInit {
       createCinemaFeatureList(this.cinemas),
       getCoordinatesFromCinemaList(this.cinemas),
       'ol-map-report-overview'
-    )
+      )
+    this.store.dispatch(loadReports());
   }
 
 }

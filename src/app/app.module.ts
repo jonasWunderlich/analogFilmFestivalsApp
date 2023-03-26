@@ -21,6 +21,7 @@ import { ProjectionListComponent } from './common/ui/projection-list/projection-
 import { ReportListComponent } from './common/ui/report-list/report-list.component';
 import { AuditoriumListComponent } from './common/ui/auditorium-list/auditorium-list.component';
 import { MovieListComponent } from './common/ui/movie-list/movie-list.component';
+import { ReportStoreModule } from './+state/report-store/report.module';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { MovieListComponent } from './common/ui/movie-list/movie-list.component'
     EffectsModule.forRoot([]),
     NgxTmdbApiModule.forRoot({ apiKey: '05180a707de5ada5dc9a38cd1f8da87b' }),
     MovieStoreModule,
+    ReportStoreModule,
     FullCalendarModule,
     TooltipModule,
   ],

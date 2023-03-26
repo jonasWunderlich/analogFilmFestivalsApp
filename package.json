@@ -25,6 +25,7 @@
     "@ngneat/reactive-forms": "^5.0.2",
     "@ngrx/component": "^15.4.0",
     "@ngrx/effects": "^15.4.0",
+    "@ngrx/entity": "^15.4.0",
     "@ngrx/schematics": "^15.4.0",
     "@ngrx/store": "^15.4.0",
     "lodash": "^4.17.21",
