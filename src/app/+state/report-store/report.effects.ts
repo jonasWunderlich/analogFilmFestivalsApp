@@ -13,7 +13,7 @@ const reports = mockReports(40).sort((a, b) => sortByDate(a.date, b.date));
 @Injectable()
 export class ReportEffects {
 
-  loadReports2$ = createEffect(
+  loadReports$ = createEffect(
     () => this.actions$.pipe(
       ofType(ReportActions.loadReports),
       switchMap(() =>

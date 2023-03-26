@@ -6,12 +6,12 @@ export const loadReports = createAction(
 );
 
 export const loadReportsSucceeded = createAction(
-  '[Movie] Reports successfully loaded',
+  '[Report] Reports successfully loaded',
   props<{ reports: Report[] }>()
 );
 
 export const loadReportsFailed = createAction(
-  '[Movie] load Reports failed',
+  '[Report] load Reports failed',
   props<{ error: string }>()
 );
 
@@ -21,11 +21,11 @@ export const loadReportById = createAction(
 );
 
 export const loadReportByIdSucceeded = createAction(
-  '[Movie] Report successfully loaded',
+  '[Report] Report successfully loaded',
   props<{ report: Report }>()
 );
 
 export const loadReportByIdFailed = createAction(
-  '[Movie] load Report failed',
+  '[Report] load Report failed',
   props<{ error: string }>()
 );

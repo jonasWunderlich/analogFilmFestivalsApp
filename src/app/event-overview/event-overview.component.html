@@ -1,12 +1,15 @@
 <div class="c-event-list">
-  <div class="content-container">
 
+  <div
+    class="content-container"
+    *ngrxLet="screeningEvents$ as events; error as error"
+  >
     <i>Übersicht</i>
     <h2>Events</h2>
 
     <full-calendar [options]="calendarOptions"></full-calendar>
 
-    <ng-container *ngFor="let screeningEvent of screeningEvents">
+    <ng-container *ngFor="let screeningEvent of events">
       <div class="event">
 
         <p class="prefix-date">{{ screeningEvent.start | date }} - {{ screeningEvent.end | date }}</p>
