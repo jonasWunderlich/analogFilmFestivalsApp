@@ -18,6 +18,7 @@ const SCREENING_EVENT_DEFAULT_VALUES: ScreeningEvent = {
   reports: [],
   start: randomDate(new Date(), new Date(2023, 6, 0)),
   end: randomDate(new Date(), new Date(2023, 12, 0)),
+  projections: [],
   street: 'Spinnereistrasse 1',
   postcode: '04177',
   city: 'Leipzig',

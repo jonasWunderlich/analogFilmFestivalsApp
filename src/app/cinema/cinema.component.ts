@@ -32,7 +32,7 @@ export class CinemaComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.subscription.add(
       this.cinema$.subscribe(cinema => {
-        this.map = this.mapService.buildMap(cinema?.geoCoordinates || [],'ol-map-report-overview')
+        this.map = this.mapService.buildMap(cinema?.geoCoordinates || [],'ol-map-cinema-details')
       })
     )
   }

@@ -35,7 +35,7 @@ export class EventComponent implements OnInit, OnDestroy {
         this.map = this.mapService.buildMapFromFeatureCollection(
           createCinemaFeatureList(cinemas),
           getCoordinatesFromCinemaList(cinemas),
-          'ol-map-event-overview'
+          'ol-map-event-details'
           )
       })
     )

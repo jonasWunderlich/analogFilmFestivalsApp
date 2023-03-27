@@ -1,29 +1,34 @@
-<div class="c-cinema" *ngrxLet="cinema$ as cinema">
-  <div class="content-container" *ngIf="cinema">
+<div class="c-cinema">
 
-    <i>Kino</i>
-    <h2>{{cinema.name }}</h2>
-    <p>{{ cinema.text }}</p>
+  <ng-container *ngrxLet="cinema$ as cinema">
+    <div class="content-container" *ngIf="cinema">
 
-    <app-projection-list [projections]="projections"></app-projection-list>
-    <app-auditorium-list [auditoriums]="cinema.auditoriums || []"></app-auditorium-list>
+      <i>Kino</i>
+      <h2>{{cinema.name }}</h2>
+      <p>{{ cinema.text }}</p>
 
-    <h3>Adresse:</h3>
-    <p>
-      {{ cinema.name }}<br>
-      {{ cinema.street }}<br>
-      {{ cinema.postcode }} {{ cinema.city }}
-    </p>
+      <app-projection-list [projections]="projections"></app-projection-list>
+      <app-auditorium-list [auditoriums]="cinema.auditoriums || []"></app-auditorium-list>
 
-    <h3>Weiterführende Links:</h3>
-    <p>Homepage: <a href="{{ cinema.linkHomepage }}">{{ cinema.linkHomepage }}</a></p>
-    <p>Programm: <a href="{{ cinema.linkProgram }}">{{ cinema.linkProgram }}</a></p>
-    <p>Öffnungszeiten: <a href="{{ cinema.linkOpeningHours }}">{{ cinema.linkOpeningHours }}</a></p>
-    <p>Email: <a href="mailto://{{ cinema.mail }}">{{ cinema.mail }}</a></p>
-    <p>Telefon: <a href="tel://{{ cinema.phone }}">{{ cinema.phone }}</a></p>
+      <h3>Adresse:</h3>
+      <p>
+        {{ cinema.name }}<br>
+        {{ cinema.street }}<br>
+        {{ cinema.postcode }} {{ cinema.city }}
+      </p>
 
-    <app-report-list [reports]="cinema.reports || []"></app-report-list>
+      <h3>Weiterführende Links:</h3>
+      <p>Homepage: <a href="{{ cinema.linkHomepage }}">{{ cinema.linkHomepage }}</a></p>
+      <p>Programm: <a href="{{ cinema.linkProgram }}">{{ cinema.linkProgram }}</a></p>
+      <p>Öffnungszeiten: <a href="{{ cinema.linkOpeningHours }}">{{ cinema.linkOpeningHours }}</a></p>
+      <p>Email: <a href="mailto://{{ cinema.mail }}">{{ cinema.mail }}</a></p>
+      <p>Telefon: <a href="tel://{{ cinema.phone }}">{{ cinema.phone }}</a></p>
+
+      <app-report-list [reports]="cinema.reports || []"></app-report-list>
+    </div>
+  </ng-container>
+
+  <div id="ol-map-cinema-details" class="map-container">
+    <div id="popup"></div>
   </div>
-
-  <div id="ol-map-cinema-details" class="map-container"></div>
 </div>

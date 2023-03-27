@@ -1,7 +1,7 @@
 @import '/src/mixins.scss';
 
 .c-report {
-  display: flex;
+  @include container-container;
 }
 
 .content-container {

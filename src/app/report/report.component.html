@@ -1,15 +1,28 @@
-<div class="c-report" *ngrxLet="report$ as report">
+<div class="c-report" >
 
-  <div class="content-container" *ngIf="report">
+  <ng-container *ngrxLet="report$ as report">
 
-    <i>Erfahrungsbericht</i>
-    <h2>{{ report.name }}</h2>
-    <p>{{ report.date | date }}</p>
-    <p>{{ report.text }}</p>
-    <app-projection-list [projections]="event.projections || []"></app-projection-list>
-    <app-cinema-list [cinemas]="cinemas"></app-cinema-list>
+    <div class="content-container" *ngIf="report">
 
+      <i>Erfahrungsbericht</i>
+      <h2>{{ report.name }}</h2>
+      <p>{{ report.date | date }}</p>
+      <p>{{ report.text }}</p>
+
+      <app-projection-list
+        *ngIf="screeningEvent?.projections"
+        [projections]="screeningEvent?.projections || []"
+      ></app-projection-list>
+
+      <app-cinema-list
+        *ngrxLet="cinemas$ as cinemas"
+        [cinemas]="cinemas"
+      ></app-cinema-list>
+
+    </div>
+  </ng-container>
+
+  <div id="ol-map-report-details" class="map-container">
+    <div id="popup"></div>
   </div>
-
-  <div id="ol-map-report-details" class="map-container"></div>
 </div>

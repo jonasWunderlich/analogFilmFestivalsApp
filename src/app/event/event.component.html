@@ -1,35 +1,41 @@
 
-<div class="c-event" *ngrxLet="event$ as event">
-  <div class="content-container" *ngIf="event">
+<div class="c-event">
 
-    <i>Event</i>
+  <ng-container *ngrxLet="event$ as event">
 
-    <h2>{{ event.title }} | {{ event.type }}</h2>
-    <p>{{ event.start | date }} - {{ event.end | date }}</p>
-    <p>{{ event.text}}</p>
-    <p>Homepage: <a href="{{ event.linkHomepage }}">{{ event.linkHomepage }}</a></p>
-    <p>Programm: <a href="{{ event.linkProgram }}">{{ event.linkProgram }}</a></p>
+    <div class="content-container" *ngIf="event">
 
-    <h3>Kontakt:</h3>
-    <p>
-      {{ event.street }}<br>
-      {{ event.postcode }} {{ event.city }}
-    </p>
+      <i>Event</i>
 
-    <p><strong>Email: </strong><a href="mailto://{{ event.mail }}">{{ event.mail }}</a></p>
-    <p><strong>Telefon: </strong><a href="tel://{{ event.phone }}">{{ event.phone }}</a></p>
+      <h2>{{ event.title }} | {{ event.type }}</h2>
+      <p>{{ event.start | date }} - {{ event.end | date }}</p>
+      <p>{{ event.text}}</p>
+      <p>Homepage: <a href="{{ event.linkHomepage }}">{{ event.linkHomepage }}</a></p>
+      <p>Programm: <a href="{{ event.linkProgram }}">{{ event.linkProgram }}</a></p>
 
-    <app-projection-list [projections]="event.projections || []"></app-projection-list>
+      <h3>Kontakt:</h3>
+      <p>
+        {{ event.street }}<br>
+        {{ event.postcode }} {{ event.city }}
+      </p>
 
-    <app-movie-list
-      *ngrxLet="movies$ as movies; error as error"
-      [movies]="movies?.results"
-    ></app-movie-list>
+      <p><strong>Email: </strong><a href="mailto://{{ event.mail }}">{{ event.mail }}</a></p>
+      <p><strong>Telefon: </strong><a href="tel://{{ event.phone }}">{{ event.phone }}</a></p>
 
-    <app-cinema-list *ngrxLet="cinemas$ as cinemas" [cinemas]="cinemas"></app-cinema-list>
-    <app-report-list [reports]="event.reports || []"></app-report-list>
+      <app-projection-list [projections]="event.projections || []"></app-projection-list>
+
+      <app-movie-list
+        *ngrxLet="movies$ as movies; error as error"
+        [movies]="movies?.results"
+      ></app-movie-list>
+
+      <app-cinema-list *ngrxLet="cinemas$ as cinemas" [cinemas]="cinemas"></app-cinema-list>
+      <app-report-list [reports]="event.reports || []"></app-report-list>
+    </div>
+  </ng-container>
+
+  <div id="ol-map-event-details" class="map-container">
+    <div id="popup"></div>
   </div>
-
-  <div id="ol-map-event-details" class="map-container"></div>
 
 </div>
