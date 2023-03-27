@@ -1,4 +1,4 @@
-import { createFeatureSelector, createSelector } from '@ngrx/store';
+import { createFeatureSelector, createSelector, DefaultProjectorFn, MemoizedSelector } from '@ngrx/store';
 import { selectRouteParams } from 'src/app/routing-module/+state/router/router.reducer';
 import { neitherNullNorUndefined } from 'src/app/_helpers/null-or-undefined';
 import { ScreeningEvent } from 'src/app/_models/screening-event';
@@ -24,6 +24,15 @@ export const selectScreeningEvents = createSelector(
   selectScreeningEventState,
   selectAllProjection
 );
+
+/* select screeningEvent via id */
+
+export const selectScreeningEventByIds = (ids: string[]): MemoizedSelector<object, ScreeningEvent[], DefaultProjectorFn<ScreeningEvent[]>> => {
+  return createSelector(
+    selectScreeningEvents,
+    (screeningEvents: ScreeningEvent[] = []): ScreeningEvent[] => screeningEvents.filter(screeningEvent => ids.indexOf(screeningEvent.id) > -1)
+  );
+};
 
 /* select event via id */
 
@@ -60,7 +69,6 @@ export const selectSelectedScreeningEventByRoute = createSelector(
   selectEntities,
   selectRoutesScreeningEventId,
   (entities, entityId): ScreeningEvent | undefined => {
-    console.log(entityId, entities)
     if (!entityId) {
       console.error('select ScreeningEvent By Route WITHOUT params')
       return undefined;

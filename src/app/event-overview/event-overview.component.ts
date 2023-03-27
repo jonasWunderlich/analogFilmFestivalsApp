@@ -48,7 +48,7 @@ export class EventOverviewComponent implements OnInit, OnDestroy {
             events: screeningEvents,
             eventMouseEnter: (event) => {
               // TODO: Show Popup with Information
-              console.log(event.event._def.url);
+              console.warn('TODO', event.event._def.url);
             },
           };
       })

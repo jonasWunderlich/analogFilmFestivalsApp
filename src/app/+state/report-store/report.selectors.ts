@@ -1,4 +1,4 @@
-import { createFeatureSelector, createSelector } from '@ngrx/store';
+import { createFeatureSelector, createSelector, DefaultProjectorFn, MemoizedSelector } from '@ngrx/store';
 import { selectRouteParams } from 'src/app/routing-module/+state/router/router.reducer';
 import { neitherNullNorUndefined } from 'src/app/_helpers/null-or-undefined';
 import { Report } from 'src/app/_models/report';
@@ -24,6 +24,15 @@ export const selectReports = createSelector(
   selectReportState,
   selectAllProjection
 );
+
+/* select reports via id */
+
+export const selectReportsByIds = (ids: string[]): MemoizedSelector<object, Report[], DefaultProjectorFn<Report[]>> => {
+  return createSelector(
+    selectReports,
+    (reports: Report[] = []): Report[] => reports.filter(report => ids.indexOf(report.id) > -1)
+  );
+};
 
 /* select report via id */
 

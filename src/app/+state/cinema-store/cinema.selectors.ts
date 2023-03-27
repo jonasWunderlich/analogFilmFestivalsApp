@@ -1,4 +1,4 @@
-import { createFeatureSelector, createSelector } from '@ngrx/store';
+import { createFeatureSelector, createSelector, DefaultProjectorFn, MemoizedSelector } from '@ngrx/store';
 import { selectRouteParams } from 'src/app/routing-module/+state/router/router.reducer';
 import { neitherNullNorUndefined } from 'src/app/_helpers/null-or-undefined';
 import { Cinema } from 'src/app/_models/cinema';
@@ -24,6 +24,15 @@ export const selectCinemas = createSelector(
   selectCinemaState,
   selectAllProjection
 );
+
+/* select cinemas via id */
+
+export const selectCinemasByIds = (ids: string[]): MemoizedSelector<object, Cinema[], DefaultProjectorFn<Cinema[]>> => {
+  return createSelector(
+    selectCinemas,
+    (cinemas: Cinema[] = []): Cinema[] => cinemas.filter(cinema => ids.indexOf(cinema.id) > -1)
+  );
+};
 
 /* select cinema via id */
 
@@ -60,7 +69,6 @@ export const selectSelectedCinemaByRoute = createSelector(
   selectEntities,
   selectRoutesCinemaId,
   (entities, entityId): Cinema | undefined => {
-    console.log(entityId, entities)
     if (!entityId) {
       console.error('select Cinema By Route WITHOUT params')
       return undefined;

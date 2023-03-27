@@ -1,5 +1,6 @@
 import { Coordinate } from "ol/coordinate";
 import { Auditorium } from "./auditorium";
+import { Projection } from "./projection";
 import { Report } from "./report";
 
 export interface Cinema {
@@ -9,7 +10,6 @@ export interface Cinema {
   geoCoordinates: Coordinate;
   name?: string;
   text?: string;
-  auditoriums?: Auditorium[];
   street?: string;
   postcode?: string;
   city?: string;
@@ -18,5 +18,12 @@ export interface Cinema {
   linkHomepage?: string;
   linkProgram?: string;
   linkOpeningHours?: string;
+
+  auditoriums?: Auditorium[];
   reports?: Report[];
+  projection?: Projection[];
+
+  auditoriumRefs?: string[];
+  reportRefs?: string[];
+  projectionRefs?: string[];
 }

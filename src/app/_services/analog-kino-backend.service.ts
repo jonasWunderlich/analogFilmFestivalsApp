@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Observable, of, throwError } from 'rxjs';
-import { mockAuditoriums } from '../_mock/auditorium.mock';
 import { mockCinemas } from '../_mock/cinema.mock';
 import { mockScreeningEvents } from '../_mock/event.mock';
-import { sortByDate } from '../_mock/helpers.mock';
+import { getRandomSubarray, mockNumber, sortByDate } from '../_mock/helpers.mock';
 import { mockProjections } from '../_mock/projection.mock';
 import { mockReports } from '../_mock/report.mocks';
 import { Auditorium } from '../_models/auditorium';
@@ -24,11 +23,23 @@ export class AnalogKinoBackendService {
   reports: Report[] = [];
 
   constructor() {
-    this.auditoriums = mockAuditoriums(40);
-    this.cinemas = mockCinemas(40);
-    this.projections = mockProjections(200, new Date(), 400).sort((a, b) => sortByDate(a.date, b.date));
+    this.buildMocks();
+  }
+
+  private buildMocks() {
     this.reports = mockReports(40).sort((a, b) => sortByDate(a.date, b.date));
+    this.projections = mockProjections(200, new Date(), 400).sort((a, b) => sortByDate(a.date, b.date));
+    this.cinemas = mockCinemas(40);
     this.screeningEvents = mockScreeningEvents(40).sort((a, b) => sortByDate(a.start, b.start));
+    this.screeningEvents.forEach(event => {
+      event.cinemaRefs = getRandomSubarray(this.cinemas, mockNumber(1,10)).map(item => item.id);
+      event.projectionRefs = getRandomSubarray(this.projections, mockNumber(1,10)).map(item => item.id);
+      event.reportRefs = getRandomSubarray(this.reports, mockNumber(1,10)).map(item => item.id);
+    });
+    this.cinemas.forEach(cinema => {
+      cinema.projectionRefs = getRandomSubarray(this.projections, mockNumber(1,10)).map(item => item.id);
+      cinema.reportRefs = getRandomSubarray(this.reports, mockNumber(1,10)).map(item => item.id);
+    });
   }
 
   public getCinemas(): Observable<Cinema[]> {

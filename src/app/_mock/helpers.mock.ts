@@ -40,7 +40,7 @@ export function sortByDate(time1: Date, time2: Date): number {
   return new Date(time1).getTime() - new Date(time2).getTime()
 }
 
-export function getRandomSubarray(arr: Array<string>, size: number): Array<string> {
+export function getRandomSubarray(arr: Array<any>, size: number): Array<any> {
   var shuffled = arr.slice(0), i = arr.length, temp, index;
   while (i--) {
       index = Math.floor((i + 1) * Math.random());

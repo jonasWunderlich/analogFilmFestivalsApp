@@ -2,6 +2,7 @@ import { ScreeningEventCharacter } from "./screening-event-character";
 import { ScreeningEventType } from "./sceening-event-type";
 import { Projection } from "./projection";
 import { Report } from "./report";
+import { Cinema } from "./cinema";
 
 export interface ScreeningEvent {
   id: string;
@@ -9,14 +10,11 @@ export interface ScreeningEvent {
   lastModifiedAt: string;
   start: Date;
   end?: Date;
-  encrypt?: boolean;
   title?: string;
   text?: string;
   link?: string;
   type?: ScreeningEventType;
   character?: ScreeningEventCharacter[];
-  projections?: Projection[];
-  reports?: Report[];
   street?: string;
   postcode?: string;
   city?: string;
@@ -25,4 +23,12 @@ export interface ScreeningEvent {
   linkHomepage?: string;
   linkProgram?: string;
   url?: string;
+
+  cinemas?: Cinema[];
+  projections?: Projection[];
+  reports?: Report[];
+
+  cinemaRefs?: string[];
+  projectionRefs?: string[];
+  reportRefs?: string[];
 }

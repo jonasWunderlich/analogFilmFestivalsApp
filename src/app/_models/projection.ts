@@ -1,3 +1,5 @@
+import { Report } from "./report";
+
 export interface Projection {
   id: string;
   createdAt: string;
@@ -5,8 +7,10 @@ export interface Projection {
   date: Date;
   name: string;
   agent?: string;
-  reports?: [];
   tmdb?: string;
   cinema?: string;
   black?: boolean;
+
+  reports?: Report[];
+  reportRefs?: string[];
 }

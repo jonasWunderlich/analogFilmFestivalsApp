@@ -5,5 +5,5 @@ export interface Report {
   date: Date;
   text?: string;
   name?: string;
-  images?: any;
+  images?: string[];
 }
