@@ -8,6 +8,9 @@ import { selectSelectedScreeningEventByRoute } from '../+state/screening-event-s
 import { selectCinemas } from '../+state/cinema-store/cinema.selectors';
 import { Subscription } from 'rxjs';
 import { Map } from 'ol';
+import { MOCKED_TMDB_QUERIES } from '../_mock/constants';
+import { sample } from 'lodash';
+import { searchMoviesByQuery } from '../+state/movie-store/movie.actions';
 
 
 @Component({
@@ -30,6 +33,7 @@ export class EventComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    this.store.dispatch(searchMoviesByQuery(sample(MOCKED_TMDB_QUERIES) || 'ass'))
     this.subscription.add(
       this.cinemas$.subscribe(cinemas => {
         this.map = this.mapService.buildMapFromFeatureCollection(
@@ -38,7 +42,7 @@ export class EventComponent implements OnInit, OnDestroy {
           'ol-map-event-details'
           )
       })
-    )
+    );
   }
 
   ngOnDestroy() {
