@@ -4,12 +4,16 @@ export interface Auditorium {
   id: string;
   createdAt: string;
   lastModifiedAt: string;
-  name: string;
-  text?: string;
+  title: string;
+
+  attributes: string[];
   projectors: string[];
   screen?: string;
-  sound: string[];
   seats?: number;
-  attributes: string[];
+  sound: string[];
+  text?: string;
+
+  // TODO: Fix reference models
   reports?: Report[];
+  reportRefs?: string[];
 }

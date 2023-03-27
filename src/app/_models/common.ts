@@ -1,10 +1,6 @@
-export interface Report {
+export interface CommonAttributes {
   id: string;
   createdAt: string;
   lastModifiedAt: string;
   title: string;
-
-  date: Date;
-  text?: string;
-  images?: string[];
 }

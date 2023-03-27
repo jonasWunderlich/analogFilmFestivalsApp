@@ -12,7 +12,7 @@
       *ngFor="let cinema of cinemas"
       class="c-cinema-list__cinema"
     >
-      <a [routerLink]="['/', 'cinema', cinema.id]"><h3>{{ cinema.name }}</h3></a>
+      <a [routerLink]="['/', 'cinema', cinema.id]"><h3>{{ cinema.title }}</h3></a>
       <p>{{ cinema.street }}</p>
       <p>{{ cinema.postcode }} {{ cinema.city }}</p>
     </div>

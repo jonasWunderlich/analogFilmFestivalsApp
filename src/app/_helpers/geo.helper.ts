@@ -6,7 +6,7 @@ import { Cinema } from "../_models/cinema";
 export function createCinemaFeatureList(cinemas: Cinema[]): Feature[] {
   return cinemas.map(cinema => new Feature({
       geometry: new Point(cinema.geoCoordinates),
-      title: cinema.name,
+      title: cinema.title,
       url: `/cinema/${cinema.id}`,
     })
   );

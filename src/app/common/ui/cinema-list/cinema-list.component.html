@@ -1,6 +1,6 @@
 <h3>Kino(s):</h3>
 <ul>
   <li *ngFor="let cinema of cinemas">
-    <a [routerLink]="['/', 'cinema', cinema.id]"><strong>{{ cinema.name }}</strong></a> | {{ cinema.street }}<br>
+    <a [routerLink]="['/', 'cinema', cinema.id]"><strong>{{ cinema.title }}</strong></a> | {{ cinema.street }}<br>
   </li>
 </ul>

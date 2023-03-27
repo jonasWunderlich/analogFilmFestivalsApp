@@ -14,7 +14,6 @@ const SCREENING_EVENT_DEFAULT_VALUES: ScreeningEvent = {
   lastModifiedAt: '2020-11-30T10:32:19.196720000+0000',
   title: MOCKED_EVENT_NAMES[1],
   text: MOCKED_EVENT_TEXTS[1],
-  link: 'https://www.kommkino.de/festival/hofbauer-kongress',
   reports: [],
   start: randomDate(new Date(), new Date(2023, 6, 0)),
   end: randomDate(new Date(), new Date(2023, 12, 0)),
@@ -24,7 +23,7 @@ const SCREENING_EVENT_DEFAULT_VALUES: ScreeningEvent = {
   city: 'Leipzig',
   mail: 'kontakt@mockedcinema.de',
   phone: '+49123456789',
-  linkHomepage: 'https://www.example.com',
+  linkHomepage: 'https://www.kommkino.de/festival/hofbauer-kongress',
   linkProgram: 'https://www.example.com',
 };
 
@@ -48,11 +47,10 @@ export function mockScreeningEvent(eventValues: DeepPartial<ScreeningEvent>): Sc
     id,
     createdAt: SCREENING_EVENT_DEFAULT_VALUES.createdAt,
     lastModifiedAt: SCREENING_EVENT_DEFAULT_VALUES.lastModifiedAt,
-    title: sample(MOCKED_EVENT_NAMES),
+    title: sample(MOCKED_EVENT_NAMES) || SCREENING_EVENT_DEFAULT_VALUES.title,
     type: eventType,
     text: sample(MOCKED_EVENT_TEXTS),
     reports: mockReports(mockNumber(0,3)),
-    link: SCREENING_EVENT_DEFAULT_VALUES.link,
     start,
     end: eventType !== ScreeningEventType.SINGLE ? addDays(start, eventLength) : undefined,
     projections: mockProjections(projectionCount, start, eventLength).sort((a, b) => sortByDate(a.date, b.date)),
@@ -63,7 +61,6 @@ export function mockScreeningEvent(eventValues: DeepPartial<ScreeningEvent>): Sc
     linkProgram: SCREENING_EVENT_DEFAULT_VALUES.linkProgram,
     mail: SCREENING_EVENT_DEFAULT_VALUES.mail,
     phone: SCREENING_EVENT_DEFAULT_VALUES.phone,
-    url: `/event/${id}`,
   };
   return {
     ...defaultValues,

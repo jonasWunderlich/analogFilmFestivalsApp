@@ -9,7 +9,7 @@ const REPORT_DEFAULT_VALUES: Report = {
   id: '0',
   createdAt: '2020-10-30T09:32:19.196720000+0000',
   lastModifiedAt: '2020-11-30T10:32:19.196720000+0000',
-  name: MOCKED_REPORT_NAMES[1],
+  title: MOCKED_REPORT_NAMES[1],
   text: `Busey ipsum dolor sit amet. You ever roasted doughnuts?Have you urinated? Have you drained your bladder? Are you free? Because if you haven't it will only come out later. I'm giving you some information that your bodily fluids may penetrate your clothing fibre's without warning.
   When you get lost in your imaginatory vagueness, your foresight will become a nimble vagrant.It's good to yell at people and tell people that you're from Tennesee, so that way you'll be safe.Have you urinated? Have you drained your bladder? Are you free? Because if you haven't it will only come out later. I'm giving you some information that your bodily fluids may penetrate your clothing fibre's without warning.
   The magic Indian is a mysterious spiritual force, and we're going to Cathedral Rock, and that's the vortex of the heart.You ever roasted doughnuts?It's good to yell at people and tell people that you're from Tennesee, so that way you'll be safe.Listen to the silence. And when the silence is deafening, you're in the center of your own universe.
@@ -36,7 +36,7 @@ export function mockReport(reportValues: DeepPartial<Report>): Report {
     id,
     createdAt: REPORT_DEFAULT_VALUES.createdAt,
     lastModifiedAt: REPORT_DEFAULT_VALUES.lastModifiedAt,
-    name: sample(MOCKED_REPORT_NAMES),
+    title: sample(MOCKED_REPORT_NAMES) || REPORT_DEFAULT_VALUES.title,
     text: sample(MOCKED_REPORT_TEXTS),
     date,
   };

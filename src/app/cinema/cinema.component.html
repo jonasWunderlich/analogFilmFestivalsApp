@@ -4,7 +4,7 @@
     <div class="content-container" *ngIf="cinema">
 
       <i>Kino</i>
-      <h2>{{cinema.name }}</h2>
+      <h2>{{cinema.title }}</h2>
       <p>{{ cinema.text }}</p>
 
       <app-projection-list [projections]="projections"></app-projection-list>
@@ -12,7 +12,7 @@
 
       <h3>Adresse:</h3>
       <p>
-        {{ cinema.name }}<br>
+        {{ cinema.title }}<br>
         {{ cinema.street }}<br>
         {{ cinema.postcode }} {{ cinema.city }}
       </p>

@@ -13,7 +13,7 @@
       class="report"
     >
       <p class="prefix-date">{{ report.date | date }}</p>
-      <a [routerLink]="['/', 'report', report.id]"><h3>{{ report.name }}</h3></a>
+      <a [routerLink]="['/', 'report', report.id]"><h3>{{ report.title }}</h3></a>
       <p>{{ report.text }}</p>
     </div>
 

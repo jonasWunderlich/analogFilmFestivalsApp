@@ -1,4 +1,3 @@
-import { ScreeningEventCharacter } from "./screening-event-character";
 import { ScreeningEventType } from "./sceening-event-type";
 import { Projection } from "./projection";
 import { Report } from "./report";
@@ -8,13 +7,12 @@ export interface ScreeningEvent {
   id: string;
   createdAt: string;
   lastModifiedAt: string;
+  title: string;
+
   start: Date;
   end?: Date;
-  title?: string;
   text?: string;
-  link?: string;
   type?: ScreeningEventType;
-  character?: ScreeningEventCharacter[];
   street?: string;
   postcode?: string;
   city?: string;
@@ -22,12 +20,11 @@ export interface ScreeningEvent {
   phone?: string;
   linkHomepage?: string;
   linkProgram?: string;
-  url?: string;
 
+  // TODO: Fix reference models
   cinemas?: Cinema[];
   projections?: Projection[];
   reports?: Report[];
-
   cinemaRefs?: string[];
   projectionRefs?: string[];
   reportRefs?: string[];

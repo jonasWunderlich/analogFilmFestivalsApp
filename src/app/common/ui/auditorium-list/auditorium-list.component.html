@@ -1,7 +1,7 @@
 <h3>Kinosäle</h3>
 <ul>
   <li *ngFor="let auditorium of auditoriums">
-    <strong>{{ auditorium.name }}:</strong> Plätze: {{ auditorium.seats }} | Leinwand: {{ auditorium.screen }} |
+    <strong>{{ auditorium.title }}:</strong> Plätze: {{ auditorium.seats }} | Leinwand: {{ auditorium.screen }} |
     Projektoren {{ auditorium.projectors }} | Sound: {{ auditorium.sound }} | Attribute: {{ auditorium.attributes }}
   </li>
 </ul>
