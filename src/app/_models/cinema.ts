@@ -20,6 +20,7 @@ export interface Cinema {
   linkHomepage?: string;
   linkProgram?: string;
   linkOpeningHours?: string;
+  images: string[];
 
   // TODO: Fix reference models
   auditoriums?: Auditorium[];

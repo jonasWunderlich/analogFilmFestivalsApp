@@ -4,7 +4,9 @@
     <div class="content-container" *ngIf="cinema">
 
       <i>Kino</i>
+
       <h2>{{cinema.title }}</h2>
+      <img src="/assets/images/{{cinema.images[0]}}" width="60%" alt="">
       <p>{{ cinema.text }}</p>
 
       <app-projection-list [projections]="projections"></app-projection-list>

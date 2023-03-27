@@ -3,7 +3,7 @@ import { DeepPartial } from '@ngneat/reactive-forms/lib/types';
 
 import { Cinema } from '../_models/cinema';
 import { CHAR_NUMBERS, mockCharString, mockCoordinates, mockNumber } from './helpers.mock';
-import { MOCKED_CINEMA_NAMES, MOCKED_CITIES, MOCKED_STREETS } from './constants';
+import { MOCKED_CINEMA_IMAGES, MOCKED_CINEMA_NAMES, MOCKED_CITIES, MOCKED_STREETS } from './constants';
 import { mockAuditoriums } from './auditorium.mock';
 import { mockReports } from './report.mocks';
 
@@ -25,6 +25,7 @@ const CINEMA_DEFAULT_VALUES: Cinema = {
   linkProgram: 'https://www.example.com',
   linkOpeningHours: 'https://www.cinema.de/hours',
   reports: [],
+  images: [MOCKED_CINEMA_IMAGES[0]]
 };
 
 /**
@@ -56,6 +57,7 @@ export function mockCinema(cinemaValues: DeepPartial<Cinema>): Cinema {
     phone: CINEMA_DEFAULT_VALUES.phone,
     auditoriums: mockAuditoriums(mockNumber(1, 12)),
     reports: mockReports(mockNumber(0,3)),
+    images: [sample(MOCKED_CINEMA_IMAGES) || CINEMA_DEFAULT_VALUES.images[0] ]
   };
   return {
     ...defaultValues,
