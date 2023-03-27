@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { CalendarOptions } from '@fullcalendar/core';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import { Store } from '@ngrx/store';
@@ -24,6 +25,7 @@ export class EventOverviewComponent implements OnInit, OnDestroy {
 
   constructor(
     private readonly store: Store,
+    private readonly router: Router,
     private readonly mapService: MapService,
     ) {
   }
@@ -46,9 +48,13 @@ export class EventOverviewComponent implements OnInit, OnDestroy {
             initialView: 'dayGridMonth',
             weekends: false,
             events: screeningEvents,
-            eventMouseEnter: (event) => {
+            eventClick: (arg,) => {
+              arg.jsEvent.preventDefault();
+              this.router.navigate(['event', arg.event._def.publicId]);
+            },
+            eventMouseEnter: (arg) => {
               // TODO: Show Popup with Information
-              console.warn('TODO', event.event._def.url);
+              console.warn('TODO', arg, arg.event._def);
             },
           };
       })
