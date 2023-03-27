@@ -5,25 +5,33 @@ import { Injectable } from '@angular/core';
 })
 export class NotificationService {
 
+  LOGGING_ACTIVE = false;
+
   constructor() { }
 
   show(message: string, title = ''): void {
-    console.log('NFS says: show', message, title);
+    this.logNotification('show', message, title);
   }
 
   success(message: string, title = ''): void {
-    console.log('NFS says: success', message, title);
+    this.logNotification('success', message, title);
   }
 
   error(message: string, title = ''): void {
-    console.log('NFS says: error', message, title);
+    this.logNotification('error', message, title);
   }
 
   info(message: string, title = ''): void {
-    console.log('NFS says: info', message, title);
+    this.logNotification('info', message, title);
   }
 
   warning(message: string, title = ''): void {
-    console.log('NFS says: warning', message, title);
+    this.logNotification('warning', message, title);
+  }
+
+  logNotification(type: string, message: string, title: string) {
+    if (this.LOGGING_ACTIVE) {
+      console.log('NotificationService:', type, message, title);
+    }
   }
 }

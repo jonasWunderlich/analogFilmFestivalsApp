@@ -69,7 +69,6 @@ export const selectSelectedReportByRoute = createSelector(
   selectEntities,
   selectRoutesReportId,
   (entities, entityId): Report | undefined => {
-    console.log(entityId, entities)
     if (!entityId) {
       console.error('select Report By Route WITHOUT params')
       return undefined;
