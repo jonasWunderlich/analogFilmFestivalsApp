@@ -1,5 +1,3 @@
-import { Auditorium } from "../_models/auditorium";
-
 const REPORT_TEXT_1 = `Busey ipsum dolor sit amet. You ever roasted doughnuts?Have you urinated? Have you drained your bladder? Are you free? Because if you haven't it will only come out later. I'm giving you some information that your bodily fluids may penetrate your clothing fibre's without warning.
 When you get lost in your imaginatory vagueness, your foresight will become a nimble vagrant.It's good to yell at people and tell people that you're from Tennesee, so that way you'll be safe.Have you urinated? Have you drained your bladder? Are you free? Because if you haven't it will only come out later. I'm giving you some information that your bodily fluids may penetrate your clothing fibre's without warning.
 The magic Indian is a mysterious spiritual force, and we're going to Cathedral Rock, and that's the vortex of the heart.You ever roasted doughnuts?It's good to yell at people and tell people that you're from Tennesee, so that way you'll be safe.Listen to the silence. And when the silence is deafening, you're in the center of your own universe.

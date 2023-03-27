@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { useGeographic} from 'ol/proj.js';
 import Map from 'ol/Map';
-import Feature from 'ol/Feature';
+import Feature, { FeatureLike } from 'ol/Feature';
 import View from 'ol/View';
 import { Point } from 'ol/geom';
 import TileLayer from 'ol/layer/Tile';
@@ -18,6 +18,7 @@ import { FlatStyleLike } from 'ol/style/flat';
 
 const POINT_SIZE = 7;
 const POINT_COLOR = 'rgb(255, 77, 0)';
+const POINT_COLOR_HOVER = 'rgb(255, 77, 88)';
 
 
 @Injectable({
@@ -30,10 +31,15 @@ export class MapService {
     'circle-fill-color': POINT_COLOR,
   }
 
+  pointStyleHover: FlatStyleLike = {
+    'circle-radius': POINT_SIZE,
+    'circle-fill-color': POINT_COLOR_HOVER,
+  }
+
   constructor(private readonly router: Router) {
   }
 
-  private getTileLayerStyle(style?: string): TileLayer<any> {
+  private getTileLayerStyle(style?: string): TileLayer<Stamen | BingMaps | OSM> {
 
     enum BingMapStyles {
       ROAD_ON_DEMAND = 'RoadOnDemand',
@@ -113,6 +119,13 @@ export class MapService {
         if (feature.getProperties()['url']) {
           this.router.navigate([feature.getProperties()['url']]);
         }
+      });
+    });
+
+    map.on('pointermove', (event) => {
+      map.forEachFeatureAtPixel(event.pixel, (feature: FeatureLike) => {
+        // TODO: HOVER effect
+        console.log('pointerMove:', feature);
       });
     });
 

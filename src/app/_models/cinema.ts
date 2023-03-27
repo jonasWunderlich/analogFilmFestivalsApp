@@ -1,6 +1,5 @@
 import { Coordinate } from "ol/coordinate";
 import { Auditorium } from "./auditorium";
-import { CommonAttributes } from "./common";
 import { Projection } from "./projection";
 import { Report } from "./report";
 

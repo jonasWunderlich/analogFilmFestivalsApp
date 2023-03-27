@@ -1,4 +1,4 @@
-import { TMDbMovieDetails } from '@igorissen/ngx-tmdb-api';
+import { TMDbMovieDetails, TMDbSearchMovies } from '@igorissen/ngx-tmdb-api';
 import { createAction, props } from '@ngrx/store';
 
 export const searchMoviesByQuery = createAction(
@@ -8,7 +8,7 @@ export const searchMoviesByQuery = createAction(
 
 export const searchedMoviesSuccess = createAction(
   '[Movie] searched Movies successfully loaded',
-  props<{ movies: TMDbMovieDetails | null }>()
+  props<{ movies: TMDbSearchMovies | null }>()
 );
 
 export const searchedMoviesFailed = createAction(

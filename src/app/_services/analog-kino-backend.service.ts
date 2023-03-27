@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, of, throwError } from 'rxjs';
+import { NEVER, Observable, of } from 'rxjs';
 import { mockCinemas } from '../_mock/cinema.mock';
 import { mockScreeningEvents } from '../_mock/event.mock';
 import { getRandomSubarray, mockNumber, sortByDate } from '../_mock/helpers.mock';
@@ -55,7 +55,7 @@ export class AnalogKinoBackendService {
   }
 
   public getAuditoriumById(id: string): Observable<Auditorium> {
-    return this.getById(id, this.cinemas);
+    return this.getById(id, this.auditoriums);
   }
 
   public getScreeningEvents(): Observable<ScreeningEvent[]> {
@@ -82,10 +82,10 @@ export class AnalogKinoBackendService {
     return this.getById(id, this.reports);
   }
 
-  private getById(id: string, arr: any[]): Observable<any | never> {
+  private getById<T extends {id: string}>(id: string, arr: T[]): Observable<T | never> {
     const found = arr.find(item => item.id === id)
-    if (!found) {
-      throwError
+    if (found === undefined) {
+      return NEVER;
     }
     return of(found);
   }

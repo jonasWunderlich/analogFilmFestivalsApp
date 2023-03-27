@@ -67,7 +67,7 @@ export const reducer = createReducer(
       },
     });
   }),
-  on(ScreeningEventActions.loadScreeningEventsFailed, (state: State, action) => {
+  on(ScreeningEventActions.loadScreeningEventsFailed, (state: State) => {
     return {
       ...state,
       loadingStates: {
@@ -76,7 +76,7 @@ export const reducer = createReducer(
       },
     };
   }),
-  on(ScreeningEventActions.loadScreeningEventByIdFailed, (state: State, action) => {
+  on(ScreeningEventActions.loadScreeningEventByIdFailed, (state: State) => {
     return {
       ...state,
       loadingStates: {

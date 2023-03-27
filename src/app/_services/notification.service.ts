@@ -7,8 +7,6 @@ export class NotificationService {
 
   LOGGING_ACTIVE = false;
 
-  constructor() { }
-
   show(message: string, title = ''): void {
     this.logNotification('show', message, title);
   }

@@ -1,14 +1,14 @@
-import { ApplicationRef, ComponentFactoryResolver, ComponentRef, Directive, ElementRef, EmbeddedViewRef, HostListener, Injector, Input } from "@angular/core";
+import { ApplicationRef, ComponentFactoryResolver, ComponentRef, Directive, ElementRef, EmbeddedViewRef, HostListener, Injector, Input, OnDestroy } from "@angular/core";
 import { TooltipComponent } from "./tooltip.component";
 
 @Directive({
   selector: '[tooltip]'
 })
-export class TooltipDirective {
+export class TooltipDirective implements OnDestroy {
 
   @Input() tooltip = '';
 
-  private componentRef: ComponentRef<any> | null = null;
+  private componentRef: ComponentRef<TooltipComponent> | null = null;
 
   constructor(
     private elementRef: ElementRef,
@@ -32,7 +32,7 @@ export class TooltipDirective {
       const componentFactory = this.componentFactoryResolver.resolveComponentFactory(TooltipComponent);
       this.componentRef = componentFactory.create(this.injector);
       this.appRef.attachView(this.componentRef.hostView);
-      const domElem = (this.componentRef.hostView as EmbeddedViewRef<any>).rootNodes[0] as HTMLElement;
+      const domElem = (this.componentRef.hostView as EmbeddedViewRef<TooltipComponent>).rootNodes[0] as HTMLElement;
       document.body.appendChild(domElem);
       this.setTooltipComponentProperties();
     }

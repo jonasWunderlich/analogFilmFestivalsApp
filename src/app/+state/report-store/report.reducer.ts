@@ -67,7 +67,7 @@ export const reducer = createReducer(
       },
     });
   }),
-  on(ReportActions.loadReportsFailed, (state: State, action) => {
+  on(ReportActions.loadReportsFailed, (state: State) => {
     return {
       ...state,
       loadingStates: {
@@ -76,7 +76,7 @@ export const reducer = createReducer(
       },
     };
   }),
-  on(ReportActions.loadReportByIdFailed, (state: State, action) => {
+  on(ReportActions.loadReportByIdFailed, (state: State) => {
     return {
       ...state,
       loadingStates: {

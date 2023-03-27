@@ -1,15 +1,15 @@
-import { Directive, Input, TemplateRef, ViewContainerRef } from '@angular/core';
+import { Directive, Input, OnInit, TemplateRef, ViewContainerRef } from '@angular/core';
 
 @Directive({
-  selector: '[myNgIf]'
+  selector: '[appMyNgIf]'
 })
-export class MyNgIfDirective {
+export class MyNgIfDirective implements OnInit {
 
   @Input() myNgIf = true;
 
   constructor(
     private viewContainer: ViewContainerRef,
-    private template: TemplateRef<Object>,
+    private template: TemplateRef<object>,
   ) { }
 
   ngOnInit() {

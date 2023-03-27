@@ -68,7 +68,7 @@ export const reducer = createReducer(
       },
     });
   }),
-  on(CinemaActions.loadCinemasFailed, (state: State, action) => {
+  on(CinemaActions.loadCinemasFailed, (state: State) => {
     return {
       ...state,
       loadingStates: {
@@ -77,7 +77,7 @@ export const reducer = createReducer(
       },
     };
   }),
-  on(CinemaActions.loadCinemaByIdFailed, (state: State, action) => {
+  on(CinemaActions.loadCinemaByIdFailed, (state: State) => {
     return {
       ...state,
       loadingStates: {
