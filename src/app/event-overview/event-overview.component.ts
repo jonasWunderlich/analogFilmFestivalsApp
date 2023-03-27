@@ -1,15 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { CalendarOptions } from '@fullcalendar/core';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import { Store } from '@ngrx/store';
-import { loadScreeningEvents } from '../+state/screening-event-store/screening-event.actions';
+import { Map } from 'ol';
+import { Subscription } from 'rxjs';
+import { selectCinemas } from '../+state/cinema-store/cinema.selectors';
 import { selectScreeningEvents } from '../+state/screening-event-store/screening-event.selectors';
-import { mockCinemas } from '../_mock/cinema.mock';
-import { mockScreeningEvents } from '../_mock/event.mock';
-import { createCinemaFeatureList, getCoordinatesFromCinemaList } from '../_mock/geo.helper';
-import { sortByDate } from '../_mock/helpers.mock';
-import { Cinema } from '../_models/cinema';
-import { ScreeningEvent } from '../_models/screening-event';
+import { createCinemaFeatureList, getCoordinatesFromCinemaList } from '../_helpers/geo.helper';
 import { MapService } from '../_services/map.service';
 
 @Component({
@@ -17,40 +14,48 @@ import { MapService } from '../_services/map.service';
   templateUrl: './event-overview.component.html',
   styleUrls: ['./event-overview.component.scss']
 })
-export class EventOverviewComponent implements OnInit {
+export class EventOverviewComponent implements OnInit, OnDestroy {
 
-  map: any;
-
+  map = new Map;
+  calendarOptions: CalendarOptions = {};
+  cinemas$ = this.store.select(selectCinemas);
   screeningEvents$ = this.store.select(selectScreeningEvents);
-
-  events: ScreeningEvent[] = mockScreeningEvents(30).sort((a, b) => sortByDate(a.start, b.start));
-
-  cinemas: Cinema[] = mockCinemas(10);
-
-  calendarOptions: CalendarOptions = {
-    plugins: [dayGridPlugin],
-    initialView: 'dayGridMonth',
-    weekends: false,
-    events: this.events,
-    eventMouseEnter: (event) => {
-      console.log(event.event._def.url);
-      // TODO: Show Popup with Information
-    },
-  };
+  subscription = new Subscription;
 
   constructor(
-    private readonly mapService: MapService,
     private readonly store: Store,
+    private readonly mapService: MapService,
     ) {
   }
 
   ngOnInit(): void {
-    this.map = this.mapService.buildMapFromFeatureCollection(
-      createCinemaFeatureList(this.cinemas),
-      getCoordinatesFromCinemaList(this.cinemas),
-      'ol-map-event-overview'
-    )
-    this.store.dispatch(loadScreeningEvents());
+    this.subscription.add(
+      this.cinemas$.subscribe(cinemas => {
+        this.map = this.mapService.buildMapFromFeatureCollection(
+          createCinemaFeatureList(cinemas),
+          getCoordinatesFromCinemaList(cinemas),
+          'ol-map-event-overview'
+          )
+      })
+    );
+    this.subscription.add(
+      this.screeningEvents$.subscribe(
+        screeningEvents => {
+          this.calendarOptions = {
+            plugins: [dayGridPlugin],
+            initialView: 'dayGridMonth',
+            weekends: false,
+            events: screeningEvents,
+            eventMouseEnter: (event) => {
+              // TODO: Show Popup with Information
+              console.log(event.event._def.url);
+            },
+          };
+      })
+    );
   }
 
+  ngOnDestroy() {
+    this.subscription.unsubscribe;
+  }
 }

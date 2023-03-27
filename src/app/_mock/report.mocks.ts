@@ -59,7 +59,7 @@ export function mockReport(reportValues: DeepPartial<Report>): Report {
 export function mockReports(amount: number): Report[] {
   const reports: Report[] = [];
   for (let i = 0; i < amount; i++) {
-    reports.push(mockReport({}))
+    reports.push(mockReport({ id: i.toString() }))
   }
   return reports;
 }

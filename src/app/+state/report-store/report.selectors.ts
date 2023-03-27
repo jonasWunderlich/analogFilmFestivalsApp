@@ -1,4 +1,7 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
+import { selectRouteParams } from 'src/app/routing-module/+state/router/router.reducer';
+import { neitherNullNorUndefined } from 'src/app/_helpers/null-or-undefined';
+import { Report } from 'src/app/_models/report';
 import * as fromReport from './report.reducer';
 
 export const selectReportState = createFeatureSelector<fromReport.State>(
@@ -20,6 +23,50 @@ export const selectEntities = createSelector(
 export const selectReports = createSelector(
   selectReportState,
   selectAllProjection
+);
+
+/* select report via id */
+
+export const selectSelectedReportId = createSelector(
+  selectReportState,
+  (state: fromReport.State): string | undefined => state.selectedReportId
+);
+
+export const selectSelectedReport = createSelector(
+  selectEntities,
+  selectSelectedReportId,
+  (entities, entityId): Report | undefined => {
+    if (!entityId) {
+      return undefined;
+    }
+    return entities[entityId]
+  }
+);
+
+/* select via route */
+
+export const selectRoutesReportId = createSelector(
+  selectRouteParams,
+  (params): string | undefined => {
+    if (neitherNullNorUndefined(params) && neitherNullNorUndefined(params['id'])) {
+      return params['id'] as string;
+    } else {
+      return undefined;
+    }
+  }
+);
+
+export const selectSelectedReportByRoute = createSelector(
+  selectEntities,
+  selectRoutesReportId,
+  (entities, entityId): Report | undefined => {
+    console.log(entityId, entities)
+    if (!entityId) {
+      console.error('select Report By Route WITHOUT params')
+      return undefined;
+    }
+    return entities[entityId];
+  }
 );
 
 /* Loading States */

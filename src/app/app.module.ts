@@ -24,6 +24,10 @@ import { MovieListComponent } from './common/ui/movie-list/movie-list.component'
 import { ReportStoreModule } from './+state/report-store/report.module';
 import { ScreeningEventStoreModule } from './+state/screening-event-store/screening-event-store.module';
 import { CinemaStoreModule } from './+state/cinema-store/cinema-store.module';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from 'src/environments/environment';
+import { StoreRouterConnectingModule } from '@ngrx/router-store';
+import { RoutingModule } from './routing-module/routing.module';
 
 @NgModule({
   declarations: [
@@ -45,6 +49,12 @@ import { CinemaStoreModule } from './+state/cinema-store/cinema-store.module';
     AppRoutingModule,
     LetModule,
     StoreModule.forRoot({}),
+    StoreRouterConnectingModule.forRoot(),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25, // Retains last 25 states
+      logOnly: environment.production, // Restrict extension to log-only mode
+    }),
+    RoutingModule,
     EffectsModule.forRoot([]),
     NgxTmdbApiModule.forRoot({ apiKey: '05180a707de5ada5dc9a38cd1f8da87b' }),
     MovieStoreModule,

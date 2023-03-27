@@ -2,7 +2,7 @@
 
   <div
     class="content-container"
-    *ngrxLet="reports$ as reports; error as error"
+    *ngrxLet="reports$ as reports"
   >
 
     <i>Übersicht</i>
@@ -19,6 +19,6 @@
 
   </div>
 
-  <div id="ol-map-report-overview" class="map-container"></div>
+  <div id="ol-map-report-overview" class="map-container"><div id="popup"></div></div>
 
 </div>

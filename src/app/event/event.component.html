@@ -1,6 +1,6 @@
 
-<div class="c-event">
-  <div class="content-container">
+<div class="c-event" *ngrxLet="event$ as event">
+  <div class="content-container" *ngIf="event">
 
     <i>Event</i>
 
@@ -22,11 +22,11 @@
     <app-projection-list [projections]="event.projections || []"></app-projection-list>
 
     <app-movie-list
-      *ngrxLet="someMovies$ as someMovies; error as error"
-      [movies]="someMovies?.results"
+      *ngrxLet="movies$ as movies; error as error"
+      [movies]="movies?.results"
     ></app-movie-list>
 
-    <app-cinema-list [cinemas]="cinemas"></app-cinema-list>
+    <app-cinema-list *ngrxLet="cinemas$ as cinemas" [cinemas]="cinemas"></app-cinema-list>
     <app-report-list [reports]="event.reports || []"></app-report-list>
   </div>
 

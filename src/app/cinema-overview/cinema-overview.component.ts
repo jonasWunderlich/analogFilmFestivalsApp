@@ -1,10 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { loadCinemas } from '../+state/cinema-store/cinema.actions';
+import { Map } from 'ol';
+import { Subscription } from 'rxjs';
 import { selectCinemas } from '../+state/cinema-store/cinema.selectors';
-import { mockCinemas } from '../_mock/cinema.mock';
-import { createCinemaFeatureList, getCoordinatesFromCinemaList } from '../_mock/geo.helper';
-import { Cinema } from '../_models/cinema';
+import { createCinemaFeatureList, getCoordinatesFromCinemaList } from '../_helpers/geo.helper';
 import { MapService } from '../_services/map.service';
 
 @Component({
@@ -12,12 +11,11 @@ import { MapService } from '../_services/map.service';
   templateUrl: './cinema-overview.component.html',
   styleUrls: ['./cinema-overview.component.scss']
 })
-export class CinemaOverviewComponent implements OnInit {
+export class CinemaOverviewComponent implements OnInit, OnDestroy {
 
-  map: any;
-
-  cinemasDeprecated: Cinema[] = mockCinemas(30);
+  map = new Map;
   cinemas$ = this.store.select(selectCinemas);
+  subscription = new Subscription;
 
   constructor(
     private readonly mapService: MapService,
@@ -26,11 +24,18 @@ export class CinemaOverviewComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.map = this.mapService.buildMapFromFeatureCollection(
-      createCinemaFeatureList(this.cinemasDeprecated),
-      getCoordinatesFromCinemaList(this.cinemasDeprecated),
-      'ol-map-cinema-overview'
+    this.subscription.add(
+      this.cinemas$.subscribe(cinema => {
+        this.map = this.mapService.buildMapFromFeatureCollection(
+          createCinemaFeatureList(cinema),
+          getCoordinatesFromCinemaList(cinema),
+          'ol-map-cinema-overview'
+          )
+      })
     )
-    this.store.dispatch(loadCinemas());
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe;
   }
 }

@@ -1,5 +1,5 @@
-<div class="c-cinema">
-  <div class="content-container">
+<div class="c-cinema" *ngrxLet="cinema$ as cinema">
+  <div class="content-container" *ngIf="cinema">
 
     <i>Kino</i>
     <h2>{{cinema.name }}</h2>

@@ -76,7 +76,7 @@ export function mockCinema(cinemaValues: DeepPartial<Cinema>): Cinema {
 export function mockCinemas(amount: number): Cinema[] {
   const cinemas: Cinema[] = [];
   for (let i = 0; i < amount; i++) {
-    cinemas.push(mockCinema({}))
+    cinemas.push(mockCinema({ id: i.toString() }))
   }
   return cinemas;
 }

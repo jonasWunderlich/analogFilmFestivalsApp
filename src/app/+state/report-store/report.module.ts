@@ -7,8 +7,9 @@ import { ReportEffects } from './report.effects';
 @NgModule({
   declarations: [],
   imports: [
-  StoreModule.forFeature(fromReport.reportFeatureKey, fromReport.reducer),
-  EffectsModule.forFeature([ReportEffects])],
+    StoreModule.forFeature(fromReport.reportFeatureKey, fromReport.reducer),
+    EffectsModule.forFeature([ReportEffects])
+  ],
 })
 export class ReportStoreModule {
 }

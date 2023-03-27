@@ -1,12 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { loadCinemas } from '../+state/cinema-store/cinema.actions';
+import { Map } from 'ol';
+import { Subscription } from 'rxjs';
 import { selectCinemas } from '../+state/cinema-store/cinema.selectors';
-import { loadReports } from '../+state/report-store/report.actions';
 import { selectReports } from '../+state/report-store/report.selectors';
-import { mockCinemas } from '../_mock/cinema.mock';
-import { createCinemaFeatureList, getCoordinatesFromCinemaList } from '../_mock/geo.helper';
-import { Cinema } from '../_models/cinema';
+import { createCinemaFeatureList, getCoordinatesFromCinemaList } from '../_helpers/geo.helper';
 import { MapService } from '../_services/map.service';
 
 @Component({
@@ -14,12 +12,12 @@ import { MapService } from '../_services/map.service';
   templateUrl: './report-overview.component.html',
   styleUrls: ['./report-overview.component.scss']
 })
-export class ReportOverviewComponent implements OnInit {
+export class ReportOverviewComponent implements OnInit, OnDestroy {
 
-  map: any;
+  map = new Map;
   reports$ = this.store.select(selectReports);
   cinemas$ = this.store.select(selectCinemas);
-  cinemasDeprecated: Cinema[] = mockCinemas(20);
+  subscription = new Subscription;
 
   constructor(
     private readonly store: Store,
@@ -28,13 +26,19 @@ export class ReportOverviewComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.map = this.mapService.buildMapFromFeatureCollection(
-      createCinemaFeatureList(this.cinemasDeprecated),
-      getCoordinatesFromCinemaList(this.cinemasDeprecated),
-      'ol-map-report-overview'
-      )
-    this.store.dispatch(loadReports());
-    this.store.dispatch(loadCinemas());
+    this.subscription.add(
+      this.cinemas$.subscribe(cinemas => {
+        this.map = this.mapService.buildMapFromFeatureCollection(
+          createCinemaFeatureList(cinemas),
+          getCoordinatesFromCinemaList(cinemas),
+          'ol-map-report-overview'
+          )
+      })
+    )
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe;
   }
 
 }

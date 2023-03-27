@@ -1,17 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 
-import { mockCinemas } from '../_mock/cinema.mock';
-import { Cinema } from '../_models/cinema';
-import { mockScreeningEvent } from '../_mock/event.mock';
-import { ScreeningEvent } from '../_models/screening-event';
 import { MapService } from '../_services/map.service';
-import { mockNumber } from '../_mock/helpers.mock';
-import { createCinemaFeatureList, getCoordinatesFromCinemaList } from '../_mock/geo.helper';
+import { createCinemaFeatureList, getCoordinatesFromCinemaList } from '../_helpers/geo.helper';
 import { Store } from '@ngrx/store';
-import { searchMoviesByQuery } from '../+state/movie-store/movie.actions';
 import { selectSearchedMovies } from '../+state/movie-store/movie.selectors';
-import { sample } from 'lodash';
-import { MOCKED_TMDB_QUERIES } from '../_mock/constants';
+import { selectSelectedScreeningEventByRoute } from '../+state/screening-event-store/screening-event.selectors';
+import { selectCinemas } from '../+state/cinema-store/cinema.selectors';
+import { Subscription } from 'rxjs';
+import { Map } from 'ol';
 
 
 @Component({
@@ -19,26 +15,33 @@ import { MOCKED_TMDB_QUERIES } from '../_mock/constants';
   templateUrl: './event.component.html',
   styleUrls: ['./event.component.scss']
 })
-export class EventComponent implements OnInit {
+export class EventComponent implements OnInit, OnDestroy {
 
-  event: ScreeningEvent = mockScreeningEvent({});
-  cinemas: Cinema[] = mockCinemas(mockNumber(1,6));
-  map: any;
-
-  someMovies$ = this.store.select(selectSearchedMovies);
+  event$ = this.store.select(selectSelectedScreeningEventByRoute);
+  cinemas$ = this.store.select(selectCinemas);
+  movies$ = this.store.select(selectSearchedMovies);
+  map = new Map;
+  subscription = new Subscription;
 
   constructor(
-    private readonly mapService: MapService,
     private readonly store: Store,
+    private readonly mapService: MapService,
     ) {
   }
 
   ngOnInit(): void {
-    this.store.dispatch(searchMoviesByQuery(sample(MOCKED_TMDB_QUERIES) || 'light'));
-    this.map = this.mapService.buildMapFromFeatureCollection(
-      createCinemaFeatureList(this.cinemas),
-      getCoordinatesFromCinemaList(this.cinemas),
-      'ol-map-event-details'
+    this.subscription.add(
+      this.cinemas$.subscribe(cinemas => {
+        this.map = this.mapService.buildMapFromFeatureCollection(
+          createCinemaFeatureList(cinemas),
+          getCoordinatesFromCinemaList(cinemas),
+          'ol-map-event-overview'
+          )
+      })
     )
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe;
   }
 }

@@ -1,5 +1,6 @@
-<div class="c-report">
-  <div class="content-container">
+<div class="c-report" *ngrxLet="report$ as report">
+
+  <div class="content-container" *ngIf="report">
 
     <i>Erfahrungsbericht</i>
     <h2>{{ report.name }}</h2>

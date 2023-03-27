@@ -76,6 +76,6 @@ export class AnalogKinoBackendService {
     if (!found) {
       throwError
     }
-    return found;
+    return of(found);
   }
 }

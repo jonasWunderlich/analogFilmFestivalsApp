@@ -1,9 +1,6 @@
 <div class="c-event-list">
 
-  <div
-    class="content-container"
-    *ngrxLet="screeningEvents$ as events; error as error"
-  >
+  <div class="content-container" *ngrxLet="screeningEvents$ as events">
     <i>Übersicht</i>
     <h2>Events</h2>
 
@@ -16,10 +13,7 @@
         <a [routerLink]="['/', 'event', screeningEvent.id]">
           <h3>{{ screeningEvent.type }} | {{ screeningEvent.title }}</h3>
         </a>
-        <app-projection-list
-          [projections]="screeningEvent.projections || []"
-          [showTitle]="false"
-        ></app-projection-list>
+        <app-projection-list [projections]="screeningEvent.projections || []" [showTitle]="false"></app-projection-list>
         <p>{{ screeningEvent.text }}</p>
         <p>
           <a href="{{ screeningEvent.linkHomepage }}">{{ screeningEvent.linkHomepage }}</a>
@@ -29,5 +23,7 @@
     </ng-container>
 
   </div>
-  <div id="ol-map-event-overview" class="map-container"></div>
+  <div id="ol-map-event-overview" class="map-container">
+    <div id="popup"></div>
+  </div>
 </div>

@@ -42,7 +42,7 @@ export class ReportEffects {
       ofType(ReportActions.loadReportById),
       filter(params => params?.id?.length > 0),
       switchMap((params) =>
-      this.analogCinemaBackend.getReportById(params.id).pipe(
+        this.analogCinemaBackend.getReportById(params.id).pipe(
           map(report => ReportActions.loadReportByIdSucceeded({ report })),
           catchError((error) => of(ReportActions.loadReportByIdFailed({ error })))
         )

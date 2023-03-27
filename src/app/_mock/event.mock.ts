@@ -83,7 +83,7 @@ export function mockScreeningEvent(eventValues: DeepPartial<ScreeningEvent>): Sc
 export function mockScreeningEvents(amount: number): ScreeningEvent[] {
   const events: ScreeningEvent[] = [];
   for (let i = 0; i < amount; i++) {
-    events.push(mockScreeningEvent({}))
+    events.push(mockScreeningEvent({ id: i.toString() }))
   }
   return events;
 }

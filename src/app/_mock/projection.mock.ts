@@ -58,7 +58,7 @@ export function mockProjection(projectionValues: DeepPartial<Projection>): Proje
 export function mockProjections(amount: number, date: Date, length: number): Projection[] {
   const projections: Projection[] = [];
   for (let i = 0; i < amount; i++) {
-    projections.push(mockProjection({date: addDays(date, mockNumber(0, length)), }))
+    projections.push(mockProjection({ id: i.toString(), date: addDays(date, mockNumber(0, length)) }))
   }
   return projections;
 }

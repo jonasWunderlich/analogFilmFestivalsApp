@@ -63,7 +63,7 @@ export function mockAuditorium(auditoriumValues: DeepPartial<Auditorium>): Audit
 export function mockAuditoriums(amount: number): Auditorium[] {
   const auditoriums: Auditorium[] = [];
   for (let i = 0; i < amount; i++) {
-    auditoriums.push(mockAuditorium({}))
+    auditoriums.push(mockAuditorium({ id: i.toString() }))
   }
   return auditoriums;
 }
