@@ -10,6 +10,8 @@ import { NgxTmdbApiModule } from '@igorissen/ngx-tmdb-api';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RootStoreModule } from './root-store/root-store.module';
+import { TitleStrategy } from '@angular/router';
+import { CustomTitleStrategy } from './shared/services/custom-title-strategy.service';
 registerLocaleData(localeDe);
 
 export const APP_TITLE = new InjectionToken<string>('app-title');
@@ -26,6 +28,7 @@ export const APP_TITLE = new InjectionToken<string>('app-title');
     { provide: APP_TITLE, useValue: 'analogkino.net' },
     { provide: LOCALE_ID, useValue: 'de-DE' },
     { provide: LocationStrategy, useClass: HashLocationStrategy },
+    { provide: TitleStrategy, useClass: CustomTitleStrategy },
   ],
   bootstrap: [AppComponent],
 })
