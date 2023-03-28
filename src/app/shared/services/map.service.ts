@@ -15,7 +15,7 @@ import { Coordinate } from 'ol/coordinate';
 import { boundingExtent } from 'ol/extent';
 import { FlatStyleLike } from 'ol/style/flat';
 
-const POINT_SIZE = 7;
+const POINT_SIZE = 9;
 const POINT_COLOR = 'rgb(255, 77, 0)';
 const POINT_COLOR_HOVER = 'rgb(255, 77, 88)';
 
@@ -80,6 +80,7 @@ export class MapService {
       view: new View({
         center: coordinates,
         zoom: 15,
+        maxZoom: 17,
       }),
       layers: [
         this.getTileLayerStyle('toner'),
@@ -132,6 +133,7 @@ export class MapService {
     // CENTER VIEW
     if (coords) {
       map.getView().fit(boundingExtent(coords), { padding: [40, 40, 40, 40] });
+      map.getView().setMaxZoom(16);
     }
 
     return map;

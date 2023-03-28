@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { APP_TITLE } from './app.module';
 import { loadCinemas } from './root-store/cinema-store/cinema.actions';
 import { loadReports } from './root-store/report-store/actions/report.actions';
 import { loadScreeningEvents } from './root-store/screening-event-store/screening-event.actions';
@@ -10,7 +11,13 @@ import { loadScreeningEvents } from './root-store/screening-event-store/screenin
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-  constructor(private readonly store: Store) {}
+  appTitle?: string;
+  constructor(
+    @Inject(APP_TITLE) appTitle: string,
+    private readonly store: Store
+  ) {
+    this.appTitle = appTitle;
+  }
 
   ngOnInit(): void {
     this.store.dispatch(loadScreeningEvents());

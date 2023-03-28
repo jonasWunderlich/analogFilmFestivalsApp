@@ -16,7 +16,7 @@ import { Report } from '../_models/report';
 import { ScreeningEvent } from '../_models/screening-event';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'platform',
 })
 export class AnalogKinoBackendService {
   cinemas: Cinema[] = [];

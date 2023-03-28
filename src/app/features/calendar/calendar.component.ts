@@ -8,11 +8,6 @@ import { Router } from '@angular/router';
 import { CalendarOptions, EventInput } from '@fullcalendar/core';
 import dayGridPlugin from '@fullcalendar/daygrid';
 
-export interface EventLike {
-  id: string;
-  title: string;
-}
-
 @Component({
   selector: 'app-calendar',
   templateUrl: './calendar.component.html',

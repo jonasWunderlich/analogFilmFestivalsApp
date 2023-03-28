@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { InjectionToken, LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -28,6 +28,15 @@ import { AuditoriumListModule } from './features/auditorium-list/auditorium-list
 import { CalendarModule } from './features/calendar/calendar.module';
 import { ReportStoreModule } from './root-store/report-store/report.module';
 import { TwoColumnLayoutModule } from './features/two-column-layout/two-column-layout.module';
+import {
+  HashLocationStrategy,
+  LocationStrategy,
+  registerLocaleData,
+} from '@angular/common';
+import localeDe from '@angular/common/locales/de';
+registerLocaleData(localeDe);
+
+export const APP_TITLE = new InjectionToken<string>('app-title');
 
 @NgModule({
   declarations: [
@@ -66,7 +75,11 @@ import { TwoColumnLayoutModule } from './features/two-column-layout/two-column-l
     CinemaStoreModule,
     TwoColumnLayoutModule,
   ],
-  providers: [],
+  providers: [
+    { provide: APP_TITLE, useValue: 'analogkino.net' },
+    { provide: LOCALE_ID, useValue: 'de-DE' },
+    { provide: LocationStrategy, useClass: HashLocationStrategy },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
