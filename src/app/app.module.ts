@@ -28,6 +28,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from 'src/environments/environment';
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import { RoutingModule } from './root-store/routing-store/routing.module';
+import { CinemaMapComponent } from './features/cinema-map/cinema-map.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { RoutingModule } from './root-store/routing-store/routing.module';
     ReportListComponent,
     AuditoriumListComponent,
     MovieListComponent,
+    CinemaMapComponent,
   ],
   imports: [
     BrowserModule,

@@ -18,7 +18,9 @@
     </div>
   </ng-container>
 
-  <div id="ol-map-report-details" class="map-container">
-    <div id="popup"></div>
-  </div>
+  <app-cinema-map
+    class="map-container"
+    *ngrxLet="cinemas$ as cinemas"
+    [cinemas]="cinemas"
+  ></app-cinema-map>
 </div>
