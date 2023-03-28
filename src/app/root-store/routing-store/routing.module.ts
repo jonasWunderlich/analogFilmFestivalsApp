@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { routerReducer, StoreRouterConnectingModule } from '@ngrx/router-store';
 import { StoreModule } from '@ngrx/store';
 
-import { ROUTER_FEATURE_KEY } from './+state/router/router.reducer';
+import { ROUTER_FEATURE_KEY } from './reducers/router.reducer';
 import { RoutingService } from './routing.service';
 
 const routes: Routes = [];
