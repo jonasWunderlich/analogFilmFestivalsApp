@@ -13,6 +13,8 @@
     </ng-container>
 
     <app-cinema-list [cinemas]="cinemas$ | async"></app-cinema-list>
+
+    <app-movie-list [movies]="movies$ | async"></app-movie-list>
   </div>
 
   <app-cinema-map column-two [cinemas]="cinemas$ | async"></app-cinema-map>

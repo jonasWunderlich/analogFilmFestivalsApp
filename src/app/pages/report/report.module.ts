@@ -8,6 +8,7 @@ import { ReportOverviewComponent } from './report-overview/report-overview.compo
 import { ProjectionListModule } from 'src/app/features/projection-list/projection-list.module';
 import { CinemaListModule } from 'src/app/features/cinema-list/cinema-list.module';
 import { CinemaMapModule } from 'src/app/features/cinema-map/cinema-map.module';
+import { MovieListModule } from 'src/app/features/movie-list/movie-list.module';
 
 @NgModule({
   declarations: [ReportDetailsComponent, ReportOverviewComponent],
@@ -18,6 +19,7 @@ import { CinemaMapModule } from 'src/app/features/cinema-map/cinema-map.module';
     ProjectionListModule,
     CinemaListModule,
     CinemaMapModule,
+    MovieListModule,
   ],
 })
 export class ReportModule {}
