@@ -8,13 +8,11 @@ import { ReportOverviewComponent } from './report-overview/report-overview.compo
 import { ProjectionListModule } from 'src/app/features/projection-list/projection-list.module';
 import { CinemaListModule } from 'src/app/features/cinema-list/cinema-list.module';
 import { CinemaMapModule } from 'src/app/features/cinema-map/cinema-map.module';
-import { LetModule } from '@ngrx/component';
 
 @NgModule({
   declarations: [ReportDetailsComponent, ReportOverviewComponent],
   imports: [
     CommonModule,
-    LetModule,
     ReportRoutingModule,
     TwoColumnLayoutModule,
     ProjectionListModule,

@@ -1,26 +1,17 @@
 <app-two-column-layout class="c-report-details">
-  <div column-one *ngrxLet="report$ as report">
-    <div class="content-container" *ngIf="report">
-      <i>Erfahrungsbericht</i>
-      <h2>{{ report.title }}</h2>
-      <p>{{ report.date | date }}</p>
-      <p>{{ report.text }}</p>
+  <div column-one *ngIf="report$ | async as report">
+    <i>Erfahrungsbericht</i>
+    <h2>{{ report.title }}</h2>
+    <p>{{ report.date | date }}</p>
+    <p>{{ report.text }}</p>
 
-      <app-projection-list
-        *ngIf="screeningEvent?.projections"
-        [projections]="screeningEvent?.projections || []"
-      ></app-projection-list>
+    <app-projection-list
+      *ngIf="screeningEvent?.projections"
+      [projections]="screeningEvent?.projections || []"
+    ></app-projection-list>
 
-      <app-cinema-list
-        *ngrxLet="cinemas$ as cinemas"
-        [cinemas]="cinemas"
-      ></app-cinema-list>
-    </div>
+    <app-cinema-list [cinemas]="cinemas$ | async"></app-cinema-list>
   </div>
 
-  <app-cinema-map
-    column-two
-    *ngrxLet="cinemas$ as cinemas"
-    [cinemas]="cinemas"
-  ></app-cinema-map>
+  <app-cinema-map column-two [cinemas]="cinemas$ | async"></app-cinema-map>
 </app-two-column-layout>

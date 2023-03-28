@@ -1,9 +1,9 @@
 <app-two-column-layout class="c-report-overview">
-  <div column-one *ngrxLet="reports$ as reports">
+  <div column-one>
     <i>Übersicht</i>
     <h2>Erfahrungsberichte</h2>
 
-    <div *ngFor="let report of reports" class="report">
+    <div *ngFor="let report of reports$ | async" class="report">
       <p class="prefix-date">{{ report.date | date }}</p>
       <a [routerLink]="['/', 'report', report.id]"
         ><h3>{{ report.title }}</h3></a
@@ -12,9 +12,5 @@
     </div>
   </div>
 
-  <app-cinema-map
-    column-two
-    *ngrxLet="cinemas$ as cinemas"
-    [cinemas]="cinemas"
-  ></app-cinema-map>
+  <app-cinema-map column-two [cinemas]="cinemas$ | async"></app-cinema-map>
 </app-two-column-layout>

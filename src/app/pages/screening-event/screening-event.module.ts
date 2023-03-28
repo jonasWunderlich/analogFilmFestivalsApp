@@ -11,7 +11,6 @@ import { CinemaMapModule } from 'src/app/features/cinema-map/cinema-map.module';
 import { MovieListModule } from 'src/app/features/movie-list/movie-list.module';
 import { CinemaListModule } from 'src/app/features/cinema-list/cinema-list.module';
 import { ReportListModule } from 'src/app/features/report-list/report-list.module';
-import { LetModule } from '@ngrx/component';
 import { ScreeningEventStoreModule } from 'src/app/root-store/screening-event-store/screening-event-store.module';
 import { CinemaStoreModule } from 'src/app/root-store/cinema-store/cinema-store.module';
 
@@ -22,7 +21,6 @@ import { CinemaStoreModule } from 'src/app/root-store/cinema-store/cinema-store.
   ],
   imports: [
     CommonModule,
-    LetModule,
     EventRoutingModule,
     TwoColumnLayoutModule,
     CalendarModule,

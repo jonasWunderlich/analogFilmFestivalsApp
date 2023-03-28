@@ -1,7 +1,7 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Map } from 'ol';
-import { filter, Subscription } from 'rxjs';
+import { filter, take } from 'rxjs';
 import { selectActiveCinema } from '../../../root-store/cinema-store/cinema.selectors';
 
 import { ActivatedRoute } from '@angular/router';
@@ -20,7 +20,7 @@ import { neitherNullNorUndefined } from 'src/app/shared/helpers/null-or-undefine
   templateUrl: './cinema-details.component.html',
   styleUrls: ['./cinema-details.component.scss'],
 })
-export class CinemaDetailsComponent implements OnInit, OnDestroy {
+export class CinemaDetailsComponent implements OnInit {
   cinema$ = this.store.select(selectActiveCinema);
   map?: Map;
   projections: Projection[] = mockProjections(
@@ -28,7 +28,6 @@ export class CinemaDetailsComponent implements OnInit, OnDestroy {
     randomDate(new Date(), new Date(2023, 1, 0)),
     90
   ).sort((a, b) => sortByDate(a.date, b.date));
-  subscription = new Subscription();
 
   constructor(
     private readonly store: Store,
@@ -42,17 +41,11 @@ export class CinemaDetailsComponent implements OnInit, OnDestroy {
       .subscribe((params) => {
         this.store.dispatch(setActiveCinemaId({ cinemaId: params['id'] }));
       });
-    this.subscription.add(
-      this.cinema$.subscribe((cinema) => {
-        this.map = this.mapService.buildMap(
-          cinema?.geoCoordinates || [],
-          'ol-map-cinema-details'
-        );
-      })
-    );
-  }
-
-  ngOnDestroy() {
-    this.subscription.unsubscribe;
+    this.cinema$.pipe(take(1)).subscribe((cinema) => {
+      this.map = this.mapService.buildMap(
+        cinema?.geoCoordinates || [],
+        'ol-map-cinema-details'
+      );
+    });
   }
 }

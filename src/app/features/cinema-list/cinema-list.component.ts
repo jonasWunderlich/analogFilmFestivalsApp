@@ -7,5 +7,17 @@ import { Cinema } from 'src/app/shared/_models/cinema';
   styleUrls: ['./cinema-list.component.scss'],
 })
 export class CinemaListComponent {
-  @Input() cinemas: Cinema[] = [];
+  _cinemas: Cinema[] = [];
+
+  @Input()
+  set cinemas(value: Cinema[] | null) {
+    console.log('set cinemas', value);
+    if (value) {
+      this._cinemas = value;
+    }
+  }
+
+  get cinemas() {
+    return this._cinemas;
+  }
 }

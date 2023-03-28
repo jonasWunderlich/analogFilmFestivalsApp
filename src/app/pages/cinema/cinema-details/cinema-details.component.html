@@ -1,6 +1,6 @@
 <app-two-column-layout class="c-cinema-details">
-  <div column-one *ngrxLet="cinema$ as cinema">
-    <div class="content-container" *ngIf="cinema">
+  <div column-one>
+    <div *ngIf="cinema$ | async as cinema">
       <i>Kino</i>
 
       <h2>{{ cinema.title }}</h2>

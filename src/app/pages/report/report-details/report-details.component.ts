@@ -1,7 +1,7 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { filter, Subscription } from 'rxjs';
+import { filter, take } from 'rxjs';
 import { selectActiveReport } from 'src/app/root-store/report-store/selectors/report.selectors';
 import { neitherNullNorUndefined } from 'src/app/shared/helpers/null-or-undefined.helper';
 import { selectCinemas } from '../../../root-store/cinema-store/cinema.selectors';
@@ -14,12 +14,11 @@ import { setActiveReport } from './report-details.actions';
   templateUrl: './report-details.component.html',
   styleUrls: ['./report-details.component.scss'],
 })
-export class ReportDetailsComponent implements OnInit, OnDestroy {
+export class ReportDetailsComponent implements OnInit {
   cinemas$ = this.store.select(selectCinemas);
   screeningEvents$ = this.store.select(selectScreeningEvents);
   screeningEvent: ScreeningEvent | null = null;
   report$ = this.store.select(selectActiveReport);
-  subscription = new Subscription();
 
   constructor(
     private readonly store: Store,
@@ -27,19 +26,14 @@ export class ReportDetailsComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-    this.subscription.add(
-      this.screeningEvents$.subscribe((item) => {
-        this.screeningEvent = item[0];
-      })
-    );
+    this.screeningEvents$.pipe(take(1)).subscribe((item) => {
+      this.screeningEvent = item[0];
+    });
     this.activatedRoute.params
+      .pipe(take(1))
       .pipe(filter((params) => neitherNullNorUndefined(params['id'])))
       .subscribe((params) => {
         this.store.dispatch(setActiveReport({ reportId: params['id'] }));
       });
-  }
-
-  ngOnDestroy() {
-    this.subscription.unsubscribe;
   }
 }

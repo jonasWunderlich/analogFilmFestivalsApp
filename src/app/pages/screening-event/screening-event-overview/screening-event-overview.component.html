@@ -1,11 +1,11 @@
 <app-two-column-layout class="c-event-overview">
-  <div column-one *ngrxLet="screeningEvents$ as events">
+  <div column-one>
     <i>Übersicht</i>
     <h2>Events</h2>
 
-    <app-calendar [calendarEvents]="events"></app-calendar>
+    <app-calendar [calendarEvents]="screeningEvents$ | async"></app-calendar>
 
-    <ng-container *ngFor="let screeningEvent of events">
+    <ng-container *ngFor="let screeningEvent of screeningEvents$ | async">
       <div class="event">
         <p class="prefix-date">
           {{ screeningEvent.start | date }} - {{ screeningEvent.end | date }}

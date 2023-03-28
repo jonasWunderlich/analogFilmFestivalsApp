@@ -1,15 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Store } from '@ngrx/store';
-import { sample } from 'lodash';
-import { filter } from 'rxjs';
-import { selectCinemas } from 'src/app/root-store/cinema-store/cinema.selectors';
-import { searchMoviesByQuery } from 'src/app/root-store/movie-store/movie.actions';
-import { selectSearchedMovies } from 'src/app/root-store/movie-store/movie.selectors';
-import { selectActiveScreeningEvent } from 'src/app/root-store/screening-event-store/screening-event.selectors';
-import { neitherNullNorUndefined } from 'src/app/shared/helpers/null-or-undefined.helper';
-import { MOCKED_TMDB_QUERIES } from 'src/app/shared/_mock/constants';
-import { setActiveScreeningEvent } from './screening-event-details.actions';
+import { ScreeningEventDetailsService } from './screening-event-details.service';
 
 @Component({
   selector: 'app-screening-event-details',
@@ -17,27 +8,18 @@ import { setActiveScreeningEvent } from './screening-event-details.actions';
   styleUrls: ['./screening-event-details.component.scss'],
 })
 export class ScreeningEventDetailsComponent implements OnInit {
-  event$ = this.store.select(selectActiveScreeningEvent);
-  cinemas$ = this.store.select(selectCinemas);
-  movies$ = this.store.select(selectSearchedMovies);
+  event$ = this.detailsService.event$;
+  cinemas$ = this.detailsService.cinemas$;
+  movies$ = this.detailsService.movies$;
 
   constructor(
-    private readonly store: Store,
-    private readonly route: ActivatedRoute
+    private readonly route: ActivatedRoute,
+    private readonly detailsService: ScreeningEventDetailsService
   ) {}
 
   ngOnInit(): void {
-    this.store.dispatch(
-      searchMoviesByQuery(sample(MOCKED_TMDB_QUERIES) || 'ass')
-    );
-    this.route.params
-      .pipe(filter((params) => neitherNullNorUndefined(params['id'])))
-      .subscribe((params) => {
-        this.store.dispatch(
-          setActiveScreeningEvent({
-            screeningEventId: params['id'],
-          })
-        );
-      });
+    this.route.params.subscribe((params) => {
+      this.detailsService.setActiveScreeningEvent(params['id']);
+    });
   }
 }

@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Map } from 'ol';
 import {
   createCinemaFeatureList,
@@ -18,17 +18,23 @@ export interface MapDataLike {
   templateUrl: './cinema-map.component.html',
   styleUrls: ['./cinema-map.component.scss'],
 })
-export class CinemaMapComponent implements OnChanges {
-  @Input() cinemas?: Cinema[];
+export class CinemaMapComponent {
   map?: Map;
+
+  @Input()
+  set cinemas(value: Cinema[] | null) {
+    if (value) {
+      this.buildMap(value);
+    }
+  }
 
   constructor(private readonly mapService: MapService) {}
 
-  ngOnChanges(): void {
-    if (this.cinemas) {
+  buildMap(cinemas: Cinema[]): void {
+    if (cinemas) {
       this.map = this.mapService.buildMapFromFeatureCollection(
-        createCinemaFeatureList(this.cinemas),
-        getCoordinatesFromCinemaList(this.cinemas),
+        createCinemaFeatureList(cinemas),
+        getCoordinatesFromCinemaList(cinemas),
         'ol-map'
       );
     }

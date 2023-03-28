@@ -19,8 +19,10 @@ export class CalendarComponent {
   calendarOptions: CalendarOptions = {};
 
   @Input()
-  set calendarEvents(value: EventInput[]) {
-    this.calendarOptions = this.getOptions(value);
+  set calendarEvents(value: EventInput[] | null) {
+    if (value) {
+      this.calendarOptions = this.getOptions(value);
+    }
   }
 
   constructor(private readonly router: Router) {}
