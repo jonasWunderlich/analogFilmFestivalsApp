@@ -6,10 +6,12 @@ import { ReportOverviewComponent } from './report-overview/report-overview.compo
 const routes: Routes = [
   {
     path: '',
+    title: 'Erfahrungsberichte',
     component: ReportOverviewComponent,
   },
   {
     path: ':id',
+    title: 'Erfahrungsbericht',
     component: ReportDetailsComponent,
   },
 ];

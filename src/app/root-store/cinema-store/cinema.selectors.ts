@@ -64,7 +64,7 @@ export const selectActiveCinema = createSelector(
 
 /* select via route */
 
-export const selectRoutesCinemaId = createSelector(
+export const selectRouterCinemaId = createSelector(
   selectRouteParams,
   (params): string | undefined => {
     if (
@@ -78,9 +78,9 @@ export const selectRoutesCinemaId = createSelector(
   }
 );
 
-export const selectSelectedCinemaByRoute = createSelector(
+export const selectSelectedCinemaByRouter = createSelector(
   selectEntities,
-  selectRoutesCinemaId,
+  selectRouterCinemaId,
   (entities, entityId): Cinema | undefined => {
     if (!entityId) {
       console.error('select Cinema By Route WITHOUT params');

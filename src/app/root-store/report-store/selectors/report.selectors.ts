@@ -60,7 +60,7 @@ export const selectActiveReport = createSelector(
 
 /* select via route */
 
-export const selectRoutesReportId = createSelector(
+export const selectRouterReportId = createSelector(
   selectRouteParams,
   (params): string | undefined => {
     if (
@@ -74,9 +74,9 @@ export const selectRoutesReportId = createSelector(
   }
 );
 
-export const selectActiveReportByRoute = createSelector(
+export const selectActiveReportByRouter = createSelector(
   selectEntities,
-  selectRoutesReportId,
+  selectRouterReportId,
   (entities, entityId): Report | undefined => {
     if (!entityId) {
       console.error('select Report By Route WITHOUT params');

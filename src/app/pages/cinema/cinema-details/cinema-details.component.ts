@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Map } from 'ol';
-import { Subscription } from 'rxjs';
+import { filter, Subscription } from 'rxjs';
 import { selectActiveCinema } from '../../../root-store/cinema-store/cinema.selectors';
 
 import { ActivatedRoute } from '@angular/router';
@@ -13,6 +13,7 @@ import { MapService } from '../../../shared/services/map.service';
 import { mockProjections } from '../../../shared/_mock/projection.mock';
 import { Projection } from '../../../shared/_models/projection';
 import { setActiveCinemaId } from './cinema-details.actions';
+import { neitherNullNorUndefined } from 'src/app/shared/helpers/null-or-undefined.helper';
 
 @Component({
   selector: 'app-cinema',
@@ -36,10 +37,11 @@ export class CinemaDetailsComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-    this.activatedRoute.params.subscribe((params) => {
-      params['id'] &&
+    this.activatedRoute.params
+      .pipe(filter((params) => neitherNullNorUndefined(params['id'])))
+      .subscribe((params) => {
         this.store.dispatch(setActiveCinemaId({ cinemaId: params['id'] }));
-    });
+      });
     this.subscription.add(
       this.cinema$.subscribe((cinema) => {
         this.map = this.mapService.buildMap(

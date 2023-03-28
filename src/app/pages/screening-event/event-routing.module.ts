@@ -6,10 +6,12 @@ import { ScreeningEventDetailsComponent } from './screening-event-details/screen
 const routes: Routes = [
   {
     path: '',
+    title: 'Events',
     component: ScreeningEventOverviewComponent,
   },
   {
     path: ':id',
+    title: 'Event',
     component: ScreeningEventDetailsComponent,
   },
 ];

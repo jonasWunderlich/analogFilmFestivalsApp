@@ -6,10 +6,12 @@ import { CinemaOverviewComponent } from './cinema-overview/cinema-overview.compo
 const routes: Routes = [
   {
     path: '',
+    title: 'Kinos',
     component: CinemaOverviewComponent,
   },
   {
     path: ':id',
+    title: 'Kino',
     component: CinemaDetailsComponent,
   },
 ];

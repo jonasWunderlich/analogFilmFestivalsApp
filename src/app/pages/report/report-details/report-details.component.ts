@@ -1,8 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { Subscription } from 'rxjs';
+import { filter, Subscription } from 'rxjs';
 import { selectActiveReport } from 'src/app/root-store/report-store/selectors/report.selectors';
+import { neitherNullNorUndefined } from 'src/app/shared/helpers/null-or-undefined.helper';
 import { selectCinemas } from '../../../root-store/cinema-store/cinema.selectors';
 import { selectScreeningEvents } from '../../../root-store/screening-event-store/screening-event.selectors';
 import { ScreeningEvent } from '../../../shared/_models/screening-event';
@@ -31,10 +32,11 @@ export class ReportDetailsComponent implements OnInit, OnDestroy {
         this.screeningEvent = item[0];
       })
     );
-    this.activatedRoute.params.subscribe((params) => {
-      params['id'] &&
+    this.activatedRoute.params
+      .pipe(filter((params) => neitherNullNorUndefined(params['id'])))
+      .subscribe((params) => {
         this.store.dispatch(setActiveReport({ reportId: params['id'] }));
-    });
+      });
   }
 
   ngOnDestroy() {

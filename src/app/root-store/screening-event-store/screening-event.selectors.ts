@@ -70,7 +70,7 @@ export const selectActiveScreeningEvent = createSelector(
 
 /* select via route */
 
-export const selectRoutesScreeningEventId = createSelector(
+export const selectRouterScreeningEventId = createSelector(
   selectRouteParams,
   (params): string | undefined => {
     if (
@@ -84,9 +84,9 @@ export const selectRoutesScreeningEventId = createSelector(
   }
 );
 
-export const selectSelectedScreeningEventByRoute = createSelector(
+export const selectSelectedScreeningEventByRouter = createSelector(
   selectEntities,
-  selectRoutesScreeningEventId,
+  selectRouterScreeningEventId,
   (entities, entityId): ScreeningEvent | undefined => {
     if (!entityId) {
       console.error('select ScreeningEvent By Route WITHOUT params');
