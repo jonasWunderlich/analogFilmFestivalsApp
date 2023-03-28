@@ -51,15 +51,15 @@ export const selectScreeningEventByIds = (
 
 /* select event via id */
 
-export const selectSelectedScreeningEventId = createSelector(
+export const selectActiveScreeningEventId = createSelector(
   selectScreeningEventState,
   (state: fromScreeningEvent.State): string | undefined =>
-    state.selectedScreeningEventId
+    state.activeScreeningEventId
 );
 
-export const selectSelectedScreeningEvent = createSelector(
+export const selectActiveScreeningEvent = createSelector(
   selectEntities,
-  selectSelectedScreeningEventId,
+  selectActiveScreeningEventId,
   (entities, entityId): ScreeningEvent | undefined => {
     if (!entityId) {
       return undefined;

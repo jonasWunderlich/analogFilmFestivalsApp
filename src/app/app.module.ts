@@ -1,66 +1,61 @@
 import { InjectionToken, LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { CinemaComponent } from './pages/cinema/cinema.component';
-import { CinemaOverviewComponent } from './pages/cinema-overview/cinema-overview.component';
-import { EventComponent } from './pages/event/event.component';
-import { EventOverviewComponent } from './pages/event-overview/event-overview.component';
-import { ReportComponent } from './pages/report/report.component';
-import { ReportOverviewComponent } from './pages/report-overview/report-overview.component';
-import { MovieStoreModule } from './root-store/movie-store/movie-store.module';
-import { StoreModule } from '@ngrx/store';
-import { EffectsModule } from '@ngrx/effects';
-import { LetModule } from '@ngrx/component';
-import { ScreeningEventStoreModule } from './root-store/screening-event-store/screening-event-store.module';
-import { CinemaStoreModule } from './root-store/cinema-store/cinema-store.module';
-import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { environment } from 'src/environments/environment';
-import { StoreRouterConnectingModule } from '@ngrx/router-store';
-import { RoutingModule } from './root-store/routing-store/routing.module';
-import { CinemaMapModule } from './features/cinema-map/cinema-map.module';
-import { MovieListModule } from './features/movie-list/movie-list.module';
-import { CinemaListModule } from './features/cinema-list/cinema-list.module';
-import { ReportListModule } from './features/report-list/report-list.module';
-import { ProjectionListModule } from './features/projection-list/projection-list.module';
-import { AuditoriumListModule } from './features/auditorium-list/auditorium-list.module';
-import { CalendarModule } from './features/calendar/calendar.module';
-import { ReportStoreModule } from './root-store/report-store/report.module';
-import { TwoColumnLayoutModule } from './features/two-column-layout/two-column-layout.module';
 import {
+  CommonModule,
   HashLocationStrategy,
   LocationStrategy,
   registerLocaleData,
 } from '@angular/common';
 import localeDe from '@angular/common/locales/de';
+import { LetModule } from '@ngrx/component';
+import { StoreModule } from '@ngrx/store';
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { AuditoriumListModule } from './features/auditorium-list/auditorium-list.module';
+import { CalendarModule } from './features/calendar/calendar.module';
+import { CinemaListModule } from './features/cinema-list/cinema-list.module';
+import { CinemaMapModule } from './features/cinema-map/cinema-map.module';
+import { MovieListModule } from './features/movie-list/movie-list.module';
+import { ProjectionListModule } from './features/projection-list/projection-list.module';
+import { ReportListModule } from './features/report-list/report-list.module';
+import { ReportOverviewComponent } from './pages/report-overview/report-overview.component';
+import { ReportComponent } from './pages/report/report.component';
+import { TwoColumnLayoutModule } from './features/two-column-layout/two-column-layout.module';
+import { EffectsModule } from '@ngrx/effects';
+import { CinemaStoreModule } from './root-store/cinema-store/cinema-store.module';
+import { MovieStoreModule } from './root-store/movie-store/movie-store.module';
+import { ScreeningEventStoreModule } from './root-store/screening-event-store/screening-event-store.module';
+import { ReportStoreModule } from './root-store/report-store/report.module';
+import { environment } from 'src/environments/environment';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { StoreRouterConnectingModule } from '@ngrx/router-store';
+import { NgxTmdbApiModule } from '@igorissen/ngx-tmdb-api';
 registerLocaleData(localeDe);
 
 export const APP_TITLE = new InjectionToken<string>('app-title');
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    CinemaComponent,
-    EventComponent,
-    ReportComponent,
-    CinemaOverviewComponent,
-    EventOverviewComponent,
-    ReportOverviewComponent,
-  ],
+  declarations: [AppComponent, ReportComponent, ReportOverviewComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    RoutingModule,
     LetModule,
-    StoreModule.forRoot({}),
+    // Store Modules
+    StoreModule.forRoot({}, {}),
     EffectsModule.forRoot([]),
     StoreRouterConnectingModule.forRoot(),
     StoreDevtoolsModule.instrument({
       maxAge: 25, // Retains last 25 states
       logOnly: environment.production, // Restrict extension to log-only mode
     }),
-    // Feature Modules
+    CommonModule,
+    ReportStoreModule,
+    ScreeningEventStoreModule,
+    MovieStoreModule,
+    CinemaStoreModule,
+    //StoreRootModule,
+    //Feature Modules
     MovieListModule,
     CinemaListModule,
     ReportListModule,
@@ -68,12 +63,8 @@ export const APP_TITLE = new InjectionToken<string>('app-title');
     AuditoriumListModule,
     CinemaMapModule,
     CalendarModule,
-    // Store Modules
-    ReportStoreModule,
-    ScreeningEventStoreModule,
-    MovieStoreModule,
-    CinemaStoreModule,
     TwoColumnLayoutModule,
+    NgxTmdbApiModule.forRoot({ apiKey: '05180a707de5ada5dc9a38cd1f8da87b' }),
   ],
   providers: [
     { provide: APP_TITLE, useValue: 'analogkino.net' },

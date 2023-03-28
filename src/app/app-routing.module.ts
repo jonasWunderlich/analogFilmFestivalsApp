@@ -1,10 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { CinemaComponent } from './pages/cinema/cinema.component';
-import { CinemaOverviewComponent } from './pages/cinema-overview/cinema-overview.component';
-import { EventComponent } from './pages/event/event.component';
-import { EventOverviewComponent } from './pages/event-overview/event-overview.component';
 import { ReportComponent } from './pages/report/report.component';
 import { ReportOverviewComponent } from './pages/report-overview/report-overview.component';
 
@@ -16,19 +12,15 @@ const routes: Routes = [
   },
   {
     path: 'event',
-    component: EventOverviewComponent,
-  },
-  {
-    path: 'event/:id',
-    component: EventComponent,
+    loadChildren: () =>
+      import('./pages/screening-event/screening-event.module').then(
+        (m) => m.ScreeningEventModule
+      ),
   },
   {
     path: 'cinema',
-    component: CinemaOverviewComponent,
-  },
-  {
-    path: 'cinema/:id',
-    component: CinemaComponent,
+    loadChildren: () =>
+      import('./pages/cinema/cinema.module').then((m) => m.CinemaModule),
   },
   {
     path: 'report',
@@ -37,6 +29,10 @@ const routes: Routes = [
   {
     path: 'report/:id',
     component: ReportComponent,
+  },
+  {
+    path: '**',
+    redirectTo: 'event',
   },
 ];
 

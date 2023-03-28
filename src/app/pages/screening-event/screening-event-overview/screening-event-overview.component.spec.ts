@@ -1,17 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { EventOverviewComponent } from './event-overview.component';
+import { ScreeningEventOverviewComponent } from './screening-event-overview.component';
 
 describe('EventOverviewComponent', () => {
-  let component: EventOverviewComponent;
-  let fixture: ComponentFixture<EventOverviewComponent>;
+  let component: ScreeningEventOverviewComponent;
+  let fixture: ComponentFixture<ScreeningEventOverviewComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [EventOverviewComponent],
+      declarations: [ScreeningEventOverviewComponent],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(EventOverviewComponent);
+    fixture = TestBed.createComponent(ScreeningEventOverviewComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

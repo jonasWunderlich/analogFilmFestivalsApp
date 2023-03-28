@@ -42,15 +42,19 @@ export const selectCinemasByIds = (
 
 /* select cinema via id */
 
-export const selectSelectedCinemaId = createSelector(
+export const selectActiveCinemaId = createSelector(
   selectCinemaState,
-  (state: fromCinema.State): string | undefined => state.selectedCinemaId
+  (state: fromCinema.State): string | undefined => {
+    console.log(state);
+    return state.activeCinemaId;
+  }
 );
 
-export const selectSelectedCinema = createSelector(
+export const selectActiveCinema = createSelector(
   selectEntities,
-  selectSelectedCinemaId,
+  selectActiveCinemaId,
   (entities, entityId): Cinema | undefined => {
+    console.log('active ????', entityId);
     if (!entityId) {
       return undefined;
     }

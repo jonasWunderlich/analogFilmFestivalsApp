@@ -1,12 +1,13 @@
 import { createEntityAdapter, EntityAdapter, EntityState } from '@ngrx/entity';
 import { createFeature, createReducer, on } from '@ngrx/store';
+import { setActiveScreeningEvent } from 'src/app/pages/screening-event/screening-event-details/screening-event-details.actions';
 import { ScreeningEvent } from 'src/app/shared/_models/screening-event';
 import * as ScreeningEventActions from './screening-event.actions';
 
 export const screeningEventFeatureKey = 'screeningEvent';
 
 export interface State extends EntityState<ScreeningEvent> {
-  selectedScreeningEventId: string | undefined;
+  activeScreeningEventId: string | undefined;
   loadingStates: {
     loadingScreeningEvent: boolean;
     loadingScreeningEvents: boolean;
@@ -23,7 +24,7 @@ export const screeningEventAdapter: EntityAdapter<ScreeningEvent> =
   });
 
 export const initialState: State = screeningEventAdapter.getInitialState({
-  selectedScreeningEventId: undefined,
+  activeScreeningEventId: undefined,
   loadingStates: {
     loadingScreeningEvent: false,
     loadingScreeningEvents: false,
@@ -90,6 +91,12 @@ export const reducer = createReducer(
         ...state.loadingStates,
         loadingScreeningEvent: false,
       },
+    };
+  }),
+  on(setActiveScreeningEvent, (state: State, action) => {
+    return {
+      ...state,
+      activeScreeningEventId: action.screeningEventId,
     };
   })
 );
