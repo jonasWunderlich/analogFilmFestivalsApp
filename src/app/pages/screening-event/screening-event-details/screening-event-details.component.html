@@ -2,7 +2,7 @@
   <div column-one>
     <i>Event</i>
 
-    <div *ngIf="event$ | async as screeningEvent">
+    <div *ngIf="event$ | async as screeningEvent; else loading">
       <h2>{{ screeningEvent.title }} | {{ screeningEvent.type }}</h2>
       <p>{{ screeningEvent.start | date }} - {{ screeningEvent.end | date }}</p>
       <p>{{ screeningEvent.text }}</p>
@@ -46,6 +46,11 @@
         [reports]="screeningEvent.reports || []"
       ></app-report-list>
     </div>
+
+    <ng-template #loading>
+      <app-loading></app-loading>
+    </ng-template>
+
     <app-movie-list [movies]="movies$ | async"></app-movie-list>
 
     <app-cinema-list [cinemas]="cinemas$ | async"></app-cinema-list>

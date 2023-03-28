@@ -1,6 +1,6 @@
 <app-two-column-layout class="c-cinema-details">
   <div column-one>
-    <div *ngIf="cinema$ | async as cinema">
+    <ng-container *ngIf="cinema$ | async as cinema; else loading">
       <i>Kino</i>
 
       <h2>{{ cinema.title }}</h2>
@@ -42,7 +42,11 @@
       </p>
 
       <app-report-list [reports]="cinema.reports || []"></app-report-list>
-    </div>
+    </ng-container>
+
+    <ng-template #loading>
+      <app-loading></app-loading>
+    </ng-template>
   </div>
 
   <div column-two id="ol-map-cinema-details" class="map-container">

@@ -9,6 +9,7 @@ import { ProjectionListModule } from 'src/app/features/projection-list/projectio
 import { AuditoriumListModule } from 'src/app/features/auditorium-list/auditorium-list.module';
 import { ReportListModule } from 'src/app/features/report-list/report-list.module';
 import { CinemaMapModule } from 'src/app/features/cinema-map/cinema-map.module';
+import { LoadingModule } from 'src/app/shared/modules/ui/loading/loading.module';
 
 @NgModule({
   declarations: [CinemaOverviewComponent, CinemaDetailsComponent],
@@ -20,6 +21,7 @@ import { CinemaMapModule } from 'src/app/features/cinema-map/cinema-map.module';
     AuditoriumListModule,
     ReportListModule,
     CinemaMapModule,
+    LoadingModule,
   ],
 })
 export class CinemaModule {}

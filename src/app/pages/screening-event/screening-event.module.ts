@@ -13,6 +13,7 @@ import { CinemaListModule } from 'src/app/features/cinema-list/cinema-list.modul
 import { ReportListModule } from 'src/app/features/report-list/report-list.module';
 import { ScreeningEventStoreModule } from 'src/app/root-store/screening-event-store/screening-event-store.module';
 import { CinemaStoreModule } from 'src/app/root-store/cinema-store/cinema-store.module';
+import { LoadingModule } from 'src/app/shared/modules/ui/loading/loading.module';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { CinemaStoreModule } from 'src/app/root-store/cinema-store/cinema-store.
     ReportListModule,
     ScreeningEventStoreModule,
     CinemaStoreModule,
+    LoadingModule,
   ],
 })
 export class ScreeningEventModule {}

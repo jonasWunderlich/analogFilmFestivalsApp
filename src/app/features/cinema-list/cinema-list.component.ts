@@ -1,10 +1,11 @@
-import { Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { Cinema } from 'src/app/shared/_models/cinema';
 
 @Component({
   selector: 'app-cinema-list',
   templateUrl: './cinema-list.component.html',
   styleUrls: ['./cinema-list.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CinemaListComponent {
   _cinemas: Cinema[] = [];
@@ -16,7 +17,7 @@ export class CinemaListComponent {
     }
   }
 
-  get cinemas() {
+  get cinemas(): Cinema[] {
     return this._cinemas;
   }
 }

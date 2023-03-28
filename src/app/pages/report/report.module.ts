@@ -9,6 +9,7 @@ import { ProjectionListModule } from 'src/app/features/projection-list/projectio
 import { CinemaListModule } from 'src/app/features/cinema-list/cinema-list.module';
 import { CinemaMapModule } from 'src/app/features/cinema-map/cinema-map.module';
 import { MovieListModule } from 'src/app/features/movie-list/movie-list.module';
+import { LoadingModule } from 'src/app/shared/modules/ui/loading/loading.module';
 
 @NgModule({
   declarations: [ReportDetailsComponent, ReportOverviewComponent],
@@ -20,6 +21,7 @@ import { MovieListModule } from 'src/app/features/movie-list/movie-list.module';
     CinemaListModule,
     CinemaMapModule,
     MovieListModule,
+    LoadingModule,
   ],
 })
 export class ReportModule {}

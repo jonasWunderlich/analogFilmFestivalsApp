@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { Map } from 'ol';
 import {
   createCinemaFeatureList,
@@ -17,6 +17,7 @@ export interface MapDataLike {
   selector: 'app-cinema-map',
   templateUrl: './cinema-map.component.html',
   styleUrls: ['./cinema-map.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CinemaMapComponent {
   map?: Map;

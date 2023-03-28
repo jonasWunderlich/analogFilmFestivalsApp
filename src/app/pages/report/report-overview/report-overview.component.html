@@ -3,13 +3,17 @@
     <i>Übersicht</i>
     <h2>Erfahrungsberichte</h2>
 
-    <div *ngFor="let report of reports$ | async" class="report">
+    <div *ngFor="let report of reports$ | async; else: loading" class="report">
       <p class="prefix-date">{{ report.date | date }}</p>
       <a [routerLink]="['/', 'report', report.id]"
         ><h3>{{ report.title }}</h3></a
       >
       <p>{{ report.text }}</p>
     </div>
+
+    <ng-template #loading>
+      <app-loading></app-loading>
+    </ng-template>
   </div>
 
   <app-cinema-map column-two [cinemas]="cinemas$ | async"></app-cinema-map>

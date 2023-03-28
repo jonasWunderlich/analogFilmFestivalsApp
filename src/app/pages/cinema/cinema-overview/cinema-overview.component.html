@@ -4,7 +4,7 @@
     <h2>Kinos</h2>
 
     <div
-      *ngFor="let cinema of cinemas$ | async"
+      *ngFor="let cinema of cinemas$ | async; else: loading"
       class="c-cinema-overview__cinema"
     >
       <a [routerLink]="['/', 'cinema', cinema.id]"
@@ -13,6 +13,10 @@
       <p>{{ cinema.street }}</p>
       <p>{{ cinema.postcode }} {{ cinema.city }}</p>
     </div>
+
+    <ng-template #loading>
+      <app-loading></app-loading>
+    </ng-template>
   </div>
 
   <app-cinema-map column-two [cinemas]="cinemas$ | async"></app-cinema-map>
