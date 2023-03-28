@@ -12,15 +12,7 @@ import { ReportOverviewComponent } from './pages/report-overview/report-overview
 import { MovieStoreModule } from './root-store/movie-store/movie-store.module';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
-import { FullCalendarModule } from '@fullcalendar/angular';
-import { NgxTmdbApiModule } from '@igorissen/ngx-tmdb-api';
 import { LetModule } from '@ngrx/component';
-import { TooltipModule } from './shared/modules/tooltip/tooltip.module';
-import { CinemaListComponent } from './features/cinema-list/cinema-list.component';
-import { ProjectionListComponent } from './features/projection-list/projection-list.component';
-import { ReportListComponent } from './features/report-list/report-list.component';
-import { AuditoriumListComponent } from './features/auditorium-list/auditorium-list.component';
-import { ReportStoreModule } from './root-store/report-store/report.module';
 import { ScreeningEventStoreModule } from './root-store/screening-event-store/screening-event-store.module';
 import { CinemaStoreModule } from './root-store/cinema-store/cinema-store.module';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
@@ -34,6 +26,8 @@ import { ReportListModule } from './features/report-list/report-list.module';
 import { ProjectionListModule } from './features/projection-list/projection-list.module';
 import { AuditoriumListModule } from './features/auditorium-list/auditorium-list.module';
 import { CalendarModule } from './features/calendar/calendar.module';
+import { ReportStoreModule } from './root-store/report-store/report.module';
+import { TwoColumnLayoutModule } from './features/two-column-layout/two-column-layout.module';
 
 @NgModule({
   declarations: [
@@ -48,27 +42,29 @@ import { CalendarModule } from './features/calendar/calendar.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    RoutingModule,
     LetModule,
     StoreModule.forRoot({}),
+    EffectsModule.forRoot([]),
     StoreRouterConnectingModule.forRoot(),
     StoreDevtoolsModule.instrument({
       maxAge: 25, // Retains last 25 states
       logOnly: environment.production, // Restrict extension to log-only mode
     }),
-    RoutingModule,
-    EffectsModule.forRoot([]),
-    NgxTmdbApiModule.forRoot({ apiKey: '05180a707de5ada5dc9a38cd1f8da87b' }),
-    MovieStoreModule,
-    ReportStoreModule,
-    ScreeningEventStoreModule,
-    CinemaStoreModule,
-    CinemaMapModule,
+    // Feature Modules
     MovieListModule,
     CinemaListModule,
     ReportListModule,
     ProjectionListModule,
     AuditoriumListModule,
+    CinemaMapModule,
     CalendarModule,
+    // Store Modules
+    ReportStoreModule,
+    ScreeningEventStoreModule,
+    MovieStoreModule,
+    CinemaStoreModule,
+    TwoColumnLayoutModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

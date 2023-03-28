@@ -1,5 +1,5 @@
-<div class="c-event">
-  <ng-container *ngrxLet="event$ as event">
+<app-two-column-layout class="c-event-details">
+  <div column-one *ngrxLet="event$ as event">
     <div class="content-container" *ngIf="event">
       <i>Event</i>
 
@@ -44,11 +44,11 @@
       ></app-cinema-list>
       <app-report-list [reports]="event.reports || []"></app-report-list>
     </div>
-  </ng-container>
+  </div>
 
   <app-cinema-map
-    class="map-container"
+    column-two
     *ngrxLet="cinemas$ as cinemas"
     [cinemas]="cinemas"
   ></app-cinema-map>
-</div>
+</app-two-column-layout>

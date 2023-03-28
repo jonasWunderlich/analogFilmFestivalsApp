@@ -1,17 +1,3 @@
-@import "/src/mixins.scss";
-
-.c-report-list {
-  @include container-container;
-}
-
-.content-container {
-  @include content-container;
-}
-
-.map-container {
-  @include map-container;
-}
-
 .report {
   h3 {
     margin: 0;

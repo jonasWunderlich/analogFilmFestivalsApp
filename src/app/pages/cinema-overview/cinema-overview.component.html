@@ -1,9 +1,9 @@
-<div class="c-cinema-list">
-  <div class="content-container" *ngrxLet="cinemas$ as cinemas">
+<app-two-column-layout class="c-cinema-overview">
+  <div column-one *ngrxLet="cinemas$ as cinemas">
     <i>Übersicht</i>
     <h2>Kinos</h2>
 
-    <div *ngFor="let cinema of cinemas" class="c-cinema-list__cinema">
+    <div *ngFor="let cinema of cinemas" class="c-cinema-overview__cinema">
       <a [routerLink]="['/', 'cinema', cinema.id]"
         ><h3>{{ cinema.title }}</h3></a
       >
@@ -13,8 +13,8 @@
   </div>
 
   <app-cinema-map
-    class="map-container"
+    column-two
     *ngrxLet="cinemas$ as cinemas"
     [cinemas]="cinemas"
   ></app-cinema-map>
-</div>
+</app-two-column-layout>

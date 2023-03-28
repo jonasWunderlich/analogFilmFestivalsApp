@@ -1,5 +1,5 @@
-<div class="c-report-list">
-  <div class="content-container" *ngrxLet="reports$ as reports">
+<app-two-column-layout class="c-report-overview">
+  <div column-one *ngrxLet="reports$ as reports">
     <i>Übersicht</i>
     <h2>Erfahrungsberichte</h2>
 
@@ -13,8 +13,8 @@
   </div>
 
   <app-cinema-map
-    class="map-container"
+    column-two
     *ngrxLet="cinemas$ as cinemas"
     [cinemas]="cinemas"
   ></app-cinema-map>
-</div>
+</app-two-column-layout>

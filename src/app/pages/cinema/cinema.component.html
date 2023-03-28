@@ -1,5 +1,5 @@
-<div class="c-cinema">
-  <ng-container *ngrxLet="cinema$ as cinema">
+<app-two-column-layout class="c-cinema-details">
+  <div column-one *ngrxLet="cinema$ as cinema">
     <div class="content-container" *ngIf="cinema">
       <i>Kino</i>
 
@@ -43,9 +43,9 @@
 
       <app-report-list [reports]="cinema.reports || []"></app-report-list>
     </div>
-  </ng-container>
+  </div>
 
-  <div id="ol-map-cinema-details" class="map-container">
+  <div column-two id="ol-map-cinema-details" class="map-container">
     <div id="popup"></div>
   </div>
-</div>
+</app-two-column-layout>

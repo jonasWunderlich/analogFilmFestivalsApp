@@ -1,0 +1,17 @@
+@import "/src/mixins.scss";
+
+.c__two-column-layout {
+  display: flex;
+  height: 100%;
+}
+
+.column-one {
+  padding: 2em;
+  width: 50%;
+  background-color: var(--sidebar-color);
+  overflow: scroll;
+}
+
+.column-two {
+  flex-grow: 1;
+}
