@@ -23,7 +23,7 @@ export class EventComponent implements OnInit, OnDestroy {
   event$ = this.store.select(selectSelectedScreeningEventByRoute);
   cinemas$ = this.store.select(selectCinemas);
   movies$ = this.store.select(selectSearchedMovies);
-  map = new Map;
+  map?: Map;
   subscription = new Subscription;
 
   constructor(

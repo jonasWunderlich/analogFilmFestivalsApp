@@ -16,7 +16,7 @@ import { ScreeningEvent } from '../_models/screening-event';
 })
 export class ReportComponent implements OnInit, OnDestroy {
 
-  map = new Map;
+  map?: Map;
   cinemas$ = this.store.select(selectCinemas);
   screeningEvents$ = this.store.select(selectScreeningEvents);
   screeningEvent: ScreeningEvent | null = null;

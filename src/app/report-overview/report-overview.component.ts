@@ -14,7 +14,7 @@ import { MapService } from '../_services/map.service';
 })
 export class ReportOverviewComponent implements OnInit, OnDestroy {
 
-  map = new Map;
+  map?: Map;
   reports$ = this.store.select(selectReports);
   cinemas$ = this.store.select(selectCinemas);
   subscription = new Subscription;

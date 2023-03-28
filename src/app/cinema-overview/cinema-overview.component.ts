@@ -13,7 +13,7 @@ import { MapService } from '../_services/map.service';
 })
 export class CinemaOverviewComponent implements OnInit, OnDestroy {
 
-  map = new Map;
+  map?: Map;
   cinemas$ = this.store.select(selectCinemas);
   subscription = new Subscription;
 

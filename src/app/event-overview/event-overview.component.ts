@@ -17,7 +17,7 @@ import { MapService } from '../_services/map.service';
 })
 export class EventOverviewComponent implements OnInit, OnDestroy {
 
-  map = new Map;
+  map?: Map;
   calendarOptions: CalendarOptions = {};
   cinemas$ = this.store.select(selectCinemas);
   screeningEvents$ = this.store.select(selectScreeningEvents);

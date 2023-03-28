@@ -18,7 +18,7 @@ export class CinemaComponent implements OnInit, OnDestroy {
 
   // TODO: maybe switch to dispatch loadById / selectSelectedReport
   cinema$ = this.store.select(selectSelectedCinemaByRoute);
-  map = new Map;
+  map?: Map;
   projections: Projection[] = mockProjections(12, randomDate(new Date(), new Date(2023, 1, 0)), 90)
     .sort((a, b) => sortByDate(a.date, b.date));
   subscription = new Subscription;
