@@ -1,7 +1,7 @@
 import { Feature } from 'ol';
 import { Coordinate } from 'ol/coordinate';
 import { Point } from 'ol/geom';
-import { Cinema } from '../_models/cinema';
+import { Cinema } from '../../shared/_models/cinema';
 
 export function createCinemaFeatureList(cinemas: Cinema[]): Feature[] {
   return cinemas.map(

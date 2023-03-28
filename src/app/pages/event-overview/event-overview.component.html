@@ -3,7 +3,7 @@
     <i>Übersicht</i>
     <h2>Events</h2>
 
-    <full-calendar [options]="calendarOptions"></full-calendar>
+    <app-calendar [calendarEvents]="events"></app-calendar>
 
     <ng-container *ngFor="let screeningEvent of events">
       <div class="event">

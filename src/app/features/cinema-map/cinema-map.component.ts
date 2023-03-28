@@ -3,7 +3,7 @@ import { Map } from 'ol';
 import {
   createCinemaFeatureList,
   getCoordinatesFromCinemaList,
-} from 'src/app/shared/helpers/geo.helper';
+} from 'src/app/features/cinema-map/cinema-mapping.helper';
 import { MapService } from 'src/app/shared/services/map.service';
 import { Cinema } from 'src/app/shared/_models/cinema';
 

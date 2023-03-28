@@ -20,7 +20,6 @@ import { CinemaListComponent } from './features/cinema-list/cinema-list.componen
 import { ProjectionListComponent } from './features/projection-list/projection-list.component';
 import { ReportListComponent } from './features/report-list/report-list.component';
 import { AuditoriumListComponent } from './features/auditorium-list/auditorium-list.component';
-import { MovieListComponent } from './features/movie-list/movie-list.component';
 import { ReportStoreModule } from './root-store/report-store/report.module';
 import { ScreeningEventStoreModule } from './root-store/screening-event-store/screening-event-store.module';
 import { CinemaStoreModule } from './root-store/cinema-store/cinema-store.module';
@@ -28,23 +27,23 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from 'src/environments/environment';
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import { RoutingModule } from './root-store/routing-store/routing.module';
-import { CinemaMapComponent } from './features/cinema-map/cinema-map.component';
+import { CinemaMapModule } from './features/cinema-map/cinema-map.module';
+import { MovieListModule } from './features/movie-list/movie-list.module';
+import { CinemaListModule } from './features/cinema-list/cinema-list.module';
+import { ReportListModule } from './features/report-list/report-list.module';
+import { ProjectionListModule } from './features/projection-list/projection-list.module';
+import { AuditoriumListModule } from './features/auditorium-list/auditorium-list.module';
+import { CalendarModule } from './features/calendar/calendar.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     CinemaComponent,
-    CinemaOverviewComponent,
     EventComponent,
-    EventOverviewComponent,
     ReportComponent,
+    CinemaOverviewComponent,
+    EventOverviewComponent,
     ReportOverviewComponent,
-    CinemaListComponent,
-    ProjectionListComponent,
-    ReportListComponent,
-    AuditoriumListComponent,
-    MovieListComponent,
-    CinemaMapComponent,
   ],
   imports: [
     BrowserModule,
@@ -63,8 +62,13 @@ import { CinemaMapComponent } from './features/cinema-map/cinema-map.component';
     ReportStoreModule,
     ScreeningEventStoreModule,
     CinemaStoreModule,
-    FullCalendarModule,
-    TooltipModule,
+    CinemaMapModule,
+    MovieListModule,
+    CinemaListModule,
+    ReportListModule,
+    ProjectionListModule,
+    AuditoriumListModule,
+    CalendarModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
