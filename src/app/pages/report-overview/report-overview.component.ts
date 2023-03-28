@@ -3,7 +3,7 @@ import { Store } from '@ngrx/store';
 import { Map } from 'ol';
 import { Subscription } from 'rxjs';
 import { selectCinemas } from '../../root-store/cinema-store/cinema.selectors';
-import { selectReports } from '../../root-store/report-store/report.selectors';
+import { selectReports } from '../../root-store/report-store/selectors/report.selectors';
 import {
   createCinemaFeatureList,
   getCoordinatesFromCinemaList,

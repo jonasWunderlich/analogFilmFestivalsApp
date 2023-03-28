@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { StoreModule } from '@ngrx/store';
-import * as fromReport from './report.reducer';
+import * as fromReport from './reducers/report.reducer';
 import { EffectsModule } from '@ngrx/effects';
-import { ReportEffects } from './report.effects';
+import { ReportEffects } from './effects/report.effects';
 
 @NgModule({
   declarations: [],

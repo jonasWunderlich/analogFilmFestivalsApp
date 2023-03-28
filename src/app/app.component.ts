@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { loadCinemas } from './root-store/cinema-store/cinema.actions';
-import { loadReports } from './root-store/report-store/report.actions';
+import { loadReports } from './root-store/report-store/actions/report.actions';
 import { loadScreeningEvents } from './root-store/screening-event-store/screening-event.actions';
 
 @Component({

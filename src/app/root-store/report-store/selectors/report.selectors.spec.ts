@@ -1,4 +1,4 @@
-import * as fromReport from './report.reducer';
+import * as fromReport from '../reducers/report.reducer';
 import { selectReportState } from './report.selectors';
 
 describe('Report Selectors', () => {

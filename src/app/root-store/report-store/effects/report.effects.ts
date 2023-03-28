@@ -3,7 +3,7 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 
 import { catchError, map, switchMap, tap } from 'rxjs/operators';
 import { filter, of } from 'rxjs';
-import * as ReportActions from './report.actions';
+import * as ReportActions from '../actions/report.actions';
 import { NotificationService } from 'src/app/shared/services/notification.service';
 import { AnalogKinoBackendService } from 'src/app/shared/services/analog-kino-backend.service';
 

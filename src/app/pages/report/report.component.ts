@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { selectSelectedReportByRoute } from '../../root-store/report-store/report.selectors';
+import { selectSelectedReportByRoute } from '../../root-store/report-store/selectors/report.selectors';
 import {
   createCinemaFeatureList,
   getCoordinatesFromCinemaList,
