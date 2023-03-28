@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { loadCinemas } from './+state/cinema-store/cinema.actions';
-import { loadReports } from './+state/report-store/report.actions';
-import { loadScreeningEvents } from './+state/screening-event-store/screening-event.actions';
+import { loadCinemas } from './root-store/cinema-store/cinema.actions';
+import { loadReports } from './root-store/report-store/report.actions';
+import { loadScreeningEvents } from './root-store/screening-event-store/screening-event.actions';
 
 @Component({
   selector: 'app-root',

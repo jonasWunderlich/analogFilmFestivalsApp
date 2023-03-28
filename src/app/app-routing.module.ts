@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { CinemaComponent } from './cinema/cinema.component';
-import { CinemaOverviewComponent } from './cinema-overview/cinema-overview.component';
-import { EventComponent } from './event/event.component';
-import { EventOverviewComponent } from './event-overview/event-overview.component';
-import { ReportComponent } from './report/report.component';
-import { ReportOverviewComponent } from './report-overview/report-overview.component';
+import { CinemaComponent } from './pages/cinema/cinema.component';
+import { CinemaOverviewComponent } from './pages/cinema-overview/cinema-overview.component';
+import { EventComponent } from './pages/event/event.component';
+import { EventOverviewComponent } from './pages/event-overview/event-overview.component';
+import { ReportComponent } from './pages/report/report.component';
+import { ReportOverviewComponent } from './pages/report-overview/report-overview.component';
 
 const routes: Routes = [
   {

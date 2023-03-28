@@ -3,31 +3,31 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { CinemaComponent } from './cinema/cinema.component';
-import { CinemaOverviewComponent } from './cinema-overview/cinema-overview.component';
-import { EventComponent } from './event/event.component';
-import { EventOverviewComponent } from './event-overview/event-overview.component';
-import { ReportComponent } from './report/report.component';
-import { ReportOverviewComponent } from './report-overview/report-overview.component';
-import { MovieStoreModule } from './+state/movie-store/movie-store.module';
+import { CinemaComponent } from './pages/cinema/cinema.component';
+import { CinemaOverviewComponent } from './pages/cinema-overview/cinema-overview.component';
+import { EventComponent } from './pages/event/event.component';
+import { EventOverviewComponent } from './pages/event-overview/event-overview.component';
+import { ReportComponent } from './pages/report/report.component';
+import { ReportOverviewComponent } from './pages/report-overview/report-overview.component';
+import { MovieStoreModule } from './root-store/movie-store/movie-store.module';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { FullCalendarModule } from '@fullcalendar/angular';
 import { NgxTmdbApiModule } from '@igorissen/ngx-tmdb-api';
 import { LetModule } from '@ngrx/component';
-import { TooltipModule } from './common/ui/tooltip/tooltip.module';
-import { CinemaListComponent } from './common/ui/cinema-list/cinema-list.component';
-import { ProjectionListComponent } from './common/ui/projection-list/projection-list.component';
-import { ReportListComponent } from './common/ui/report-list/report-list.component';
-import { AuditoriumListComponent } from './common/ui/auditorium-list/auditorium-list.component';
-import { MovieListComponent } from './common/ui/movie-list/movie-list.component';
-import { ReportStoreModule } from './+state/report-store/report.module';
-import { ScreeningEventStoreModule } from './+state/screening-event-store/screening-event-store.module';
-import { CinemaStoreModule } from './+state/cinema-store/cinema-store.module';
+import { TooltipModule } from './shared/modules/tooltip/tooltip.module';
+import { CinemaListComponent } from './features/cinema-list/cinema-list.component';
+import { ProjectionListComponent } from './features/projection-list/projection-list.component';
+import { ReportListComponent } from './features/report-list/report-list.component';
+import { AuditoriumListComponent } from './features/auditorium-list/auditorium-list.component';
+import { MovieListComponent } from './features/movie-list/movie-list.component';
+import { ReportStoreModule } from './root-store/report-store/report.module';
+import { ScreeningEventStoreModule } from './root-store/screening-event-store/screening-event-store.module';
+import { CinemaStoreModule } from './root-store/cinema-store/cinema-store.module';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from 'src/environments/environment';
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
-import { RoutingModule } from './routing-module/routing.module';
+import { RoutingModule } from './root-store/routing-store/routing.module';
 
 @NgModule({
   declarations: [
