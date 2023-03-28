@@ -11,7 +11,6 @@ export class CinemaListComponent {
 
   @Input()
   set cinemas(value: Cinema[] | null) {
-    console.log('set cinemas', value);
     if (value) {
       this._cinemas = value;
     }

@@ -6,12 +6,14 @@ export const movieFeatureKey = 'movie';
 
 export interface MoviesState {
   movie: TMDbMovieDetails | null;
-  searchedMovies: TMDbSearchMovies | null;
+  searchedMovies: TMDbMovieDetails[] | undefined;
+  searchedMoviesById: (TMDbSearchMovies | null)[];
 }
 
 export const initialState: MoviesState = {
   movie: null,
-  searchedMovies: null,
+  searchedMovies: undefined,
+  searchedMoviesById: [],
 };
 
 export const reducer = createReducer(
@@ -22,11 +24,16 @@ export const reducer = createReducer(
       searchedMovies: action.movies,
     };
   }),
-
-  on(MovieActions.loadMovieByIdSuccess, (state, action) => {
+  on(MovieActions.loadMovieByIdSuccess, (state: MoviesState, action) => {
     return {
       ...state,
       movie: action.movie,
+    };
+  }),
+  on(MovieActions.loadMoviesByIdsSuccess, (state: MoviesState, action) => {
+    return {
+      ...state,
+      searchedMoviesById: action.movies,
     };
   })
 );

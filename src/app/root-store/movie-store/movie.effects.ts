@@ -3,11 +3,9 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { catchError, concatMap, filter, map } from 'rxjs/operators';
 import { throwError } from 'rxjs';
 
-import { Movies, Search } from '@igorissen/ngx-tmdb-api';
 import * as MovieActions from './movie.actions';
-import { QueryParameters } from '@igorissen/ngx-tmdb-api/lib/types';
+import { AnalogKinoBackendService } from 'src/app/shared/services/analog-kino-backend.service';
 
-const TMDB_API_KEY = '05180a707de5ada5dc9a38cd1f8da87b';
 const errorMessage =
   'Something bad happened with the tmdb plugin; please try again later.';
 
@@ -17,37 +15,21 @@ export class MovieEffects {
     return this.actions$.pipe(
       ofType(MovieActions.searchMoviesByQuery),
       filter((params) => params?.query?.length > 0),
-      concatMap((params) =>
-        Search.searchMovies({
-          queryParams: <QueryParameters>{
-            query: params.query,
-            language: 'US',
-            append_to_response: 'videos,images',
-            api_key: TMDB_API_KEY,
-          },
-        })
-      ),
+      concatMap((params) => this.httpService.searchMovies(params.query)),
       catchError(() => {
         return throwError(() => errorMessage);
       }),
-      map((movies) => MovieActions.searchedMoviesSuccess({ movies }))
+      map((movies) =>
+        MovieActions.searchedMoviesSuccess({ movies: movies?.results })
+      )
     );
   });
 
   loadMovieById$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(MovieActions.loadMovieById),
-      // filter(params => params?.id?.length > 0),
-      concatMap((params) =>
-        Movies.getDetails({
-          pathParams: { movie_id: params.id },
-          queryParams: {
-            language: 'US',
-            append_to_response: 'videos,images',
-            api_key: TMDB_API_KEY,
-          },
-        })
-      ),
+      filter((params) => params?.id?.length > 0),
+      concatMap((params) => this.httpService.getMovieDetails(params.id)),
       catchError(() => {
         return throwError(() => errorMessage);
       }),
@@ -55,5 +37,20 @@ export class MovieEffects {
     );
   });
 
-  constructor(private actions$: Actions) {}
+  loadMoviesByIds$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(MovieActions.loadMoviesByIds),
+      filter((params) => params?.movieIds?.length > 0),
+      concatMap((params) => this.httpService.getListOfMovies(params.movieIds)),
+      catchError(() => {
+        return throwError(() => errorMessage);
+      }),
+      map((movies) => MovieActions.loadMoviesByIdsSuccess({ movies }))
+    );
+  });
+
+  constructor(
+    private actions$: Actions,
+    private httpService: AnalogKinoBackendService
+  ) {}
 }

@@ -1,4 +1,4 @@
-import { TMDbMovieDetails, TMDbSearchMovies } from '@igorissen/ngx-tmdb-api';
+import { TMDbMovieDetails } from '@igorissen/ngx-tmdb-api';
 import { createAction, props } from '@ngrx/store';
 
 export const searchMoviesByQuery = createAction(
@@ -6,19 +6,26 @@ export const searchMoviesByQuery = createAction(
   (query: string) => ({ query })
 );
 
-export const searchedMoviesSuccess = createAction(
-  '[Movie] searched Movies successfully loaded',
-  props<{ movies: TMDbSearchMovies | null }>()
-);
-
-export const searchedMoviesFailed = createAction(
-  '[Movie] searched Movies failed',
-  props<{ error: string }>()
+export const loadMoviesByIds = createAction(
+  '[Movie] Load Movie',
+  (movieIds: string[]) => ({ movieIds })
 );
 
 export const loadMovieById = createAction(
   '[Movie] Load Movie',
   (id: string) => ({ id })
+);
+
+/* Succes & Error */
+
+export const searchedMoviesSuccess = createAction(
+  '[Movie] searched Movies successfully loaded',
+  props<{ movies: TMDbMovieDetails[] | undefined }>()
+);
+
+export const searchedMoviesFailed = createAction(
+  '[Movie] searched Movies failed',
+  props<{ error: string }>()
 );
 
 export const loadMovieByIdSuccess = createAction(
@@ -28,5 +35,15 @@ export const loadMovieByIdSuccess = createAction(
 
 export const loadMovieByIdFailed = createAction(
   '[Movie] Movie loaded failed',
+  props<{ error: string }>()
+);
+
+export const loadMoviesByIdsSuccess = createAction(
+  '[Movie] Movies loaded',
+  props<{ movies: (TMDbMovieDetails | null)[] }>()
+);
+
+export const loadMoviesByIdsFailed = createAction(
+  '[Movie] Movies loaded failed',
   props<{ error: string }>()
 );

@@ -7,5 +7,10 @@ export const selectMovieState = createFeatureSelector<fromMovie.MoviesState>(
 
 export const selectSearchedMovies = createSelector(
   selectMovieState,
-  (state: fromMovie.MoviesState): any => state.searchedMovies?.results || []
+  (state: fromMovie.MoviesState): any => state.searchedMovies || []
+);
+
+export const selectSearchedMoviesById = createSelector(
+  selectMovieState,
+  (state: fromMovie.MoviesState): any => state.searchedMoviesById || []
 );
