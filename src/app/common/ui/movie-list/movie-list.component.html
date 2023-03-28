@@ -3,12 +3,13 @@
   <ng-container *ngFor="let movie of movies">
     <span
       *ngIf="movie.poster_path"
-      [tooltip]="movie.title + ' (' + movie.release_date  + ')'">
+      [tooltip]="movie.title + ' (' + movie.release_date + ')'"
+    >
       <img
-      class="movie-poster"
+        class="movie-poster"
         src="https://www.themoviedb.org/t/p/w1280/{{ movie.poster_path }}"
         alt="Poster von {{ movie.title }}"
-      >
+      />
     </span>
   </ng-container>
 </div>

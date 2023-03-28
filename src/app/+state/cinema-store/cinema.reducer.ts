@@ -9,26 +9,28 @@ export const cinemaFeatureKey = 'cinema';
 export interface State extends EntityState<Cinema> {
   selectedCinemaId: string | undefined;
   loadingStates: {
-    loadingCinema: boolean,
-    loadingCinemas: boolean,
-  }
+    loadingCinema: boolean;
+    loadingCinemas: boolean;
+  };
 }
 
 export function getCinemaId(cinema: Cinema): string {
   return cinema.id;
 }
 
-export const cinemaAdapter: EntityAdapter<Cinema> = createEntityAdapter<Cinema>({
-  selectId: getCinemaId,
-})
+export const cinemaAdapter: EntityAdapter<Cinema> = createEntityAdapter<Cinema>(
+  {
+    selectId: getCinemaId,
+  }
+);
 
 export const initialState: State = cinemaAdapter.getInitialState({
   selectedCinemaId: undefined,
   loadingStates: {
     loadingCinema: false,
     loadingCinemas: false,
-  }
-})
+  },
+});
 
 export const reducer = createReducer(
   initialState,
@@ -85,7 +87,7 @@ export const reducer = createReducer(
         loadingCinema: false,
       },
     };
-  }),
+  })
 );
 
 export const cinemaFeature = createFeature({

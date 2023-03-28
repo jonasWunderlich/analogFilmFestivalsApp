@@ -1,7 +1,7 @@
-import { Coordinate } from "ol/coordinate";
-import { Auditorium } from "./auditorium";
-import { Projection } from "./projection";
-import { Report } from "./report";
+import { Coordinate } from 'ol/coordinate';
+import { Auditorium } from './auditorium';
+import { Projection } from './projection';
+import { Report } from './report';
 
 export interface Cinema {
   id: string;

@@ -1,6 +1,6 @@
-import { Cinema } from "./cinema";
-import { Report } from "./report";
-import { ProjectionCharacter } from "./projection-character";
+import { Cinema } from './cinema';
+import { Report } from './report';
+import { ProjectionCharacter } from './projection-character';
 
 export interface Projection {
   id: string;

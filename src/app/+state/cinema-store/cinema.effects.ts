@@ -9,13 +9,12 @@ import * as CinemaActions from './cinema.actions';
 
 @Injectable()
 export class CinemaEffects {
-
-  loadCinemas$ = createEffect(
-    () => this.actions$.pipe(
+  loadCinemas$ = createEffect(() =>
+    this.actions$.pipe(
       ofType(CinemaActions.loadCinemas),
       switchMap(() =>
         this.analogCinemaBackend.getCinemas().pipe(
-          map(cinemas => CinemaActions.loadCinemasSucceeded({ cinemas })),
+          map((cinemas) => CinemaActions.loadCinemasSucceeded({ cinemas })),
           catchError((error) => of(CinemaActions.loadCinemasFailed({ error })))
         )
       )
@@ -23,28 +22,33 @@ export class CinemaEffects {
   );
 
   loadCinemasSucceeded$ = createEffect(
-    () => this.actions$.pipe(
-      ofType(CinemaActions.loadCinemasSucceeded),
-      tap(() => this.notificationService.success('cinema.loadingSucceed'))
-    ), { dispatch: false }
+    () =>
+      this.actions$.pipe(
+        ofType(CinemaActions.loadCinemasSucceeded),
+        tap(() => this.notificationService.success('cinema.loadingSucceed'))
+      ),
+    { dispatch: false }
   );
 
   loadCinemasFailed$ = createEffect(
-    () => this.actions$.pipe(
-      ofType(CinemaActions.loadCinemasFailed),
-      tap(() => this.notificationService.error('cinema.loadingFailed'))
-    ), { dispatch: false }
+    () =>
+      this.actions$.pipe(
+        ofType(CinemaActions.loadCinemasFailed),
+        tap(() => this.notificationService.error('cinema.loadingFailed'))
+      ),
+    { dispatch: false }
   );
 
   loadCinemaById$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(CinemaActions.loadCinemaById),
-      filter(params => params?.id?.length > 0),
+      filter((params) => params?.id?.length > 0),
       switchMap((params) =>
-      this.analogCinemaBackend.getCinemaById(params.id)
-        .pipe(
-          map(cinema => CinemaActions.loadCinemaByIdSucceeded({ cinema })),
-          catchError((error) => of(CinemaActions.loadCinemaByIdFailed({ error })))
+        this.analogCinemaBackend.getCinemaById(params.id).pipe(
+          map((cinema) => CinemaActions.loadCinemaByIdSucceeded({ cinema })),
+          catchError((error) =>
+            of(CinemaActions.loadCinemaByIdFailed({ error }))
+          )
         )
       )
     );
@@ -53,5 +57,6 @@ export class CinemaEffects {
   constructor(
     private readonly actions$: Actions,
     private readonly analogCinemaBackend: AnalogKinoBackendService,
-    private readonly notificationService: NotificationService) {}
+    private readonly notificationService: NotificationService
+  ) {}
 }

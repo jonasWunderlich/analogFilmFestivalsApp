@@ -5,12 +5,13 @@ import { Router } from '@angular/router';
   providedIn: 'root',
 })
 export class RoutingService {
+  constructor(private readonly router: Router) {}
 
-  constructor(
-    private readonly router: Router
-  ) {}
-
-  navigateToError(message: string, errorCode: number, description?: string): void {
+  navigateToError(
+    message: string,
+    errorCode: number,
+    description?: string
+  ): void {
     this.router.navigate(['/error'], {
       replaceUrl: false,
       skipLocationChange: true,

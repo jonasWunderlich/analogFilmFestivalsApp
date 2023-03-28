@@ -4,7 +4,7 @@ import { selectReportState } from './report.selectors';
 describe('Report Selectors', () => {
   it('should select the feature state', () => {
     const result = selectReportState({
-      [fromReport.reportFeatureKey]: {}
+      [fromReport.reportFeatureKey]: {},
     });
 
     expect(result).toEqual({});

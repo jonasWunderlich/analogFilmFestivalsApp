@@ -8,26 +8,28 @@ export const reportFeatureKey = 'report';
 export interface State extends EntityState<Report> {
   selectedReportId: string | undefined;
   loadingStates: {
-    loadingReport: boolean,
-    loadingReports: boolean,
-  }
+    loadingReport: boolean;
+    loadingReports: boolean;
+  };
 }
 
 export function getReportId(report: Report): string {
   return report.id;
 }
 
-export const reportAdapter: EntityAdapter<Report> = createEntityAdapter<Report>({
-  selectId: getReportId,
-})
+export const reportAdapter: EntityAdapter<Report> = createEntityAdapter<Report>(
+  {
+    selectId: getReportId,
+  }
+);
 
 export const initialState: State = reportAdapter.getInitialState({
   selectedReportId: undefined,
   loadingStates: {
     loadingReport: false,
     loadingReports: false,
-  }
-})
+  },
+});
 
 export const reducer = createReducer(
   initialState,
@@ -84,7 +86,7 @@ export const reducer = createReducer(
         loadingReport: false,
       },
     };
-  }),
+  })
 );
 
 export const reportFeature = createFeature({

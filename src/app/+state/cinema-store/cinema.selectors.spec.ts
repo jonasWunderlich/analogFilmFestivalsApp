@@ -4,7 +4,7 @@ import { selectCinemaState } from './cinema.selectors';
 describe('Cinema Selectors', () => {
   it('should select the feature state', () => {
     const result = selectCinemaState({
-      [fromCinema.cinemaFeatureKey]: {}
+      [fromCinema.cinemaFeatureKey]: {},
     });
 
     expect(result).toEqual({});

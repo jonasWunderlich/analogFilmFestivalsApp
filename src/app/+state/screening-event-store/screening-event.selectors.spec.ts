@@ -4,7 +4,7 @@ import { selectScreeningEventState } from './screening-event.selectors';
 describe('Event Selectors', () => {
   it('should select the feature state', () => {
     const result = selectScreeningEventState({
-      [fromEvent.screeningEventFeatureKey]: {}
+      [fromEvent.screeningEventFeatureKey]: {},
     });
 
     expect(result).toEqual({});

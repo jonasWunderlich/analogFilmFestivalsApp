@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { useGeographic} from 'ol/proj.js';
+import { useGeographic } from 'ol/proj.js';
 import Map from 'ol/Map';
 import Feature, { FeatureLike } from 'ol/Feature';
 import View from 'ol/View';
@@ -15,32 +15,29 @@ import { Coordinate } from 'ol/coordinate';
 import { boundingExtent } from 'ol/extent';
 import { FlatStyleLike } from 'ol/style/flat';
 
-
 const POINT_SIZE = 7;
 const POINT_COLOR = 'rgb(255, 77, 0)';
 const POINT_COLOR_HOVER = 'rgb(255, 77, 88)';
 
-
 @Injectable({
- providedIn: 'root',
+  providedIn: 'root',
 })
 export class MapService {
-
   pointStyle: FlatStyleLike = {
     'circle-radius': POINT_SIZE,
     'circle-fill-color': POINT_COLOR,
-  }
+  };
 
   pointStyleHover: FlatStyleLike = {
     'circle-radius': POINT_SIZE,
     'circle-fill-color': POINT_COLOR_HOVER,
-  }
+  };
 
-  constructor(private readonly router: Router) {
-  }
+  constructor(private readonly router: Router) {}
 
-  private getTileLayerStyle(style?: string): TileLayer<Stamen | BingMaps | OSM> {
-
+  private getTileLayerStyle(
+    style?: string
+  ): TileLayer<Stamen | BingMaps | OSM> {
     enum BingMapStyles {
       ROAD_ON_DEMAND = 'RoadOnDemand',
       CANVAS_LIGHT = 'CanvasLight',
@@ -52,14 +49,14 @@ export class MapService {
     }
 
     switch (style) {
-      case ('toner'): {
+      case 'toner': {
         return new TileLayer({
           source: new Stamen({
             layer: 'toner',
-          })
+          }),
         });
       }
-      case ('bing'): {
+      case 'bing': {
         return new TileLayer({
           visible: true,
           preload: Infinity,
@@ -67,7 +64,7 @@ export class MapService {
             key: 'Av5DvwITrvFW_vvHUW32CO3HtW6GY9PWmMMiBVwdz9JzDDCdbPiBvMSYDC-WO_y3',
             imagerySet: BingMapStyles.CANVAS_GRAY,
           }),
-        })
+        });
       }
       default: {
         return new TileLayer({
@@ -90,15 +87,18 @@ export class MapService {
           source: new VectorSource({
             features: [new Feature(new Point(coordinates))],
           }),
-          style: this.pointStyle
-        })
+          style: this.pointStyle,
+        }),
       ],
       target,
     });
   }
 
-  public buildMapFromFeatureCollection(features: Feature[], coords: Coordinate[], target: string): Map {
-
+  public buildMapFromFeatureCollection(
+    features: Feature[],
+    coords: Coordinate[],
+    target: string
+  ): Map {
     useGeographic();
 
     // BUILD MAP
@@ -106,11 +106,11 @@ export class MapService {
       layers: [
         this.getTileLayerStyle('toner'),
         new VectorLayer({
-          source: new VectorSource({features}),
-          style: this.pointStyle
+          source: new VectorSource({ features }),
+          style: this.pointStyle,
         }),
       ],
-      target
+      target,
     });
 
     // NAVIGATE AFTER CLICK
@@ -131,10 +131,9 @@ export class MapService {
 
     // CENTER VIEW
     if (coords) {
-      map.getView().fit(boundingExtent(coords), {padding: [40,40,40,40]});
+      map.getView().fit(boundingExtent(coords), { padding: [40, 40, 40, 40] });
     }
 
     return map;
   }
-
 }

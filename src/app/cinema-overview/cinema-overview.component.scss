@@ -1,16 +1,15 @@
-@import '/src/mixins.scss';
+@import "/src/mixins.scss";
 
 .c-cinema-list {
   @include container-container;
 
   &__cinema {
-
     h3 {
-      margin-bottom: .2em;
+      margin-bottom: 0.2em;
     }
 
     p {
-      margin: .2em 0;
+      margin: 0.2em 0;
     }
   }
 }

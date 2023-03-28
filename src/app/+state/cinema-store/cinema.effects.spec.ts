@@ -11,10 +11,7 @@ describe('CinemaEffects', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [
-        CinemaEffects,
-        provideMockActions(() => actions$)
-      ]
+      providers: [CinemaEffects, provideMockActions(() => actions$)],
     });
 
     effects = TestBed.inject(CinemaEffects);

@@ -4,7 +4,6 @@ import { DeepPartial } from '@ngneat/reactive-forms/lib/types';
 import { getRandomSubarray, mockNumber } from './helpers.mock';
 import { Auditorium } from '../_models/auditorium';
 
-
 const AUDITORIUM_DEFAULT_VALUES: Auditorium = {
   id: 'auditorium0000',
   createdAt: '2020-10-30T09:32:19.196720000+0000',
@@ -15,7 +14,14 @@ const AUDITORIUM_DEFAULT_VALUES: Auditorium = {
   sound: ['7.1', '5.1', 'stereo', 'mono'],
   screen: '18m * 16m',
   seats: 240,
-  attributes: ['Klimaanlage', 'Klavier', 'Rednerpult', 'absteigend', 'Loge', 'Bar'],
+  attributes: [
+    'Klimaanlage',
+    'Klavier',
+    'Rednerpult',
+    'absteigend',
+    'Loge',
+    'Bar',
+  ],
   reports: [],
 };
 
@@ -29,17 +35,28 @@ const AUDITORIUM_DEFAULT_VALUES: Auditorium = {
  *
  * @example mockAuditorium({name: 'Luru Kinosaal'})
  */
-export function mockAuditorium(auditoriumValues: DeepPartial<Auditorium>): Auditorium {
+export function mockAuditorium(
+  auditoriumValues: DeepPartial<Auditorium>
+): Auditorium {
   const id = uniqueId();
   const defaultValues: Auditorium = {
     id,
     createdAt: AUDITORIUM_DEFAULT_VALUES.createdAt,
     lastModifiedAt: AUDITORIUM_DEFAULT_VALUES.lastModifiedAt,
-    title: `Saal ${mockNumber(1,10)}`,
+    title: `Saal ${mockNumber(1, 10)}`,
     text: AUDITORIUM_DEFAULT_VALUES.text,
-    projectors: getRandomSubarray(AUDITORIUM_DEFAULT_VALUES.projectors, mockNumber(0, AUDITORIUM_DEFAULT_VALUES.projectors?.length)),
-    sound: getRandomSubarray(AUDITORIUM_DEFAULT_VALUES.sound, mockNumber(0, AUDITORIUM_DEFAULT_VALUES.sound?.length)),
-    attributes: getRandomSubarray(AUDITORIUM_DEFAULT_VALUES.attributes, mockNumber(0, AUDITORIUM_DEFAULT_VALUES.attributes?.length)),
+    projectors: getRandomSubarray(
+      AUDITORIUM_DEFAULT_VALUES.projectors,
+      mockNumber(0, AUDITORIUM_DEFAULT_VALUES.projectors?.length)
+    ),
+    sound: getRandomSubarray(
+      AUDITORIUM_DEFAULT_VALUES.sound,
+      mockNumber(0, AUDITORIUM_DEFAULT_VALUES.sound?.length)
+    ),
+    attributes: getRandomSubarray(
+      AUDITORIUM_DEFAULT_VALUES.attributes,
+      mockNumber(0, AUDITORIUM_DEFAULT_VALUES.attributes?.length)
+    ),
     seats: sample([40, 300, 200, 90]),
     screen: AUDITORIUM_DEFAULT_VALUES.screen,
     reports: AUDITORIUM_DEFAULT_VALUES.reports,
@@ -63,7 +80,7 @@ export function mockAuditorium(auditoriumValues: DeepPartial<Auditorium>): Audit
 export function mockAuditoriums(amount: number): Auditorium[] {
   const auditoriums: Auditorium[] = [];
   for (let i = 0; i < amount; i++) {
-    auditoriums.push(mockAuditorium({ id: i.toString() }))
+    auditoriums.push(mockAuditorium({ id: i.toString() }));
   }
   return auditoriums;
 }

@@ -1,9 +1,7 @@
 import { createAction, props } from '@ngrx/store';
 import { Cinema } from 'src/app/_models/cinema';
 
-export const loadCinemas = createAction(
-  '[Cinema] Load Cinemas'
-);
+export const loadCinemas = createAction('[Cinema] Load Cinemas');
 
 export const loadCinemasSucceeded = createAction(
   '[Cinema] Cinemas successfully loaded',

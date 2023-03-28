@@ -2,16 +2,28 @@
   <a class="brand" [routerLink]="['/']"><h1>analogkino.net</h1></a>
   <nav>
     <ul>
-      <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+      <li
+        [routerLinkActive]="['active']"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
         <a [routerLink]="['event']">Events</a> |
       </li>
-      <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+      <li
+        [routerLinkActive]="['active']"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
         <a [routerLink]="['cinema']">Kinos</a> |
       </li>
-      <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+      <li
+        [routerLinkActive]="['active']"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
         <a [routerLink]="['report']">Erfahrungsberichte</a> |
       </li>
-      <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+      <li
+        [routerLinkActive]="['active']"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
         <a [routerLink]="['contact']">Kontakt</a>
       </li>
     </ul>
@@ -25,9 +37,7 @@
 <footer>
   <!-- <p>Autoren: Tilman Schumacher / Jonas Wunderlich</p> -->
   <nav>
-    <a href="/impressum">Impressum</a> |
-    <a href="/privacy">Datenschutz</a> |
+    <a href="/impressum">Impressum</a> | <a href="/privacy">Datenschutz</a> |
     <a href="mailto:jonas@systemkultur.de">Mail Us</a>
   </nav>
-
 </footer>

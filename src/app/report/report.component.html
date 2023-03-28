@@ -1,9 +1,6 @@
-<div class="c-report" >
-
+<div class="c-report">
   <ng-container *ngrxLet="report$ as report">
-
     <div class="content-container" *ngIf="report">
-
       <i>Erfahrungsbericht</i>
       <h2>{{ report.title }}</h2>
       <p>{{ report.date | date }}</p>
@@ -18,7 +15,6 @@
         *ngrxLet="cinemas$ as cinemas"
         [cinemas]="cinemas"
       ></app-cinema-list>
-
     </div>
   </ng-container>
 

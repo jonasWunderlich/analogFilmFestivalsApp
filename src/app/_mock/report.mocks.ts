@@ -4,7 +4,6 @@ import { randomDate } from './helpers.mock';
 import { Report } from '../_models/report';
 import { MOCKED_REPORT_NAMES, MOCKED_REPORT_TEXTS } from './constants';
 
-
 const REPORT_DEFAULT_VALUES: Report = {
   id: '0',
   createdAt: '2020-10-30T09:32:19.196720000+0000',
@@ -59,7 +58,7 @@ export function mockReport(reportValues: DeepPartial<Report>): Report {
 export function mockReports(amount: number): Report[] {
   const reports: Report[] = [];
   for (let i = 0; i < amount; i++) {
-    reports.push(mockReport({ id: i.toString() }))
+    reports.push(mockReport({ id: i.toString() }));
   }
   return reports;
 }

@@ -65,6 +65,6 @@ import { RoutingModule } from './routing-module/routing.module';
     TooltipModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

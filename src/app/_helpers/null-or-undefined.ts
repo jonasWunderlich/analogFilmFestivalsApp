@@ -4,6 +4,8 @@ export function neitherNullNorUndefined(input: Indefinite): input is unknown {
   return input != null; // != intentional
 }
 
-export function isNullOrUndefined(input: Indefinite): input is null | undefined {
+export function isNullOrUndefined(
+  input: Indefinite
+): input is null | undefined {
   return !neitherNullNorUndefined(input);
 }

@@ -1,22 +1,22 @@
 /* You can add global styles to this file, and also import other style files */
-@import url('https://fonts.googleapis.com/css?family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap");
 
 body {
-    font-family: 'Roboto';
-    font-family: 'Lora';
-    color: var(--text-color);
-    margin: 0;
-    --header-color: #FFF;
-    --footer-color: #000;
-    --sidebar-color: #FFF;
-    --text-color: black;
-    --link-color: rgb(255, 77, 0);
-    --link-color-hover: rgb(255, 0, 234);
+  font-family: "Roboto";
+  font-family: "Lora";
+  color: var(--text-color);
+  margin: 0;
+  --header-color: #fff;
+  --footer-color: #000;
+  --sidebar-color: #fff;
+  --text-color: black;
+  --link-color: rgb(255, 77, 0);
+  --link-color-hover: rgb(255, 0, 234);
 }
 
 a {
   color: var(--link-color);
-  transition: color .2s ease-out ;
+  transition: color 0.2s ease-out;
 
   &:visited {
     color: var(--link-color);
@@ -49,8 +49,8 @@ ul {
   }
 }
 
-
-.fc-theme-standard td, .fc-theme-standard th {
+.fc-theme-standard td,
+.fc-theme-standard th {
   border: 2px solid black !important;
 }
 

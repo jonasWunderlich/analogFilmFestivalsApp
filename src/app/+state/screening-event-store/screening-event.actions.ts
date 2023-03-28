@@ -1,9 +1,7 @@
 import { createAction, props } from '@ngrx/store';
 import { ScreeningEvent } from 'src/app/_models/screening-event';
 
-export const loadScreeningEvents = createAction(
-  '[Event] Load ScreeningEvents'
-);
+export const loadScreeningEvents = createAction('[Event] Load ScreeningEvents');
 
 export const loadScreeningEventsSucceeded = createAction(
   '[Event] ScreeningEvents successfully loaded',

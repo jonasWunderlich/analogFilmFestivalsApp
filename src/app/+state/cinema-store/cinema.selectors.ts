@@ -1,4 +1,9 @@
-import { createFeatureSelector, createSelector, DefaultProjectorFn, MemoizedSelector } from '@ngrx/store';
+import {
+  createFeatureSelector,
+  createSelector,
+  DefaultProjectorFn,
+  MemoizedSelector,
+} from '@ngrx/store';
 import { selectRouteParams } from 'src/app/routing-module/+state/router/router.reducer';
 import { neitherNullNorUndefined } from 'src/app/_helpers/null-or-undefined';
 import { Cinema } from 'src/app/_models/cinema';
@@ -27,10 +32,11 @@ export const selectCinemas = createSelector(
 
 /* select cinemas via id */
 
-export const selectCinemasByIds = (ids: string[]): MemoizedSelector<object, Cinema[], DefaultProjectorFn<Cinema[]>> => {
-  return createSelector(
-    selectCinemas,
-    (cinemas: Cinema[] = []): Cinema[] => cinemas.filter(cinema => ids.indexOf(cinema.id) > -1)
+export const selectCinemasByIds = (
+  ids: string[]
+): MemoizedSelector<object, Cinema[], DefaultProjectorFn<Cinema[]>> => {
+  return createSelector(selectCinemas, (cinemas: Cinema[] = []): Cinema[] =>
+    cinemas.filter((cinema) => ids.indexOf(cinema.id) > -1)
   );
 };
 
@@ -48,7 +54,7 @@ export const selectSelectedCinema = createSelector(
     if (!entityId) {
       return undefined;
     }
-    return entities[entityId]
+    return entities[entityId];
   }
 );
 
@@ -57,7 +63,10 @@ export const selectSelectedCinema = createSelector(
 export const selectRoutesCinemaId = createSelector(
   selectRouteParams,
   (params): string | undefined => {
-    if (neitherNullNorUndefined(params) && neitherNullNorUndefined(params['id'])) {
+    if (
+      neitherNullNorUndefined(params) &&
+      neitherNullNorUndefined(params['id'])
+    ) {
       return params['id'] as string;
     } else {
       return undefined;
@@ -70,7 +79,7 @@ export const selectSelectedCinemaByRoute = createSelector(
   selectRoutesCinemaId,
   (entities, entityId): Cinema | undefined => {
     if (!entityId) {
-      console.error('select Cinema By Route WITHOUT params')
+      console.error('select Cinema By Route WITHOUT params');
       return undefined;
     }
     return entities[entityId];

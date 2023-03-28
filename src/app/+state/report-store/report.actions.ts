@@ -1,9 +1,7 @@
 import { createAction, props } from '@ngrx/store';
 import { Report } from 'src/app/_models/report';
 
-export const loadReports = createAction(
-  '[Report] Load Reports'
-);
+export const loadReports = createAction('[Report] Load Reports');
 
 export const loadReportsSucceeded = createAction(
   '[Report] Reports successfully loaded',

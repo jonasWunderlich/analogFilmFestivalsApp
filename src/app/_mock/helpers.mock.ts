@@ -1,6 +1,6 @@
-import { Coordinate } from "ol/coordinate";
+import { Coordinate } from 'ol/coordinate';
 
-export const CHAR_NUMBERS = '0123456789'
+export const CHAR_NUMBERS = '0123456789';
 export const CHAR_FULL = 'abcdefghijklmnopqrstuvwxyz0123456789';
 
 export function mockNumber(min: number, max: number): number {
@@ -27,7 +27,9 @@ export function mockCharString(len: number, charset: string): string {
 }
 
 export function randomDate(start: Date, end: Date): Date {
-  return new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
+  return new Date(
+    start.getTime() + Math.random() * (end.getTime() - start.getTime())
+  );
 }
 
 export function addDays(date: Date, days: number): Date {
@@ -37,17 +39,19 @@ export function addDays(date: Date, days: number): Date {
 }
 
 export function sortByDate(time1: Date, time2: Date): number {
-  return new Date(time1).getTime() - new Date(time2).getTime()
+  return new Date(time1).getTime() - new Date(time2).getTime();
 }
 
 export function getRandomSubarray<T>(arr: Array<T>, size: number): Array<T> {
   const shuffled = arr.slice(0);
-  let i = arr.length, temp, index;
+  let i = arr.length,
+    temp,
+    index;
   while (i--) {
-      index = Math.floor((i + 1) * Math.random());
-      temp = shuffled[index];
-      shuffled[index] = shuffled[i];
-      shuffled[i] = temp;
+    index = Math.floor((i + 1) * Math.random());
+    temp = shuffled[index];
+    shuffled[index] = shuffled[i];
+    shuffled[i] = temp;
   }
   return shuffled.slice(0, size);
 }

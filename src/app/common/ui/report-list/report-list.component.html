@@ -1,5 +1,7 @@
 <h3>Erfahrungsberichte</h3>
 <div *ngFor="let report of reports">
-  <a [routerLink]="['/', 'report', report.id]"><h4>[{{ report.date | date }}] {{ report.title }}</h4></a>
+  <a [routerLink]="['/', 'report', report.id]"
+    ><h4>[{{ report.date | date }}] {{ report.title }}</h4></a
+  >
   <p>{{ report.text }}</p>
 </div>

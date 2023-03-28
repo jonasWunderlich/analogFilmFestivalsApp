@@ -1,7 +1,7 @@
-import { ScreeningEventType } from "./sceening-event-type";
-import { Projection } from "./projection";
-import { Report } from "./report";
-import { Cinema } from "./cinema";
+import { ScreeningEventType } from './sceening-event-type';
+import { Projection } from './projection';
+import { Report } from './report';
+import { Cinema } from './cinema';
 
 export interface ScreeningEvent {
   id: string;

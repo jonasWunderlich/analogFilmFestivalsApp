@@ -5,8 +5,8 @@ import * as MovieActions from './movie.actions';
 export const movieFeatureKey = 'movie';
 
 export interface MoviesState {
-  movie: TMDbMovieDetails | null,
-  searchedMovies: TMDbSearchMovies | null,
+  movie: TMDbMovieDetails | null;
+  searchedMovies: TMDbSearchMovies | null;
 }
 
 export const initialState: MoviesState = {
@@ -16,19 +16,19 @@ export const initialState: MoviesState = {
 
 export const reducer = createReducer(
   initialState,
-  on(MovieActions.searchedMoviesSuccess, ((state: MoviesState, action) => {
+  on(MovieActions.searchedMoviesSuccess, (state: MoviesState, action) => {
     return {
       ...state,
-      searchedMovies: action.movies
-    }
-  })),
+      searchedMovies: action.movies,
+    };
+  }),
 
-  on(MovieActions.loadMovieByIdSuccess, ((state, action) => {
+  on(MovieActions.loadMovieByIdSuccess, (state, action) => {
     return {
       ...state,
-      movie: action.movie
-    }
-  })),
+      movie: action.movie,
+    };
+  })
 );
 
 export const movieFeature = createFeature({

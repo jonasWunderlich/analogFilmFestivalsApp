@@ -1,9 +1,7 @@
-import { NgModule } from "@angular/core";
+import { NgModule } from '@angular/core';
 
 @NgModule({
   declarations: [],
-  imports: [
-  ],
+  imports: [],
 })
-export class ProjectionStoreModule {
-}
+export class ProjectionStoreModule {}

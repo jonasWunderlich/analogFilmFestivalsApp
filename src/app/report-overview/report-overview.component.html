@@ -1,22 +1,15 @@
 <div class="c-report-list">
-
-  <div
-    class="content-container"
-    *ngrxLet="reports$ as reports"
-  >
-
+  <div class="content-container" *ngrxLet="reports$ as reports">
     <i>Übersicht</i>
     <h2>Erfahrungsberichte</h2>
 
-    <div
-      *ngFor="let report of reports"
-      class="report"
-    >
+    <div *ngFor="let report of reports" class="report">
       <p class="prefix-date">{{ report.date | date }}</p>
-      <a [routerLink]="['/', 'report', report.id]"><h3>{{ report.title }}</h3></a>
+      <a [routerLink]="['/', 'report', report.id]"
+        ><h3>{{ report.title }}</h3></a
+      >
       <p>{{ report.text }}</p>
     </div>
-
   </div>
 
   <div id="ol-map-report-overview" class="map-container">
