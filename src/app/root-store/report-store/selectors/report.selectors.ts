@@ -42,14 +42,14 @@ export const selectReportsByIds = (
 
 /* select report via id */
 
-export const selectSelectedReportId = createSelector(
+export const selectActiveReportId = createSelector(
   selectReportState,
-  (state: fromReport.State): string | undefined => state.selectedReportId
+  (state: fromReport.State): string | undefined => state.activeRouteId
 );
 
-export const selectSelectedReport = createSelector(
+export const selectActiveReport = createSelector(
   selectEntities,
-  selectSelectedReportId,
+  selectActiveReportId,
   (entities, entityId): Report | undefined => {
     if (!entityId) {
       return undefined;
@@ -74,7 +74,7 @@ export const selectRoutesReportId = createSelector(
   }
 );
 
-export const selectSelectedReportByRoute = createSelector(
+export const selectActiveReportByRoute = createSelector(
   selectEntities,
   selectRoutesReportId,
   (entities, entityId): Report | undefined => {

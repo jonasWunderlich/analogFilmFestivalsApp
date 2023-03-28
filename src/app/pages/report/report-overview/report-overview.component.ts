@@ -1,8 +1,8 @@
 import { Component, OnDestroy } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
-import { selectCinemas } from '../../root-store/cinema-store/cinema.selectors';
-import { selectReports } from '../../root-store/report-store/selectors/report.selectors';
+import { selectCinemas } from '../../../root-store/cinema-store/cinema.selectors';
+import { selectReports } from '../../../root-store/report-store/selectors/report.selectors';
 
 @Component({
   selector: 'app-report-overview',

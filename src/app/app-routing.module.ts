@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ReportDetailsComponent } from './pages/report/report-details/report-details.component';
 
-import { ReportComponent } from './pages/report/report.component';
-import { ReportOverviewComponent } from './pages/report-overview/report-overview.component';
+import { ReportOverviewComponent } from './pages/report/report-overview/report-overview.component';
 
 const routes: Routes = [
   {
@@ -24,11 +24,8 @@ const routes: Routes = [
   },
   {
     path: 'report',
-    component: ReportOverviewComponent,
-  },
-  {
-    path: 'report/:id',
-    component: ReportComponent,
+    loadChildren: () =>
+      import('./pages/report/report.module').then((m) => m.ReportModule),
   },
   {
     path: '**',

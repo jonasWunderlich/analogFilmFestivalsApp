@@ -2,11 +2,12 @@ import { createFeature, createReducer, on } from '@ngrx/store';
 import { createEntityAdapter, EntityAdapter, EntityState } from '@ngrx/entity';
 import { Report } from 'src/app/shared/_models/report';
 import * as ReportActions from '../actions/report.actions';
+import { setActiveReport } from 'src/app/pages/report/report-details/report-details.actions';
 
 export const reportFeatureKey = 'report';
 
 export interface State extends EntityState<Report> {
-  selectedReportId: string | undefined;
+  activeRouteId: string | undefined;
   loadingStates: {
     loadingReport: boolean;
     loadingReports: boolean;
@@ -24,7 +25,7 @@ export const reportAdapter: EntityAdapter<Report> = createEntityAdapter<Report>(
 );
 
 export const initialState: State = reportAdapter.getInitialState({
-  selectedReportId: undefined,
+  activeRouteId: undefined,
   loadingStates: {
     loadingReport: false,
     loadingReports: false,
@@ -85,6 +86,12 @@ export const reducer = createReducer(
         ...state.loadingStates,
         loadingReport: false,
       },
+    };
+  }),
+  on(setActiveReport, (state: State, action) => {
+    return {
+      ...state,
+      activeRouteId: action.reportId,
     };
   })
 );
