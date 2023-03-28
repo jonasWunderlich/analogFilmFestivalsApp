@@ -3,27 +3,29 @@
     <i>Übersicht</i>
     <h2>Events</h2>
 
-    <app-calendar [calendarEvents]="screeningEvents$ | async"></app-calendar>
+    <ng-container *ngIf="screeningEvents$ | async as screeningEvents">
+      <app-calendar [calendarEvents]="screeningEvents"></app-calendar>
 
-    <ng-container *ngFor="let screeningEvent of screeningEvents$ | async">
-      <div class="event">
-        <p class="prefix-date">
-          {{ screeningEvent.start | date }} - {{ screeningEvent.end | date }}
-        </p>
-        <a [routerLink]="['/', 'event', screeningEvent.id]">
-          <h3>{{ screeningEvent.type }} | {{ screeningEvent.title }}</h3>
-        </a>
-        <app-projection-list
-          [projections]="screeningEvent.projections || []"
-          [showTitle]="false"
-        ></app-projection-list>
-        <p>{{ screeningEvent.text }}</p>
-        <p>
-          <a href="{{ screeningEvent.linkHomepage }}">{{
-            screeningEvent.linkHomepage
-          }}</a>
-        </p>
-      </div>
+      <ng-container *ngFor="let screeningEvent of screeningEvents">
+        <div class="event">
+          <p class="prefix-date">
+            {{ screeningEvent.start | date }} - {{ screeningEvent.end | date }}
+          </p>
+          <a [routerLink]="['/', 'event', screeningEvent.id]">
+            <h3>{{ screeningEvent.type }} | {{ screeningEvent.title }}</h3>
+          </a>
+          <app-projection-list
+            [projections]="screeningEvent.projections || []"
+            [showTitle]="false"
+          ></app-projection-list>
+          <p>{{ screeningEvent.text }}</p>
+          <p>
+            <a href="{{ screeningEvent.linkHomepage }}">{{
+              screeningEvent.linkHomepage
+            }}</a>
+          </p>
+        </div>
+      </ng-container>
     </ng-container>
   </div>
 

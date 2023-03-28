@@ -1,46 +1,54 @@
 <app-two-column-layout class="c-event-details">
   <div column-one>
-    <div *ngIf="event$ | async as event">
-      <i>Event</i>
+    <i>Event</i>
 
-      <h2>{{ event.title }} | {{ event.type }}</h2>
-      <p>{{ event.start | date }} - {{ event.end | date }}</p>
-      <p>{{ event.text }}</p>
+    <div *ngIf="event$ | async as screeningEvent">
+      <h2>{{ screeningEvent.title }} | {{ screeningEvent.type }}</h2>
+      <p>{{ screeningEvent.start | date }} - {{ screeningEvent.end | date }}</p>
+      <p>{{ screeningEvent.text }}</p>
       <p>
         Homepage:
-        <a href="{{ event.linkHomepage }}">{{ event.linkHomepage }}</a>
+        <a href="{{ screeningEvent.linkHomepage }}">{{
+          screeningEvent.linkHomepage
+        }}</a>
       </p>
       <p>
-        Programm: <a href="{{ event.linkProgram }}">{{ event.linkProgram }}</a>
+        Programm:
+        <a href="{{ screeningEvent.linkProgram }}">{{
+          screeningEvent.linkProgram
+        }}</a>
       </p>
 
       <h3>Kontakt:</h3>
       <p>
-        {{ event.street }}<br />
-        {{ event.postcode }} {{ event.city }}
+        {{ screeningEvent.street }}<br />
+        {{ screeningEvent.postcode }} {{ screeningEvent.city }}
       </p>
 
       <p>
         <strong>Email: </strong
-        ><a href="mailto://{{ event.mail }}">{{ event.mail }}</a>
+        ><a href="mailto://{{ screeningEvent.mail }}">{{
+          screeningEvent.mail
+        }}</a>
       </p>
       <p>
         <strong>Telefon: </strong
-        ><a href="tel://{{ event.phone }}">{{ event.phone }}</a>
+        ><a href="tel://{{ screeningEvent.phone }}">{{
+          screeningEvent.phone
+        }}</a>
       </p>
 
       <app-projection-list
-        [projections]="event.projections || []"
+        [projections]="screeningEvent.projections || []"
       ></app-projection-list>
 
-      <app-movie-list
-        *ngrxLet="movies$ as movies; error as error"
-        [movies]="movies?.results"
-      ></app-movie-list>
-
-      <app-cinema-list [cinemas]="cinemas$ | async"></app-cinema-list>
-      <app-report-list [reports]="event.reports || []"></app-report-list>
+      <app-report-list
+        [reports]="screeningEvent.reports || []"
+      ></app-report-list>
     </div>
+    <app-movie-list [movies]="movies$ | async"></app-movie-list>
+
+    <app-cinema-list [cinemas]="cinemas$ | async"></app-cinema-list>
   </div>
 
   <app-cinema-map column-two [cinemas]="cinemas$ | async"></app-cinema-map>

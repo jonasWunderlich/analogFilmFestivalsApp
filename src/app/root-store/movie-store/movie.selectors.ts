@@ -7,5 +7,5 @@ export const selectMovieState = createFeatureSelector<fromMovie.MoviesState>(
 
 export const selectSearchedMovies = createSelector(
   selectMovieState,
-  (state: fromMovie.MoviesState): any => state.searchedMovies
+  (state: fromMovie.MoviesState): any => state.searchedMovies?.results || []
 );

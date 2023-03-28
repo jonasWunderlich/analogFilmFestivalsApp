@@ -1,14 +1,16 @@
 <app-two-column-layout class="c-report-details">
-  <div column-one *ngIf="report$ | async as report">
-    <i>Erfahrungsbericht</i>
-    <h2>{{ report.title }}</h2>
-    <p>{{ report.date | date }}</p>
-    <p>{{ report.text }}</p>
+  <div column-one>
+    <ng-container *ngIf="report$ | async as report">
+      <i>Erfahrungsbericht</i>
+      <h2>{{ report.title }}</h2>
+      <p>{{ report.date | date }}</p>
+      <p>{{ report.text }}</p>
 
-    <app-projection-list
-      *ngIf="screeningEvent?.projections"
-      [projections]="screeningEvent?.projections || []"
-    ></app-projection-list>
+      <app-projection-list
+        *ngIf="screeningEvent?.projections"
+        [projections]="screeningEvent?.projections || []"
+      ></app-projection-list>
+    </ng-container>
 
     <app-cinema-list [cinemas]="cinemas$ | async"></app-cinema-list>
   </div>
