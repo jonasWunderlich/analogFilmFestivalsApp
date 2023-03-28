@@ -106,7 +106,6 @@ export class AnalogKinoBackendService {
     id: string,
     arr: T[]
   ): Observable<T | never> {
-    console.log('getById', id, arr);
     const found = arr.find((item) => item.id === id);
     if (found === undefined) {
       return NEVER;

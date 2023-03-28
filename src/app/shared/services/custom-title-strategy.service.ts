@@ -13,7 +13,6 @@ export class CustomTitleStrategy extends TitleStrategy {
 
   updateTitle(routerState: RouterStateSnapshot): void {
     const title = this.buildTitle(routerState);
-    console.log(routerState);
     if (title) {
       this.title.setTitle(`${title} | ${this.appTitle}`);
     } else {

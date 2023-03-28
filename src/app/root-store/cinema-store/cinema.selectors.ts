@@ -45,7 +45,6 @@ export const selectCinemasByIds = (
 export const selectActiveCinemaId = createSelector(
   selectCinemaState,
   (state: fromCinema.State): string | undefined => {
-    console.log(state);
     return state.activeCinemaId;
   }
 );
@@ -54,7 +53,6 @@ export const selectActiveCinema = createSelector(
   selectEntities,
   selectActiveCinemaId,
   (entities, entityId): Cinema | undefined => {
-    console.log('active ????', entityId);
     if (!entityId) {
       return undefined;
     }
