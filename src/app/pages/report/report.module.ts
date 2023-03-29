@@ -6,10 +6,10 @@ import { ReportDetailsComponent } from './report-details/report-details.componen
 import { ReportOverviewComponent } from './report-overview/report-overview.component';
 import { CinemaMapModule } from 'src/app/features/cinema-map/cinema-map.module';
 import { LoadingComponent } from 'src/app/shared/modules/ui/loading/loading.component';
-import { TwoColumnLayoutComponent } from 'src/app/features/two-column-layout/two-column-layout.component';
-import { CinemaListComponent } from 'src/app/features/cinema-list/cinema-list.component';
-import { MovieListComponent } from 'src/app/features/movie-list/movie-list.component';
-import { ProjectionListComponent } from 'src/app/features/projection-list/projection-list.component';
+import { CinemaListComponent } from 'src/app/shared/modules/ui/cinema-list/cinema-list.component';
+import { MovieListComponent } from 'src/app/shared/modules/ui/movie-list/movie-list.component';
+import { ProjectionListComponent } from 'src/app/shared/modules/ui/projection-list/projection-list.component';
+import { TwoColumnLayoutComponent } from 'src/app/shared/modules/ui/two-column-layout/two-column-layout.component';
 
 @NgModule({
   declarations: [ReportDetailsComponent, ReportOverviewComponent],

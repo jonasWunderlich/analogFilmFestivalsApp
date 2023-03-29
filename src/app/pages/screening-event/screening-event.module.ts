@@ -8,12 +8,12 @@ import { CinemaMapModule } from 'src/app/features/cinema-map/cinema-map.module';
 import { ScreeningEventStoreModule } from 'src/app/root-store/screening-event-store/screening-event-store.module';
 import { CinemaStoreModule } from 'src/app/root-store/cinema-store/cinema-store.module';
 import { LoadingComponent } from 'src/app/shared/modules/ui/loading/loading.component';
-import { TwoColumnLayoutComponent } from 'src/app/features/two-column-layout/two-column-layout.component';
-import { ReportListComponent } from 'src/app/features/report-list/report-list.component';
-import { CinemaListComponent } from 'src/app/features/cinema-list/cinema-list.component';
-import { MovieListComponent } from 'src/app/features/movie-list/movie-list.component';
-import { ProjectionListComponent } from 'src/app/features/projection-list/projection-list.component';
-import { CalendarComponent } from 'src/app/features/calendar/calendar.component';
+import { CinemaListComponent } from 'src/app/shared/modules/ui/cinema-list/cinema-list.component';
+import { CalendarComponent } from 'src/app/shared/modules/ui/calendar/calendar.component';
+import { MovieListComponent } from 'src/app/shared/modules/ui/movie-list/movie-list.component';
+import { ProjectionListComponent } from 'src/app/shared/modules/ui/projection-list/projection-list.component';
+import { ReportListComponent } from 'src/app/shared/modules/ui/report-list/report-list.component';
+import { TwoColumnLayoutComponent } from 'src/app/shared/modules/ui/two-column-layout/two-column-layout.component';
 
 @NgModule({
   declarations: [
