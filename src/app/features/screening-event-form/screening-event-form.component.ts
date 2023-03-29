@@ -1,5 +1,5 @@
 import { NgFor } from '@angular/common';
-import { Component, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Output, ViewChild } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { generateSelectOptionsFromEnum } from 'src/app/shared/helpers/utilities';
 import { ScreeningEventType } from 'src/app/shared/_models/sceening-event-type';
@@ -15,6 +15,7 @@ import { ScreeningEventCreate } from 'src/app/shared/_models/screening-event';
 export class ScreeningEventFormComponent {
   @ViewChild('eventForm') eventForm?: NgForm;
 
+  @Output() submitEvent = new EventEmitter<ScreeningEventCreate>();
   eventTypeSelectOptions = generateSelectOptionsFromEnum(
     '',
     ScreeningEventType
@@ -36,6 +37,8 @@ export class ScreeningEventFormComponent {
   };
 
   submitForm() {
-    // TODO: Submit
+    if (this.eventForm?.valid) {
+      this.submitEvent.emit(this.eventData);
+    }
   }
 }

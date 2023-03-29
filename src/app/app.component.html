@@ -2,6 +2,8 @@
   <a class="brand" [routerLink]="['/']"
     ><h1>{{ appTitle }}</h1></a
   >
+  <app-search></app-search>
+
   <nav>
     <ul>
       <li routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
@@ -13,12 +15,16 @@
       <li routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
         <a routerLink="report">Erfahrungsberichte</a> |
       </li>
+    </ul>
+  </nav>
+  <nav>
+    <ul>
       <li
-        *ngIf="!auth.isAuthenticated"
+        *ngIf="auth.isAuthenticated"
         routerLinkActive="active"
         [routerLinkActiveOptions]="{ exact: true }"
       >
-        <a routerLink="admin">Admin</a> |
+        <a routerLink="admin/event">Event+</a> |
       </li>
       <button (click)="auth.login()" *ngIf="!auth.isAuthenticated">
         Login
@@ -29,9 +35,7 @@
     </ul>
   </nav>
 
-  <app-search></app-search>
-
-  <app-login-form *ngIf="!auth.isAuthenticated"></app-login-form>
+  <!-- <app-login-form *ngIf="auth.isAuthenticated"></app-login-form> -->
 </header>
 
 <main>

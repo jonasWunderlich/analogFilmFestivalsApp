@@ -2,7 +2,9 @@
   <div column-one>
     <i>Übersicht</i>
     <h2>Event erstellen</h2>
-    <app-screening-event-form></app-screening-event-form>
+    <app-screening-event-form
+      (submitEvent)="create($event)"
+    ></app-screening-event-form>
   </div>
 
   <div column-two></div>
