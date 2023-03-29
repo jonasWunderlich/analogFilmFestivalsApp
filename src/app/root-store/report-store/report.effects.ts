@@ -5,7 +5,7 @@ import { catchError, map, switchMap, tap } from 'rxjs/operators';
 import { filter, of } from 'rxjs';
 import * as ReportActions from './report.actions';
 import { NotificationService } from 'src/app/shared/services/notification.service';
-import { AnalogKinoBackendService } from 'src/app/shared/services/analog-kino-backend.service';
+import { AnalogKinoBackendService } from 'src/app/shared/services/analog-kino-http.service';
 
 @Injectable()
 export class ReportEffects {
@@ -13,7 +13,7 @@ export class ReportEffects {
     this.actions$.pipe(
       ofType(ReportActions.loadReports),
       switchMap(() =>
-        this.analogCinemaBackend.getReports().pipe(
+        this.analogHttpService.getReports().pipe(
           map((reports) => ReportActions.loadReportsSucceeded({ reports })),
           catchError((error) => of(ReportActions.loadReportsFailed({ error })))
         )
@@ -44,7 +44,7 @@ export class ReportEffects {
       ofType(ReportActions.loadReportById),
       filter((params) => params?.id?.length > 0),
       switchMap((params) =>
-        this.analogCinemaBackend.getReportById(params.id).pipe(
+        this.analogHttpService.getReportById(params.id).pipe(
           map((report) => ReportActions.loadReportByIdSucceeded({ report })),
           catchError((error) =>
             of(ReportActions.loadReportByIdFailed({ error }))
@@ -56,7 +56,7 @@ export class ReportEffects {
 
   constructor(
     private readonly actions$: Actions,
-    private readonly analogCinemaBackend: AnalogKinoBackendService,
+    private readonly analogHttpService: AnalogKinoBackendService,
     private readonly notificationService: NotificationService
   ) {}
 }

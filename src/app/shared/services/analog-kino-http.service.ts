@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { EMPTY, Observable, of, forkJoin } from 'rxjs';
+import { EMPTY, Observable, of } from 'rxjs';
 import { mockCinemas } from '../_mock/cinema.mock';
 import { mockScreeningEvents } from '../_mock/event.mock';
 import {
@@ -14,15 +14,6 @@ import { Cinema } from '../_models/cinema';
 import { Projection } from '../_models/projection';
 import { Report } from '../_models/report';
 import { ScreeningEvent } from '../_models/screening-event';
-import {
-  Movies,
-  Search,
-  TMDbMovieDetails,
-  TMDbSearchMovies,
-} from '@igorissen/ngx-tmdb-api';
-import { QueryParameters } from '@igorissen/ngx-tmdb-api/lib/types';
-
-const TMDB_API_KEY = '05180a707de5ada5dc9a38cd1f8da87b';
 
 @Injectable({
   providedIn: 'platform',
@@ -120,32 +111,5 @@ export class AnalogKinoBackendService {
       return EMPTY;
     }
     return of(found);
-  }
-
-  searchMovies(query: string): Observable<TMDbSearchMovies | null> {
-    return Search.searchMovies({
-      queryParams: <QueryParameters>{
-        query: query,
-        language: 'US',
-        append_to_response: 'videos,images',
-        api_key: TMDB_API_KEY,
-      },
-    });
-  }
-
-  getMovieDetails(id: string): Observable<TMDbMovieDetails | null> {
-    return Movies.getDetails({
-      pathParams: { movie_id: id },
-      queryParams: {
-        language: 'US',
-        append_to_response: 'videos,images',
-        api_key: TMDB_API_KEY,
-      },
-    });
-  }
-
-  getListOfMovies(ids: string[]): Observable<(TMDbMovieDetails | null)[]> {
-    const observableArray = ids.map((movieId) => this.getMovieDetails(movieId));
-    return forkJoin(observableArray);
   }
 }

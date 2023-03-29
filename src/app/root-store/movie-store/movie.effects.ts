@@ -4,7 +4,7 @@ import { catchError, concatMap, filter, map } from 'rxjs/operators';
 import { throwError } from 'rxjs';
 
 import * as MovieActions from './movie.actions';
-import { AnalogKinoBackendService } from 'src/app/shared/services/analog-kino-backend.service';
+import { TmdbHttpService } from 'src/app/shared/services/tmdb-http.service';
 
 const errorMessage =
   'Something bad happened with the tmdb plugin; please try again later.';
@@ -15,7 +15,7 @@ export class MovieEffects {
     return this.actions$.pipe(
       ofType(MovieActions.searchMoviesByQuery),
       filter((params) => params?.query?.length > 0),
-      concatMap((params) => this.httpService.searchMovies(params.query)),
+      concatMap((params) => this.tmdbhttpService.searchMovies(params.query)),
       catchError(() => {
         return throwError(() => errorMessage);
       }),
@@ -29,7 +29,7 @@ export class MovieEffects {
     return this.actions$.pipe(
       ofType(MovieActions.loadMovieById),
       filter((params) => params?.id?.length > 0),
-      concatMap((params) => this.httpService.getMovieDetails(params.id)),
+      concatMap((params) => this.tmdbhttpService.getMovieDetails(params.id)),
       catchError(() => {
         return throwError(() => errorMessage);
       }),
@@ -41,7 +41,9 @@ export class MovieEffects {
     return this.actions$.pipe(
       ofType(MovieActions.loadMoviesByIds),
       filter((params) => params?.movieIds?.length > 0),
-      concatMap((params) => this.httpService.getListOfMovies(params.movieIds)),
+      concatMap((params) =>
+        this.tmdbhttpService.getListOfMovies(params.movieIds)
+      ),
       catchError(() => {
         return throwError(() => errorMessage);
       }),
@@ -51,6 +53,6 @@ export class MovieEffects {
 
   constructor(
     private actions$: Actions,
-    private httpService: AnalogKinoBackendService
+    private tmdbhttpService: TmdbHttpService
   ) {}
 }

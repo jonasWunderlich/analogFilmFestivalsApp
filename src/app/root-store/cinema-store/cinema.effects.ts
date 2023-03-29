@@ -3,7 +3,7 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { of } from 'rxjs';
 
 import { catchError, filter, map, switchMap, tap } from 'rxjs/operators';
-import { AnalogKinoBackendService } from 'src/app/shared/services/analog-kino-backend.service';
+import { AnalogKinoBackendService } from 'src/app/shared/services/analog-kino-http.service';
 import { NotificationService } from 'src/app/shared/services/notification.service';
 import * as CinemaActions from './cinema.actions';
 
@@ -13,7 +13,7 @@ export class CinemaEffects {
     this.actions$.pipe(
       ofType(CinemaActions.loadCinemas),
       switchMap(() =>
-        this.analogCinemaBackend.getCinemas().pipe(
+        this.analogHttpService.getCinemas().pipe(
           map((cinemas) => CinemaActions.loadCinemasSucceeded({ cinemas })),
           catchError((error) => of(CinemaActions.loadCinemasFailed({ error })))
         )
@@ -44,7 +44,7 @@ export class CinemaEffects {
       ofType(CinemaActions.loadCinemaById),
       filter((params) => params?.id?.length > 0),
       switchMap((params) =>
-        this.analogCinemaBackend.getCinemaById(params.id).pipe(
+        this.analogHttpService.getCinemaById(params.id).pipe(
           map((cinema) => CinemaActions.loadCinemaByIdSucceeded({ cinema })),
           catchError((error) =>
             of(CinemaActions.loadCinemaByIdFailed({ error }))
@@ -56,7 +56,7 @@ export class CinemaEffects {
 
   constructor(
     private readonly actions$: Actions,
-    private readonly analogCinemaBackend: AnalogKinoBackendService,
+    private readonly analogHttpService: AnalogKinoBackendService,
     private readonly notificationService: NotificationService
   ) {}
 }
