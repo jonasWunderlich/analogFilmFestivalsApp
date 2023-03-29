@@ -1,8 +1,8 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { Map } from 'ol';
 import {
-  createCinemaFeatureList,
-  getCoordinatesFromCinemaList,
+  createFeatureList,
+  extractCoordinates,
 } from 'src/app/shared/ui/cinema-map/cinema-mapping.helper';
 import { MapService } from 'src/app/shared/services/map.service';
 import { Cinema } from 'src/app/shared/_models/cinema';
@@ -35,8 +35,8 @@ export class CinemaMapComponent {
   buildMap(cinemas: Cinema[]): void {
     if (cinemas) {
       this.map = this.mapService.buildMapFromFeatureCollection(
-        createCinemaFeatureList(cinemas),
-        getCoordinatesFromCinemaList(cinemas),
+        createFeatureList(cinemas, 'cinema'),
+        extractCoordinates(cinemas),
         'ol-map'
       );
     }
