@@ -24,7 +24,7 @@
 
   <app-search></app-search>
 
-  <app-login-form></app-login-form>
+  <app-login-form *ngIf="!auth.isAuthenticated"></app-login-form>
 </header>
 
 <main>
