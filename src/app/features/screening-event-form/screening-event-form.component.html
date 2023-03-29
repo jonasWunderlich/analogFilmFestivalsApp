@@ -67,5 +67,5 @@
     id="program"
   />
 
-  <button type="submit">Speichern</button>
+  <button [disabled]="eventForm.invalid" type="submit">Speichern</button>
 </form>

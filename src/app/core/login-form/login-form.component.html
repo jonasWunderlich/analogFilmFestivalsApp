@@ -18,5 +18,5 @@
     name="passwordname"
     id="pass"
   />
-  <button type="submit">Login</button>
+  <button [disabled]="loginForm.invalid" type="submit">Login</button>
 </form>
