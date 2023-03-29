@@ -57,7 +57,7 @@ export function mockAuditorium(
       AUDITORIUM_DEFAULT_VALUES.attributes,
       mockNumber(0, AUDITORIUM_DEFAULT_VALUES.attributes?.length)
     ),
-    seats: sample([40, 300, 200, 90]),
+    seats: sample([40, 300, 200, 90]) || AUDITORIUM_DEFAULT_VALUES.seats,
     screen: AUDITORIUM_DEFAULT_VALUES.screen,
     reports: AUDITORIUM_DEFAULT_VALUES.reports,
   };

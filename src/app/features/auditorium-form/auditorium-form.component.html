@@ -1,0 +1,62 @@
+<form [formGroup]="auditoriumForm" (ngSubmit)="submitForm()">
+  <fieldset>
+    <legend>Main</legend>
+    <label for="title">Titel</label>
+    <input
+      formControlName="title"
+      required
+      type="text"
+      name="title"
+      id="eventtitle"
+    />
+
+    <label for="txt">Beschreibung</label>
+    <textarea
+      formControlName="text"
+      rows="5"
+      type="text"
+      name="text"
+      id="txt"
+    ></textarea>
+  </fieldset>
+
+  <fieldset>
+    <legend>Saal</legend>
+    <label for="screen">Screen</label>
+    <input formControlName="screen" type="string" name="screen" id="screen" />
+
+    <label for="seats">Sitze</label>
+    <input formControlName="seats" type="number" name="seats" id="seats" />
+
+    <label for="seats">Besonderheiten</label>
+    <select formControlName="attributes" type="string" id="attributes" multiple>
+      <option *ngFor="let attr of auditoriumAttributes" [value]="attr.id">
+        {{ attr.name }}
+      </option>
+    </select>
+  </fieldset>
+
+  <fieldset>
+    <legend>Technik</legend>
+    <label for="projectors">Projektoren</label>
+    <select formControlName="projectors" type="string" id="projectors" multiple>
+      <option *ngFor="let proj of auditoriumProjectors" [value]="proj.id">
+        {{ proj.name }}
+      </option>
+    </select>
+    <label for="sound">Tontechnik</label>
+    <select
+      formControlName="projectors"
+      type="string"
+      name="projectors"
+      id="projectors"
+      multiple
+    >
+      <option *ngFor="let sound of auditoriumSound" [value]="sound.id">
+        {{ sound.name }}
+      </option>
+    </select>
+  </fieldset>
+
+  <button [disabled]="auditoriumForm.invalid" type="submit">Speichern</button>
+</form>

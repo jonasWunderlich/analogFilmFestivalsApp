@@ -9,12 +9,15 @@ import { ScreeningEventFormComponent } from 'src/app/features/screening-event-fo
 import { CinemaFormComponent } from 'src/app/features/cinema-form/cinema-form.component';
 import { ReportCreateComponent } from 'src/app/features/report-create/report-create.component';
 import { ReportFormComponent } from 'src/app/features/report-form/report-form/report-form.component';
+import { AuditoriumCreateComponent } from 'src/app/features/auditorium-create/auditorium-create.component';
+import { AuditoriumFormComponent } from 'src/app/features/auditorium-form/auditorium-form.component';
 
 @NgModule({
   declarations: [
     ScreeningEventCreateComponent,
     CinemaCreateComponent,
     ReportCreateComponent,
+    AuditoriumCreateComponent,
   ],
   imports: [
     CommonModule,
@@ -23,6 +26,7 @@ import { ReportFormComponent } from 'src/app/features/report-form/report-form/re
     ScreeningEventFormComponent,
     CinemaFormComponent,
     ReportFormComponent,
+    AuditoriumFormComponent,
   ],
 })
 export class AdminModule {}
