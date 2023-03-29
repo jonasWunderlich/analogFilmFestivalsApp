@@ -29,3 +29,18 @@ export interface Cinema {
   reportRefs?: string[];
   projectionRefs?: string[];
 }
+
+export interface CinemaCreate {
+  title: string;
+  lang: number;
+  long: number;
+  text: string;
+  street: string;
+  postcode: string;
+  city: string;
+  mail: string;
+  phone: string;
+  linkHomepage: string;
+  linkProgram: string;
+  linkOpeningHours: string;
+}

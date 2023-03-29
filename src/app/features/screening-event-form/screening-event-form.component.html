@@ -1,71 +1,87 @@
-<strong>Event erstellen:</strong>
 <form (ngSubmit)="submitForm()" #eventForm="ngForm">
-  <label for="eventtitle">Username</label>
-  <input
-    [(ngModel)]="eventData.title"
-    required
-    type="text"
-    name="title"
-    id="eventtitle"
-  />
-  <label for="txt">Beschreibung</label>
-  <textarea
-    [(ngModel)]="eventData.text"
-    rows="5"
-    type="text"
-    name="text"
-    id="txt"
-  ></textarea>
+  <fieldset>
+    <legend>Festival</legend>
+    <label for="eventtitle">Titel</label>
+    <input
+      [(ngModel)]="eventData.title"
+      required
+      type="text"
+      name="title"
+      id="eventtitle"
+    />
+    <label for="txt">Beschreibung</label>
+    <textarea
+      [(ngModel)]="eventData.text"
+      rows="5"
+      type="text"
+      name="text"
+      id="txt"
+    ></textarea>
 
-  <label for="type">Typ</label>
-  <select name="eventtype" id="type" required>
-    <option *ngFor="let option of eventTypeSelectOptions" [value]="option.id">
-      {{ option.name }}
-    </option>
-  </select>
+    <label for="type">Typ</label>
+    <select name="eventtype" id="type" required>
+      <option *ngFor="let option of eventTypeSelectOptions" [value]="option.id">
+        {{ option.name }}
+      </option>
+    </select>
+  </fieldset>
 
-  <label for="start">Start</label>
-  <input
-    [(ngModel)]="eventData.start"
-    required
-    type="date"
-    name="start"
-    id="start"
-  />
+  <fieldset>
+    <legend>Zeitraum</legend>
+    <label for="start">Start</label>
+    <input
+      [(ngModel)]="eventData.start"
+      required
+      type="date"
+      name="start"
+      id="start"
+    />
 
-  <label for="end">Ende</label>
-  <input [(ngModel)]="eventData.end" type="date" name="end" id="end" />
+    <label for="end">Ende</label>
+    <input [(ngModel)]="eventData.end" type="date" name="end" id="end" />
+  </fieldset>
 
-  <label for="street">Strasse</label>
-  <input [(ngModel)]="eventData.street" type="text" name="street" id="street" />
+  <fieldset>
+    <label for="street">Strasse</label>
+    <input
+      [(ngModel)]="eventData.street"
+      type="text"
+      name="street"
+      id="street"
+    />
 
-  <label for="plz">PLZ</label>
-  <input [(ngModel)]="eventData.postcode" type="text" name="plz" id="plz" />
+    <legend>Adresse</legend>
+    <label for="plz">PLZ</label>
+    <input [(ngModel)]="eventData.postcode" type="number" name="plz" id="plz" />
 
-  <label for="city">Stadt</label>
-  <input [(ngModel)]="eventData.city" type="text" name="city" id="city" />
+    <label for="city">Stadt</label>
+    <input [(ngModel)]="eventData.city" type="text" name="city" id="city" />
+  </fieldset>
 
-  <label for="mail">Mail</label>
-  <input [(ngModel)]="eventData.mail" type="text" name="mail" id="mail" />
+  <fieldset>
+    <legend>Kontakt</legend>
+    <label for="mail">Mail</label>
+    <input [(ngModel)]="eventData.mail" type="text" name="mail" id="mail" />
 
-  <label for="phone">Telefon</label>
-  <input [(ngModel)]="eventData.phone" type="text" name="phone" id="phone" />
+    <label for="phone">Telefon</label>
+    <input [(ngModel)]="eventData.phone" type="text" name="phone" id="phone" />
 
-  <label for="homepage">Homepage</label>
-  <input
-    [(ngModel)]="eventData.linkHomepage"
-    type="url"
-    name="homepage"
-    id="homepage"
-  />
+    <label for="homepage">Homepage</label>
+    <input
+      [(ngModel)]="eventData.linkHomepage"
+      type="url"
+      name="homepage"
+      id="homepage"
+    />
 
-  <label for="program">Program</label>
-  <input
-    [(ngModel)]="eventData.linkProgram"
-    type="url"
-    name="program"
-    id="program"
-  />
+    <label for="program">Program</label>
+    <input
+      [(ngModel)]="eventData.linkProgram"
+      type="url"
+      name="program"
+      id="program"
+    />
+  </fieldset>
 
   <button [disabled]="eventForm.invalid" type="submit">Speichern</button>
 </form>

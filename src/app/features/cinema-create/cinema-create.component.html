@@ -1,10 +1,8 @@
 <app-two-column-layout class="c-event-create">
   <div column-one>
     <i>Formular</i>
-    <h2>Event erstellen</h2>
-    <app-screening-event-form
-      (submitEvent)="create($event)"
-    ></app-screening-event-form>
+    <h2>Kino erstellen</h2>
+    <app-cinema-form (submitEvent)="create($event)"></app-cinema-form>
   </div>
 
   <div column-two class="right">+</div>

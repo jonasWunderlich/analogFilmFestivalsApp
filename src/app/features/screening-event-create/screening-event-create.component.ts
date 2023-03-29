@@ -1,6 +1,6 @@
-import { Component, Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Component } from '@angular/core';
 import { ScreeningEventCreate } from 'src/app/shared/_models/screening-event';
+import { ScreeningEventCreateService } from './screening-event-create.service';
 
 @Component({
   selector: 'app-screening-event-create',
@@ -8,7 +8,7 @@ import { ScreeningEventCreate } from 'src/app/shared/_models/screening-event';
   styleUrls: ['./screening-event-create.component.scss'],
 })
 export class ScreeningEventCreateComponent {
-  constructor(private readonly service: ScreeningEventService) {}
+  constructor(private readonly service: ScreeningEventCreateService) {}
 
   create(screeningEvent: ScreeningEventCreate) {
     this.service
@@ -16,14 +16,5 @@ export class ScreeningEventCreateComponent {
       .subscribe((screeningEvent) =>
         console.log('event created', screeningEvent)
       );
-  }
-}
-
-@Injectable({ providedIn: 'platform' })
-export class ScreeningEventService {
-  create(
-    screeningEvent: ScreeningEventCreate
-  ): Observable<ScreeningEventCreate> {
-    return of(screeningEvent);
   }
 }

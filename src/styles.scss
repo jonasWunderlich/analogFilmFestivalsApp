@@ -2,7 +2,6 @@
 @import url("https://fonts.googleapis.com/css?family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap");
 
 body {
-  font-family: "Roboto";
   font-family: "Lora";
   color: var(--text-color);
   margin: 0;
@@ -47,4 +46,31 @@ ul {
   strong {
     font-weight: 600;
   }
+}
+
+button {
+  font-family: "Lora";
+  background: var(--link-color);
+  border: none;
+  padding: 8px 8px;
+  color: white;
+  font-size: 1em;
+  margin: 4px 4px;
+
+  &:hover {
+    background-color: var(--link-color-hover);
+    cursor: pointer;
+  }
+}
+
+label {
+  display: block;
+  margin-top: 1em;
+}
+
+input,
+textarea,
+select {
+  display: block;
+  min-width: 300px;
 }

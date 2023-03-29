@@ -26,6 +26,13 @@
       >
         <a routerLink="admin/event">Event+</a> |
       </li>
+      <li
+        *ngIf="auth.isAuthenticated"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
+        <a routerLink="admin/cinema">Kino+</a> |
+      </li>
       <button (click)="auth.login()" *ngIf="!auth.isAuthenticated">
         Login
       </button>

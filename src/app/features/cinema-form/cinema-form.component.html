@@ -1,0 +1,74 @@
+<form [formGroup]="cinemaForm" (ngSubmit)="submitForm()">
+  <fieldset>
+    <legend>Main</legend>
+    <label for="title">Titel</label>
+    <input
+      formControlName="title"
+      required
+      type="text"
+      name="title"
+      id="eventtitle"
+    />
+
+    <label for="txt">Beschreibung</label>
+    <textarea
+      formControlName="text"
+      rows="5"
+      type="text"
+      name="text"
+      id="txt"
+    ></textarea>
+  </fieldset>
+  <fieldset>
+    <legend>Koordinaten</legend>
+    <label for="lang">Langitude</label>
+    <input formControlName="lang" type="number" name="lang" id="lang" />
+    <label for="long">Longitude</label>
+    <input formControlName="long" type="number" name="long" id="long" />
+  </fieldset>
+
+  <fieldset>
+    <legend>Adresse</legend>
+    <label for="street">Strasse</label>
+    <input formControlName="street" type="text" name="street" id="street" />
+    <label for="plz">PLZ</label>
+    <input formControlName="postcode" type="number" name="plz" id="plz" />
+    <label for="city">Stadt</label>
+    <input formControlName="city" type="text" name="city" id="city" />
+  </fieldset>
+
+  <fieldset>
+    <legend>Kontakt</legend>
+    <label for="mail">Mail</label>
+    <input formControlName="mail" type="text" name="mail" id="mail" />
+
+    <label for="phone">Telefon</label>
+    <input formControlName="phone" type="text" name="phone" id="phone" />
+
+    <label for="homepage">Homepage</label>
+    <input
+      formControlName="linkHomepage"
+      type="url"
+      name="homepage"
+      id="homepage"
+    />
+
+    <label for="program">Program</label>
+    <input
+      formControlName="linkProgram"
+      type="url"
+      name="program"
+      id="program"
+    />
+
+    <label for="openingHours">Öffnungszeiten</label>
+    <input
+      formControlName="linkOpeningHours"
+      type="url"
+      name="openingHours"
+      id="openingHours"
+    />
+  </fieldset>
+
+  <button [disabled]="cinemaForm.invalid" type="submit">Speichern</button>
+</form>
