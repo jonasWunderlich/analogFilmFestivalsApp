@@ -18,19 +18,34 @@ export class CinemaMapComponent {
   map?: Map;
 
   @Input()
+  set geoObject(value: GeometryObject | null | undefined) {
+    if (value) {
+      this.buildMapFromObject(value);
+    }
+  }
+  @Input()
   set geoArray(value: GeometryObject[] | null) {
     if (value) {
-      this.buildMap(value);
+      this.buildMapFromCollection(value);
     }
   }
 
   constructor(private readonly mapService: MapService) {}
 
-  buildMap(cinemas: GeometryObject[]): void {
-    if (cinemas) {
+  buildMapFromObject(geoObj: GeometryObject): void {
+    if (geoObj) {
+      this.map = this.mapService.buildMap(
+        geoObj.geoCoordinates || [],
+        'ol-map'
+      );
+    }
+  }
+
+  buildMapFromCollection(geoObjs: GeometryObject[]): void {
+    if (geoObjs) {
       this.map = this.mapService.buildMapFromFeatureCollection(
-        createFeatureList(cinemas, 'cinema'),
-        extractCoordinates(cinemas),
+        createFeatureList(geoObjs, 'cinema'),
+        extractCoordinates(geoObjs),
         'ol-map'
       );
     }

@@ -1,7 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { Store } from '@ngrx/store';
-import { selectCinemas } from 'src/app/root-store/cinema-store/cinema.selectors';
-import { selectReports } from 'src/app/root-store/report-store/report.selectors';
+import { ReportOverviewService } from './report-overview.service';
 
 @Component({
   selector: 'app-report-overview',
@@ -10,8 +8,8 @@ import { selectReports } from 'src/app/root-store/report-store/report.selectors'
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ReportOverviewComponent {
-  reports$ = this.store.select(selectReports);
-  cinemas$ = this.store.select(selectCinemas);
+  reports$ = this.overviewService.reports$;
+  cinemas$ = this.overviewService.cinemas$;
 
-  constructor(private readonly store: Store) {}
+  constructor(private readonly overviewService: ReportOverviewService) {}
 }

@@ -11,6 +11,27 @@ import { Projection } from 'src/app/shared/_models/projection';
   imports: [NgFor, NgIf, DatePipe],
 })
 export class ProjectionListComponent {
-  @Input() projections: Projection[] = [];
-  @Input() showTitle = true;
+  private _projections: Projection[] = [];
+  private _showTitle = true;
+
+  @Input()
+  set projections(value: Projection[] | null | undefined) {
+    if (value) {
+      this._projections = value;
+    }
+  }
+  get projections() {
+    return this._projections;
+  }
+
+  @Input()
+  set showTitle(value: boolean) {
+    if (value) {
+      this._showTitle = value;
+    }
+  }
+
+  get showTitle() {
+    return this._showTitle;
+  }
 }

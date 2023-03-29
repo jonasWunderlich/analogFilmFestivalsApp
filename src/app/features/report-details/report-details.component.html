@@ -7,8 +7,7 @@
       <p>{{ report.text }}</p>
 
       <app-projection-list
-        *ngIf="screeningEvent?.projections"
-        [projections]="screeningEvent?.projections || []"
+        [projections]="projections$ | async"
       ></app-projection-list>
     </ng-container>
 

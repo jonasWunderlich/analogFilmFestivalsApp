@@ -1,16 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { Store } from '@ngrx/store';
-import { Map } from 'ol';
-import { filter, take } from 'rxjs';
-import { selectActiveCinema } from '../../root-store/cinema-store/cinema.selectors';
-
 import { ActivatedRoute } from '@angular/router';
-import { randomDate, sortByDate } from '../../shared/helpers/mock-data.helper';
-import { MapService } from '../../shared/ui/cinema-map/map.service';
-import { mockProjections } from '../../shared/_mock/projection.mock';
-import { Projection } from '../../shared/_models/projection';
-import { setActiveCinemaId } from './cinema-details.actions';
-import { neitherNullNorUndefined } from 'src/app/shared/helpers/null-or-undefined.helper';
+import { CinemaDetailsService } from './cinema-details.service';
 
 @Component({
   selector: 'app-cinema',
@@ -19,31 +9,17 @@ import { neitherNullNorUndefined } from 'src/app/shared/helpers/null-or-undefine
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CinemaDetailsComponent implements OnInit {
-  cinema$ = this.store.select(selectActiveCinema);
-  map?: Map;
-  projections: Projection[] = mockProjections(
-    12,
-    randomDate(new Date(), new Date(2023, 1, 0)),
-    90
-  ).sort((a, b) => sortByDate(a.date, b.date));
+  cinema$ = this.detailsService.cinema$;
+  projections = this.detailsService.projections;
 
   constructor(
-    private readonly store: Store,
-    private readonly mapService: MapService,
-    private readonly activatedRoute: ActivatedRoute
+    private readonly detailsService: CinemaDetailsService,
+    private readonly route: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
-    this.activatedRoute.params
-      .pipe(filter((params) => neitherNullNorUndefined(params['id'])))
-      .subscribe((params) => {
-        this.store.dispatch(setActiveCinemaId({ cinemaId: params['id'] }));
-      });
-    this.cinema$.pipe(take(1)).subscribe((cinema) => {
-      this.map = this.mapService.buildMap(
-        cinema?.geoCoordinates || [],
-        'ol-map-cinema-details'
-      );
+    this.route.params.subscribe((params) => {
+      this.detailsService.setActiveCinema(params['id']);
     });
   }
 }

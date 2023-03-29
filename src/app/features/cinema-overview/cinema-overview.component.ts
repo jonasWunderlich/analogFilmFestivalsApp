@@ -1,6 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { Store } from '@ngrx/store';
-import { selectCinemas } from 'src/app/root-store/cinema-store/cinema.selectors';
+import { CinemaOverviewService } from './cinema-overview.service';
 
 @Component({
   selector: 'app-cinema-overview',
@@ -9,7 +8,7 @@ import { selectCinemas } from 'src/app/root-store/cinema-store/cinema.selectors'
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CinemaOverviewComponent {
-  cinemas$ = this.store.select(selectCinemas);
+  cinemas$ = this.overviewService.cinemas$;
 
-  constructor(private readonly store: Store) {}
+  constructor(private readonly overviewService: CinemaOverviewService) {}
 }
