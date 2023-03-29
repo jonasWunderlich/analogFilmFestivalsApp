@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { cn } from '@fullcalendar/core/internal-common';
 import { Store } from '@ngrx/store';
 import { filter, take } from 'rxjs';
 import { loadMoviesByIds } from 'src/app/root-store/movie-store/movie.actions';
@@ -17,6 +16,7 @@ import { setActiveReport } from './report-details.actions';
   selector: 'app-report-details',
   templateUrl: './report-details.component.html',
   styleUrls: ['./report-details.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ReportDetailsComponent implements OnInit {
   cinemas$ = this.store.select(selectCinemas);

@@ -1,0 +1,10 @@
+<strong>Suche: </strong>
+<input
+  type="search"
+  autocomplete="off"
+  aria-label="Suche"
+  [class.loading]="isLoading"
+  #searchInput
+  (input)="input$.next(searchInput.value)"
+/>
+<!-- <p *ngIf="results$ | async as results">Ergebnisse: {{ results.length }}</p> -->

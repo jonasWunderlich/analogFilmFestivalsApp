@@ -12,6 +12,7 @@ import { AppComponent } from './app.component';
 import { RootStoreModule } from './root-store/root-store.module';
 import { TitleStrategy } from '@angular/router';
 import { CustomTitleStrategy } from './shared/services/custom-title-strategy.service';
+import { SearchModule } from './shared/modules/ui/search/search.module';
 registerLocaleData(localeDe);
 
 export const APP_TITLE = new InjectionToken<string>('app-title');
@@ -23,6 +24,7 @@ export const APP_TITLE = new InjectionToken<string>('app-title');
     AppRoutingModule,
     RootStoreModule,
     NgxTmdbApiModule.forRoot({ apiKey: '05180a707de5ada5dc9a38cd1f8da87b' }),
+    SearchModule,
   ],
   providers: [
     { provide: APP_TITLE, useValue: 'analogkino.net' },

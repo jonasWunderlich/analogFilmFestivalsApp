@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Map } from 'ol';
 import { filter, take } from 'rxjs';
@@ -19,6 +19,7 @@ import { neitherNullNorUndefined } from 'src/app/shared/helpers/null-or-undefine
   selector: 'app-cinema',
   templateUrl: './cinema-details.component.html',
   styleUrls: ['./cinema-details.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CinemaDetailsComponent implements OnInit {
   cinema$ = this.store.select(selectActiveCinema);
