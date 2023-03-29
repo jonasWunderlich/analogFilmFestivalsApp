@@ -13,6 +13,8 @@ import { RootStoreModule } from './root-store/root-store.module';
 import { TitleStrategy } from '@angular/router';
 import { CustomTitleStrategy } from './shared/services/custom-title-strategy.service';
 import { SearchComponent } from './shared/ui/search/search.component';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from './shared/services/auth.interceptor';
 registerLocaleData(localeDe);
 
 export const APP_TITLE = new InjectionToken<string>('app-title');
@@ -31,6 +33,7 @@ export const APP_TITLE = new InjectionToken<string>('app-title');
     { provide: LOCALE_ID, useValue: 'de-DE' },
     { provide: LocationStrategy, useClass: HashLocationStrategy },
     { provide: TitleStrategy, useClass: CustomTitleStrategy },
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
   ],
   bootstrap: [AppComponent],
 })

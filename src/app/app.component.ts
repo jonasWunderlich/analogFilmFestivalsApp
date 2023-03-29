@@ -4,6 +4,7 @@ import { APP_TITLE } from './app.module';
 import { loadCinemas } from './root-store/cinema-store/cinema.actions';
 import { loadReports } from './root-store/report-store/report.actions';
 import { loadScreeningEvents } from './root-store/screening-event-store/screening-event.actions';
+import { AuthService } from './shared/services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -14,7 +15,8 @@ export class AppComponent implements OnInit {
   appTitle?: string;
   constructor(
     @Inject(APP_TITLE) appTitle: string,
-    private readonly store: Store
+    private readonly store: Store,
+    public readonly auth: AuthService
   ) {
     this.appTitle = appTitle;
   }

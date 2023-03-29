@@ -13,9 +13,12 @@
       <li routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
         <a routerLink="report">Erfahrungsberichte</a> |
       </li>
-      <li routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
-        <a routerLink="contact">Kontakt</a>
-      </li>
+      <button (click)="auth.login()" *ngIf="!auth.isAuthenticated">
+        Login
+      </button>
+      <button (click)="auth.logout()" *ngIf="auth.isAuthenticated">
+        Logout
+      </button>
     </ul>
   </nav>
 
