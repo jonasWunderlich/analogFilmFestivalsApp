@@ -15,6 +15,7 @@ import { CustomTitleStrategy } from './shared/services/custom-title-strategy.ser
 import { SearchComponent } from './shared/ui/search/search.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './shared/services/auth.interceptor';
+import { LoginFormComponent } from './core/login-form/login-form.component';
 registerLocaleData(localeDe);
 
 export const APP_TITLE = new InjectionToken<string>('app-title');
@@ -27,6 +28,7 @@ export const APP_TITLE = new InjectionToken<string>('app-title');
     RootStoreModule,
     NgxTmdbApiModule.forRoot({ apiKey: '05180a707de5ada5dc9a38cd1f8da87b' }),
     SearchComponent,
+    LoginFormComponent,
   ],
   providers: [
     { provide: APP_TITLE, useValue: 'analogkino.net' },
