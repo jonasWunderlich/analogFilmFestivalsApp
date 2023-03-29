@@ -12,7 +12,7 @@ import { AppComponent } from './app.component';
 import { RootStoreModule } from './root-store/root-store.module';
 import { TitleStrategy } from '@angular/router';
 import { CustomTitleStrategy } from './shared/services/custom-title-strategy.service';
-import { SearchComponent } from './shared/modules/ui/search/search.component';
+import { SearchComponent } from './shared/ui/search/search.component';
 registerLocaleData(localeDe);
 
 export const APP_TITLE = new InjectionToken<string>('app-title');
