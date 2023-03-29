@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { EventRoutingModule } from './event-routing.module';
+import { EventRoutingModule } from './screening-event-routing.module';
 import { ScreeningEventStoreModule } from 'src/app/root-store/screening-event-store/screening-event-store.module';
 import { CinemaStoreModule } from 'src/app/root-store/cinema-store/cinema-store.module';
 import { LoadingComponent } from 'src/app/shared/ui/loading/loading.component';

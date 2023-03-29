@@ -29,3 +29,18 @@ export interface ScreeningEvent {
   projectionRefs?: string[];
   reportRefs?: string[];
 }
+
+export interface ScreeningEventCreate {
+  title: string;
+  start: Date;
+  end?: Date;
+  text?: string;
+  type?: ScreeningEventType;
+  street?: string;
+  postcode?: string;
+  city?: string;
+  mail?: string;
+  phone?: string;
+  linkHomepage?: string;
+  linkProgram?: string;
+}

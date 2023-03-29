@@ -25,6 +25,11 @@ const routes: Routes = [
       import('./pages/report/report.module').then((m) => m.ReportModule),
   },
   {
+    path: 'admin',
+    loadChildren: () =>
+      import('./pages/admin/admin.module').then((m) => m.AdminModule),
+  },
+  {
     path: '**',
     redirectTo: 'event',
   },
