@@ -2,16 +2,13 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Map } from 'ol';
 import { filter, take } from 'rxjs';
-import { selectActiveCinema } from '../../../root-store/cinema-store/cinema.selectors';
+import { selectActiveCinema } from '../../root-store/cinema-store/cinema.selectors';
 
 import { ActivatedRoute } from '@angular/router';
-import {
-  randomDate,
-  sortByDate,
-} from '../../../shared/helpers/mock-data.helper';
-import { MapService } from '../../../shared/ui/cinema-map/map.service';
-import { mockProjections } from '../../../shared/_mock/projection.mock';
-import { Projection } from '../../../shared/_models/projection';
+import { randomDate, sortByDate } from '../../shared/helpers/mock-data.helper';
+import { MapService } from '../../shared/ui/cinema-map/map.service';
+import { mockProjections } from '../../shared/_mock/projection.mock';
+import { Projection } from '../../shared/_models/projection';
 import { setActiveCinemaId } from './cinema-details.actions';
 import { neitherNullNorUndefined } from 'src/app/shared/helpers/null-or-undefined.helper';
 

@@ -4,7 +4,7 @@ import {
   DefaultProjectorFn,
   MemoizedSelector,
 } from '@ngrx/store';
-import { selectRouteParams } from 'src/app/root-store/routing-store/reducers/router.reducer';
+import { selectRouteParams } from 'src/app/root-store/routing-store/router.reducer';
 import { neitherNullNorUndefined } from 'src/app/shared/helpers/null-or-undefined.helper';
 import { ScreeningEvent } from 'src/app/shared/_models/screening-event';
 import * as fromScreeningEvent from './screening-event.reducer';

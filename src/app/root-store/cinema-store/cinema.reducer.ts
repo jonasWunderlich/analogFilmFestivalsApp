@@ -1,6 +1,6 @@
 import { createEntityAdapter, EntityAdapter, EntityState } from '@ngrx/entity';
 import { createFeature, createReducer, on } from '@ngrx/store';
-import { setActiveCinemaId } from 'src/app/pages/cinema/cinema-details/cinema-details.actions';
+import { setActiveCinemaId } from 'src/app/features/cinema-details/cinema-details.actions';
 
 import { Cinema } from 'src/app/shared/_models/cinema';
 import * as CinemaActions from './cinema.actions';

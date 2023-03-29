@@ -4,10 +4,10 @@ import {
   DefaultProjectorFn,
   MemoizedSelector,
 } from '@ngrx/store';
-import { selectRouteParams } from 'src/app/root-store/routing-store/reducers/router.reducer';
+import { selectRouteParams } from 'src/app/root-store/routing-store/router.reducer';
 import { neitherNullNorUndefined } from 'src/app/shared/helpers/null-or-undefined.helper';
 import { Report } from 'src/app/shared/_models/report';
-import * as fromReport from '../reducers/report.reducer';
+import * as fromReport from './report.reducer';
 
 export const selectReportState = createFeatureSelector<fromReport.State>(
   fromReport.reportFeatureKey

@@ -4,7 +4,7 @@ import {
   DefaultProjectorFn,
   MemoizedSelector,
 } from '@ngrx/store';
-import { selectRouteParams } from 'src/app/root-store/routing-store/reducers/router.reducer';
+import { selectRouteParams } from 'src/app/root-store/routing-store/router.reducer';
 import { neitherNullNorUndefined } from 'src/app/shared/helpers/null-or-undefined.helper';
 import { Cinema } from 'src/app/shared/_models/cinema';
 import * as fromCinema from './cinema.reducer';

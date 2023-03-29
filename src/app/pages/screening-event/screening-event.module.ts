@@ -1,8 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { ScreeningEventDetailsComponent } from './screening-event-details/screening-event-details.component';
-import { ScreeningEventOverviewComponent } from './screening-event-overview/screening-event-overview.component';
 import { EventRoutingModule } from './event-routing.module';
 import { ScreeningEventStoreModule } from 'src/app/root-store/screening-event-store/screening-event-store.module';
 import { CinemaStoreModule } from 'src/app/root-store/cinema-store/cinema-store.module';
@@ -14,6 +12,8 @@ import { ProjectionListComponent } from 'src/app/shared/ui/projection-list/proje
 import { ReportListComponent } from 'src/app/shared/ui/report-list/report-list.component';
 import { TwoColumnLayoutComponent } from 'src/app/shared/ui/two-column-layout/two-column-layout.component';
 import { CinemaMapComponent } from 'src/app/shared/ui/cinema-map/cinema-map.component';
+import { ScreeningEventDetailsComponent } from 'src/app/features/screening-event-details/screening-event-details.component';
+import { ScreeningEventOverviewComponent } from 'src/app/features/screening-event-overview/screening-event-overview.component';
 
 @NgModule({
   declarations: [

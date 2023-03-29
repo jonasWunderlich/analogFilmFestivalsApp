@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { selectCinemas } from '../../../root-store/cinema-store/cinema.selectors';
+import { selectCinemas } from 'src/app/root-store/cinema-store/cinema.selectors';
 
 @Component({
   selector: 'app-cinema-overview',

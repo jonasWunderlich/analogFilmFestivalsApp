@@ -2,14 +2,14 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { filter, take } from 'rxjs';
+import { selectCinemas } from 'src/app/root-store/cinema-store/cinema.selectors';
 import { loadMoviesByIds } from 'src/app/root-store/movie-store/movie.actions';
 import { selectSearchedMoviesById } from 'src/app/root-store/movie-store/movie.selectors';
-import { selectActiveReport } from 'src/app/root-store/report-store/selectors/report.selectors';
+import { selectActiveReport } from 'src/app/root-store/report-store/report.selectors';
+import { selectScreeningEvents } from 'src/app/root-store/screening-event-store/screening-event.selectors';
 import { neitherNullNorUndefined } from 'src/app/shared/helpers/null-or-undefined.helper';
 import { MOCKED_TMDBIDS } from 'src/app/shared/_mock/constants';
-import { selectCinemas } from '../../../root-store/cinema-store/cinema.selectors';
-import { selectScreeningEvents } from '../../../root-store/screening-event-store/screening-event.selectors';
-import { ScreeningEvent } from '../../../shared/_models/screening-event';
+import { ScreeningEvent } from 'src/app/shared/_models/screening-event';
 import { setActiveReport } from './report-details.actions';
 
 @Component({
