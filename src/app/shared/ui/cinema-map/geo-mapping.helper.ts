@@ -2,7 +2,7 @@ import { Feature } from 'ol';
 import { Coordinate } from 'ol/coordinate';
 import { Point } from 'ol/geom';
 
-interface GeometryObject {
+export interface GeometryObject {
   geoCoordinates: Coordinate;
   title: string;
   id: string;

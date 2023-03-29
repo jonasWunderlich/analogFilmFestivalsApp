@@ -56,5 +56,5 @@
     <app-cinema-list [cinemas]="cinemas$ | async"></app-cinema-list>
   </div>
 
-  <app-cinema-map column-two [cinemas]="cinemas$ | async"></app-cinema-map>
+  <app-cinema-map column-two [geoArray]="cinemas$ | async"></app-cinema-map>
 </app-two-column-layout>

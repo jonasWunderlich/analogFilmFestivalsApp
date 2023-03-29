@@ -9,7 +9,7 @@ import {
   randomDate,
   sortByDate,
 } from '../../../shared/helpers/mock-data.helper';
-import { MapService } from '../../../shared/services/map.service';
+import { MapService } from '../../../shared/ui/cinema-map/map.service';
 import { mockProjections } from '../../../shared/_mock/projection.mock';
 import { Projection } from '../../../shared/_models/projection';
 import { setActiveCinemaId } from './cinema-details.actions';

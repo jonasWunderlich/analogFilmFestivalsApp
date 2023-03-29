@@ -1,5 +1,5 @@
 export enum ScreeningEventType {
-  SINGLE = 'SPECIAL',
-  SERIES = 'SERIES',
-  FESTIVAL = 'FESTIVAL',
+  SINGLE = 'Special',
+  SERIES = 'Reihe',
+  FESTIVAL = 'Festival',
 }

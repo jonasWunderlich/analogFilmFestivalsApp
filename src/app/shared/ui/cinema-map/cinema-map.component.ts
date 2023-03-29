@@ -3,15 +3,9 @@ import { Map } from 'ol';
 import {
   createFeatureList,
   extractCoordinates,
-} from 'src/app/shared/ui/cinema-map/cinema-mapping.helper';
-import { MapService } from 'src/app/shared/services/map.service';
-import { Cinema } from 'src/app/shared/_models/cinema';
-
-export interface MapDataLike {
-  id: string;
-  url: string;
-  title: string;
-}
+  GeometryObject,
+} from 'src/app/shared/ui/cinema-map/geo-mapping.helper';
+import { MapService } from './map.service';
 
 @Component({
   selector: 'app-cinema-map',
@@ -24,7 +18,7 @@ export class CinemaMapComponent {
   map?: Map;
 
   @Input()
-  set cinemas(value: Cinema[] | null) {
+  set geoArray(value: GeometryObject[] | null) {
     if (value) {
       this.buildMap(value);
     }
@@ -32,7 +26,7 @@ export class CinemaMapComponent {
 
   constructor(private readonly mapService: MapService) {}
 
-  buildMap(cinemas: Cinema[]): void {
+  buildMap(cinemas: GeometryObject[]): void {
     if (cinemas) {
       this.map = this.mapService.buildMapFromFeatureCollection(
         createFeatureList(cinemas, 'cinema'),
