@@ -3,13 +3,15 @@
     <i>Übersicht</i>
     <h2>Erfahrungsberichte</h2>
 
-    <div *ngFor="let report of reports$ | async; else: loading" class="report">
-      <p class="prefix-date">{{ report.date | date }}</p>
-      <a [routerLink]="['/', 'report', report.id]"
-        ><h3>{{ report.title }}</h3></a
-      >
-      <p>{{ report.text }}</p>
-    </div>
+    <ng-container *ngFor="let report of reports$ | async">
+      <div class="report">
+        <p class="prefix-date">{{ report.date | date }}</p>
+        <a [routerLink]="['/', 'report', report.id]"
+          ><h3>{{ report.title }}</h3></a
+        >
+        <p>{{ report.text }}</p>
+      </div>
+    </ng-container>
 
     <ng-template #loading>
       <app-loading></app-loading>

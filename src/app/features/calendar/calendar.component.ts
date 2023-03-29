@@ -5,6 +5,7 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { Router } from '@angular/router';
+import { FullCalendarModule } from '@fullcalendar/angular';
 import { CalendarOptions, EventInput } from '@fullcalendar/core';
 import dayGridPlugin from '@fullcalendar/daygrid';
 
@@ -14,6 +15,8 @@ import dayGridPlugin from '@fullcalendar/daygrid';
   styleUrls: ['./calendar.component.scss'],
   encapsulation: ViewEncapsulation.ShadowDom,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [FullCalendarModule],
 })
 export class CalendarComponent {
   calendarOptions: CalendarOptions = {};

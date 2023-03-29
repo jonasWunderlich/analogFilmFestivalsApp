@@ -1,4 +1,6 @@
+import { DatePipe, NgFor } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { Report } from 'src/app/shared/_models/report';
 
 @Component({
@@ -6,6 +8,8 @@ import { Report } from 'src/app/shared/_models/report';
   templateUrl: './report-list.component.html',
   styleUrls: ['./report-list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [RouterLink, NgFor, DatePipe],
 })
 export class ReportListComponent {
   @Input() reports: Report[] = [];

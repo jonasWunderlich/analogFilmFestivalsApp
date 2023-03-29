@@ -3,8 +3,10 @@
     <i>Übersicht</i>
     <h2>Kinos</h2>
 
+    <app-loading></app-loading>
+
     <div
-      *ngFor="let cinema of cinemas$ | async; else: loading"
+      *ngFor="let cinema of cinemas$ | async"
       class="c-cinema-overview__cinema"
     >
       <a [routerLink]="['/', 'cinema', cinema.id]"
