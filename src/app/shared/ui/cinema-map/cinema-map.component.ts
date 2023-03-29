@@ -3,7 +3,7 @@ import { Map } from 'ol';
 import {
   createCinemaFeatureList,
   getCoordinatesFromCinemaList,
-} from 'src/app/features/cinema-map/cinema-mapping.helper';
+} from 'src/app/shared/ui/cinema-map/cinema-mapping.helper';
 import { MapService } from 'src/app/shared/services/map.service';
 import { Cinema } from 'src/app/shared/_models/cinema';
 
@@ -18,6 +18,7 @@ export interface MapDataLike {
   templateUrl: './cinema-map.component.html',
   styleUrls: ['./cinema-map.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
 })
 export class CinemaMapComponent {
   map?: Map;
