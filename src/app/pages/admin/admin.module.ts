@@ -7,15 +7,22 @@ import { TwoColumnLayoutComponent } from 'src/app/shared/ui/two-column-layout/tw
 import { CinemaCreateComponent } from 'src/app/features/cinema-create/cinema-create.component';
 import { ScreeningEventFormComponent } from 'src/app/features/screening-event-form/screening-event-form.component';
 import { CinemaFormComponent } from 'src/app/features/cinema-form/cinema-form.component';
+import { ReportCreateComponent } from 'src/app/features/report-create/report-create.component';
+import { ReportFormComponent } from 'src/app/features/report-form/report-form/report-form.component';
 
 @NgModule({
-  declarations: [ScreeningEventCreateComponent, CinemaCreateComponent],
+  declarations: [
+    ScreeningEventCreateComponent,
+    CinemaCreateComponent,
+    ReportCreateComponent,
+  ],
   imports: [
     CommonModule,
     AdminRoutingModule,
     TwoColumnLayoutComponent,
     ScreeningEventFormComponent,
     CinemaFormComponent,
+    ReportFormComponent,
   ],
 })
 export class AdminModule {}

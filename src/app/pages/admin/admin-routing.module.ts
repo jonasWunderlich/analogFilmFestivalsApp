@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CinemaCreateComponent } from 'src/app/features/cinema-create/cinema-create.component';
+import { ReportCreateComponent } from 'src/app/features/report-create/report-create.component';
 import { ScreeningEventCreateComponent } from 'src/app/features/screening-event-create/screening-event-create.component';
 
 const routes: Routes = [
@@ -22,7 +23,7 @@ const routes: Routes = [
   {
     path: 'report',
     title: 'Bericht erstellen',
-    component: CinemaCreateComponent,
+    component: ReportCreateComponent,
   },
 ];
 

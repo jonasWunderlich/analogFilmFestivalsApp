@@ -36,7 +36,7 @@ export function mockReport(reportValues: DeepPartial<Report>): Report {
     createdAt: REPORT_DEFAULT_VALUES.createdAt,
     lastModifiedAt: REPORT_DEFAULT_VALUES.lastModifiedAt,
     title: sample(MOCKED_REPORT_NAMES) || REPORT_DEFAULT_VALUES.title,
-    text: sample(MOCKED_REPORT_TEXTS),
+    text: sample(MOCKED_REPORT_TEXTS) || REPORT_DEFAULT_VALUES.text,
     date,
   };
   return {
