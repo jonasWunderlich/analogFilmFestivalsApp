@@ -12,6 +12,7 @@ const PROJECTION_DEFAULT_VALUES: Projection = {
   reports: [],
   date: randomDate(new Date(), new Date(2023, 6, 0)),
   tmdb: MOCKED_TMDBIDS[0],
+  text: '',
 };
 
 /**
@@ -37,6 +38,7 @@ export function mockProjection(
     reports: PROJECTION_DEFAULT_VALUES.reports,
     date,
     tmdb: sample(MOCKED_TMDBIDS),
+    text: '',
   };
   return {
     ...defaultValues,

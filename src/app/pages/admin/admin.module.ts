@@ -11,6 +11,8 @@ import { ReportCreateComponent } from 'src/app/features/report-create/report-cre
 import { ReportFormComponent } from 'src/app/features/report-form/report-form/report-form.component';
 import { AuditoriumCreateComponent } from 'src/app/features/auditorium-create/auditorium-create.component';
 import { AuditoriumFormComponent } from 'src/app/features/auditorium-form/auditorium-form.component';
+import { ProjectionFormComponent } from 'src/app/features/projection-form/projection-form.component';
+import { ProjectionCreateComponent } from 'src/app/features/projection-create/projection-create.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +20,7 @@ import { AuditoriumFormComponent } from 'src/app/features/auditorium-form/audito
     CinemaCreateComponent,
     ReportCreateComponent,
     AuditoriumCreateComponent,
+    ProjectionCreateComponent,
   ],
   imports: [
     CommonModule,
@@ -27,6 +30,7 @@ import { AuditoriumFormComponent } from 'src/app/features/auditorium-form/audito
     CinemaFormComponent,
     ReportFormComponent,
     AuditoriumFormComponent,
+    ProjectionFormComponent,
   ],
 })
 export class AdminModule {}

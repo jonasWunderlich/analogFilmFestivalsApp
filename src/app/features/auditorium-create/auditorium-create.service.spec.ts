@@ -1,6 +1,5 @@
 import { TestBed } from '@angular/core/testing';
-
-import { AuditoriumCreateService } from './cinema-create.service';
+import { AuditoriumCreateService } from './auditorium-create.service';
 
 describe('AuditoriumCreateService', () => {
   let service: AuditoriumCreateService;

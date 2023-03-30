@@ -1,0 +1,40 @@
+<form [formGroup]="form" (ngSubmit)="submitForm()">
+  <fieldset>
+    <legend>Vorführung</legend>
+    <label for="date">Datum</label>
+    <input formControlName="date" type="date" name="date" id="date" />
+  </fieldset>
+
+  <fieldset>
+    <legend>Film</legend>
+
+    <label for="title">Titel*</label>
+    <input
+      formControlName="title"
+      required
+      type="text"
+      name="title"
+      id="eventtitle"
+    />
+
+    <label for="tmdb">TMDB Id</label>
+    <input formControlName="tmdb" type="string" name="tmdb" id="tmdb" />
+
+    <label for="txt">Beschreibung</label>
+    <textarea
+      formControlName="text"
+      rows="5"
+      type="text"
+      name="text"
+      id="txt"
+    ></textarea>
+
+    <label for="black">Titel schwärzen</label>
+    <input formControlName="black" type="checkbox" name="black" id="black" />
+
+    <label for="agent">Platzhalter</label>
+    <input formControlName="agent" type="string" name="agent" id="agent" />
+  </fieldset>
+
+  <button [disabled]="form.invalid" type="submit">Speichern</button>
+</form>
