@@ -8,8 +8,12 @@ import {
 import {
   AuditoriumCreate,
   AUDITORIUM_ATTRIBUTES,
-  AUDITORIUM_PROJECTORS,
-  AUDITORIUM_SOUND,
+  PROJECTORS_OPTIONS,
+  PROJECTOR_35_DUAL,
+  PROJECTOR_DCP,
+  SOUND_MONO,
+  SOUND_OPTIONS,
+  SOUND_STEREO,
 } from 'src/app/shared/_models/auditorium';
 
 @Component({
@@ -24,17 +28,17 @@ export class AuditoriumFormComponent {
 
   constructor(private readonly fb: NonNullableFormBuilder) {}
 
-  auditoriumAttributes = AUDITORIUM_ATTRIBUTES;
-  auditoriumProjectors = AUDITORIUM_PROJECTORS;
-  auditoriumSound = AUDITORIUM_SOUND;
+  attributeOptions = AUDITORIUM_ATTRIBUTES;
+  projectorOptions = PROJECTORS_OPTIONS;
+  soundOptions = SOUND_OPTIONS;
 
   auditoriumForm = this.fb.group({
     title: ['', [Validators.required]],
     attributes: [[], []],
-    projectors: [[], []],
+    projectors: [[PROJECTOR_35_DUAL.id, PROJECTOR_DCP.id], []],
     screen: ['', []],
     seats: [100, []],
-    sound: [[], []],
+    sound: [[SOUND_MONO.id, SOUND_STEREO.id], []],
     text: ['', []],
   });
 

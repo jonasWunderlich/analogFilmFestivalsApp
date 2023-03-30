@@ -23,6 +23,16 @@ export interface InputSelectOption {
   name: string;
 }
 
+export function createSelectOption(
+  id: string,
+  name: string
+): InputSelectOption {
+  return {
+    id,
+    name,
+  };
+}
+
 export function compare(
   a: string,
   b: string,
@@ -85,9 +95,10 @@ export function generateSelectOptionsFromEnum(
   e: any
 ): InputSelectOption[] {
   return Object.keys(e).map((val) => {
+    console.log(val, e[val]);
     return {
       id: val,
-      name: `${prefix}${val}`,
+      name: `${e[val]}`,
     };
   });
 }

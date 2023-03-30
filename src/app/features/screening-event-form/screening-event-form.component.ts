@@ -16,17 +16,14 @@ export class ScreeningEventFormComponent {
   @ViewChild('eventForm') eventForm?: NgForm;
 
   @Output() submitEvent = new EventEmitter<ScreeningEventCreate>();
-  eventTypeSelectOptions = generateSelectOptionsFromEnum(
-    '',
-    ScreeningEventType
-  );
+  typeOptions = generateSelectOptionsFromEnum('', ScreeningEventType);
 
   eventData: ScreeningEventCreate = {
     text: '',
     title: '',
     start: new Date(0),
     end: new Date(),
-    type: ScreeningEventType.SINGLE,
+    type: ScreeningEventType.FESTIVAL,
     street: '',
     postcode: '',
     city: '',
@@ -37,6 +34,8 @@ export class ScreeningEventFormComponent {
   };
 
   submitForm() {
+    console.log(this.typeOptions);
+
     if (this.eventForm?.valid) {
       this.submitEvent.emit(this.eventData);
     }

@@ -19,8 +19,8 @@
     ></textarea>
 
     <label for="type">Typ</label>
-    <select name="eventtype" id="type" required>
-      <option *ngFor="let option of eventTypeSelectOptions" [value]="option.id">
+    <select name="eventtype" id="type" required [(ngModel)]="eventData.type">
+      <option *ngFor="let option of typeOptions">
         {{ option.name }}
       </option>
     </select>

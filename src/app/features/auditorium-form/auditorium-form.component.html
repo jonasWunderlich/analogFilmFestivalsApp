@@ -29,8 +29,8 @@
     <input formControlName="seats" type="number" name="seats" id="seats" />
 
     <label for="seats">Besonderheiten</label>
-    <select formControlName="attributes" type="string" id="attributes" multiple>
-      <option *ngFor="let attr of auditoriumAttributes" [value]="attr.id">
+    <select formControlName="attributes" id="attributes" multiple>
+      <option *ngFor="let attr of attributeOptions" [value]="attr.id">
         {{ attr.name }}
       </option>
     </select>
@@ -39,20 +39,14 @@
   <fieldset>
     <legend>Technik</legend>
     <label for="projectors">Projektoren</label>
-    <select formControlName="projectors" type="string" id="projectors" multiple>
-      <option *ngFor="let proj of auditoriumProjectors" [value]="proj.id">
+    <select formControlName="projectors" id="projectors" multiple>
+      <option *ngFor="let proj of projectorOptions" [value]="proj.id">
         {{ proj.name }}
       </option>
     </select>
     <label for="sound">Tontechnik</label>
-    <select
-      formControlName="projectors"
-      type="string"
-      name="projectors"
-      id="projectors"
-      multiple
-    >
-      <option *ngFor="let sound of auditoriumSound" [value]="sound.id">
+    <select formControlName="sound" id="sound" multiple>
+      <option *ngFor="let sound of soundOptions" [value]="sound.id">
         {{ sound.name }}
       </option>
     </select>
