@@ -11,8 +11,6 @@ export class ReportCreateComponent {
   constructor(private readonly service: ReportCreateService) {}
 
   create(report: Partial<ReportCreate>) {
-    this.service
-      .create(report)
-      .subscribe((report) => console.log('report created', report));
+    this.service.create(report).subscribe();
   }
 }

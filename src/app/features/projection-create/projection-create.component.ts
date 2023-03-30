@@ -11,8 +11,6 @@ export class ProjectionCreateComponent {
   constructor(private readonly service: ProjectionCreateService) {}
 
   create(projection: Partial<ProjectionCreate>) {
-    this.service
-      .create(projection)
-      .subscribe((projection) => console.log('projection created', projection));
+    this.service.create(projection).subscribe();
   }
 }

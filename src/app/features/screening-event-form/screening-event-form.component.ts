@@ -34,8 +34,6 @@ export class ScreeningEventFormComponent {
   };
 
   submitForm() {
-    console.log(this.typeOptions);
-
     if (this.eventForm?.valid) {
       this.submitEvent.emit(this.eventData);
     }

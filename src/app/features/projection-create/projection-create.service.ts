@@ -7,7 +7,8 @@ export class ProjectionCreateService {
   create(
     projection: Partial<ProjectionCreate>
   ): Observable<Partial<ProjectionCreate>> {
-    console.log(projection);
+    // TODO: dispatch create projection
+    console.log('dispatch | create projection:', projection);
     return of(projection);
   }
 }

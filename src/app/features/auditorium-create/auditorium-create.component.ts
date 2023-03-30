@@ -11,8 +11,6 @@ export class AuditoriumCreateComponent {
   constructor(private readonly service: AuditoriumCreateService) {}
 
   create(auditorium: Partial<AuditoriumCreate>) {
-    this.service
-      .create(auditorium)
-      .subscribe((auditorium) => console.log('auditorium created', auditorium));
+    this.service.create(auditorium).subscribe();
   }
 }

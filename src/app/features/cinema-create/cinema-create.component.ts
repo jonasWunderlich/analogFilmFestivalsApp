@@ -11,8 +11,6 @@ export class CinemaCreateComponent {
   constructor(private readonly service: CinemaCreateService) {}
 
   create(cinema: Partial<CinemaCreate>) {
-    this.service
-      .create(cinema)
-      .subscribe((cinema) => console.log('cinema created', cinema));
+    this.service.create(cinema).subscribe();
   }
 }

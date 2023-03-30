@@ -7,7 +7,8 @@ export class AuditoriumCreateService {
   create(
     auditorium: Partial<AuditoriumCreate>
   ): Observable<Partial<AuditoriumCreate>> {
-    console.log(auditorium);
+    // TODO: dispatch create auditorium
+    console.log('dispatch | create auditorium:', auditorium);
     return of(auditorium);
   }
 }

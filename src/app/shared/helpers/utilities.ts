@@ -95,7 +95,6 @@ export function generateSelectOptionsFromEnum(
   e: any
 ): InputSelectOption[] {
   return Object.keys(e).map((val) => {
-    console.log(val, e[val]);
     return {
       id: val,
       name: `${e[val]}`,

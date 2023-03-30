@@ -7,6 +7,8 @@ export class ScreeningEventCreateService {
   create(
     screeningEvent: ScreeningEventCreate
   ): Observable<ScreeningEventCreate> {
+    // TODO: dispatch create screeningEvent
+    console.log('dispatch | create screeningEvent:', screeningEvent);
     return of(screeningEvent);
   }
 }

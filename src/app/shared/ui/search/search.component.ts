@@ -50,7 +50,6 @@ export class SearchComponent {
     events: ScreeningEvent[] = this.mockedScreeningEvents
   ): Observable<ScreeningEvent[]> {
     const found = this.searchArray(events, query);
-    console.log(found.length);
     return of(found);
   }
 }

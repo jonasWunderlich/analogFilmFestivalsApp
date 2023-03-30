@@ -11,10 +11,6 @@ export class ScreeningEventCreateComponent {
   constructor(private readonly service: ScreeningEventCreateService) {}
 
   create(screeningEvent: ScreeningEventCreate) {
-    this.service
-      .create(screeningEvent)
-      .subscribe((screeningEvent) =>
-        console.log('event created', screeningEvent)
-      );
+    this.service.create(screeningEvent).subscribe();
   }
 }
