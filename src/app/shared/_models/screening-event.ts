@@ -32,8 +32,8 @@ export interface ScreeningEvent {
 
 export interface ScreeningEventCreate {
   title: string;
-  start: Date;
-  end?: Date;
+  start: string;
+  end?: string;
   text?: string;
   type?: ScreeningEventType;
   street?: string;

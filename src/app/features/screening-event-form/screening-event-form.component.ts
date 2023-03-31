@@ -1,6 +1,10 @@
 import { NgFor } from '@angular/common';
-import { Component, EventEmitter, Output, ViewChild } from '@angular/core';
-import { FormsModule, NgForm } from '@angular/forms';
+import { Component, EventEmitter, inject, Output } from '@angular/core';
+import {
+  NonNullableFormBuilder,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { generateSelectOptionsFromEnum } from 'src/app/shared/helpers/utilities';
 import { ScreeningEventType } from 'src/app/shared/_models/sceening-event-type';
 import { ScreeningEventCreate } from 'src/app/shared/_models/screening-event';
@@ -10,32 +14,32 @@ import { ScreeningEventCreate } from 'src/app/shared/_models/screening-event';
   templateUrl: './screening-event-form.component.html',
   styleUrls: ['./screening-event-form.component.scss'],
   standalone: true,
-  imports: [FormsModule, NgFor],
+  imports: [ReactiveFormsModule, NgFor],
 })
 export class ScreeningEventFormComponent {
-  @ViewChild('eventForm') eventForm?: NgForm;
-
   @Output() submitEvent = new EventEmitter<ScreeningEventCreate>();
   typeOptions = generateSelectOptionsFromEnum('', ScreeningEventType);
 
-  eventData: ScreeningEventCreate = {
-    text: '',
-    title: '',
-    start: new Date(0),
-    end: new Date(),
-    type: ScreeningEventType.FESTIVAL,
-    street: '',
-    postcode: '',
-    city: '',
-    mail: '',
-    phone: '',
-    linkHomepage: '',
-    linkProgram: '',
-  };
+  fb = inject(NonNullableFormBuilder);
+
+  form = this.fb.group({
+    text: ['', []],
+    title: ['', [Validators.required]],
+    start: [new Date(0).toJSON()],
+    end: [new Date().toJSON()],
+    type: [ScreeningEventType.FESTIVAL, [Validators.required]],
+    street: ['', []],
+    postcode: ['', []],
+    city: ['', []],
+    mail: ['', []],
+    phone: ['', []],
+    linkHomepage: ['', []],
+    linkProgram: ['', []],
+  });
 
   submitForm() {
-    if (this.eventForm?.valid) {
-      this.submitEvent.emit(this.eventData);
+    if (this.form?.valid) {
+      this.submitEvent.emit(this.form.getRawValue());
     }
   }
 }

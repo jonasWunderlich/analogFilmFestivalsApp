@@ -1,9 +1,9 @@
-<form (ngSubmit)="submitForm()" #eventForm="ngForm">
+<form [formGroup]="form" (ngSubmit)="submitForm()">
   <fieldset>
     <legend>Festival</legend>
     <label for="eventtitle">Titel</label>
     <input
-      [(ngModel)]="eventData.title"
+      formControlName="title"
       required
       type="text"
       name="title"
@@ -11,7 +11,7 @@
     />
     <label for="txt">Beschreibung</label>
     <textarea
-      [(ngModel)]="eventData.text"
+      formControlName="text"
       rows="5"
       type="text"
       name="text"
@@ -19,7 +19,7 @@
     ></textarea>
 
     <label for="type">Typ</label>
-    <select name="eventtype" id="type" required [(ngModel)]="eventData.type">
+    <select name="eventtype" id="type" required formControlName="type">
       <option *ngFor="let option of typeOptions">
         {{ option.name }}
       </option>
@@ -30,7 +30,7 @@
     <legend>Zeitraum</legend>
     <label for="start">Start</label>
     <input
-      [(ngModel)]="eventData.start"
+      formControlName="start"
       required
       type="date"
       name="start"
@@ -38,37 +38,32 @@
     />
 
     <label for="end">Ende</label>
-    <input [(ngModel)]="eventData.end" type="date" name="end" id="end" />
+    <input formControlName="end" type="date" name="end" id="end" />
   </fieldset>
 
   <fieldset>
     <label for="street">Strasse Hausnummer</label>
-    <input
-      [(ngModel)]="eventData.street"
-      type="text"
-      name="street"
-      id="street"
-    />
+    <input formControlName="street" type="text" name="street" id="street" />
 
     <legend>Adresse</legend>
     <label for="plz">PLZ</label>
-    <input [(ngModel)]="eventData.postcode" type="text" name="plz" id="plz" />
+    <input formControlName="postcode" type="text" name="plz" id="plz" />
 
     <label for="city">Stadt</label>
-    <input [(ngModel)]="eventData.city" type="text" name="city" id="city" />
+    <input formControlName="city" type="text" name="city" id="city" />
   </fieldset>
 
   <fieldset>
     <legend>Kontakt</legend>
     <label for="mail">Mail</label>
-    <input [(ngModel)]="eventData.mail" type="text" name="mail" id="mail" />
+    <input formControlName="mail" type="text" name="mail" id="mail" />
 
     <label for="phone">Telefon</label>
-    <input [(ngModel)]="eventData.phone" type="text" name="phone" id="phone" />
+    <input formControlName="phone" type="text" name="phone" id="phone" />
 
     <label for="homepage">Homepage</label>
     <input
-      [(ngModel)]="eventData.linkHomepage"
+      formControlName="linkHomepage"
       type="url"
       name="homepage"
       id="homepage"
@@ -76,12 +71,12 @@
 
     <label for="program">Program</label>
     <input
-      [(ngModel)]="eventData.linkProgram"
+      formControlName="linkProgram"
       type="url"
       name="program"
       id="program"
     />
   </fieldset>
 
-  <button [disabled]="eventForm.invalid" type="submit">Speichern</button>
+  <button [disabled]="form.invalid" type="submit">Speichern</button>
 </form>
