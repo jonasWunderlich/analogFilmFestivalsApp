@@ -2,13 +2,7 @@
   <fieldset>
     <legend>Main</legend>
     <label for="title">Titel</label>
-    <input
-      formControlName="title"
-      required
-      type="text"
-      name="title"
-      id="eventtitle"
-    />
+    <input formControlName="title" type="text" name="title" id="eventtitle" />
 
     <label for="txt">Beschreibung</label>
     <textarea
@@ -21,15 +15,15 @@
   </fieldset>
   <fieldset>
     <legend>Datum</legend>
-    <label for="lang">Veröffentlichung</label>
-    <input formControlName="lang" type="date" name="lang" id="lang" />
+    <label for="date">Veröffentlichung</label>
+    <input formControlName="date" type="date" name="date" id="date" />
   </fieldset>
 
   <fieldset>
     <legend>Bilder</legend>
 
     <label for="uplaod">Upload</label>
-    <input formControlName="street" type="text" name="street" id="street" />
+    <input formControlName="images" type="text" name="images" id="images" />
   </fieldset>
 
   <button [disabled]="reportForm.invalid" type="submit">Speichern</button>
