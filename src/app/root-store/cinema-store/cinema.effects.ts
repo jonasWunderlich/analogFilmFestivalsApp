@@ -122,9 +122,13 @@ export class CinemaEffects {
   updateCinema$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(triggerCinemaUpdate),
-      filter((params) => neitherNullNorUndefined(params?.cinema)),
+      filter(
+        (params) =>
+          neitherNullNorUndefined(params?.id) &&
+          neitherNullNorUndefined(params?.cinema)
+      ),
       switchMap((params) =>
-        this.analogHttpService.updateCinema(params?.cinema).pipe(
+        this.analogHttpService.updateCinema(params?.id, params?.cinema).pipe(
           map((cinema) => CinemaActions.updateCinemaSucceeded({ cinema })),
           catchError((error) => of(CinemaActions.updateCinemaFailed({ error })))
         )
@@ -132,11 +136,13 @@ export class CinemaEffects {
     );
   });
 
-  updateCinemaSucceeded$ = createEffect(() =>
-    this.actions$.pipe(
-      ofType(CinemaActions.updateCinemaSucceeded),
-      tap(() => this.notificationService.success('Event.updateSucceeded'))
-    )
+  updateCinemaSucceeded$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(CinemaActions.updateCinemaSucceeded),
+        tap(() => this.notificationService.success('Event.updateSucceeded'))
+      ),
+    { dispatch: false }
   );
 
   updateCinemaFailed$ = createEffect(
@@ -163,11 +169,13 @@ export class CinemaEffects {
     );
   });
 
-  deleteCinemaSucceeded$ = createEffect(() =>
-    this.actions$.pipe(
-      ofType(CinemaActions.deleteCinemaSucceeded),
-      tap(() => this.notificationService.success('Event.deleteSucceeded'))
-    )
+  deleteCinemaSucceeded$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(CinemaActions.deleteCinemaSucceeded),
+        tap(() => this.notificationService.success('Event.deleteSucceeded'))
+      ),
+    { dispatch: false }
   );
 
   deleteCinemaFailed$ = createEffect(

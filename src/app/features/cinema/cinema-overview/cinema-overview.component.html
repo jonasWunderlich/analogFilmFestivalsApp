@@ -3,12 +3,14 @@
     <i>Übersicht</i>
     <h2>Kinos</h2>
 
-    <app-loading></app-loading>
-
     <div
       *ngFor="let cinema of cinemas$ | async"
       class="c-cinema-overview__cinema"
     >
+      <a (click)="delete(cinema.id)">Kino löschen</a>
+
+      <a [routerLink]="['/admin/editcinema', cinema.id]">Kino bearbeiten</a>
+
       <a [routerLink]="['/', 'cinema', cinema.id]"
         ><h3>{{ cinema.title }}</h3></a
       >

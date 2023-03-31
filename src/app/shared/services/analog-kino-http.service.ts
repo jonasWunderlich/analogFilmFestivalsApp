@@ -41,6 +41,8 @@ export class AnalogKinoBackendService {
     this.buildMocks();
   }
 
+  /** M O C K S */
+
   private buildMocks() {
     this.reports = mockReports(40).sort((a, b) =>
       sortByISODate(a.date, b.date)
@@ -48,7 +50,7 @@ export class AnalogKinoBackendService {
     this.projections = mockProjections(200, new Date(), 400).sort((a, b) =>
       sortByISODate(a.date, b.date)
     );
-    this.cinemas = mockCinemas(40);
+    this.cinemas = mockCinemas(20);
     this.screeningEvents = mockScreeningEvents(40).sort((a, b) =>
       sortByISODate(a.start, b.start)
     );
@@ -76,6 +78,8 @@ export class AnalogKinoBackendService {
     });
   }
 
+  /** HTTP GET Cinema(s) */
+
   public getCinemas(): Observable<Cinema[]> {
     return of(this.cinemas);
   }
@@ -95,10 +99,11 @@ export class AnalogKinoBackendService {
     return of(transformed);
   }
 
-  public updateCinema(updateItem: CinemaCreate): Observable<Cinema> {
-    const orgCinema = this.cinemas.find(
-      (item) => item.title === updateItem.title
-    );
+  public updateCinema(
+    id: string,
+    updateItem: CinemaCreate
+  ): Observable<Cinema> {
+    const orgCinema = this.cinemas.find((item) => item.id === id);
     if (!orgCinema) {
       return throwError(() => new Error('ERROR updating screening event'));
     }
@@ -110,13 +115,7 @@ export class AnalogKinoBackendService {
     return this.removeFromMocks(this.cinemas, id);
   }
 
-  public getAuditoriums(): Observable<Auditorium[]> {
-    return of(this.auditoriums);
-  }
-
-  public getAuditoriumById(id: string): Observable<Auditorium> {
-    return this.getById(id, this.auditoriums);
-  }
+  /** HTTP GET ScreeningEvent(s) */
 
   public getScreeningEvents(): Observable<ScreeningEvent[]> {
     return of(this.screeningEvents);
@@ -139,10 +138,11 @@ export class AnalogKinoBackendService {
   }
 
   public updateScreeningEvent(
+    id: string,
     updateItem: ScreeningEventCreate
   ): Observable<ScreeningEvent> {
     const orgEvent = this.screeningEvents.find(
-      (orgEvent) => orgEvent.title === updateItem.title
+      (orgEvent) => orgEvent.id === id
     );
     if (!orgEvent) {
       return throwError(() => new Error('ERROR updating screening event'));
@@ -153,6 +153,14 @@ export class AnalogKinoBackendService {
 
   public deleteScreeningEvent(id: string): Observable<string> {
     return this.removeFromMocks(this.screeningEvents, id);
+  }
+
+  public getAuditoriums(): Observable<Auditorium[]> {
+    return of(this.auditoriums);
+  }
+
+  public getAuditoriumById(id: string): Observable<Auditorium> {
+    return this.getById(id, this.auditoriums);
   }
 
   // PROJECTIONS

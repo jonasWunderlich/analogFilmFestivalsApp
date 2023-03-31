@@ -22,6 +22,7 @@ export class ScreeningEventService {
   event$ = this.store.select(selectActiveScreeningEvent);
   cinemas$ = this.store.select(selectCinemas);
   movies$ = this.store.select(selectSearchedMovies);
+  activeEventId?: string;
 
   constructor(private readonly store: Store, private readonly router: Router) {
     this.store.dispatch(
@@ -30,12 +31,14 @@ export class ScreeningEventService {
   }
 
   setActiveScreeningEvent(id: string | undefined): void {
-    id &&
+    if (id) {
       this.store.dispatch(
         setActiveScreeningEvent({
           screeningEventId: id,
         })
       );
+      this.activeEventId = id;
+    }
   }
 
   create(screeningEvent: ScreeningEventCreate): void {
@@ -49,7 +52,11 @@ export class ScreeningEventService {
   }
 
   update(screeningEvent: ScreeningEventCreate): void {
-    this.store.dispatch(triggerScreeningEventUpdate(screeningEvent));
-    this.router.navigate(['/events']);
+    if (this.activeEventId) {
+      this.store.dispatch(
+        triggerScreeningEventUpdate(this.activeEventId, screeningEvent)
+      );
+      this.router.navigate(['/events']);
+    }
   }
 }

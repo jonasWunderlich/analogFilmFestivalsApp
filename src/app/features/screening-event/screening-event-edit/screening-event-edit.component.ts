@@ -30,7 +30,6 @@ export class ScreeningEventEditComponent implements OnInit {
   }
 
   delete(screeningEvent: ScreeningEvent) {
-    console.log('auch hier');
     this.service.delete(screeningEvent.id);
   }
 }

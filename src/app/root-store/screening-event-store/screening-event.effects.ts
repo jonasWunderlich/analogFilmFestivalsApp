@@ -131,10 +131,14 @@ export class EventEffects {
   updateScreeningEvent$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(triggerScreeningEventUpdate),
-      filter((params) => neitherNullNorUndefined(params?.screeningEvent)),
+      filter(
+        (params) =>
+          neitherNullNorUndefined(params?.id) &&
+          neitherNullNorUndefined(params?.screeningEvent)
+      ),
       switchMap((params) =>
         this.analogHttpService
-          .updateScreeningEvent(params?.screeningEvent)
+          .updateScreeningEvent(params?.id, params?.screeningEvent)
           .pipe(
             map((screeningEvent) =>
               EventActions.updateScreeningEventSucceeded({ screeningEvent })

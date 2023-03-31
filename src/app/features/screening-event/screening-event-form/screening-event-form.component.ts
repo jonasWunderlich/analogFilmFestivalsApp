@@ -31,11 +31,10 @@ export class ScreeningEventFormComponent implements OnChanges {
   @Input() screeningEvent?: ScreeningEvent;
   @Output() submitEvent = new EventEmitter<ScreeningEventCreate>();
   @Output() deleteEvent = new EventEmitter<ScreeningEvent>();
-  typeOptions = generateSelectOptionsFromEnum('', ScreeningEventType);
-
   editMode = false;
   fb = inject(NonNullableFormBuilder);
   type = ScreeningEventType;
+  typeOptions = generateSelectOptionsFromEnum('', ScreeningEventType);
 
   form = this.fb.group({
     text: ['', []],

@@ -2,8 +2,9 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { AuditoriumCreateComponent } from 'src/app/features/auditorium-create/auditorium-create.component';
 import { AuditoriumFormComponent } from 'src/app/features/auditorium-form/auditorium-form.component';
-import { CinemaCreateComponent } from 'src/app/features/cinema-create/cinema-create.component';
-import { CinemaFormComponent } from 'src/app/features/cinema-form/cinema-form.component';
+import { CinemaCreateComponent } from 'src/app/features/cinema/cinema-create/cinema-create.component';
+import { CinemaEditComponent } from 'src/app/features/cinema/cinema-edit/cinema-edit.component';
+import { CinemaFormComponent } from 'src/app/features/cinema/cinema-form/cinema-form.component';
 import { ProjectionCreateComponent } from 'src/app/features/projection-create/projection-create.component';
 import { ProjectionFormComponent } from 'src/app/features/projection-form/projection-form.component';
 import { ReportCreateComponent } from 'src/app/features/report-create/report-create.component';
@@ -20,6 +21,7 @@ import { AdminRoutingModule } from './admin-routing.module';
     ScreeningEventCreateComponent,
     ScreeningEventEditComponent,
     CinemaCreateComponent,
+    CinemaEditComponent,
     ReportCreateComponent,
     AuditoriumCreateComponent,
     ProjectionCreateComponent,

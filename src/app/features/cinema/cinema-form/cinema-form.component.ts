@@ -1,4 +1,13 @@
-import { Component, EventEmitter, inject, OnInit, Output } from '@angular/core';
+import { NgIf } from '@angular/common';
+import {
+  Component,
+  EventEmitter,
+  inject,
+  Input,
+  OnChanges,
+  OnInit,
+  Output,
+} from '@angular/core';
 import {
   NonNullableFormBuilder,
   ReactiveFormsModule,
@@ -9,18 +18,20 @@ import {
   PositionStackResults,
   PositionstackService,
 } from 'src/app/shared/services/positionstack.service';
-import { CinemaCreate } from 'src/app/shared/_models/cinema';
+import { Cinema, CinemaCreate } from 'src/app/shared/_models/cinema';
 
 @Component({
   selector: 'app-cinema-form',
   templateUrl: './cinema-form.component.html',
   styleUrls: ['./cinema-form.component.scss'],
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, NgIf],
 })
-export class CinemaFormComponent implements OnInit {
+export class CinemaFormComponent implements OnInit, OnChanges {
+  @Input() cinema?: Cinema;
   @Output() submitEvent = new EventEmitter<CinemaCreate>();
-
+  @Output() deleteEvent = new EventEmitter<Cinema>();
+  editMode = false;
   fb = inject(NonNullableFormBuilder);
 
   constructor(private readonly ps: PositionstackService) {}
@@ -62,5 +73,22 @@ export class CinemaFormComponent implements OnInit {
 
   submitForm(): void {
     this.submitEvent.emit(this.cinemaForm.getRawValue());
+  }
+
+  delete() {
+    if (this.editMode) {
+      this.deleteEvent.emit(this.cinema);
+    }
+  }
+
+  ngOnChanges(): void {
+    if (this.cinema?.id) {
+      this.editMode = true;
+      this.setFormValues(this.cinema);
+    }
+  }
+
+  setFormValues(cinema: Cinema) {
+    this.cinemaForm.patchValue(cinema);
   }
 }

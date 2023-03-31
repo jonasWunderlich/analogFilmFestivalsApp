@@ -20,8 +20,8 @@ export interface CinemaCreate {
 
 export interface Cinema extends CinemaCreate {
   id: string;
-  createdAt: string;
-  lastModifiedAt: string;
+  createdAt?: string;
+  lastModifiedAt?: string;
   title: string;
 
   geoCoordinates: Coordinate;

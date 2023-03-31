@@ -1,8 +1,5 @@
 import { Component } from '@angular/core';
-import {
-  ScreeningEvent,
-  ScreeningEventCreate,
-} from 'src/app/shared/_models/screening-event';
+import { ScreeningEventCreate } from 'src/app/shared/_models/screening-event';
 import { ScreeningEventService } from '../screening-event.service';
 
 @Component({
