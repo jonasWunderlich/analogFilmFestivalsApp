@@ -5,6 +5,7 @@ import {
   NonNullableFormBuilder,
   Validators,
 } from '@angular/forms';
+import { LocalIsoDateValueAccessorModule } from 'angular-date-value-accessor';
 import { ProjectionCreate } from 'src/app/shared/_models/projection';
 
 @Component({
@@ -12,7 +13,7 @@ import { ProjectionCreate } from 'src/app/shared/_models/projection';
   templateUrl: './projection-form.component.html',
   styleUrls: ['./projection-form.component.scss'],
   standalone: true,
-  imports: [ReactiveFormsModule, NgFor],
+  imports: [ReactiveFormsModule, NgFor, LocalIsoDateValueAccessorModule],
 })
 export class ProjectionFormComponent {
   @Output() submitEvent = new EventEmitter<ProjectionCreate>();

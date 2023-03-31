@@ -4,6 +4,7 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
+import { LocalIsoDateValueAccessorModule } from 'angular-date-value-accessor';
 import { ReportCreate } from 'src/app/shared/_models/report';
 
 @Component({
@@ -11,7 +12,7 @@ import { ReportCreate } from 'src/app/shared/_models/report';
   templateUrl: './report-form.component.html',
   styleUrls: ['./report-form.component.scss'],
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, LocalIsoDateValueAccessorModule],
 })
 export class ReportFormComponent {
   @Output() submitEvent = new EventEmitter<ReportCreate>();
