@@ -14,7 +14,7 @@ export const loadReportsFailed = createAction(
 );
 
 export const loadReportById = createAction(
-  '[Report] Load Reports',
+  '[Report] Load Reports by Id',
   (id: string) => ({ id })
 );
 

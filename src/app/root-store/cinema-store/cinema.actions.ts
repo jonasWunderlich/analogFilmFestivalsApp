@@ -14,7 +14,7 @@ export const loadCinemasFailed = createAction(
 );
 
 export const loadCinemaById = createAction(
-  '[Cinema] Load Cinemas',
+  '[Cinema] Load Cinemas by Id',
   (id: string) => ({ id })
 );
 

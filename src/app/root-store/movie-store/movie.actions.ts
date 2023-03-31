@@ -7,12 +7,12 @@ export const searchMoviesByQuery = createAction(
 );
 
 export const loadMoviesByIds = createAction(
-  '[Movie] Load Movie',
+  '[Movie] Load Movies by Id',
   (movieIds: string[]) => ({ movieIds })
 );
 
 export const loadMovieById = createAction(
-  '[Movie] Load Movie',
+  '[Movie] Load Movie by Id',
   (id: string) => ({ id })
 );
 
