@@ -2,82 +2,43 @@
   <fieldset>
     <legend>Main</legend>
     <label for="title">Titel</label>
-    <input
-      formControlName="title"
-      required
-      type="text"
-      name="title"
-      id="eventtitle"
-    />
+    <input formControlName="title" type="text" id="eventtitle" />
 
     <label for="txt">Beschreibung</label>
-    <textarea
-      formControlName="text"
-      rows="5"
-      type="text"
-      name="text"
-      id="txt"
-    ></textarea>
+    <textarea formControlName="text" rows="5" type="text" id="txt"></textarea>
   </fieldset>
 
   <fieldset>
     <legend>Adresse</legend>
     <label for="street">Strasse Hausnummer</label>
-    <input formControlName="street" type="text" name="street" id="street" />
+    <input formControlName="street" type="text" id="street" />
     <label for="plz">PLZ</label>
-    <input formControlName="postcode" type="text" name="plz" id="plz" />
+    <input formControlName="postcode" type="text" id="plz" />
     <label for="city">Stadt</label>
-    <input formControlName="city" type="text" name="city" id="city" />
+    <input formControlName="city" type="text" id="city" />
 
     <label for="latitude">Latitude</label>
-    <input
-      formControlName="latitude"
-      type="number"
-      name="latitude"
-      id="latitude"
-      readonly
-    />
+    <input formControlName="latitude" type="number" id="latitude" readonly />
     <label for="longitude">longitude</label>
-    <input
-      formControlName="longitude"
-      type="number"
-      name="longitude"
-      id="longitude"
-      readonly
-    />
+    <input formControlName="longitude" type="number" id="longitude" readonly />
   </fieldset>
 
   <fieldset>
     <legend>Kontakt</legend>
     <label for="mail">Mail</label>
-    <input formControlName="mail" type="text" name="mail" id="mail" />
+    <input formControlName="mail" type="text" id="mail" />
 
     <label for="phone">Telefon</label>
-    <input formControlName="phone" type="text" name="phone" id="phone" />
+    <input formControlName="phone" type="text" id="phone" />
 
     <label for="homepage">Homepage</label>
-    <input
-      formControlName="linkHomepage"
-      type="url"
-      name="homepage"
-      id="homepage"
-    />
+    <input formControlName="linkHomepage" type="url" id="homepage" />
 
     <label for="program">Program</label>
-    <input
-      formControlName="linkProgram"
-      type="url"
-      name="program"
-      id="program"
-    />
+    <input formControlName="linkProgram" type="url" id="program" />
 
     <label for="openingHours">Öffnungszeiten</label>
-    <input
-      formControlName="linkOpeningHours"
-      type="url"
-      name="openingHours"
-      id="openingHours"
-    />
+    <input formControlName="linkOpeningHours" type="url" id="openingHours" />
   </fieldset>
 
   <button [disabled]="cinemaForm.invalid" type="submit">Speichern</button>

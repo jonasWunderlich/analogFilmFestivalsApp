@@ -25,7 +25,7 @@ export class ScreeningEventFormComponent {
   form = this.fb.group({
     text: ['', []],
     title: ['', [Validators.required]],
-    start: [new Date(0).toJSON()],
+    start: [new Date(0).toJSON(), [Validators.required]],
     end: [new Date().toJSON()],
     type: [ScreeningEventType.FESTIVAL, [Validators.required]],
     street: ['', []],

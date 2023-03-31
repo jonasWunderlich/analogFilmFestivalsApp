@@ -8,12 +8,12 @@ import { CinemaCreateComponent } from 'src/app/features/cinema-create/cinema-cre
 import { ScreeningEventFormComponent } from 'src/app/features/screening-event-form/screening-event-form.component';
 import { CinemaFormComponent } from 'src/app/features/cinema-form/cinema-form.component';
 import { ReportCreateComponent } from 'src/app/features/report-create/report-create.component';
-import { ReportFormComponent } from 'src/app/features/report-form/report-form/report-form.component';
 import { AuditoriumCreateComponent } from 'src/app/features/auditorium-create/auditorium-create.component';
 import { AuditoriumFormComponent } from 'src/app/features/auditorium-form/auditorium-form.component';
 import { ProjectionFormComponent } from 'src/app/features/projection-form/projection-form.component';
 import { ProjectionCreateComponent } from 'src/app/features/projection-create/projection-create.component';
 import { CinemaMapComponent } from 'src/app/shared/ui/cinema-map/cinema-map.component';
+import { ReportFormComponent } from 'src/app/features/report-form/report-form.component';
 
 @NgModule({
   declarations: [

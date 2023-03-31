@@ -2,38 +2,26 @@
   <fieldset>
     <legend>Vorführung</legend>
     <label for="date">Datum</label>
-    <input formControlName="date" type="date" name="date" id="date" />
+    <input formControlName="date" type="date" id="date" />
   </fieldset>
 
   <fieldset>
     <legend>Film</legend>
 
     <label for="title">Titel*</label>
-    <input
-      formControlName="title"
-      required
-      type="text"
-      name="title"
-      id="eventtitle"
-    />
+    <input formControlName="title" type="text" id="eventtitle" />
 
     <label for="tmdb">TMDB Id</label>
-    <input formControlName="tmdb" type="string" name="tmdb" id="tmdb" />
+    <input formControlName="tmdb" type="string" id="tmdb" />
 
     <label for="txt">Beschreibung</label>
-    <textarea
-      formControlName="text"
-      rows="5"
-      type="text"
-      name="text"
-      id="txt"
-    ></textarea>
+    <textarea formControlName="text" rows="5" type="text" id="txt"></textarea>
 
     <label for="black">Titel schwärzen</label>
-    <input formControlName="black" type="checkbox" name="black" id="black" />
+    <input formControlName="black" type="checkbox" id="black" />
 
     <label for="agent">Platzhalter</label>
-    <input formControlName="agent" type="string" name="agent" id="agent" />
+    <input formControlName="agent" type="string" id="agent" />
   </fieldset>
 
   <button [disabled]="form.invalid" type="submit">Speichern</button>

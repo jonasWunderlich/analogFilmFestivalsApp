@@ -2,31 +2,19 @@
   <fieldset>
     <legend>Main</legend>
     <label for="title">Titel</label>
-    <input
-      formControlName="title"
-      required
-      type="text"
-      name="title"
-      id="eventtitle"
-    />
+    <input formControlName="title" type="text" id="eventtitle" />
 
     <label for="txt">Beschreibung</label>
-    <textarea
-      formControlName="text"
-      rows="5"
-      type="text"
-      name="text"
-      id="txt"
-    ></textarea>
+    <textarea formControlName="text" rows="5" type="text" id="txt"></textarea>
   </fieldset>
 
   <fieldset>
     <legend>Saal</legend>
     <label for="screen">Screen</label>
-    <input formControlName="screen" type="string" name="screen" id="screen" />
+    <input formControlName="screen" type="string" id="screen" />
 
     <label for="seats">Sitze</label>
-    <input formControlName="seats" type="number" name="seats" id="seats" />
+    <input formControlName="seats" type="number" id="seats" />
 
     <label for="seats">Besonderheiten</label>
     <select formControlName="attributes" id="attributes" multiple>
