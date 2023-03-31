@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ScreeningEventService } from './screening-event-details.service';
+import { ScreeningEventService } from '../screening-event.service';
 
 @Component({
   selector: 'app-screening-event-details',

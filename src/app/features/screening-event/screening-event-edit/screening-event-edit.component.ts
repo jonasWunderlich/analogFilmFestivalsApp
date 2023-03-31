@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ScreeningEventCreate } from 'src/app/shared/_models/screening-event';
-import { ScreeningEventService } from '../screening-event-details/screening-event-details.service';
+import { ScreeningEventService } from '../screening-event.service';
 
 @Component({
   selector: 'app-screening-event-edit',

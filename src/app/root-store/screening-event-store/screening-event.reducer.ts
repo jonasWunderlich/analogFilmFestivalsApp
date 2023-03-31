@@ -1,6 +1,6 @@
 import { createEntityAdapter, EntityAdapter, EntityState } from '@ngrx/entity';
 import { createFeature, createReducer, on } from '@ngrx/store';
-import { setActiveScreeningEvent } from 'src/app/features/screening-event-details/screening-event-details.actions';
+import { setActiveScreeningEvent } from 'src/app/features/screening-event/screening-event-details/screening-event-details.actions';
 import { ScreeningEvent } from 'src/app/shared/_models/screening-event';
 import * as ScreeningEventActions from './screening-event.actions';
 

@@ -8,7 +8,7 @@ import { selectSearchedMovies } from 'src/app/root-store/movie-store/movie.selec
 import { selectActiveScreeningEvent } from 'src/app/root-store/screening-event-store/screening-event.selectors';
 import { MOCKED_TMDB_QUERIES } from 'src/app/shared/_mock/constants';
 import { ScreeningEventCreate } from 'src/app/shared/_models/screening-event';
-import { setActiveScreeningEvent } from './screening-event-details.actions';
+import { setActiveScreeningEvent } from './screening-event-details/screening-event-details.actions';
 
 @Injectable({
   providedIn: 'root',

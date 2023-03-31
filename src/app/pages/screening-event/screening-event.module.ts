@@ -12,8 +12,8 @@ import { ProjectionListComponent } from 'src/app/shared/ui/projection-list/proje
 import { ReportListComponent } from 'src/app/shared/ui/report-list/report-list.component';
 import { TwoColumnLayoutComponent } from 'src/app/shared/ui/two-column-layout/two-column-layout.component';
 import { CinemaMapComponent } from 'src/app/shared/ui/cinema-map/cinema-map.component';
-import { ScreeningEventDetailsComponent } from 'src/app/features/screening-event-details/screening-event-details.component';
-import { ScreeningEventOverviewComponent } from 'src/app/features/screening-event-overview/screening-event-overview.component';
+import { ScreeningEventDetailsComponent } from 'src/app/features/screening-event/screening-event-details/screening-event-details.component';
+import { ScreeningEventOverviewComponent } from 'src/app/features/screening-event/screening-event-overview/screening-event-overview.component';
 
 @NgModule({
   declarations: [
