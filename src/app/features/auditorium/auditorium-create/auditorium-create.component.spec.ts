@@ -1,6 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { CinemaCreateComponent } from './cinema-create.component';
+import { CinemaCreateComponent } from '../../cinema/cinema-create/cinema-create.component';
 
 describe('CinemaCreateComponent', () => {
   let component: CinemaCreateComponent;
