@@ -9,10 +9,10 @@ import {
 } from '../helpers/mock-data.helper';
 import { mockProjections } from '../_mock/projection.mock';
 import { mockReports } from '../_mock/report.mocks';
-import { Auditorium } from '../_models/auditorium';
+import { Auditorium, AuditoriumCreate } from '../_models/auditorium';
 import { Cinema, CinemaCreate } from '../_models/cinema';
-import { Projection } from '../_models/projection';
-import { Report } from '../_models/report';
+import { Projection, ProjectionCreate } from '../_models/projection';
+import { Report, ReportCreate } from '../_models/report';
 import {
   ScreeningEvent,
   ScreeningEventCreate,
@@ -103,7 +103,7 @@ export class AnalogKinoBackendService {
     id: string,
     updateItem: CinemaCreate
   ): Observable<Cinema> {
-    const orgCinema = this.cinemas.find((item) => item.title === id);
+    const orgCinema = this.cinemas.find((item) => item.id === id);
     if (orgCinema === undefined) {
       return throwError(() => new Error('ERROR updating screening event'));
     }
@@ -155,6 +155,44 @@ export class AnalogKinoBackendService {
     return this.removeFromMocks(this.screeningEvents, id);
   }
 
+  /** HTTP GET Report(s) */
+
+  public getReports(): Observable<Report[]> {
+    return of(this.reports);
+  }
+
+  public getReportById(id: string): Observable<Report> {
+    return this.getById(id, this.reports);
+  }
+
+  /** HTTP CRUD Report */
+
+  public createReport(item: ReportCreate): Observable<Report> {
+    const transformed: Report = {
+      id: uniqueId(),
+      ...item,
+    } as Report;
+    return of(transformed);
+  }
+
+  public updateReport(
+    id: string,
+    updateItem: ReportCreate
+  ): Observable<Report> {
+    const orgReport = this.reports.find((item) => item.id === id);
+    if (orgReport === undefined) {
+      return throwError(() => new Error('ERROR updating report'));
+    }
+    const merge = { ...orgReport, ...updateItem };
+    return of(merge as Report);
+  }
+
+  public deleteReport(id: string): Observable<string> {
+    return this.removeFromMocks(this.reports, id);
+  }
+
+  /** HTTP GET Auditorium(s) */
+
   public getAuditoriums(): Observable<Auditorium[]> {
     return of(this.auditoriums);
   }
@@ -163,7 +201,33 @@ export class AnalogKinoBackendService {
     return this.getById(id, this.auditoriums);
   }
 
-  // PROJECTIONS
+  /** HTTP CRUD Auditorium */
+
+  public createAuditorium(item: AuditoriumCreate): Observable<Auditorium> {
+    const transformed: Auditorium = {
+      id: uniqueId(),
+      ...item,
+    } as Auditorium;
+    return of(transformed);
+  }
+
+  public updateAuditorium(
+    id: string,
+    updateItem: AuditoriumCreate
+  ): Observable<Auditorium> {
+    const orgAuditorium = this.auditoriums.find((item) => item.id === id);
+    if (orgAuditorium === undefined) {
+      return throwError(() => new Error('ERROR updating Auditorium'));
+    }
+    const merge = { ...orgAuditorium, ...updateItem };
+    return of(merge as Auditorium);
+  }
+
+  public deleteAuditorium(id: string): Observable<string> {
+    return this.removeFromMocks(this.auditoriums, id);
+  }
+
+  /** HTTP GET Projection(s) */
 
   public getProjections(): Observable<Projection[]> {
     return of(this.projections);
@@ -173,13 +237,34 @@ export class AnalogKinoBackendService {
     return this.getById(id, this.projections);
   }
 
-  public getReports(): Observable<Report[]> {
-    return of(this.reports);
+  /** HTTP CRUD Projection */
+
+  public createProjection(item: ProjectionCreate): Observable<Projection> {
+    const transformed: Projection = {
+      id: uniqueId(),
+      ...item,
+    } as Projection;
+    return of(transformed);
   }
 
-  public getReportById(id: string): Observable<Report> {
-    return this.getById(id, this.reports);
+  public updateProjection(
+    id: string,
+    updateItem: ProjectionCreate,
+    arr = this.projections
+  ): Observable<Projection> {
+    const orgProjection = arr.find((item) => item.id === id);
+    if (orgProjection === undefined) {
+      return throwError(() => new Error('ERROR updating Projection'));
+    }
+    const merge = { ...orgProjection, ...updateItem };
+    return of(merge as Projection);
   }
+
+  public deleteProjection(id: string): Observable<string> {
+    return this.removeFromMocks(this.projections, id);
+  }
+
+  /** Generic Helpers: GET */
 
   private getById<T extends { id: string }>(
     id: string,
@@ -192,15 +277,38 @@ export class AnalogKinoBackendService {
     return of(found);
   }
 
-  private create<T>(updateItem: T): Observable<T> {
-    return of(updateItem);
+  /** Generic Helpers: CRUD */
+
+  public createGeneric<T, V>(item: T): Observable<V> {
+    const transformed: V = {
+      id: uniqueId(),
+      ...item,
+    } as V;
+    return of(transformed);
   }
 
-  private update<T extends { id: string }>(updateItem: T): Observable<T> {
-    return of(updateItem);
+  public updateGenerics<T extends { id: string }, V>(
+    id: string,
+    updateItem: V,
+    arr: Array<T>
+  ): Observable<V> {
+    const orgItem = arr.find((item) => item.id === id);
+    if (orgItem === undefined) {
+      return throwError(() => new Error('ERROR updating Value'));
+    } else {
+      return of({ ...orgItem, ...updateItem } as V);
+    }
   }
 
-  removeFromMocks<T extends { id: string }>(
+  public deleteGeneric<T extends { id: string }>(
+    id: string,
+    arr: Array<T>
+  ): Observable<string> {
+    this.deleteFromArray(arr, id);
+    return of(id);
+  }
+
+  private removeFromMocks<T extends { id: string }>(
     arr: Array<T>,
     id: string
   ): Observable<string> {
