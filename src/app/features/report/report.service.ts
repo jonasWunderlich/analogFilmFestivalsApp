@@ -1,16 +1,21 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { filter, map, take } from 'rxjs';
+import { Observable, filter, map, of, take } from 'rxjs';
 import { selectCinemas } from 'src/app/root-store/cinema-store/cinema.selectors';
 import { selectSearchedMoviesById } from 'src/app/root-store/movie-store/movie.selectors';
-import { selectActiveReport } from 'src/app/root-store/report-store/report.selectors';
+import {
+  selectActiveReport,
+  selectReports,
+} from 'src/app/root-store/report-store/report.selectors';
 import { selectScreeningEvents } from 'src/app/root-store/screening-event-store/screening-event.selectors';
-import { setActiveReport } from './report-details.actions';
+import { setActiveReport } from './report.actions';
+import { ReportCreate } from 'src/app/shared/_models/report';
 
 @Injectable({
   providedIn: 'root',
 })
-export class ReportDetailsService {
+export class ReportService {
+  reports$ = this.store.select(selectReports);
   cinemas$ = this.store.select(selectCinemas);
   movies$ = this.store.select(selectSearchedMoviesById);
   report$ = this.store.select(selectActiveReport);
@@ -30,5 +35,11 @@ export class ReportDetailsService {
           reportId: id,
         })
       );
+  }
+
+  create(report: ReportCreate): Observable<ReportCreate> {
+    // TODO: dispatch save report
+    console.log('dispatch | create report:', report);
+    return of(report);
   }
 }

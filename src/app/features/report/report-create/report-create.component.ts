@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ReportCreate } from 'src/app/shared/_models/report';
-import { ReportCreateService } from './report-create.service';
+import { ReportService } from '../report.service';
 
 @Component({
   selector: 'app-report-create',
@@ -8,7 +8,7 @@ import { ReportCreateService } from './report-create.service';
   styleUrls: ['./report-create.component.scss'],
 })
 export class ReportCreateComponent {
-  constructor(private readonly service: ReportCreateService) {}
+  constructor(private readonly service: ReportService) {}
 
   create(report: ReportCreate) {
     this.service.create(report).subscribe();

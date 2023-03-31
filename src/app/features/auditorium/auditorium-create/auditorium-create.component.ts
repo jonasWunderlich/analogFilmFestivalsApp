@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { AuditoriumCreate } from 'src/app/shared/_models/auditorium';
-import { AuditoriumCreateService } from './auditorium-create.service';
+import { AuditoriumService } from '../auditorium.service';
 
 @Component({
   selector: 'app-auditorium-create',
@@ -8,9 +8,9 @@ import { AuditoriumCreateService } from './auditorium-create.service';
   styleUrls: ['./auditorium-create.component.scss'],
 })
 export class AuditoriumCreateComponent {
-  constructor(private readonly service: AuditoriumCreateService) {}
+  constructor(private readonly service: AuditoriumService) {}
 
-  create(auditorium: Partial<AuditoriumCreate>) {
-    this.service.create(auditorium).subscribe();
+  create(auditorium: AuditoriumCreate) {
+    this.service.create(auditorium);
   }
 }

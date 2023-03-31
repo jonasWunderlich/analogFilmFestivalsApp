@@ -2,7 +2,7 @@ import { createFeature, createReducer, on } from '@ngrx/store';
 import { createEntityAdapter, EntityAdapter, EntityState } from '@ngrx/entity';
 import { Report } from 'src/app/shared/_models/report';
 import * as ReportActions from './report.actions';
-import { setActiveReport } from 'src/app/features/report/report-details/report-details.actions';
+import { setActiveReport } from 'src/app/features/report/report.actions';
 
 export const reportFeatureKey = 'report';
 

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ProjectionCreate } from 'src/app/shared/_models/projection';
-import { ProjectionCreateService } from './projection-create.service';
+import { ProjectionService } from '../projection.service';
 
 @Component({
   selector: 'app-projection-create',
@@ -8,9 +8,9 @@ import { ProjectionCreateService } from './projection-create.service';
   styleUrls: ['./projection-create.component.scss'],
 })
 export class ProjectionCreateComponent {
-  constructor(private readonly service: ProjectionCreateService) {}
+  constructor(private readonly service: ProjectionService) {}
 
   create(projection: ProjectionCreate) {
-    this.service.create(projection).subscribe();
+    this.service.create(projection);
   }
 }
