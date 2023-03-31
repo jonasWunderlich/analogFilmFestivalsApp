@@ -7,10 +7,12 @@ import {
   triggerProjectionRemoval,
   triggerProjectionUpdate,
 } from './projection.actions';
+import { selectActiveProjection } from 'src/app/root-store/projection-store/projection.selectors';
 
-@Injectable({ providedIn: 'platform' })
+@Injectable({ providedIn: 'root' })
 export class ProjectionService {
   activeProjectionId?: string;
+  activeProjection$ = this.store.select(selectActiveProjection);
 
   constructor(private readonly store: Store) {}
 

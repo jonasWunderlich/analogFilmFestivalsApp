@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { CinemaFormComponent } from '../../cinema/cinema-form/cinema-form.component';
+import { ProjectionFormComponent } from './projection-form.component';
 
-describe('CinemaFormComponent', () => {
-  let component: CinemaFormComponent;
-  let fixture: ComponentFixture<CinemaFormComponent>;
+describe('ProjectionFormComponent', () => {
+  let component: ProjectionFormComponent;
+  let fixture: ComponentFixture<ProjectionFormComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [CinemaFormComponent],
+      declarations: [ProjectionFormComponent],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(CinemaFormComponent);
+    fixture = TestBed.createComponent(ProjectionFormComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
