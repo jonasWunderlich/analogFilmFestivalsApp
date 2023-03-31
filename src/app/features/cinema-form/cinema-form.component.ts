@@ -21,8 +21,8 @@ export class CinemaFormComponent {
   cinemaForm = this.fb.group({
     title: ['', [Validators.required]],
     text: ['', []],
-    lang: [15, [Validators.required]],
-    long: [12, [Validators.required]],
+    lang: [51.3266199, [Validators.required]],
+    long: [12.3195136, [Validators.required]],
     street: ['', []],
     postcode: ['', []],
     city: ['', []],

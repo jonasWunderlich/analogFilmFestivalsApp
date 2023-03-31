@@ -13,6 +13,7 @@ import { AuditoriumCreateComponent } from 'src/app/features/auditorium-create/au
 import { AuditoriumFormComponent } from 'src/app/features/auditorium-form/auditorium-form.component';
 import { ProjectionFormComponent } from 'src/app/features/projection-form/projection-form.component';
 import { ProjectionCreateComponent } from 'src/app/features/projection-create/projection-create.component';
+import { CinemaMapComponent } from 'src/app/shared/ui/cinema-map/cinema-map.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { ProjectionCreateComponent } from 'src/app/features/projection-create/pr
     ReportFormComponent,
     AuditoriumFormComponent,
     ProjectionFormComponent,
+    CinemaMapComponent,
   ],
 })
 export class AdminModule {}

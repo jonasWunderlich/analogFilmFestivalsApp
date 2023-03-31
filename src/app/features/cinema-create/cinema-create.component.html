@@ -5,5 +5,5 @@
     <app-cinema-form (submitEvent)="create($event)"></app-cinema-form>
   </div>
 
-  <div column-two class="right">+</div>
+  <app-cinema-map column-two [geoObject]="geoPlaceholder"></app-cinema-map>
 </app-two-column-layout>

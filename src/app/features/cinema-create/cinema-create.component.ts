@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { GeometryObject } from 'src/app/shared/ui/cinema-map/geo-mapping.helper';
 import { CinemaCreate } from 'src/app/shared/_models/cinema';
 import { CinemaCreateService } from './cinema-create.service';
 
@@ -9,6 +10,13 @@ import { CinemaCreateService } from './cinema-create.service';
 })
 export class CinemaCreateComponent {
   constructor(private readonly service: CinemaCreateService) {}
+
+  // TODO: Share Placeholder model between form & map
+  geoPlaceholder: GeometryObject = {
+    geoCoordinates: [12.3195136, 51.3266199],
+    title: 'Neues Kino',
+    id: 'createCinema',
+  };
 
   create(cinema: Partial<CinemaCreate>) {
     this.service.create(cinema).subscribe();
