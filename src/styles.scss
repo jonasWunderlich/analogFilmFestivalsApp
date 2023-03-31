@@ -79,4 +79,8 @@ select {
   &.ng-invalid {
     background-color: #ffefef;
   }
+
+  &:read-only {
+    background-color: rgb(236, 236, 236);
+  }
 }

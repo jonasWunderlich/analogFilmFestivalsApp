@@ -32,8 +32,8 @@ export interface Cinema {
 
 export interface CinemaCreate {
   title: string;
-  lang: number;
-  long: number;
+  latitude: number;
+  longitude: number;
   text: string;
   street: string;
   postcode: string;

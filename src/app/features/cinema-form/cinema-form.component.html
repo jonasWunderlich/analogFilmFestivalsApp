@@ -19,13 +19,6 @@
       id="txt"
     ></textarea>
   </fieldset>
-  <fieldset>
-    <legend>Koordinaten</legend>
-    <label for="lang">Langitude</label>
-    <input formControlName="lang" type="number" name="lang" id="lang" />
-    <label for="long">Longitude</label>
-    <input formControlName="long" type="number" name="long" id="long" />
-  </fieldset>
 
   <fieldset>
     <legend>Adresse</legend>
@@ -35,6 +28,23 @@
     <input formControlName="postcode" type="text" name="plz" id="plz" />
     <label for="city">Stadt</label>
     <input formControlName="city" type="text" name="city" id="city" />
+
+    <label for="latitude">Latitude</label>
+    <input
+      formControlName="latitude"
+      type="number"
+      name="latitude"
+      id="latitude"
+      readonly
+    />
+    <label for="longitude">longitude</label>
+    <input
+      formControlName="longitude"
+      type="number"
+      name="longitude"
+      id="longitude"
+      readonly
+    />
   </fieldset>
 
   <fieldset>

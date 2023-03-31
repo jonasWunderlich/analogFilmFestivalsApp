@@ -28,8 +28,8 @@ export class CinemaFormComponent implements OnInit {
   cinemaForm = this.fb.group({
     title: ['', [Validators.required]],
     text: ['', []],
-    lang: [0, [Validators.required]],
-    long: [0, [Validators.required]],
+    latitude: [0, [Validators.required]],
+    longitude: [0, [Validators.required]],
     street: ['', []],
     postcode: ['', []],
     city: ['', []],
@@ -54,8 +54,8 @@ export class CinemaFormComponent implements OnInit {
       )
       .subscribe((result: PositionStackResults) => {
         this.cinemaForm.patchValue({
-          lang: result.data[0].latitude,
-          long: result.data[0].longitude,
+          latitude: result.data[0].latitude,
+          longitude: result.data[0].longitude,
         });
       });
   }
