@@ -4,6 +4,11 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
+import { debounceTime, distinctUntilChanged, filter, switchMap } from 'rxjs';
+import {
+  PositionStackResults,
+  PositionstackService,
+} from 'src/app/shared/services/positionstack.service';
 import { CinemaCreate } from 'src/app/shared/_models/cinema';
 
 @Component({
@@ -23,8 +28,8 @@ export class CinemaFormComponent implements OnInit {
   cinemaForm = this.fb.group({
     title: ['', [Validators.required]],
     text: ['', []],
-    lang: [51.3266199, [Validators.required]],
-    long: [12.3195136, [Validators.required]],
+    lang: [0, [Validators.required]],
+    long: [0, [Validators.required]],
     street: ['', []],
     postcode: ['', []],
     city: ['', []],
@@ -34,6 +39,26 @@ export class CinemaFormComponent implements OnInit {
     linkProgram: ['', []],
     linkOpeningHours: ['', []],
   });
+
+  ngOnInit() {
+    this.cinemaForm.valueChanges
+      .pipe(
+        filter(
+          (values) => !!values.postcode && !!values.city && !!values.street
+        ),
+        debounceTime(1000),
+        distinctUntilChanged((a, b) => JSON.stringify(a) === JSON.stringify(b)),
+        switchMap((values) =>
+          this.ps.getCoordinates(values.postcode, values.street, values.city)
+        )
+      )
+      .subscribe((result: PositionStackResults) => {
+        this.cinemaForm.patchValue({
+          lang: result.data[0].latitude,
+          long: result.data[0].longitude,
+        });
+      });
+  }
 
   submitForm(): void {
     this.submitEvent.emit(this.cinemaForm.getRawValue());

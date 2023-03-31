@@ -42,7 +42,7 @@
   </fieldset>
 
   <fieldset>
-    <label for="street">Strasse</label>
+    <label for="street">Strasse Hausnummer</label>
     <input
       [(ngModel)]="eventData.street"
       type="text"
@@ -52,7 +52,7 @@
 
     <legend>Adresse</legend>
     <label for="plz">PLZ</label>
-    <input [(ngModel)]="eventData.postcode" type="number" name="plz" id="plz" />
+    <input [(ngModel)]="eventData.postcode" type="text" name="plz" id="plz" />
 
     <label for="city">Stadt</label>
     <input [(ngModel)]="eventData.city" type="text" name="city" id="city" />

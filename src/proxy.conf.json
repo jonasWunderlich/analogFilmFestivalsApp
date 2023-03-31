@@ -1,0 +1,8 @@
+{
+  "/positionstack/*": {
+    "target": "http://api.positionstack.com/v1/forward",
+    "pathRewrite": { "^/positionstack": "" },
+    "secure": false,
+    "changeOrigin": true
+  }
+}
