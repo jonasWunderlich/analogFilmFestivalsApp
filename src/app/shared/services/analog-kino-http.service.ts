@@ -47,7 +47,7 @@ export class AnalogKinoBackendService {
     this.reports = mockReports(40).sort((a, b) =>
       sortByISODate(a.date, b.date)
     );
-    this.projections = mockProjections(200, new Date(), 400).sort((a, b) =>
+    this.projections = mockProjections(100, new Date(), 400).sort((a, b) =>
       sortByISODate(a.date, b.date)
     );
     this.cinemas = mockCinemas(20);

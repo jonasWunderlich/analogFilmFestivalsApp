@@ -12,7 +12,10 @@ const PROJECTION_DEFAULT_VALUES: Projection = {
   reports: [],
   date: randomDate(new Date(), new Date(2023, 6, 0)).toJSON(),
   tmdb: MOCKED_TMDBIDS[0],
-  text: '',
+  text: `Have you drained your bladder? Are you free? Because if you haven't it will only come out later. I'm giving you some information that your bodily fluids may penetrate your clothing fibre's without warning.
+  When you get lost in your imaginatory vagueness, your foresight will become a nimble vagrant.`,
+  agent: 'Lorem Ipsum',
+  black: false,
 };
 
 /**
@@ -38,7 +41,9 @@ export function mockProjection(
     reports: PROJECTION_DEFAULT_VALUES.reports,
     date: date.toJSON(),
     tmdb: sample(MOCKED_TMDBIDS),
-    text: '',
+    text: PROJECTION_DEFAULT_VALUES.text,
+    agent: PROJECTION_DEFAULT_VALUES.agent,
+    black: sample([true, false]) || false,
   };
   return {
     ...defaultValues,

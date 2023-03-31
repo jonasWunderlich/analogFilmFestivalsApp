@@ -57,6 +57,12 @@ button {
   font-size: 1em;
   margin: 4px 4px;
 
+  &.small {
+    font-size: 0.8em;
+    padding: 6px;
+    margin: 4px;
+  }
+
   &:hover {
     background-color: var(--link-color-hover);
     cursor: pointer;

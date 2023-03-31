@@ -9,6 +9,7 @@ import { CinemaStoreModule } from './cinema-store/cinema-store.module';
 import { MovieStoreModule } from './movie-store/movie-store.module';
 import { ReportStoreModule } from './report-store/report.module';
 import { ScreeningEventStoreModule } from './screening-event-store/screening-event-store.module';
+import { ProjectionStoreModule } from './projection-store/projection-store.module';
 
 @NgModule({
   declarations: [],
@@ -37,6 +38,7 @@ import { ScreeningEventStoreModule } from './screening-event-store/screening-eve
     ScreeningEventStoreModule,
     MovieStoreModule,
     CinemaStoreModule,
+    ProjectionStoreModule,
   ],
 })
 export class RootStoreModule {}

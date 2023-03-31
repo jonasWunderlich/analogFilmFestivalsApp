@@ -5,6 +5,7 @@ import { loadCinemas } from './root-store/cinema-store/cinema.actions';
 import { loadReports } from './root-store/report-store/report.actions';
 import { loadScreeningEvents } from './root-store/screening-event-store/screening-event.actions';
 import { AuthService } from './shared/services/auth.service';
+import { loadProjections } from './root-store/projection-store/projection.actions';
 
 @Component({
   selector: 'app-root',
@@ -25,5 +26,6 @@ export class AppComponent implements OnInit {
     this.store.dispatch(loadScreeningEvents());
     this.store.dispatch(loadCinemas());
     this.store.dispatch(loadReports());
+    this.store.dispatch(loadProjections());
   }
 }

@@ -7,14 +7,21 @@ import {
   triggerProjectionRemoval,
   triggerProjectionUpdate,
 } from './projection.actions';
-import { selectActiveProjection } from 'src/app/root-store/projection-store/projection.selectors';
+import {
+  selectActiveProjection,
+  selectProjections,
+} from 'src/app/root-store/projection-store/projection.selectors';
+import { selectCinemas } from 'src/app/root-store/cinema-store/cinema.selectors';
+import { Router } from '@angular/router';
 
 @Injectable({ providedIn: 'root' })
 export class ProjectionService {
   activeProjectionId?: string;
   activeProjection$ = this.store.select(selectActiveProjection);
+  allCinemas$ = this.store.select(selectCinemas);
+  allProjections$ = this.store.select(selectProjections);
 
-  constructor(private readonly store: Store) {}
+  constructor(private readonly store: Store, private readonly router: Router) {}
 
   public setActiveProjection(id: string | undefined): void {
     if (id) {
@@ -41,5 +48,6 @@ export class ProjectionService {
         triggerProjectionUpdate(this.activeProjectionId, projection)
       );
     }
+    this.router.navigate(['/projection']);
   }
 }

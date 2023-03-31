@@ -4,6 +4,7 @@ import { AuditoriumCreateComponent } from 'src/app/features/auditorium/auditoriu
 import { CinemaCreateComponent } from 'src/app/features/cinema/cinema-create/cinema-create.component';
 import { CinemaEditComponent } from 'src/app/features/cinema/cinema-edit/cinema-edit.component';
 import { ProjectionCreateComponent } from 'src/app/features/projection/projection-create/projection-create.component';
+import { ProjectionEditComponent } from 'src/app/features/projection/projection-edit/projection-edit.component';
 import { ReportCreateComponent } from 'src/app/features/report/report-create/report-create.component';
 import { ScreeningEventCreateComponent } from 'src/app/features/screening-event/screening-event-create/screening-event-create.component';
 import { ScreeningEventEditComponent } from 'src/app/features/screening-event/screening-event-edit/screening-event-edit.component';
@@ -48,6 +49,11 @@ const routes: Routes = [
     path: 'projection',
     title: 'Projektion erstellen',
     component: ProjectionCreateComponent,
+  },
+  {
+    path: 'editprojection/:id',
+    title: 'Projektion bearbeiten',
+    component: ProjectionEditComponent,
   },
 ];
 

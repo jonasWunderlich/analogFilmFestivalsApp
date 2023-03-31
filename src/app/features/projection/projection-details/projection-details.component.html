@@ -1,0 +1,34 @@
+<app-two-column-layout class="c-projection-details">
+  <div column-one>
+    <ng-container *ngIf="activeProjection$ | async as projection; else loading">
+      <i>Kino</i>
+
+      <h2>{{ projection?.title }}</h2>
+      <p>{{ projection?.text }}</p>
+
+      <h3>Film:</h3>
+      <p>
+        <strong>Beschreibung:</strong>
+        {{ projection.tmdb ? projection.tmdb : "-" }}
+      </p>
+      <p>
+        <strong>TMDB:</strong>
+        {{ projection.tmdb }}
+      </p>
+      <p>
+        <strong>Geschwärzt:</strong>
+        {{ projection.black }}
+      </p>
+      <p>
+        <strong>Alias:</strong>
+        {{ projection.agent }}
+      </p>
+    </ng-container>
+
+    <ng-template #loading>
+      <app-loading></app-loading>
+    </ng-template>
+  </div>
+
+  <app-cinema-map column-two [geoArray]="allCinemas$ | async"></app-cinema-map>
+</app-two-column-layout>

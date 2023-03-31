@@ -1,0 +1,44 @@
+<app-two-column-layout class="c-projection-overview">
+  <div column-one>
+    <i>Übersicht</i>
+    <h2>Projektionen</h2>
+
+    <div
+      *ngFor="let projection of allProjections$ | async"
+      class="c-projection-overview__projection"
+    >
+      <div class="actions">
+        <button
+          class="small"
+          [routerLink]="['/admin/editprojection', projection.id]"
+        >
+          Bearbeiten
+        </button>
+        <button class="small" (click)="delete(projection.id)">Löschen</button>
+      </div>
+
+      <div class="movie">
+        <p>
+          {{ projection.date | date }}
+          <a [routerLink]="['/', 'projection', projection.id]">
+            {{ projection.title }}</a
+          >
+        </p>
+
+        <p>
+          <strong>TMDB: </strong>{{ projection.tmdb }}<br /><strong
+            >Geschwärzt: </strong
+          >{{ projection.black }}<br /><strong>Agent: </strong
+          >{{ projection.agent }}
+        </p>
+        <p>{{ projection.text }}</p>
+      </div>
+    </div>
+
+    <ng-template #loading>
+      <app-loading></app-loading>
+    </ng-template>
+  </div>
+
+  <app-cinema-map column-two [geoArray]="allCinemas$ | async"></app-cinema-map>
+</app-two-column-layout>

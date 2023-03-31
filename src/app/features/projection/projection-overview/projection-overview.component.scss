@@ -1,0 +1,14 @@
+.c-projection-overview {
+  &__projection {
+    display: flex;
+    .actions {
+      min-width: 180px;
+    }
+    .movie {
+    }
+
+    p {
+      margin: 0.2em 0;
+    }
+  }
+}
