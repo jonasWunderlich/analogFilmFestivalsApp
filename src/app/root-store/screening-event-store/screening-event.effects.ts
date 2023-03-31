@@ -98,10 +98,10 @@ export class EventEffects {
           .createScreeningEvent(params?.screeningEvent)
           .pipe(
             map((screeningEvent) =>
-              EventActions.updateScreeningEventSucceeded({ screeningEvent })
+              EventActions.createScreeningEventSucceeded({ screeningEvent })
             ),
             catchError((error) =>
-              of(EventActions.updateScreeningEventFailed({ error }))
+              of(EventActions.createScreeningEventFailed({ error }))
             )
           )
       )

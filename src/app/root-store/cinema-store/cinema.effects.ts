@@ -92,8 +92,8 @@ export class CinemaEffects {
       filter((params) => neitherNullNorUndefined(params?.cinema)),
       switchMap((params) =>
         this.analogHttpService.createCinema(params?.cinema).pipe(
-          map((cinema) => CinemaActions.updateCinemaSucceeded({ cinema })),
-          catchError((error) => of(CinemaActions.updateCinemaFailed({ error })))
+          map((cinema) => CinemaActions.createCinemaSucceeded({ cinema })),
+          catchError((error) => of(CinemaActions.createCinemaFailed({ error })))
         )
       )
     );

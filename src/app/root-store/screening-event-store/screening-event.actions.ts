@@ -29,7 +29,7 @@ export const loadScreeningEventByIdFailed = createAction(
 );
 
 export const createScreeningEventSucceeded = createAction(
-  '[Event] ScreeningEvent successfully createed',
+  '[Event] ScreeningEvent successfully created',
   props<{ screeningEvent: ScreeningEvent }>()
 );
 

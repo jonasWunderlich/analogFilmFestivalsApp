@@ -14,8 +14,8 @@ export interface ProjectionCreate {
 
 export interface Projection extends ProjectionCreate {
   id: string;
-  createdAt: string;
-  lastModifiedAt: string;
+  createdAt?: string;
+  lastModifiedAt?: string;
   title: string;
   text: string;
 
