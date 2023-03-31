@@ -1,6 +1,11 @@
 import { createEntityAdapter, EntityAdapter, EntityState } from '@ngrx/entity';
 import { createFeature, createReducer, on } from '@ngrx/store';
 import { setActiveCinemaId } from 'src/app/features/cinema-details/cinema-details.actions';
+import {
+  triggerCinemaCreation,
+  triggerCinemaUpdate,
+  triggerCinemaRemoval,
+} from 'src/app/features/cinema/cinema.actions';
 
 import { Cinema } from 'src/app/shared/_models/cinema';
 import * as CinemaActions from './cinema.actions';
@@ -12,6 +17,9 @@ export interface State extends EntityState<Cinema> {
   loadingStates: {
     loadingCinema: boolean;
     loadingCinemas: boolean;
+    createCinema: boolean;
+    deleteCinema: boolean;
+    updateCinema: boolean;
   };
 }
 
@@ -30,6 +38,9 @@ export const initialState: State = cinemaAdapter.getInitialState({
   loadingStates: {
     loadingCinema: false,
     loadingCinemas: false,
+    createCinema: false,
+    deleteCinema: false,
+    updateCinema: false,
   },
 });
 
@@ -95,6 +106,60 @@ export const reducer = createReducer(
       ...state,
       activeCinemaId: action.cinemaId,
     };
+  }),
+  on(triggerCinemaCreation, (state: State) => {
+    return {
+      ...state,
+      loadingStates: {
+        ...state.loadingStates,
+        createCinema: true,
+      },
+    };
+  }),
+  on(CinemaActions.createCinemaSucceeded, (state: State, action) => {
+    return cinemaAdapter.addOne(action.cinema, {
+      ...state,
+      loadingStates: {
+        ...state.loadingStates,
+        createCinema: false,
+      },
+    });
+  }),
+  on(triggerCinemaUpdate, (state: State) => {
+    return {
+      ...state,
+      loadingStates: {
+        ...state.loadingStates,
+        updateCinema: true,
+      },
+    };
+  }),
+  on(CinemaActions.updateCinemaSucceeded, (state: State, action) => {
+    return cinemaAdapter.setOne(action.cinema, {
+      ...state,
+      loadingStates: {
+        ...state.loadingStates,
+        updateCinema: false,
+      },
+    });
+  }),
+  on(triggerCinemaRemoval, (state: State) => {
+    return {
+      ...state,
+      loadingStates: {
+        ...state.loadingStates,
+        deleteCinema: true,
+      },
+    };
+  }),
+  on(CinemaActions.deleteCinemaSucceeded, (state: State, action) => {
+    return cinemaAdapter.removeOne(action.id, {
+      ...state,
+      loadingStates: {
+        ...state.loadingStates,
+        deleteCinema: false,
+      },
+    });
   })
 );
 

@@ -27,3 +27,33 @@ export const loadCinemaByIdFailed = createAction(
   '[Cinema] load Cinema failed',
   props<{ error: string }>()
 );
+
+export const createCinemaSucceeded = createAction(
+  '[Event] Cinema successfully createed',
+  props<{ cinema: Cinema }>()
+);
+
+export const createCinemaFailed = createAction(
+  '[Event] create Cinema failed',
+  props<{ error: string }>()
+);
+
+export const updateCinemaSucceeded = createAction(
+  '[Event] Cinema successfully updated',
+  props<{ cinema: Cinema }>()
+);
+
+export const updateCinemaFailed = createAction(
+  '[Event] update Cinema failed',
+  props<{ error: string }>()
+);
+
+export const deleteCinemaSucceeded = createAction(
+  '[Event] Cinema successfully deleted',
+  props<{ id: string }>()
+);
+
+export const deleteCinemaFailed = createAction(
+  '[Event] delete Cinema failed',
+  props<{ error: string }>()
+);

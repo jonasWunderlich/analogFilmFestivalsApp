@@ -10,7 +10,7 @@ import {
 import { mockProjections } from '../_mock/projection.mock';
 import { mockReports } from '../_mock/report.mocks';
 import { Auditorium } from '../_models/auditorium';
-import { Cinema } from '../_models/cinema';
+import { Cinema, CinemaCreate } from '../_models/cinema';
 import { Projection } from '../_models/projection';
 import { Report } from '../_models/report';
 import {
@@ -84,6 +84,32 @@ export class AnalogKinoBackendService {
     return this.getById(id, this.cinemas);
   }
 
+  /** HTTP CRUD Cinmea */
+
+  public createCinema(item: CinemaCreate): Observable<Cinema> {
+    const transformed: Cinema = {
+      id: uniqueId(),
+      geoCoordinates: [item.longitude, item.latitude],
+      ...item,
+    } as Cinema;
+    return of(transformed);
+  }
+
+  public updateCinema(updateItem: CinemaCreate): Observable<Cinema> {
+    const orgCinema = this.cinemas.find(
+      (item) => item.title === updateItem.title
+    );
+    if (!orgCinema) {
+      return throwError(() => new Error('ERROR updating screening event'));
+    }
+    const merge = { ...orgCinema, ...updateItem };
+    return of(merge as Cinema);
+  }
+
+  public deleteCinema(id: string): Observable<string> {
+    return this.removeFromMocks(this.cinemas, id);
+  }
+
   public getAuditoriums(): Observable<Auditorium[]> {
     return of(this.auditoriums);
   }
@@ -100,7 +126,7 @@ export class AnalogKinoBackendService {
     return this.getById(id, this.screeningEvents);
   }
 
-  /** CRUD EVENT */
+  /** HTTP CRUD ScreeningEvent */
 
   public createScreeningEvent(
     newEvent: ScreeningEventCreate
