@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ScreeningEventDetailsService } from './screening-event-details.service';
+import { ScreeningEventService } from './screening-event-details.service';
 
 @Component({
   selector: 'app-screening-event-details',
@@ -9,18 +9,18 @@ import { ScreeningEventDetailsService } from './screening-event-details.service'
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScreeningEventDetailsComponent implements OnInit {
-  event$ = this.detailsService.event$;
-  cinemas$ = this.detailsService.cinemas$;
-  movies$ = this.detailsService.movies$;
+  event$ = this.eventService.event$;
+  cinemas$ = this.eventService.cinemas$;
+  movies$ = this.eventService.movies$;
 
   constructor(
     private readonly route: ActivatedRoute,
-    private readonly detailsService: ScreeningEventDetailsService
+    private readonly eventService: ScreeningEventService
   ) {}
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
-      this.detailsService.setActiveScreeningEvent(params['id']);
+      this.eventService.setActiveScreeningEvent(params['id']);
     });
   }
 }

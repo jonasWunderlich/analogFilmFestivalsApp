@@ -5,6 +5,7 @@ import { CinemaCreateComponent } from 'src/app/features/cinema-create/cinema-cre
 import { ProjectionCreateComponent } from 'src/app/features/projection-create/projection-create.component';
 import { ReportCreateComponent } from 'src/app/features/report-create/report-create.component';
 import { ScreeningEventCreateComponent } from 'src/app/features/screening-event-create/screening-event-create.component';
+import { ScreeningEventEditComponent } from 'src/app/features/screening-event-edit/screening-event-edit.component';
 
 const routes: Routes = [
   {
@@ -16,6 +17,11 @@ const routes: Routes = [
     path: 'event',
     title: 'Event erstellen',
     component: ScreeningEventCreateComponent,
+  },
+  {
+    path: 'editevent/:id',
+    title: 'Event erstellen',
+    component: ScreeningEventEditComponent,
   },
   {
     path: 'cinema',

@@ -14,10 +14,12 @@ import { ProjectionFormComponent } from 'src/app/features/projection-form/projec
 import { ProjectionCreateComponent } from 'src/app/features/projection-create/projection-create.component';
 import { CinemaMapComponent } from 'src/app/shared/ui/cinema-map/cinema-map.component';
 import { ReportFormComponent } from 'src/app/features/report-form/report-form.component';
+import { ScreeningEventEditComponent } from 'src/app/features/screening-event-edit/screening-event-edit.component';
 
 @NgModule({
   declarations: [
     ScreeningEventCreateComponent,
+    ScreeningEventEditComponent,
     CinemaCreateComponent,
     ReportCreateComponent,
     AuditoriumCreateComponent,

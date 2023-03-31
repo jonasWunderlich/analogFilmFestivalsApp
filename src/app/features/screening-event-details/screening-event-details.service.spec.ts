@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { ScreeningEventDetailsService } from './screening-event-details.service';
+import { ScreeningEventService } from './screening-event-details.service';
 
-describe('ScreeningEventDetailsService', () => {
-  let service: ScreeningEventDetailsService;
+describe('ScreeningEventService', () => {
+  let service: ScreeningEventService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(ScreeningEventDetailsService);
+    service = TestBed.inject(ScreeningEventService);
   });
 
   it('should be created', () => {

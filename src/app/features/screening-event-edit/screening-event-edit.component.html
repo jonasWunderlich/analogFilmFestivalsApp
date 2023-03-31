@@ -1,0 +1,13 @@
+<app-two-column-layout class="c-event-create">
+  <div column-one>
+    <i>Formular</i>
+    <h2>Event bearbeiten</h2>
+    <app-screening-event-form
+      *ngIf="screeningEvent$ | async as screeningEvent"
+      [screeningEvent]="screeningEvent"
+      (submitEvent)="update($event)"
+    ></app-screening-event-form>
+  </div>
+
+  <div column-two class="right">+</div>
+</app-two-column-layout>

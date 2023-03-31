@@ -7,7 +7,12 @@
     <textarea formControlName="text" rows="5" type="text" id="txt"></textarea>
 
     <label for="type">Typ</label>
-    <select name="eventtype" id="type" formControlName="type">
+    <select
+      name="eventtype"
+      id="type"
+      formControlName="type"
+      (change)="updateType()"
+    >
       <option *ngFor="let option of typeOptions">
         {{ option.name }}
       </option>
