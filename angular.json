@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "baseHref": "",
+            "baseHref": "analog-cinema-app",
             "outputPath": "dist/analog-cinema-app",
             "index": "src/index.html",
             "main": "src/main.ts",

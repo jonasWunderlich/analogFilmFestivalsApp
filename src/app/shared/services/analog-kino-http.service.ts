@@ -103,8 +103,8 @@ export class AnalogKinoBackendService {
     id: string,
     updateItem: CinemaCreate
   ): Observable<Cinema> {
-    const orgCinema = this.cinemas.find((item) => item.id === id);
-    if (!orgCinema) {
+    const orgCinema = this.cinemas.find((item) => item.title === id);
+    if (orgCinema === undefined) {
       return throwError(() => new Error('ERROR updating screening event'));
     }
     const merge = { ...orgCinema, ...updateItem };
@@ -144,7 +144,7 @@ export class AnalogKinoBackendService {
     const orgEvent = this.screeningEvents.find(
       (orgEvent) => orgEvent.id === id
     );
-    if (!orgEvent) {
+    if (orgEvent === undefined) {
       return throwError(() => new Error('ERROR updating screening event'));
     }
     const merge = { ...orgEvent, ...updateItem };

@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AuditoriumCreateComponent } from 'src/app/features/auditorium-create/auditorium-create.component';
+import { AuditoriumCreateComponent } from 'src/app/features/auditorium/auditorium-create/auditorium-create.component';
 import { CinemaCreateComponent } from 'src/app/features/cinema/cinema-create/cinema-create.component';
 import { CinemaEditComponent } from 'src/app/features/cinema/cinema-edit/cinema-edit.component';
-import { ProjectionCreateComponent } from 'src/app/features/projection-create/projection-create.component';
-import { ReportCreateComponent } from 'src/app/features/report-create/report-create.component';
+import { ProjectionCreateComponent } from 'src/app/features/projection/projection-create/projection-create.component';
+import { ReportCreateComponent } from 'src/app/features/report/report-create/report-create.component';
 import { ScreeningEventCreateComponent } from 'src/app/features/screening-event/screening-event-create/screening-event-create.component';
 import { ScreeningEventEditComponent } from 'src/app/features/screening-event/screening-event-edit/screening-event-edit.component';
 
