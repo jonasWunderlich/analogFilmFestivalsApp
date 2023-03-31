@@ -1,6 +1,5 @@
 import { TestBed } from '@angular/core/testing';
-
-import { ScreeningEventService } from './screening-event-details.service';
+import { ScreeningEventService } from './screening-event.service';
 
 describe('ScreeningEventService', () => {
   let service: ScreeningEventService;

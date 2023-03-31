@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { EMPTY, Observable, of } from 'rxjs';
+import { EMPTY, Observable, of, throwError } from 'rxjs';
 import { mockCinemas } from '../_mock/cinema.mock';
 import { mockScreeningEvents } from '../_mock/event.mock';
 import {
@@ -13,7 +13,19 @@ import { Auditorium } from '../_models/auditorium';
 import { Cinema } from '../_models/cinema';
 import { Projection } from '../_models/projection';
 import { Report } from '../_models/report';
-import { ScreeningEvent } from '../_models/screening-event';
+import {
+  ScreeningEvent,
+  ScreeningEventCreate,
+} from '../_models/screening-event';
+import { uniqueId } from 'lodash';
+
+export enum CONTENT_TYPE {
+  EVENT = 'EVENT',
+  REPORT = 'REPORT',
+  CINEMA = 'CINEMA',
+  PROJECTION = 'PROJECTION',
+  AUDITORIUM = 'AUDITORIUM',
+}
 
 @Injectable({
   providedIn: 'platform',
@@ -88,6 +100,37 @@ export class AnalogKinoBackendService {
     return this.getById(id, this.screeningEvents);
   }
 
+  /** CRUD EVENT */
+
+  public createScreeningEvent(
+    newEvent: ScreeningEventCreate
+  ): Observable<ScreeningEvent> {
+    const transformed = {
+      id: uniqueId(),
+      ...newEvent,
+    } as ScreeningEvent;
+    return of(transformed);
+  }
+
+  public updateScreeningEvent(
+    updateItem: ScreeningEventCreate
+  ): Observable<ScreeningEvent> {
+    const orgEvent = this.screeningEvents.find(
+      (orgEvent) => orgEvent.title === updateItem.title
+    );
+    if (!orgEvent) {
+      return throwError(() => new Error('ERROR updating screening event'));
+    }
+    const merge = { ...orgEvent, ...updateItem };
+    return of(merge as ScreeningEvent);
+  }
+
+  public deleteScreeningEvent(id: string): Observable<string> {
+    return this.removeFromMocks(this.screeningEvents, id);
+  }
+
+  // PROJECTIONS
+
   public getProjections(): Observable<Projection[]> {
     return of(this.projections);
   }
@@ -113,5 +156,28 @@ export class AnalogKinoBackendService {
       return EMPTY;
     }
     return of(found);
+  }
+
+  private create<T>(updateItem: T): Observable<T> {
+    return of(updateItem);
+  }
+
+  private update<T extends { id: string }>(updateItem: T): Observable<T> {
+    return of(updateItem);
+  }
+
+  removeFromMocks<T extends { id: string }>(
+    arr: Array<T>,
+    id: string
+  ): Observable<string> {
+    arr = this.deleteFromArray(arr, id);
+    return of(id);
+  }
+
+  private deleteFromArray<T extends { id: string }>(
+    arr: Array<T>,
+    id: string
+  ): Array<T> {
+    return arr.filter((item) => item.id !== id);
   }
 }
