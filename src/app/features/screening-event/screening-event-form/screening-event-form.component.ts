@@ -1,4 +1,4 @@
-import { NgFor } from '@angular/common';
+import { NgFor, NgIf } from '@angular/common';
 import {
   Component,
   EventEmitter,
@@ -25,13 +25,15 @@ import {
   templateUrl: './screening-event-form.component.html',
   styleUrls: ['./screening-event-form.component.scss'],
   standalone: true,
-  imports: [ReactiveFormsModule, NgFor, LocalIsoDateValueAccessorModule],
+  imports: [ReactiveFormsModule, NgFor, NgIf, LocalIsoDateValueAccessorModule],
 })
 export class ScreeningEventFormComponent implements OnChanges {
   @Input() screeningEvent?: ScreeningEvent;
   @Output() submitEvent = new EventEmitter<ScreeningEventCreate>();
+  @Output() deleteEvent = new EventEmitter<ScreeningEvent>();
   typeOptions = generateSelectOptionsFromEnum('', ScreeningEventType);
 
+  editMode = false;
   fb = inject(NonNullableFormBuilder);
   type = ScreeningEventType;
 
@@ -56,6 +58,12 @@ export class ScreeningEventFormComponent implements OnChanges {
     }
   }
 
+  delete() {
+    if (this.editMode) {
+      this.deleteEvent.emit(this.screeningEvent);
+    }
+  }
+
   updateType() {
     if (this.form.value.type === ScreeningEventType.SINGLE) {
       this.form.controls.end.disable();
@@ -65,8 +73,9 @@ export class ScreeningEventFormComponent implements OnChanges {
   }
 
   ngOnChanges(): void {
-    if (this.screeningEvent) {
+    if (this.screeningEvent?.id) {
       this.setFormValues(this.screeningEvent);
+      this.editMode = true;
     }
   }
 

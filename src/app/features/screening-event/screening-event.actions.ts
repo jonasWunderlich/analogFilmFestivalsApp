@@ -12,6 +12,6 @@ export const triggerScreeningEventCreation = createAction(
 );
 
 export const triggerScreeningEventRemoval = createAction(
-  '[EventService] Deletet ScreeningEvent triggered',
+  '[EventService] Delete ScreeningEvent triggered',
   (id: string) => ({ id })
 );

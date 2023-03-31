@@ -132,13 +132,11 @@ export class CinemaEffects {
     );
   });
 
-  updateCinemaSucceeded$ = createEffect(
-    () =>
-      this.actions$.pipe(
-        ofType(CinemaActions.updateCinemaSucceeded),
-        tap(() => this.notificationService.success('Event.updateSucceeded'))
-      ),
-    { dispatch: false }
+  updateCinemaSucceeded$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(CinemaActions.updateCinemaSucceeded),
+      tap(() => this.notificationService.success('Event.updateSucceeded'))
+    )
   );
 
   updateCinemaFailed$ = createEffect(
@@ -165,13 +163,11 @@ export class CinemaEffects {
     );
   });
 
-  deleteCinemaSucceeded$ = createEffect(
-    () =>
-      this.actions$.pipe(
-        ofType(CinemaActions.deleteCinemaSucceeded),
-        tap(() => this.notificationService.success('Event.deleteSucceeded'))
-      ),
-    { dispatch: false }
+  deleteCinemaSucceeded$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(CinemaActions.deleteCinemaSucceeded),
+      tap(() => this.notificationService.success('Event.deleteSucceeded'))
+    )
   );
 
   deleteCinemaFailed$ = createEffect(

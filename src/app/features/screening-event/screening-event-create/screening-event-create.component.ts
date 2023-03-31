@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
-import { ScreeningEventCreate } from 'src/app/shared/_models/screening-event';
+import {
+  ScreeningEvent,
+  ScreeningEventCreate,
+} from 'src/app/shared/_models/screening-event';
 import { ScreeningEventService } from '../screening-event.service';
 
 @Component({
@@ -11,6 +14,6 @@ export class ScreeningEventCreateComponent {
   constructor(private readonly eventService: ScreeningEventService) {}
 
   create(screeningEvent: ScreeningEventCreate) {
-    this.eventService.create(screeningEvent).subscribe();
+    this.eventService.create(screeningEvent);
   }
 }

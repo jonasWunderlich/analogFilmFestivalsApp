@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ScreeningEventCreate } from 'src/app/shared/_models/screening-event';
+import {
+  ScreeningEvent,
+  ScreeningEventCreate,
+} from 'src/app/shared/_models/screening-event';
 import { ScreeningEventService } from '../screening-event.service';
 
 @Component({
@@ -22,7 +25,12 @@ export class ScreeningEventEditComponent implements OnInit {
     });
   }
 
-  update(create: ScreeningEventCreate) {
-    this.service.update(create);
+  update(item: ScreeningEventCreate) {
+    this.service.update(item);
+  }
+
+  delete(screeningEvent: ScreeningEvent) {
+    console.log('auch hier');
+    this.service.delete(screeningEvent.id);
   }
 }

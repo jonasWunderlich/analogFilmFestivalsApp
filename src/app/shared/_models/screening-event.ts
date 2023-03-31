@@ -20,8 +20,8 @@ export interface ScreeningEventCreate {
 
 export interface ScreeningEvent extends ScreeningEventCreate {
   id: string;
-  createdAt: string;
-  lastModifiedAt: string;
+  createdAt?: string;
+  lastModifiedAt?: string;
 
   title: string;
   start: string;
