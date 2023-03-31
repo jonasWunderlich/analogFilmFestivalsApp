@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, inject, OnInit, Output } from '@angular/core';
 import {
   NonNullableFormBuilder,
   ReactiveFormsModule,
@@ -16,7 +16,9 @@ import { CinemaCreate } from 'src/app/shared/_models/cinema';
 export class CinemaFormComponent implements OnInit {
   @Output() submitEvent = new EventEmitter<CinemaCreate>();
 
-  constructor(private readonly fb: NonNullableFormBuilder) {}
+  fb = inject(NonNullableFormBuilder);
+
+  constructor(private readonly ps: PositionstackService) {}
 
   cinemaForm = this.fb.group({
     title: ['', [Validators.required]],

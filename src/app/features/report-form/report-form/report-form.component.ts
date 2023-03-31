@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, inject, Output } from '@angular/core';
 import {
   NonNullableFormBuilder,
   ReactiveFormsModule,
@@ -16,7 +16,7 @@ import { ReportCreate } from 'src/app/shared/_models/report';
 export class ReportFormComponent {
   @Output() submitEvent = new EventEmitter<ReportCreate>();
 
-  constructor(private readonly fb: NonNullableFormBuilder) {}
+  fb = inject(NonNullableFormBuilder);
 
   reportForm = this.fb.group({
     title: ['', [Validators.required]],

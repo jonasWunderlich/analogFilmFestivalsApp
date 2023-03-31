@@ -1,5 +1,5 @@
 import { NgFor } from '@angular/common';
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, inject, Output } from '@angular/core';
 import {
   NonNullableFormBuilder,
   ReactiveFormsModule,
@@ -26,7 +26,7 @@ import {
 export class AuditoriumFormComponent {
   @Output() submitEvent = new EventEmitter<AuditoriumCreate>();
 
-  constructor(private readonly fb: NonNullableFormBuilder) {}
+  fb = inject(NonNullableFormBuilder);
 
   attributeOptions = AUDITORIUM_ATTRIBUTES;
   projectorOptions = PROJECTORS_OPTIONS;

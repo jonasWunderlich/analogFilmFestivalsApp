@@ -10,7 +10,7 @@ import { ProjectionCreateService } from './projection-create.service';
 export class ProjectionCreateComponent {
   constructor(private readonly service: ProjectionCreateService) {}
 
-  create(projection: Partial<ProjectionCreate>) {
+  create(projection: ProjectionCreate) {
     this.service.create(projection).subscribe();
   }
 }

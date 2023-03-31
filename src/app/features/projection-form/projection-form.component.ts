@@ -1,5 +1,5 @@
 import { NgFor } from '@angular/common';
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component, Output, EventEmitter, inject } from '@angular/core';
 import {
   ReactiveFormsModule,
   NonNullableFormBuilder,
@@ -17,7 +17,7 @@ import { ProjectionCreate } from 'src/app/shared/_models/projection';
 export class ProjectionFormComponent {
   @Output() submitEvent = new EventEmitter<ProjectionCreate>();
 
-  constructor(private readonly fb: NonNullableFormBuilder) {}
+  fb = inject(NonNullableFormBuilder);
 
   form = this.fb.group({
     title: ['', [Validators.required]],
