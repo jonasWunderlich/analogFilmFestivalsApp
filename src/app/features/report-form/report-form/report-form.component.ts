@@ -21,7 +21,7 @@ export class ReportFormComponent {
   reportForm = this.fb.group({
     title: ['', [Validators.required]],
     text: ['', [Validators.required]],
-    date: [new Date(), []],
+    date: [new Date().toJSON(), []],
     images: [[], []],
   });
 

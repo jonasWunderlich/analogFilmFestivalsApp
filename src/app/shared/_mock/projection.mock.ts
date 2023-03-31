@@ -10,7 +10,7 @@ const PROJECTION_DEFAULT_VALUES: Projection = {
   lastModifiedAt: '2020-11-30T10:32:19.196720000+0000',
   title: 'Time and Tide',
   reports: [],
-  date: randomDate(new Date(), new Date(2023, 6, 0)),
+  date: randomDate(new Date(), new Date(2023, 6, 0)).toJSON(),
   tmdb: MOCKED_TMDBIDS[0],
   text: '',
 };
@@ -36,7 +36,7 @@ export function mockProjection(
     lastModifiedAt: PROJECTION_DEFAULT_VALUES.lastModifiedAt,
     title: sample(MOCKED_PROJECTION_NAMES) || PROJECTION_DEFAULT_VALUES.title,
     reports: PROJECTION_DEFAULT_VALUES.reports,
-    date,
+    date: date.toJSON(),
     tmdb: sample(MOCKED_TMDBIDS),
     text: '',
   };
@@ -68,7 +68,7 @@ export function mockProjections(
     projections.push(
       mockProjection({
         id: i.toString(),
-        date: addDays(date, mockNumber(0, length)),
+        date: addDays(date, mockNumber(0, length)).toJSON(),
       })
     );
   }

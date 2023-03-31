@@ -42,6 +42,10 @@ export function sortByDate(time1: Date, time2: Date): number {
   return new Date(time1).getTime() - new Date(time2).getTime();
 }
 
+export function sortByISODate(time1: string, time2: string): number {
+  return new Date(time1).getTime() - new Date(time2).getTime();
+}
+
 export function getRandomSubarray<T>(arr: Array<T>, size: number): Array<T> {
   const shuffled = arr.slice(0);
   let i = arr.length,

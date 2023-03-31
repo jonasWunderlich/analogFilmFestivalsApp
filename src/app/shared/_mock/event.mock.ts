@@ -8,7 +8,7 @@ import {
   mockCharString,
   mockNumber,
   randomDate,
-  sortByDate,
+  sortByISODate,
 } from '../helpers/mock-data.helper';
 import { mockProjections } from './projection.mock';
 import {
@@ -26,8 +26,8 @@ const SCREENING_EVENT_DEFAULT_VALUES: ScreeningEvent = {
   title: MOCKED_EVENT_NAMES[1],
   text: MOCKED_EVENT_TEXTS[1],
   reports: [],
-  start: randomDate(new Date(), new Date(2023, 6, 0)),
-  end: randomDate(new Date(), new Date(2023, 12, 0)),
+  start: randomDate(new Date(), new Date(2023, 6, 0)).toJSON(),
+  end: randomDate(new Date(), new Date(2023, 12, 0)).toJSON(),
   projections: [],
   street: 'Spinnereistrasse 1',
   postcode: '04177',
@@ -71,13 +71,13 @@ export function mockScreeningEvent(
     type: eventType,
     text: sample(MOCKED_EVENT_TEXTS),
     reports: mockReports(mockNumber(0, 3)),
-    start,
+    start: start.toJSON(),
     end:
       eventType !== ScreeningEventType.SINGLE
-        ? addDays(start, eventLength)
+        ? addDays(start, eventLength).toDateString()
         : undefined,
     projections: mockProjections(projectionCount, start, eventLength).sort(
-      (a, b) => sortByDate(a.date, b.date)
+      (a, b) => sortByISODate(a.date, b.date)
     ),
     city: sample(MOCKED_CITIES),
     street: `${sample(MOCKED_STREETS)} ${mockNumber(1, 400)}`,

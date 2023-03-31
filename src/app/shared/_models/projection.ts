@@ -5,7 +5,7 @@ import { ProjectionCharacter } from './projection-character';
 export interface ProjectionCreate {
   title: string;
   text: string;
-  date: Date;
+  date: string;
   tmdb?: string;
   character?: ProjectionCharacter[];
   black?: boolean;
@@ -19,7 +19,7 @@ export interface Projection extends ProjectionCreate {
   title: string;
   text: string;
 
-  date: Date;
+  date: string;
   tmdb?: string;
   character?: ProjectionCharacter[];
   black?: boolean;

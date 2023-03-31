@@ -5,7 +5,7 @@ import { mockScreeningEvents } from '../_mock/event.mock';
 import {
   getRandomSubarray,
   mockNumber,
-  sortByDate,
+  sortByISODate,
 } from '../helpers/mock-data.helper';
 import { mockProjections } from '../_mock/projection.mock';
 import { mockReports } from '../_mock/report.mocks';
@@ -30,13 +30,15 @@ export class AnalogKinoBackendService {
   }
 
   private buildMocks() {
-    this.reports = mockReports(40).sort((a, b) => sortByDate(a.date, b.date));
+    this.reports = mockReports(40).sort((a, b) =>
+      sortByISODate(a.date, b.date)
+    );
     this.projections = mockProjections(200, new Date(), 400).sort((a, b) =>
-      sortByDate(a.date, b.date)
+      sortByISODate(a.date, b.date)
     );
     this.cinemas = mockCinemas(40);
     this.screeningEvents = mockScreeningEvents(40).sort((a, b) =>
-      sortByDate(a.start, b.start)
+      sortByISODate(a.start, b.start)
     );
     this.screeningEvents.forEach((event) => {
       event.cinemaRefs = getRandomSubarray(this.cinemas, mockNumber(1, 10)).map(

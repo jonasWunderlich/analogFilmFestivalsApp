@@ -9,8 +9,8 @@ export interface ScreeningEvent {
   lastModifiedAt: string;
   title: string;
 
-  start: Date;
-  end?: Date;
+  start: string;
+  end?: string;
   text?: string;
   type?: ScreeningEventType;
   street?: string;

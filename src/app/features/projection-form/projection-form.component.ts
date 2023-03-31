@@ -21,7 +21,7 @@ export class ProjectionFormComponent {
 
   form = this.fb.group({
     title: ['', [Validators.required]],
-    date: [new Date(), [Validators.required]],
+    date: [new Date().toJSON(), [Validators.required]],
     tmdb: ['', []],
     black: [false, []],
     agent: ['', []],

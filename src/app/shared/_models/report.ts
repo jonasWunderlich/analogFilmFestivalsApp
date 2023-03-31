@@ -1,6 +1,6 @@
 export interface ReportCreate {
   title: string;
-  date: Date;
+  date: string;
   text: string;
   images?: string[];
 }
@@ -11,7 +11,7 @@ export interface Report extends ReportCreate {
   lastModifiedAt: string;
   title: string;
 
-  date: Date;
+  date: string;
   text: string;
   images?: string[];
 }

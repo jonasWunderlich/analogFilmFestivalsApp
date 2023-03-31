@@ -13,7 +13,19 @@ import { ScreeningEventStoreModule } from './screening-event-store/screening-eve
 @NgModule({
   declarations: [],
   imports: [
-    StoreModule.forRoot({}, {}),
+    StoreModule.forRoot(
+      {},
+      {
+        runtimeChecks: {
+          strictActionImmutability: true,
+          strictActionSerializability: true,
+          strictActionTypeUniqueness: true,
+          strictActionWithinNgZone: true,
+          strictStateImmutability: true,
+          strictStateSerializability: true,
+        },
+      }
+    ),
     EffectsModule.forRoot([]),
     StoreRouterConnectingModule.forRoot(),
     StoreDevtoolsModule.instrument({

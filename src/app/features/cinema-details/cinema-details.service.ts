@@ -3,7 +3,7 @@ import { Store } from '@ngrx/store';
 import { selectActiveCinema } from 'src/app/root-store/cinema-store/cinema.selectors';
 import {
   randomDate,
-  sortByDate,
+  sortByISODate,
 } from 'src/app/shared/helpers/mock-data.helper';
 import { mockProjections } from 'src/app/shared/_mock/projection.mock';
 import { setActiveCinemaId } from './cinema-details.actions';
@@ -17,7 +17,7 @@ export class CinemaDetailsService {
     12,
     randomDate(new Date(), new Date(2023, 1, 0)),
     90
-  ).sort((a, b) => sortByDate(a.date, b.date));
+  ).sort((a, b) => sortByISODate(a.date, b.date));
 
   constructor(private readonly store: Store) {}
 
