@@ -14,7 +14,7 @@ import { ReportCreate } from 'src/app/shared/_models/report';
   imports: [ReactiveFormsModule],
 })
 export class ReportFormComponent {
-  @Output() submitEvent = new EventEmitter<Partial<ReportCreate>>();
+  @Output() submitEvent = new EventEmitter<ReportCreate>();
 
   constructor(private readonly fb: NonNullableFormBuilder) {}
 
@@ -26,6 +26,6 @@ export class ReportFormComponent {
   });
 
   submitForm(): void {
-    this.submitEvent.emit(this.reportForm.value);
+    this.submitEvent.emit(this.reportForm.getRawValue());
   }
 }

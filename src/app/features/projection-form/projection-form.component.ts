@@ -15,7 +15,7 @@ import { ProjectionCreate } from 'src/app/shared/_models/projection';
   imports: [ReactiveFormsModule, NgFor],
 })
 export class ProjectionFormComponent {
-  @Output() submitEvent = new EventEmitter<Partial<ProjectionCreate>>();
+  @Output() submitEvent = new EventEmitter<ProjectionCreate>();
 
   constructor(private readonly fb: NonNullableFormBuilder) {}
 
@@ -29,6 +29,6 @@ export class ProjectionFormComponent {
   });
 
   submitForm(): void {
-    this.submitEvent.emit(this.form.value);
+    this.submitEvent.emit(this.form.getRawValue());
   }
 }

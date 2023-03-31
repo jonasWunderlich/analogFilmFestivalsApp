@@ -4,9 +4,7 @@ import { ProjectionCreate } from 'src/app/shared/_models/projection';
 
 @Injectable({ providedIn: 'platform' })
 export class ProjectionCreateService {
-  create(
-    projection: Partial<ProjectionCreate>
-  ): Observable<Partial<ProjectionCreate>> {
+  create(projection: ProjectionCreate): Observable<ProjectionCreate> {
     // TODO: dispatch create projection
     console.log('dispatch | create projection:', projection);
     return of(projection);

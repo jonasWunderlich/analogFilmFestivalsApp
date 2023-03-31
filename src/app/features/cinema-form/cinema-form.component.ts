@@ -13,8 +13,8 @@ import { CinemaCreate } from 'src/app/shared/_models/cinema';
   standalone: true,
   imports: [ReactiveFormsModule],
 })
-export class CinemaFormComponent {
-  @Output() submitEvent = new EventEmitter<Partial<CinemaCreate>>();
+export class CinemaFormComponent implements OnInit {
+  @Output() submitEvent = new EventEmitter<CinemaCreate>();
 
   constructor(private readonly fb: NonNullableFormBuilder) {}
 
@@ -34,6 +34,6 @@ export class CinemaFormComponent {
   });
 
   submitForm(): void {
-    this.submitEvent.emit(this.cinemaForm.value);
+    this.submitEvent.emit(this.cinemaForm.getRawValue());
   }
 }

@@ -18,7 +18,7 @@ export class CinemaCreateComponent {
     id: 'createCinema',
   };
 
-  create(cinema: Partial<CinemaCreate>) {
+  create(cinema: CinemaCreate) {
     this.service.create(cinema).subscribe();
   }
 }

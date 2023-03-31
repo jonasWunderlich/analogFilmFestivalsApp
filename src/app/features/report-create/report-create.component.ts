@@ -10,7 +10,7 @@ import { ReportCreateService } from './report-create.service';
 export class ReportCreateComponent {
   constructor(private readonly service: ReportCreateService) {}
 
-  create(report: Partial<ReportCreate>) {
+  create(report: ReportCreate) {
     this.service.create(report).subscribe();
   }
 }

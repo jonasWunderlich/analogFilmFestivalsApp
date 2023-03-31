@@ -24,7 +24,7 @@ import {
   imports: [ReactiveFormsModule, NgFor],
 })
 export class AuditoriumFormComponent {
-  @Output() submitEvent = new EventEmitter<Partial<AuditoriumCreate>>();
+  @Output() submitEvent = new EventEmitter<AuditoriumCreate>();
 
   constructor(private readonly fb: NonNullableFormBuilder) {}
 
@@ -43,6 +43,6 @@ export class AuditoriumFormComponent {
   });
 
   submitForm(): void {
-    this.submitEvent.emit(this.auditoriumForm.value);
+    this.submitEvent.emit(this.auditoriumForm.getRawValue());
   }
 }
