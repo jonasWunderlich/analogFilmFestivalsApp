@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { catchError, filter, map, of, switchMap, tap } from 'rxjs';
 import {
@@ -14,6 +14,10 @@ import * as EventActions from './screening-event.actions';
 
 @Injectable()
 export class EventEffects {
+  private actions$ = inject(Actions);
+  private analogHttpService = inject(AnalogKinoBackendService);
+  private notificationService = inject(NotificationService);
+
   /* LOAD ALL SCREENING EVENT */
 
   loadScreeningEvents$ = createEffect(() =>
@@ -203,10 +207,4 @@ export class EventEffects {
       ),
     { dispatch: false }
   );
-
-  constructor(
-    private readonly actions$: Actions,
-    private readonly analogHttpService: AnalogKinoBackendService,
-    private readonly notificationService: NotificationService
-  ) {}
 }

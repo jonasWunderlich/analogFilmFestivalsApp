@@ -18,32 +18,32 @@ export const loadMovieById = createAction(
 
 /* Succes & Error */
 
-export const searchedMoviesSuccess = createAction(
-  '[Movie] searched Movies successfully loaded',
+export const searchMoviesByQuerySuccess = createAction(
+  '[Movie] searched Movies (by query) successfully',
   props<{ movies: TMDbMovieDetails[] | undefined }>()
 );
 
-export const searchedMoviesFailed = createAction(
-  '[Movie] searched Movies failed',
+export const searchMoviesByQueryFailed = createAction(
+  '[Movie] searched Movies (by query) failed',
   props<{ error: string }>()
 );
 
 export const loadMovieByIdSuccess = createAction(
-  '[Movie] Movie loaded',
+  '[Movie] searched one Movies (by id) successfully',
   props<{ movie: TMDbMovieDetails | null }>()
 );
 
 export const loadMovieByIdFailed = createAction(
-  '[Movie] Movie loaded failed',
+  '[Movie] searched one Movies (by id) failed',
   props<{ error: string }>()
 );
 
 export const loadMoviesByIdsSuccess = createAction(
-  '[Movie] Movies loaded',
+  '[Movie] searched multiple Movies (by Array<{id: string}>) successfully',
   props<{ movies: (TMDbMovieDetails | null)[] }>()
 );
 
 export const loadMoviesByIdsFailed = createAction(
-  '[Movie] Movies loaded failed',
+  '[Movie] searched multiple Movies (by Array<{id: string}>) failed',
   props<{ error: string }>()
 );

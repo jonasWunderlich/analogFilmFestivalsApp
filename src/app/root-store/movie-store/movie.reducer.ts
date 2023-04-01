@@ -18,7 +18,7 @@ export const initialState: MoviesState = {
 
 export const reducer = createReducer(
   initialState,
-  on(MovieActions.searchedMoviesSuccess, (state: MoviesState, action) => {
+  on(MovieActions.searchMoviesByQuerySuccess, (state: MoviesState, action) => {
     return {
       ...state,
       searchedMovies: action.movies,

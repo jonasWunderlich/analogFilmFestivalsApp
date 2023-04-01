@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { of } from 'rxjs';
 import { catchError, filter, map, switchMap, tap } from 'rxjs/operators';
@@ -14,6 +14,10 @@ import * as ProjectionActions from './projection.actions';
 
 @Injectable()
 export class ProjectionEffects {
+  private actions$ = inject(Actions);
+  private analogHttpService = inject(AnalogKinoBackendService);
+  private notificationService = inject(NotificationService);
+
   /* LOAD ALL CINEMAS */
 
   loadProjections$ = createEffect(() =>
@@ -207,10 +211,4 @@ export class ProjectionEffects {
       ),
     { dispatch: false }
   );
-
-  constructor(
-    private readonly actions$: Actions,
-    private readonly analogHttpService: AnalogKinoBackendService,
-    private readonly notificationService: NotificationService
-  ) {}
 }

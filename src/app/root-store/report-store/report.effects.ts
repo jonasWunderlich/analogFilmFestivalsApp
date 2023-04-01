@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 
 import { catchError, map, switchMap, tap } from 'rxjs/operators';
@@ -9,6 +9,10 @@ import { AnalogKinoBackendService } from 'src/app/shared/services/analog-kino-ht
 
 @Injectable()
 export class ReportEffects {
+  private actions$ = inject(Actions);
+  private analogHttpService = inject(AnalogKinoBackendService);
+  private notificationService = inject(NotificationService);
+
   loadReports$ = createEffect(() =>
     this.actions$.pipe(
       ofType(ReportActions.loadReports),
@@ -53,10 +57,4 @@ export class ReportEffects {
       )
     );
   });
-
-  constructor(
-    private readonly actions$: Actions,
-    private readonly analogHttpService: AnalogKinoBackendService,
-    private readonly notificationService: NotificationService
-  ) {}
 }
