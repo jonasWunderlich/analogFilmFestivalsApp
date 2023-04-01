@@ -17,6 +17,7 @@ import {
   triggerCinemaRemoval,
   triggerCinemaUpdate,
 } from './cinema.actions';
+import { Observable, map } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -42,6 +43,18 @@ export class CinemaService {
         })
       );
     }
+  }
+
+  titleExists(name: string): Observable<boolean> {
+    return this.cinemas$.pipe(
+      map(
+        (arr) =>
+          !arr.find((c) => {
+            console.log(c.title.toLowerCase() === name.toLowerCase());
+            return c.title.toLowerCase() === name.toLowerCase();
+          })
+      )
+    );
   }
 
   create(screeningEvent: CinemaCreate): void {

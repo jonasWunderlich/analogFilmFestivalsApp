@@ -19,6 +19,8 @@ import {
   PositionstackService,
 } from 'src/app/shared/services/positionstack.service';
 import { Cinema, CinemaCreate } from 'src/app/shared/_models/cinema';
+import { CinemaTitleValidatorService } from 'src/app/shared/validators/cinema-title';
+import { postCodeFormat } from 'src/app/shared/validators/postcode.validator';
 
 @Component({
   selector: 'app-cinema-form',
@@ -37,12 +39,20 @@ export class CinemaFormComponent implements OnInit, OnChanges {
   constructor(private readonly ps: PositionstackService) {}
 
   cinemaForm = this.fb.group({
-    title: ['', [Validators.required]],
+    title: [
+      '',
+      {
+        validators: [Validators.required],
+        asyncValidators: [
+          inject(CinemaTitleValidatorService).cinemaTitleAvailable(),
+        ],
+      },
+    ],
     text: ['', []],
     latitude: [0, [Validators.required]],
     longitude: [0, [Validators.required]],
     street: ['', []],
-    postcode: ['', []],
+    postcode: ['', [postCodeFormat]],
     city: ['', []],
     mail: ['', []],
     phone: ['', []],
