@@ -1,15 +1,11 @@
 import { Injectable, inject } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { catchError, concatMap, filter, map, tap } from 'rxjs/operators';
-import { of, throwError } from 'rxjs';
-
+import { catchError, filter, map, switchMap, tap } from 'rxjs/operators';
 import * as MovieActions from './movie.actions';
 import { TmdbHttpService } from 'src/app/shared/services/tmdb-http.service';
 import { NotificationService } from 'src/app/shared/services/notification.service';
 import { neitherNullNorUndefined } from 'src/app/shared/helpers/null-or-undefined.helper';
-
-const errorMessage =
-  'Something bad happened with the tmdb plugin; please try again later.';
+import { of } from 'rxjs';
 
 @Injectable()
 export class MovieEffects {
@@ -23,12 +19,15 @@ export class MovieEffects {
     return this.actions$.pipe(
       ofType(MovieActions.searchMoviesByQuery),
       filter((params) => neitherNullNorUndefined(params.query)),
-      concatMap((params) => this.tmdbhttpService.searchMovies(params.query)),
-      map((movies) =>
-        MovieActions.searchMoviesByQuerySuccess({ movies: movies?.results })
-      ),
-      catchError((error) =>
-        of(MovieActions.searchMoviesByQueryFailed({ error }))
+      switchMap((params) =>
+        this.tmdbhttpService.searchMovies(params.query).pipe(
+          map((movies) =>
+            MovieActions.searchMoviesByQuerySuccess({ movies: movies?.results })
+          ),
+          catchError((error) =>
+            of(MovieActions.searchMoviesByQueryFailed({ error }))
+          )
+        )
       )
     );
   });
@@ -61,9 +60,12 @@ export class MovieEffects {
     return this.actions$.pipe(
       ofType(MovieActions.loadMovieById),
       filter((params) => neitherNullNorUndefined(params.id)),
-      concatMap((params) => this.tmdbhttpService.getMovieDetails(params.id)),
-      map((movie) => MovieActions.loadMovieByIdSuccess({ movie })),
-      catchError((error) => of(MovieActions.loadMovieByIdFailed({ error })))
+      switchMap((params) =>
+        this.tmdbhttpService.getMovieDetails(params.id).pipe(
+          map((movie) => MovieActions.loadMovieByIdSuccess({ movie })),
+          catchError((error) => of(MovieActions.loadMovieByIdFailed({ error })))
+        )
+      )
     );
   });
 
@@ -93,13 +95,29 @@ export class MovieEffects {
     return this.actions$.pipe(
       ofType(MovieActions.loadMoviesByIds),
       filter((params) => params?.movieIds?.length > 0),
-      concatMap((params) =>
-        this.tmdbhttpService.getListOfMovies(params.movieIds)
-      ),
-      catchError(() => {
-        return throwError(() => errorMessage);
-      }),
-      map((movies) => MovieActions.loadMoviesByIdsSuccess({ movies }))
+      switchMap((params) =>
+        this.tmdbhttpService.getListOfMovies(params.movieIds).pipe(
+          map((movies) => MovieActions.loadMoviesByIdsSuccess({ movies })),
+          catchError((error) =>
+            of(MovieActions.loadMoviesByIdsFailed({ error }))
+          )
+        )
+      )
+    );
+  });
+
+  loadMoviesByIds2$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(MovieActions.loadMoviesByIds),
+      filter((params) => params?.movieIds?.length > 0),
+      switchMap((params) =>
+        this.tmdbhttpService.getListOfMovies(params.movieIds).pipe(
+          map((movies) => MovieActions.loadMoviesByIdsSuccess({ movies })),
+          catchError((error) =>
+            of(MovieActions.loadMoviesByIdsFailed({ error }))
+          )
+        )
+      )
     );
   });
 
