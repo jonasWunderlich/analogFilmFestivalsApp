@@ -2,8 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { EventRoutingModule } from './screening-event-routing.module';
-import { ScreeningEventStoreModule } from 'src/app/+state/screening-event-store/screening-event-store.module';
-import { CinemaStoreModule } from 'src/app/+state/cinema-store/cinema-store.module';
 import { LoadingComponent } from 'src/app/shared/ui/loading/loading.component';
 import { CinemaListComponent } from 'src/app/shared/view/cinema-list/cinema-list.component';
 import { CalendarComponent } from 'src/app/shared/ui/calendar/calendar.component';
@@ -31,8 +29,6 @@ import { PushModule } from '@ngrx/component';
     MovieListComponent,
     CinemaListComponent,
     ReportListComponent,
-    ScreeningEventStoreModule,
-    CinemaStoreModule,
     LoadingComponent,
     PushModule,
   ],

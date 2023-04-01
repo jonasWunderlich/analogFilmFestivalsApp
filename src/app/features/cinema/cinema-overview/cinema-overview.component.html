@@ -9,7 +9,7 @@
     >
       <a (click)="delete(cinema.id)">Kino löschen</a>
 
-      <a [routerLink]="['/admin/editcinema', cinema.id]">Kino bearbeiten</a>
+      <a [routerLink]="['/admin/cinema', cinema.id]">bearbeiten</a>
 
       <a [routerLink]="['/', 'cinema', cinema.id]"
         ><h3>{{ cinema.title }}</h3></a

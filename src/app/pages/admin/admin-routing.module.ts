@@ -1,13 +1,5 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AuditoriumCreateComponent } from 'src/app/features/auditorium/auditorium-create/auditorium-create.component';
-import { CinemaCreateComponent } from 'src/app/features/cinema/cinema-create/cinema-create.component';
-import { CinemaEditComponent } from 'src/app/features/cinema/cinema-edit/cinema-edit.component';
-import { ProjectionCreateComponent } from 'src/app/features/projection/projection-create/projection-create.component';
-import { ProjectionEditComponent } from 'src/app/features/projection/projection-edit/projection-edit.component';
-import { ReportCreateComponent } from 'src/app/features/report/report-create/report-create.component';
-import { ScreeningEventCreateComponent } from 'src/app/features/screening-event/screening-event-create/screening-event-create.component';
-import { ScreeningEventEditComponent } from 'src/app/features/screening-event/screening-event-edit/screening-event-edit.component';
 
 const routes: Routes = [
   {
@@ -17,43 +9,38 @@ const routes: Routes = [
   },
   {
     path: 'event',
-    title: 'Event erstellen',
-    component: ScreeningEventCreateComponent,
-  },
-  {
-    path: 'editevent/:id',
-    title: 'Event bearbeiten',
-    component: ScreeningEventEditComponent,
+    loadChildren: () =>
+      import('./admin-event/admin-event.module').then(
+        (m) => m.AdminEventModule
+      ),
   },
   {
     path: 'cinema',
-    title: 'Kino erstellen',
-    component: CinemaCreateComponent,
+    loadChildren: () =>
+      import('./admin-cinema/admin-cinema.module').then(
+        (m) => m.AdminCinemaModule
+      ),
   },
   {
-    path: 'editcinema/:id',
-    title: 'Kino bearbeiten',
-    component: CinemaEditComponent,
-  },
-  {
-    path: 'report',
-    title: 'Bericht erstellen',
-    component: ReportCreateComponent,
+    path: 'cinema',
+    loadChildren: () =>
+      import('./admin-report/admin-report.module').then(
+        (m) => m.AdminReportModule
+      ),
   },
   {
     path: 'auditorium',
-    title: 'Kinosaal erstellen',
-    component: AuditoriumCreateComponent,
+    loadChildren: () =>
+      import('./admin-auditorium/admin-auditorium.module').then(
+        (m) => m.AdminAuditoriumModule
+      ),
   },
   {
     path: 'projection',
-    title: 'Projektion erstellen',
-    component: ProjectionCreateComponent,
-  },
-  {
-    path: 'editprojection/:id',
-    title: 'Projektion bearbeiten',
-    component: ProjectionEditComponent,
+    loadChildren: () =>
+      import('./admin-projection/admin-projection.module').then(
+        (m) => m.AdminProjectionModule
+      ),
   },
 ];
 

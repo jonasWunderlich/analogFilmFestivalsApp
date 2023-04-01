@@ -13,7 +13,7 @@
           <p class="prefix-date">
             {{ screeningEvent.start | date }} - {{ screeningEvent.end | date }}
           </p>
-          <a [routerLink]="['/admin/editevent', screeningEvent.id]"
+          <a [routerLink]="['/admin/event', screeningEvent.id]"
             >Event bearbeiten</a
           >
           <a [routerLink]="['/', 'event', screeningEvent.id]">
