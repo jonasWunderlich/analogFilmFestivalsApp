@@ -11,6 +11,9 @@ export interface State extends EntityState<Report> {
   loadingStates: {
     loadingReport: boolean;
     loadingReports: boolean;
+    createReport: boolean;
+    deleteReport: boolean;
+    updateReport: boolean;
   };
 }
 
@@ -29,6 +32,9 @@ export const initialState: State = reportAdapter.getInitialState({
   loadingStates: {
     loadingReport: false,
     loadingReports: false,
+    createReport: false,
+    deleteReport: false,
+    updateReport: false,
   },
 });
 

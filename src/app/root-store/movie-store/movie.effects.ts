@@ -56,34 +56,38 @@ export class MovieEffects {
 
   /* search one Movie by id: string */
 
-  loadMovieById$ = createEffect(() => {
+  searchMovieById$ = createEffect(() => {
     return this.actions$.pipe(
-      ofType(MovieActions.loadMovieById),
+      ofType(MovieActions.searchMovieById),
       filter((params) => neitherNullNorUndefined(params.id)),
       switchMap((params) =>
         this.tmdbhttpService.getMovieDetails(params.id).pipe(
-          map((movie) => MovieActions.loadMovieByIdSuccess({ movie })),
-          catchError((error) => of(MovieActions.loadMovieByIdFailed({ error })))
+          map((movie) => MovieActions.searchMovieByIdSuccess({ movie })),
+          catchError((error) =>
+            of(MovieActions.searchMovieByIdFailed({ error }))
+          )
         )
       )
     );
   });
 
-  loadMovieByIdSuccess$ = createEffect(
+  searchMovieByIdSuccess$ = createEffect(
     () =>
       this.actions$.pipe(
-        ofType(MovieActions.loadMovieByIdSuccess),
-        tap(() => this.notificationService.success('tmdb.loadMovieByIdSucceed'))
+        ofType(MovieActions.searchMovieByIdSuccess),
+        tap(() =>
+          this.notificationService.success('tmdb.searchMovieByIdSucceed')
+        )
       ),
     { dispatch: false }
   );
 
-  loadMovieByIdFailed$ = createEffect(
+  searchMovieByIdFailed$ = createEffect(
     () =>
       this.actions$.pipe(
-        ofType(MovieActions.loadMovieByIdFailed),
+        ofType(MovieActions.searchMovieByIdFailed),
         tap(() =>
-          this.notificationService.error('projection.loadMovieByFailed')
+          this.notificationService.error('projection.searchMovieByFailed')
         )
       ),
     { dispatch: false }
@@ -91,53 +95,53 @@ export class MovieEffects {
 
   /* searched multiple Movies by Array<{id: string}> */
 
-  loadMoviesByIds$ = createEffect(() => {
+  searchMoviesByIds$ = createEffect(() => {
     return this.actions$.pipe(
-      ofType(MovieActions.loadMoviesByIds),
+      ofType(MovieActions.searchMoviesByIds),
       filter((params) => params?.movieIds?.length > 0),
       switchMap((params) =>
         this.tmdbhttpService.getListOfMovies(params.movieIds).pipe(
-          map((movies) => MovieActions.loadMoviesByIdsSuccess({ movies })),
+          map((movies) => MovieActions.searchMoviesByIdsSuccess({ movies })),
           catchError((error) =>
-            of(MovieActions.loadMoviesByIdsFailed({ error }))
+            of(MovieActions.searchMoviesByIdsFailed({ error }))
           )
         )
       )
     );
   });
 
-  loadMoviesByIds2$ = createEffect(() => {
+  searchMoviesByIds2$ = createEffect(() => {
     return this.actions$.pipe(
-      ofType(MovieActions.loadMoviesByIds),
+      ofType(MovieActions.searchMoviesByIds),
       filter((params) => params?.movieIds?.length > 0),
       switchMap((params) =>
         this.tmdbhttpService.getListOfMovies(params.movieIds).pipe(
-          map((movies) => MovieActions.loadMoviesByIdsSuccess({ movies })),
+          map((movies) => MovieActions.searchMoviesByIdsSuccess({ movies })),
           catchError((error) =>
-            of(MovieActions.loadMoviesByIdsFailed({ error }))
+            of(MovieActions.searchMoviesByIdsFailed({ error }))
           )
         )
       )
     );
   });
 
-  loadMoviesByIdsSuccess$ = createEffect(
+  searchMoviesByIdsSuccess$ = createEffect(
     () =>
       this.actions$.pipe(
-        ofType(MovieActions.loadMoviesByIdsSuccess),
+        ofType(MovieActions.searchMoviesByIdsSuccess),
         tap(() =>
-          this.notificationService.success('tmdb.loadMoviesByIdsSucceed')
+          this.notificationService.success('tmdb.searchMoviesByIdsSucceed')
         )
       ),
     { dispatch: false }
   );
 
-  loadMoviesByIdsFailed$ = createEffect(
+  searchMoviesByIdsFailed$ = createEffect(
     () =>
       this.actions$.pipe(
-        ofType(MovieActions.loadMoviesByIdsFailed),
+        ofType(MovieActions.searchMoviesByIdsFailed),
         tap(() =>
-          this.notificationService.error('projection.loadMoviesByIdsFailed')
+          this.notificationService.error('projection.searchMoviesByIdsFailed')
         )
       ),
     { dispatch: false }

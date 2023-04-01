@@ -6,12 +6,12 @@ export const searchMoviesByQuery = createAction(
   (query: string) => ({ query })
 );
 
-export const loadMoviesByIds = createAction(
+export const searchMoviesByIds = createAction(
   '[Movie] Load Movies by Id',
   (movieIds: string[]) => ({ movieIds })
 );
 
-export const loadMovieById = createAction(
+export const searchMovieById = createAction(
   '[Movie] Load Movie by Id',
   (id: string) => ({ id })
 );
@@ -28,22 +28,22 @@ export const searchMoviesByQueryFailed = createAction(
   props<{ error: string }>()
 );
 
-export const loadMovieByIdSuccess = createAction(
+export const searchMovieByIdSuccess = createAction(
   '[Movie] searched one Movies (by id) successfully',
   props<{ movie: TMDbMovieDetails | null }>()
 );
 
-export const loadMovieByIdFailed = createAction(
+export const searchMovieByIdFailed = createAction(
   '[Movie] searched one Movies (by id) failed',
   props<{ error: string }>()
 );
 
-export const loadMoviesByIdsSuccess = createAction(
+export const searchMoviesByIdsSuccess = createAction(
   '[Movie] searched multiple Movies (by Array<{id: string}>) successfully',
   props<{ movies: (TMDbMovieDetails | null)[] }>()
 );
 
-export const loadMoviesByIdsFailed = createAction(
+export const searchMoviesByIdsFailed = createAction(
   '[Movie] searched multiple Movies (by Array<{id: string}>) failed',
   props<{ error: string }>()
 );

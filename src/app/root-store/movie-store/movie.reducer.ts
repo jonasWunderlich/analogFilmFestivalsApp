@@ -5,35 +5,114 @@ import * as MovieActions from './movie.actions';
 export const movieFeatureKey = 'movie';
 
 export interface MoviesState {
-  movie: TMDbMovieDetails | null;
-  searchedMovies: TMDbMovieDetails[] | undefined;
-  searchedMoviesById: (TMDbSearchMovies | null)[];
+  movieById: TMDbMovieDetails | null;
+  moviesByQuery: TMDbMovieDetails[] | undefined;
+  moviesById: (TMDbSearchMovies | null)[];
+  loadingStates: {
+    searchMovieById: boolean;
+    searchMoviesByQuery: boolean;
+    searchMoviesByIds: boolean;
+  };
 }
 
 export const initialState: MoviesState = {
-  movie: null,
-  searchedMovies: undefined,
-  searchedMoviesById: [],
+  movieById: null,
+  moviesByQuery: undefined,
+  moviesById: [],
+  loadingStates: {
+    searchMovieById: false,
+    searchMoviesByQuery: false,
+    searchMoviesByIds: false,
+  },
 };
 
 export const reducer = createReducer(
   initialState,
+  /* search MOVIE by ID */
+  on(MovieActions.searchMovieById, (state: MoviesState) => {
+    return {
+      ...state,
+      loadingStates: {
+        ...state.loadingStates,
+        searchMovieById: true,
+      },
+    };
+  }),
+  on(MovieActions.searchMovieByIdSuccess, (state: MoviesState, action) => {
+    return {
+      ...state,
+      movieById: action.movie,
+      loadingStates: {
+        ...state.loadingStates,
+        searchMovieById: false,
+      },
+    };
+  }),
+  on(MovieActions.searchMovieByIdFailed, (state: MoviesState) => {
+    return {
+      ...state,
+      loadingStates: {
+        ...state.loadingStates,
+        searchMovieById: false,
+      },
+    };
+  }),
+  /* search MOVIES by QUERY */
+  on(MovieActions.searchMoviesByQuery, (state: MoviesState) => {
+    return {
+      ...state,
+      loadingStates: {
+        ...state.loadingStates,
+        searchMoviesByQuery: true,
+      },
+    };
+  }),
   on(MovieActions.searchMoviesByQuerySuccess, (state: MoviesState, action) => {
     return {
       ...state,
-      searchedMovies: action.movies,
+      moviesByQuery: action.movies,
+      loadingStates: {
+        ...state.loadingStates,
+        searchMoviesByQuery: false,
+      },
     };
   }),
-  on(MovieActions.loadMovieByIdSuccess, (state: MoviesState, action) => {
+  on(MovieActions.searchMoviesByQueryFailed, (state: MoviesState) => {
     return {
       ...state,
-      movie: action.movie,
+      loadingStates: {
+        ...state.loadingStates,
+        searchMoviesByQuery: false,
+      },
     };
   }),
-  on(MovieActions.loadMoviesByIdsSuccess, (state: MoviesState, action) => {
+  /* search MOVIES by IDS */
+  on(MovieActions.searchMoviesByIds, (state: MoviesState) => {
     return {
       ...state,
-      searchedMoviesById: action.movies,
+      loadingStates: {
+        ...state.loadingStates,
+        searchMoviesById: true,
+      },
+    };
+  }),
+  on(MovieActions.searchMoviesByIdsSuccess, (state: MoviesState, action) => {
+    return {
+      ...state,
+      moviesById: action.movies,
+      loadingStates: {
+        ...state.loadingStates,
+        searchMoviesByIds: false,
+      },
+    };
+  }),
+  on(MovieActions.searchMoviesByIdsFailed, (state: MoviesState) => {
+    return {
+      ...state,
+      loadingStates: {
+        ...state.loadingStates,
+        searchMoviesByIds: false,
+      },
     };
   })
 );

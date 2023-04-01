@@ -4,7 +4,7 @@ import { Store } from '@ngrx/store';
 import { sample } from 'lodash';
 import { selectCinemas } from 'src/app/root-store/cinema-store/cinema.selectors';
 import { searchMoviesByQuery } from 'src/app/root-store/movie-store/movie.actions';
-import { selectSearchedMovies } from 'src/app/root-store/movie-store/movie.selectors';
+import { selectQuerySearchedMovies } from 'src/app/root-store/movie-store/movie.selectors';
 import { selectActiveScreeningEvent } from 'src/app/root-store/screening-event-store/screening-event.selectors';
 import { MOCKED_TMDB_QUERIES } from 'src/app/shared/_mock/constants';
 import { ScreeningEventCreate } from 'src/app/shared/_models/screening-event';
@@ -21,7 +21,7 @@ import {
 export class ScreeningEventService {
   event$ = this.store.select(selectActiveScreeningEvent);
   cinemas$ = this.store.select(selectCinemas);
-  movies$ = this.store.select(selectSearchedMovies);
+  movies$ = this.store.select(selectQuerySearchedMovies);
   activeEventId?: string;
 
   constructor(private readonly store: Store, private readonly router: Router) {
