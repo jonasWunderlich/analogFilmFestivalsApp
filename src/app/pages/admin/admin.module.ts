@@ -13,7 +13,7 @@ import { ScreeningEventCreateComponent } from 'src/app/features/screening-event/
 import { ScreeningEventEditComponent } from 'src/app/features/screening-event/screening-event-edit/screening-event-edit.component';
 import { ScreeningEventFormComponent } from 'src/app/features/screening-event/screening-event-form/screening-event-form.component';
 import { CinemaMapComponent } from 'src/app/shared/ui/cinema-map/cinema-map.component';
-import { TwoColumnLayoutComponent } from 'src/app/shared/ui/two-column-layout/two-column-layout.component';
+import { TwoColumnLayoutComponent } from 'src/app/shared/layout/two-column-layout/two-column-layout.component';
 import { AdminRoutingModule } from './admin-routing.module';
 import { ProjectionEditComponent } from 'src/app/features/projection/projection-edit/projection-edit.component';
 import { PushModule } from '@ngrx/component';

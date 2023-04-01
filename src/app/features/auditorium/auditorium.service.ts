@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-import { AuditoriumCreate } from 'src/app/shared/_models/auditorium';
+import { AuditoriumCreate } from 'src/app/core/_models/auditorium';
 import {
   triggerAuditoriumCreation,
   triggerAuditoriumRemoval,
   triggerAuditoriumUpdate,
 } from './auditorium.actions';
 import { Store } from '@ngrx/store';
-import { selectActiveCinema } from 'src/app/root-store/cinema-store/cinema.selectors';
+import { selectActiveCinema } from 'src/app/+state/cinema-store/cinema.selectors';
 
 @Injectable({ providedIn: 'root' })
 export class AuditoriumService {

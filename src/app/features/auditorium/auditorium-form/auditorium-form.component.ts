@@ -14,7 +14,7 @@ import {
   SOUND_MONO,
   SOUND_OPTIONS,
   SOUND_STEREO,
-} from 'src/app/shared/_models/auditorium';
+} from 'src/app/core/_models/auditorium';
 
 @Component({
   selector: 'app-auditorium-form',

@@ -5,7 +5,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { LocalIsoDateValueAccessorModule } from 'angular-date-value-accessor';
-import { ReportCreate } from 'src/app/shared/_models/report';
+import { ReportCreate } from 'src/app/core/_models/report';
 
 @Component({
   selector: 'app-report-form',

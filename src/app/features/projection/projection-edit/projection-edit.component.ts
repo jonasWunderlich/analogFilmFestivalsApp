@@ -1,10 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProjectionService } from '../projection.service';
-import {
-  Projection,
-  ProjectionCreate,
-} from 'src/app/shared/_models/projection';
+import { Projection, ProjectionCreate } from 'src/app/core/_models/projection';
 
 @Component({
   selector: 'app-projection-edit',

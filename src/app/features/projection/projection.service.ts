@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { ProjectionCreate } from 'src/app/shared/_models/projection';
+import { ProjectionCreate } from 'src/app/core/_models/projection';
 import {
   setActiveProjectionId,
   triggerProjectionCreation,
@@ -10,8 +10,8 @@ import {
 import {
   selectActiveProjection,
   selectProjections,
-} from 'src/app/root-store/projection-store/projection.selectors';
-import { selectCinemas } from 'src/app/root-store/cinema-store/cinema.selectors';
+} from 'src/app/+state/projection-store/projection.selectors';
+import { selectCinemas } from 'src/app/+state/cinema-store/cinema.selectors';
 import { Router } from '@angular/router';
 
 @Injectable({ providedIn: 'root' })

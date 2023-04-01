@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { GeometryObject } from 'src/app/shared/ui/cinema-map/geo-mapping.helper';
-import { CinemaCreate } from 'src/app/shared/_models/cinema';
+import { CinemaCreate } from 'src/app/core/_models/cinema';
 import { CinemaService } from '../cinema.service';
 
 @Component({

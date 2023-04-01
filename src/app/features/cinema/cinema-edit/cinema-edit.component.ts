@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { CinemaCreate, Cinema } from 'src/app/shared/_models/cinema';
+import { CinemaCreate, Cinema } from 'src/app/core/_models/cinema';
 import { CinemaService } from '../cinema.service';
 
 @Component({

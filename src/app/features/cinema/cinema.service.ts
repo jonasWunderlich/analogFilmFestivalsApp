@@ -4,13 +4,10 @@ import { Store } from '@ngrx/store';
 import {
   selectActiveCinema,
   selectCinemas,
-} from 'src/app/root-store/cinema-store/cinema.selectors';
-import {
-  randomDate,
-  sortByISODate,
-} from 'src/app/shared/helpers/mock-data.helper';
-import { mockProjections } from 'src/app/shared/_mock/projection.mock';
-import { CinemaCreate } from 'src/app/shared/_models/cinema';
+} from 'src/app/+state/cinema-store/cinema.selectors';
+import { randomDate, sortByISODate } from 'src/app/core/utilities/mock-data';
+import { mockProjections } from 'src/app/core/_mock/projection.mock';
+import { CinemaCreate } from 'src/app/core/_models/cinema';
 import {
   setActiveCinemaId,
   triggerCinemaCreation,

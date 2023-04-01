@@ -9,13 +9,13 @@ import localeDe from '@angular/common/locales/de';
 import { NgxTmdbApiModule } from '@igorissen/ngx-tmdb-api';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { RootStoreModule } from './root-store/root-store.module';
+import { RootStoreModule } from './+state/root-store.module';
 import { TitleStrategy } from '@angular/router';
-import { CustomTitleStrategy } from './shared/services/custom-title-strategy.service';
+import { CustomTitleStrategy } from './core/services/custom-title-strategy.service';
 import { SearchComponent } from './shared/ui/search/search.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { AuthInterceptor } from './shared/services/auth.interceptor';
-import { LoginFormComponent } from './core/login-form/login-form.component';
+import { AuthInterceptor } from './core/services/auth.interceptor';
+import { LoginFormComponent } from './shared/ui/login-form/login-form.component';
 registerLocaleData(localeDe);
 
 export const APP_TITLE = new InjectionToken<string>('app-title');

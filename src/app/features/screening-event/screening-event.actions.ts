@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { ScreeningEventCreate } from 'src/app/shared/_models/screening-event';
+import { ScreeningEventCreate } from 'src/app/core/_models/screening-event';
 
 export const setActiveScreeningEventId = createAction(
   '[EventService] Active ScreeningEvent set',

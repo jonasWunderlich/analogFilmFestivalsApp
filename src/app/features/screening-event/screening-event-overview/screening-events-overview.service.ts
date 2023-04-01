@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { selectCinemas } from 'src/app/root-store/cinema-store/cinema.selectors';
-import { selectScreeningEvents } from 'src/app/root-store/screening-event-store/screening-event.selectors';
+import { selectCinemas } from 'src/app/+state/cinema-store/cinema.selectors';
+import { selectScreeningEvents } from 'src/app/+state/screening-event-store/screening-event.selectors';
 
 @Injectable({
   providedIn: 'root',

@@ -1,17 +1,17 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable, filter, map, of, take } from 'rxjs';
-import { selectCinemas } from 'src/app/root-store/cinema-store/cinema.selectors';
+import { selectCinemas } from 'src/app/+state/cinema-store/cinema.selectors';
 import {
   selectActiveReport,
   selectReports,
-} from 'src/app/root-store/report-store/report.selectors';
-import { selectScreeningEvents } from 'src/app/root-store/screening-event-store/screening-event.selectors';
+} from 'src/app/+state/report-store/report.selectors';
+import { selectScreeningEvents } from 'src/app/+state/screening-event-store/screening-event.selectors';
 import { setActiveReport } from './report.actions';
-import { ReportCreate } from 'src/app/shared/_models/report';
-import { selectIdSearchedMovies } from 'src/app/root-store/movie-store/movie.selectors';
-import { searchMoviesByIds } from 'src/app/root-store/movie-store/movie.actions';
-import { MOCKED_TMDBIDS } from 'src/app/shared/_mock/constants';
+import { ReportCreate } from 'src/app/core/_models/report';
+import { selectIdSearchedMovies } from 'src/app/+state/movie-store/movie.selectors';
+import { searchMoviesByIds } from 'src/app/+state/movie-store/movie.actions';
+import { MOCKED_TMDBIDS } from 'src/app/core/_mock/constants';
 
 @Injectable({
   providedIn: 'root',

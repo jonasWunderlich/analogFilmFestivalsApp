@@ -1,5 +1,5 @@
 import { createAction } from '@ngrx/store';
-import { AuditoriumCreate } from 'src/app/shared/_models/auditorium';
+import { AuditoriumCreate } from 'src/app/core/_models/auditorium';
 
 export const triggerAuditoriumUpdate = createAction(
   '[AuditoriumService] Update Auditorium triggered',

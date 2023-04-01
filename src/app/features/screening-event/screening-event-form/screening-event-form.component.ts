@@ -13,12 +13,12 @@ import {
   Validators,
 } from '@angular/forms';
 import { LocalIsoDateValueAccessorModule } from 'angular-date-value-accessor';
-import { generateSelectOptionsFromEnum } from 'src/app/shared/helpers/utilities';
-import { ScreeningEventType } from 'src/app/shared/_models/sceening-event-type';
+import { generateSelectOptionsFromEnum } from 'src/app/core/utilities/utilities';
+import { ScreeningEventType } from 'src/app/core/_models/sceening-event-type';
 import {
   ScreeningEvent,
   ScreeningEventCreate,
-} from 'src/app/shared/_models/screening-event';
+} from 'src/app/core/_models/screening-event';
 
 @Component({
   selector: 'app-screening-event-form',

@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { ProjectionCreate } from 'src/app/shared/_models/projection';
+import { ProjectionCreate } from 'src/app/core/_models/projection';
 
 export const setActiveProjectionId = createAction(
   '[Projection Details] Set Active Projection Id triggerd',

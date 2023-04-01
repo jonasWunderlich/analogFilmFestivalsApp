@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ReportCreate } from 'src/app/shared/_models/report';
+import { ReportCreate } from 'src/app/core/_models/report';
 import { ReportService } from '../report.service';
 
 @Component({

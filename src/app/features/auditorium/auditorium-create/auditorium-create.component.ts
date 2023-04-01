@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AuditoriumCreate } from 'src/app/shared/_models/auditorium';
+import { AuditoriumCreate } from 'src/app/core/_models/auditorium';
 import { AuditoriumService } from '../auditorium.service';
 
 @Component({

@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import {
   ScreeningEvent,
   ScreeningEventCreate,
-} from 'src/app/shared/_models/screening-event';
+} from 'src/app/core/_models/screening-event';
 import { ScreeningEventService } from '../screening-event.service';
 
 @Component({

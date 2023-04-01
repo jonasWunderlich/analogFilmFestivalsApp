@@ -9,8 +9,8 @@ import {
   switchMap,
   tap,
 } from 'rxjs';
-import { mockScreeningEvents } from 'src/app/shared/_mock/event.mock';
-import { ScreeningEvent } from 'src/app/shared/_models/screening-event';
+import { mockScreeningEvents } from 'src/app/core/_mock/event.mock';
+import { ScreeningEvent } from 'src/app/core/_models/screening-event';
 
 @Component({
   selector: 'app-search',

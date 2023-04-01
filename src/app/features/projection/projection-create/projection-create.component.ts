@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ProjectionCreate } from 'src/app/shared/_models/projection';
+import { ProjectionCreate } from 'src/app/core/_models/projection';
 import { ProjectionService } from '../projection.service';
 
 @Component({

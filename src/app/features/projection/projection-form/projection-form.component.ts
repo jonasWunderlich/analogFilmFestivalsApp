@@ -13,10 +13,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { LocalIsoDateValueAccessorModule } from 'angular-date-value-accessor';
-import {
-  Projection,
-  ProjectionCreate,
-} from 'src/app/shared/_models/projection';
+import { Projection, ProjectionCreate } from 'src/app/core/_models/projection';
 
 @Component({
   selector: 'app-projection-form',
