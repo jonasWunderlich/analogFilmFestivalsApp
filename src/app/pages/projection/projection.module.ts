@@ -7,6 +7,7 @@ import { CinemaMapComponent } from 'src/app/shared/ui/cinema-map/cinema-map.comp
 import { ProjectionOverviewComponent } from 'src/app/features/projection/projection-overview/projection-overview.component';
 import { ProjectionRoutingModule } from './projection-routing.module';
 import { ProjectionDetailsComponent } from 'src/app/features/projection/projection-details/projection-details.component';
+import { PushModule } from '@ngrx/component';
 
 @NgModule({
   declarations: [ProjectionOverviewComponent, ProjectionDetailsComponent],
@@ -16,6 +17,7 @@ import { ProjectionDetailsComponent } from 'src/app/features/projection/projecti
     TwoColumnLayoutComponent,
     LoadingComponent,
     CinemaMapComponent,
+    PushModule,
   ],
 })
 export class ProjectionModule {}

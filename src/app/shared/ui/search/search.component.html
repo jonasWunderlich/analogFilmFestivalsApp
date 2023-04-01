@@ -7,4 +7,4 @@
   #searchInput
   (input)="input$.next(searchInput.value)"
 />
-<!-- <p *ngIf="results$ | async as results">Ergebnisse: {{ results.length }}</p> -->
+<!-- <p *ngIf="results$ | ngrxPush as results">Ergebnisse: {{ results.length }}</p> -->

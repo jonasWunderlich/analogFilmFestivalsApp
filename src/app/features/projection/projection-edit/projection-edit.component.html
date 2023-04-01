@@ -3,7 +3,7 @@
     <i>Formular</i>
     <h2>Projektion bearbeiten</h2>
     <app-projection-form
-      *ngIf="projection$ | async as projection"
+      *ngIf="projection$ | ngrxPush as projection"
       [projection]="projection"
       (submitEvent)="update($event)"
       (deleteEvent)="delete($event)"

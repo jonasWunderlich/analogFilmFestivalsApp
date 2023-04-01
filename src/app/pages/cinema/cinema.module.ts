@@ -10,6 +10,7 @@ import { TwoColumnLayoutComponent } from 'src/app/shared/ui/two-column-layout/tw
 import { CinemaMapComponent } from 'src/app/shared/ui/cinema-map/cinema-map.component';
 import { CinemaDetailsComponent } from 'src/app/features/cinema/cinema-details/cinema-details.component';
 import { CinemaOverviewComponent } from 'src/app/features/cinema/cinema-overview/cinema-overview.component';
+import { PushModule } from '@ngrx/component';
 
 @NgModule({
   declarations: [CinemaOverviewComponent, CinemaDetailsComponent],
@@ -22,6 +23,7 @@ import { CinemaOverviewComponent } from 'src/app/features/cinema/cinema-overview
     AuditoriumListComponent,
     ReportListComponent,
     LoadingComponent,
+    PushModule,
   ],
 })
 export class CinemaModule {}

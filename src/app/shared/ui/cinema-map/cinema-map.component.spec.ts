@@ -8,9 +8,8 @@ describe('CinemaMapComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CinemaMapComponent ]
-    })
-    .compileComponents();
+      declarations: [CinemaMapComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(CinemaMapComponent);
     component = fixture.componentInstance;

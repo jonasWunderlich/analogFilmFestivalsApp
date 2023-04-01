@@ -18,13 +18,13 @@ export class CinemaMapComponent {
   map?: Map;
 
   @Input()
-  set geoObject(value: GeometryObject | null | undefined) {
+  set geoObject(value: GeometryObject | undefined) {
     if (value) {
       this.buildMapFromObject(value);
     }
   }
   @Input()
-  set geoArray(value: GeometryObject[] | null) {
+  set geoArray(value: GeometryObject[] | undefined) {
     if (value) {
       this.buildMapFromCollection(value);
     }

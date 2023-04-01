@@ -1,13 +1,13 @@
 <app-two-column-layout class="c-report-details">
   <div column-one>
-    <ng-container *ngIf="report$ | async as report; else loading">
+    <ng-container *ngIf="report$ | ngrxPush as report; else loading">
       <i>Erfahrungsbericht</i>
       <h2>{{ report.title }}</h2>
       <p>{{ report.date | date }}</p>
       <p>{{ report.text }}</p>
 
       <app-projection-list
-        [projections]="projections$ | async"
+        [projections]="projections$ | ngrxPush"
       ></app-projection-list>
     </ng-container>
 
@@ -15,10 +15,10 @@
       <app-loading></app-loading>
     </ng-template>
 
-    <app-cinema-list [cinemas]="cinemas$ | async"></app-cinema-list>
+    <app-cinema-list [cinemas]="cinemas$ | ngrxPush"></app-cinema-list>
 
-    <app-movie-list [movies]="movies$ | async"></app-movie-list>
+    <app-movie-list [movies]="movies$ | ngrxPush"></app-movie-list>
   </div>
 
-  <app-cinema-map column-two [geoArray]="cinemas$ | async"></app-cinema-map>
+  <app-cinema-map column-two [geoArray]="cinemas$ | ngrxPush"></app-cinema-map>
 </app-two-column-layout>

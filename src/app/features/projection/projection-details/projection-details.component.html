@@ -1,6 +1,8 @@
 <app-two-column-layout class="c-projection-details">
   <div column-one>
-    <ng-container *ngIf="activeProjection$ | async as projection; else loading">
+    <ng-container
+      *ngIf="activeProjection$ | ngrxPush as projection; else loading"
+    >
       <i>Kino</i>
 
       <h2>{{ projection?.title }}</h2>
@@ -30,5 +32,8 @@
     </ng-template>
   </div>
 
-  <app-cinema-map column-two [geoArray]="allCinemas$ | async"></app-cinema-map>
+  <app-cinema-map
+    column-two
+    [geoArray]="allCinemas$ | ngrxPush"
+  ></app-cinema-map>
 </app-two-column-layout>

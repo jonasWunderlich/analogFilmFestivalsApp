@@ -16,6 +16,7 @@ import { CinemaMapComponent } from 'src/app/shared/ui/cinema-map/cinema-map.comp
 import { TwoColumnLayoutComponent } from 'src/app/shared/ui/two-column-layout/two-column-layout.component';
 import { AdminRoutingModule } from './admin-routing.module';
 import { ProjectionEditComponent } from 'src/app/features/projection/projection-edit/projection-edit.component';
+import { PushModule } from '@ngrx/component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { ProjectionEditComponent } from 'src/app/features/projection/projection-
     AuditoriumFormComponent,
     ProjectionFormComponent,
     CinemaMapComponent,
+    PushModule,
   ],
 })
 export class AdminModule {}

@@ -1,6 +1,6 @@
 <app-two-column-layout class="c-cinema-details">
   <div column-one>
-    <ng-container *ngIf="cinema$ | async as cinema; else loading">
+    <ng-container *ngIf="cinema$ | ngrxPush as cinema; else loading">
       <i>Kino</i>
 
       <h2>{{ cinema.title }}</h2>
@@ -49,5 +49,5 @@
     </ng-template>
   </div>
 
-  <app-cinema-map column-two [geoObject]="cinema$ | async"></app-cinema-map>
+  <app-cinema-map column-two [geoObject]="cinema$ | ngrxPush"></app-cinema-map>
 </app-two-column-layout>

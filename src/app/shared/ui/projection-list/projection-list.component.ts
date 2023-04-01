@@ -15,7 +15,7 @@ export class ProjectionListComponent {
   private _showTitle = true;
 
   @Input()
-  set projections(value: Projection[] | null | undefined) {
+  set projections(value: Projection[] | undefined) {
     if (value) {
       this._projections = value;
     }

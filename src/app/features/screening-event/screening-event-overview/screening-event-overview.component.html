@@ -4,7 +4,7 @@
     <h2>Events</h2>
 
     <ng-container
-      *ngIf="screeningEvents$ | async as screeningEvents; else loading"
+      *ngIf="screeningEvents$ | ngrxPush as screeningEvents; else loading"
     >
       <app-calendar [calendarEvents]="screeningEvents"></app-calendar>
 
@@ -38,5 +38,5 @@
     </ng-template>
   </div>
 
-  <app-cinema-map column-two [geoArray]="cinemas$ | async"></app-cinema-map>
+  <app-cinema-map column-two [geoArray]="cinemas$ | ngrxPush"></app-cinema-map>
 </app-two-column-layout>

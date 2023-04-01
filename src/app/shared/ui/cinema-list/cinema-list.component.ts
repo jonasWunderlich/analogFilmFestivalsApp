@@ -15,7 +15,7 @@ export class CinemaListComponent {
   _cinemas: Cinema[] = [];
 
   @Input()
-  set cinemas(value: Cinema[] | null) {
+  set cinemas(value: Cinema[] | undefined) {
     if (value) {
       this._cinemas = value;
     }

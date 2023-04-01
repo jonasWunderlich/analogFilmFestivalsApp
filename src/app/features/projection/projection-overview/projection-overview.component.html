@@ -4,7 +4,7 @@
     <h2>Projektionen</h2>
 
     <div
-      *ngFor="let projection of allProjections$ | async"
+      *ngFor="let projection of allProjections$ | ngrxPush"
       class="c-projection-overview__projection"
     >
       <div class="actions">
@@ -40,5 +40,8 @@
     </ng-template>
   </div>
 
-  <app-cinema-map column-two [geoArray]="allCinemas$ | async"></app-cinema-map>
+  <app-cinema-map
+    column-two
+    [geoArray]="allCinemas$ | ngrxPush"
+  ></app-cinema-map>
 </app-two-column-layout>

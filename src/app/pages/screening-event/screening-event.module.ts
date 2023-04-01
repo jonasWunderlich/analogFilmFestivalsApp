@@ -14,6 +14,7 @@ import { TwoColumnLayoutComponent } from 'src/app/shared/ui/two-column-layout/tw
 import { CinemaMapComponent } from 'src/app/shared/ui/cinema-map/cinema-map.component';
 import { ScreeningEventDetailsComponent } from 'src/app/features/screening-event/screening-event-details/screening-event-details.component';
 import { ScreeningEventOverviewComponent } from 'src/app/features/screening-event/screening-event-overview/screening-event-overview.component';
+import { PushModule } from '@ngrx/component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { ScreeningEventOverviewComponent } from 'src/app/features/screening-even
     ScreeningEventStoreModule,
     CinemaStoreModule,
     LoadingComponent,
+    PushModule,
   ],
 })
 export class ScreeningEventModule {}
