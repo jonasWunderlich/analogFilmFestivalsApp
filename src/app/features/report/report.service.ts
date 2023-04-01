@@ -10,6 +10,8 @@ import { selectScreeningEvents } from 'src/app/root-store/screening-event-store/
 import { setActiveReport } from './report.actions';
 import { ReportCreate } from 'src/app/shared/_models/report';
 import { selectIdSearchedMovies } from 'src/app/root-store/movie-store/movie.selectors';
+import { searchMoviesByIds } from 'src/app/root-store/movie-store/movie.actions';
+import { MOCKED_TMDBIDS } from 'src/app/shared/_mock/constants';
 
 @Injectable({
   providedIn: 'root',
@@ -35,6 +37,10 @@ export class ReportService {
           reportId: id,
         })
       );
+  }
+
+  dispatchMovies(): void {
+    this.store.dispatch(searchMoviesByIds(MOCKED_TMDBIDS));
   }
 
   create(report: ReportCreate): Observable<ReportCreate> {
