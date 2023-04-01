@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { of } from 'rxjs';
 
@@ -15,6 +15,9 @@ import * as CinemaActions from './cinema.actions';
 
 @Injectable()
 export class CinemaEffects {
+  private actions$ = inject(Actions);
+  private notificationService = inject(NotificationService);
+  private analogHttpService = inject(AnalogKinoBackendService);
   /* LOAD ALL CINEMAS */
 
   loadCinemas$ = createEffect(() =>
@@ -186,10 +189,4 @@ export class CinemaEffects {
       ),
     { dispatch: false }
   );
-
-  constructor(
-    private readonly actions$: Actions,
-    private readonly analogHttpService: AnalogKinoBackendService,
-    private readonly notificationService: NotificationService
-  ) {}
 }
