@@ -22,11 +22,11 @@ import {
   providedIn: 'root',
 })
 export class ScreeningEventService {
+  activeEventId?: string;
   event$ = this.store.select(selectActiveScreeningEvent);
   events$ = this.store.select(selectScreeningEvents);
   cinemas$ = this.store.select(selectCinemas);
   movies$ = this.store.select(selectQuerySearchedMovies);
-  activeEventId?: string;
 
   constructor(private readonly store: Store, private readonly router: Router) {
     this.store.dispatch(

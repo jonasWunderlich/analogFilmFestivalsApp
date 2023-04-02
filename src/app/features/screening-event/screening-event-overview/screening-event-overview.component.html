@@ -11,7 +11,10 @@
       <ng-container *ngFor="let screeningEvent of screeningEvents">
         <div class="event">
           <p class="prefix-date">
-            {{ screeningEvent.start | date }} - {{ screeningEvent.end | date }}
+            {{ screeningEvent.start | date
+            }}<ng-container *ngIf="screeningEvent.end">
+              - {{ screeningEvent.end | date }}</ng-container
+            >
           </p>
 
           <a [routerLink]="['/', 'event', screeningEvent.id]">
