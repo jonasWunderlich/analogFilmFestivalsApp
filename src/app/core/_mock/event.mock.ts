@@ -74,7 +74,7 @@ export function mockScreeningEvent(
     start: start.toJSON(),
     end:
       eventType !== ScreeningEventType.SINGLE
-        ? addDays(start, eventLength).toDateString()
+        ? addDays(start, eventLength).toJSON()
         : undefined,
     projections: mockProjections(projectionCount, start, eventLength).sort(
       (a, b) => sortByISODate(a.date, b.date)
