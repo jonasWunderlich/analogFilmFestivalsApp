@@ -2,7 +2,7 @@ import { createAction, props } from '@ngrx/store';
 import { CinemaCreate } from 'src/app/core/_models/cinema';
 
 export const setActiveCinemaId = createAction(
-  '[Cinema Details] Active Cinema set',
+  '[Cinema Details] Set Active Cinema Id',
   props<{ cinemaId: string }>()
 );
 

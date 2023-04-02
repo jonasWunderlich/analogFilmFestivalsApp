@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { PushModule } from '@ngrx/component';
 import { ScreeningEventDetailsComponent } from 'src/app/features/screening-event/screening-event-details/screening-event-details.component';
 import { ScreeningEventOverviewComponent } from 'src/app/features/screening-event/screening-event-overview/screening-event-overview.component';
-import { TwoColumnLayoutComponent } from 'src/app/shared/layout/two-column-layout/two-column-layout.component';
 import { CalendarComponent } from 'src/app/shared/ui/calendar/calendar.component';
 import { CinemaMapComponent } from 'src/app/shared/ui/cinema-map/cinema-map.component';
 import { LoadingComponent } from 'src/app/shared/ui/loading/loading.component';
@@ -22,7 +21,6 @@ import { OverviewListActionsComponent } from 'src/app/shared/view/overview-list-
   imports: [
     CommonModule,
     ScreeningEventRoutingModule,
-    TwoColumnLayoutComponent,
     CalendarComponent,
     ProjectionListComponent,
     CinemaMapComponent,

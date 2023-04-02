@@ -18,15 +18,15 @@ import { LoginFormComponent } from './shared/ui/login-form/login-form.component'
 import { NavigationComponent } from './shared/layout/navigation/navigation.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
-import { TwoColumnLayoutComponent } from './shared/layout/two-column-layout/two-column-layout.component';
 import { CinemaMapComponent } from './shared/ui/cinema-map/cinema-map.component';
 import { PushModule } from '@ngrx/component';
+import { LayoutComponent } from './shared/layout/layout/layout.component';
 registerLocaleData(localeDe);
 
 export const APP_TITLE = new InjectionToken<string>('app-title');
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, LayoutComponent],
   imports: [
     BrowserAnimationsModule,
     AppRoutingModule,
@@ -41,7 +41,6 @@ export const APP_TITLE = new InjectionToken<string>('app-title');
     }),
 
     // TODO: Move to layout wrapper component
-    TwoColumnLayoutComponent,
     CinemaMapComponent,
     PushModule,
   ],

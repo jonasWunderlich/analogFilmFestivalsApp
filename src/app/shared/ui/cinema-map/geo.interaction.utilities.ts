@@ -6,10 +6,10 @@ import { boundingExtent } from 'ol/extent';
 
 export function centerView(map: Map, coords: Coordinate[]): void {
   if (coords) {
-    if (coords.length === 1) {
+    if (coords.length <= 1) {
       map.setView(
         new View({
-          center: coords[0],
+          center: coords.length !== 0 ? coords[0] : [-118.3457652, 34.0763294],
           zoom: 15,
           maxZoom: 17,
         })

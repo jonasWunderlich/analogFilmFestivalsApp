@@ -4,7 +4,6 @@ import { CinemaCreateComponent } from 'src/app/features/cinema/cinema-create/cin
 import { CinemaEditComponent } from 'src/app/features/cinema/cinema-edit/cinema-edit.component';
 import { CinemaFormComponent } from 'src/app/features/cinema/cinema-form/cinema-form.component';
 import { CinemaMapComponent } from 'src/app/shared/ui/cinema-map/cinema-map.component';
-import { TwoColumnLayoutComponent } from 'src/app/shared/layout/two-column-layout/two-column-layout.component';
 import { PushModule } from '@ngrx/component';
 import { AdminCinemaRoutingModule } from './admin-cinema-routing.module';
 
@@ -13,7 +12,6 @@ import { AdminCinemaRoutingModule } from './admin-cinema-routing.module';
   imports: [
     CommonModule,
     AdminCinemaRoutingModule,
-    TwoColumnLayoutComponent,
     CinemaFormComponent,
     CinemaMapComponent,
     PushModule,

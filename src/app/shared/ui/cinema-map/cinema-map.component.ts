@@ -27,6 +27,7 @@ export class CinemaMapComponent {
 
   @Input()
   set geoObject(obj: GeometryObject | undefined) {
+    console.log(obj);
     if (obj) {
       if (!this.map || this.mode === MapMode.POINTS) {
         this.mapService.buildSingleFeatureMap(
@@ -41,17 +42,16 @@ export class CinemaMapComponent {
   }
   @Input()
   set geoArray(arr: GeometryObject[] | undefined) {
+    console.log(arr);
     if (arr) {
       const featureList = createFeatureList(arr, 'cinema');
       const coordinates = extractCoordinates(arr);
       const layer = buildVectorLayer(featureList);
-
       if (!this.map || this.mode === MapMode.POINTS) {
         this.mapService.buildMultiFeatureMap(layer, coordinates, 'ol-map');
       } else {
         this.map.getLayers().setAt(1, layer);
         centerView(this.map, coordinates);
-        console.log('update array');
       }
     }
     this.mode = MapMode.POINT;

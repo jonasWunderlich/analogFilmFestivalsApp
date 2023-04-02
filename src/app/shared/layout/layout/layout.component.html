@@ -1,0 +1,10 @@
+<div class="c__layout">
+  <div class="column-one">
+    <ng-content></ng-content>
+  </div>
+  <app-cinema-map
+    class="column-two"
+    column-two
+    [geoArray]="$selectedGeoData | ngrxPush"
+  ></app-cinema-map>
+</div>

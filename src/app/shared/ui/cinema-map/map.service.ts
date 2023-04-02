@@ -13,15 +13,19 @@ import {
   addPointerHandling,
   centerView,
 } from './geo.interaction.utilities';
+import { Store } from '@ngrx/store';
+import { selectCinemas } from 'src/app/+state/cinema-store/cinema.selectors';
 
 @Injectable({
   providedIn: 'root',
 })
 export class MapService {
+  $selectedGeoData = this.store.select(selectCinemas);
   map?: Map;
 
-  constructor(private readonly router: Router) {}
+  constructor(private readonly router: Router, private readonly store: Store) {}
 
+  // TODO: move in utilities
   buildSingleFeatureMap(coordinates: Coordinate, target: string): Map {
     useGeographic();
     const map = new Map({
@@ -40,6 +44,7 @@ export class MapService {
     return map;
   }
 
+  // TODO: move in utilities
   buildMultiFeatureMap(
     vectorLayer: VectorLayer<VectorSource>,
     coords: Coordinate[],

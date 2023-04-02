@@ -4,7 +4,6 @@ import { PushModule } from '@ngrx/component';
 import { ScreeningEventCreateComponent } from 'src/app/features/screening-event/screening-event-create/screening-event-create.component';
 import { ScreeningEventFormComponent } from 'src/app/features/screening-event/screening-event-form/screening-event-form.component';
 import { AdminScreeningEventRoutingModule } from './admin-event-routing.module';
-import { TwoColumnLayoutComponent } from 'src/app/shared/layout/two-column-layout/two-column-layout.component';
 import { ScreeningEventEditComponent } from 'src/app/features/screening-event/screening-event-edit/screening-event-edit.component';
 
 @NgModule({
@@ -12,7 +11,6 @@ import { ScreeningEventEditComponent } from 'src/app/features/screening-event/sc
   imports: [
     CommonModule,
     AdminScreeningEventRoutingModule,
-    TwoColumnLayoutComponent,
     ScreeningEventFormComponent,
     PushModule,
   ],

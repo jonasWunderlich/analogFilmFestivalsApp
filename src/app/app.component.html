@@ -7,16 +7,9 @@
 </header>
 
 <main>
-  <app-two-column-layout>
-    <div column-one>
-      <router-outlet></router-outlet>
-    </div>
-    <app-cinema-map
-      *ngIf="$cinemas | ngrxPush"
-      column-two
-      [geoArray]="$cinemas | ngrxPush"
-    ></app-cinema-map>
-  </app-two-column-layout>
+  <app-layout>
+    <router-outlet></router-outlet>
+  </app-layout>
 </main>
 
 <footer>
