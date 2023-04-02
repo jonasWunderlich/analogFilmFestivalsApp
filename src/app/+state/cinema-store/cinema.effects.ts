@@ -13,6 +13,9 @@ import { AnalogKinoBackendService } from 'src/app/core/services/analog-kino-http
 import { NotificationService } from 'src/app/core/services/notification.service';
 import * as CinemaActions from './cinema.actions';
 import { NOTIFICATION_MESSAGES } from 'src/app/core/constants/notification-messages';
+import { enteredCinemaOverview } from 'src/app/features/cinema/cinema-overview/cinema-overview.actions';
+import { enteredCinemaDetails } from 'src/app/features/cinema/cinema-details/cinema-details.actions';
+import { enteredCinemaEdit } from 'src/app/features/cinema/cinema-edit/cinema-edit.actions';
 
 @Injectable()
 export class CinemaEffects {
@@ -23,7 +26,7 @@ export class CinemaEffects {
 
   loadCinemas$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(CinemaActions.loadCinemas),
+      ofType(CinemaActions.loadCinemas, enteredCinemaOverview),
       switchMap(() =>
         this.analogHttpService.getCinemas().pipe(
           map((cinemas) => CinemaActions.loadCinemasSucceeded({ cinemas })),
@@ -65,7 +68,11 @@ export class CinemaEffects {
 
   loadCinemaById$ = createEffect(() => {
     return this.actions$.pipe(
-      ofType(CinemaActions.loadCinemaById),
+      ofType(
+        CinemaActions.loadCinemaById,
+        enteredCinemaDetails,
+        enteredCinemaEdit
+      ),
       filter((params) => params?.id?.length > 0),
       switchMap((params) =>
         this.analogHttpService.getCinemaById(params.id).pipe(

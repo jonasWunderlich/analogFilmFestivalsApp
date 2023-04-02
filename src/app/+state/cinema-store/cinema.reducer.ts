@@ -4,12 +4,13 @@ import {
   triggerCinemaCreation,
   triggerCinemaUpdate,
   triggerCinemaRemoval,
-  setActiveCinemaId,
 } from 'src/app/features/cinema/cinema.actions';
 
 import { Cinema } from 'src/app/core/_models/cinema';
 import * as CinemaActions from './cinema.actions';
 import { enteredCinemaDetails } from 'src/app/features/cinema/cinema-details/cinema-details.actions';
+import { enteredCinemaEdit } from 'src/app/features/cinema/cinema-edit/cinema-edit.actions';
+import { enteredCinemaOverview } from 'src/app/features/cinema/cinema-overview/cinema-overview.actions';
 
 export const cinemaFeatureKey = 'cinema';
 
@@ -49,7 +50,7 @@ export const initialState: State = cinemaAdapter.getInitialState({
 
 export const reducer = createReducer(
   initialState,
-  on(CinemaActions.loadCinemas, (state: State) => {
+  on(CinemaActions.loadCinemas, enteredCinemaOverview, (state: State) => {
     return {
       ...state,
       loadingStates: {
@@ -104,16 +105,10 @@ export const reducer = createReducer(
       },
     };
   }),
-  on(setActiveCinemaId, (state: State, action) => {
+  on(enteredCinemaDetails, enteredCinemaEdit, (state: State, action) => {
     return {
       ...state,
-      activeCinemaId: action.cinemaId,
-    };
-  }),
-  on(enteredCinemaDetails, (state: State) => {
-    return {
-      ...state,
-      // TODO ...
+      activeCinemaId: action.id,
     };
   }),
   on(triggerCinemaCreation, (state: State) => {

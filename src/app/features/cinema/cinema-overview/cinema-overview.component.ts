@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { CinemaService } from '../cinema.service';
+import { CinemaOverviewService } from './cinema-overview.service';
 
 @Component({
   selector: 'app-cinema-overview',
@@ -8,11 +8,11 @@ import { CinemaService } from '../cinema.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CinemaOverviewComponent {
-  cinemas$ = this.cinemaService.cinemas$;
+  cinemas$ = this.facade.cinemas$;
 
-  constructor(private readonly cinemaService: CinemaService) {}
+  constructor(private readonly facade: CinemaOverviewService) {}
 
   delete(id: string) {
-    this.cinemaService.delete(id);
+    this.facade.delete(id);
   }
 }

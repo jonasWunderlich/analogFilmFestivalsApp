@@ -1,7 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CinemaDetailsService } from './cinema-details.service';
-import { CinemaService } from '../cinema.service';
 
 @Component({
   selector: 'app-cinema',
@@ -10,18 +9,17 @@ import { CinemaService } from '../cinema.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CinemaDetailsComponent implements OnInit {
-  cinema$ = this.detailsService.cinema$;
-  projections = this.detailsService.projections;
+  cinema$ = this.facade.cinema$;
+  projections = this.facade.projections;
 
   constructor(
-    private readonly cinemaService: CinemaService,
-    private readonly detailsService: CinemaDetailsService,
+    private readonly facade: CinemaDetailsService,
     private readonly route: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
-      this.cinemaService.setActiveCinema(params['id']);
+      this.facade.setActiveId(params['id']);
     });
   }
 }

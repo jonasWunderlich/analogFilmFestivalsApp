@@ -1,5 +1,6 @@
-import { createAction } from '@ngrx/store';
+import { createAction, props } from '@ngrx/store';
 
 export const enteredCinemaDetails = createAction(
-  '[CinemaDetails] Cinema Details Page entered'
+  '[CinemaDetails] Cinema Details Page entered',
+  props<{ id: string }>()
 );

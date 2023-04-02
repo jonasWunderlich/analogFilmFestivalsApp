@@ -1,10 +1,5 @@
-import { createAction, props } from '@ngrx/store';
+import { createAction } from '@ngrx/store';
 import { CinemaCreate } from 'src/app/core/_models/cinema';
-
-export const setActiveCinemaId = createAction(
-  '[Cinema Details] Set Active Cinema Id',
-  props<{ cinemaId: string }>()
-);
 
 export const triggerCinemaUpdate = createAction(
   '[CinemaService] Update Cinema triggered',
