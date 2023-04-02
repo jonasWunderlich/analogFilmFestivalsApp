@@ -9,6 +9,7 @@ const routes: Routes = [
     title: 'Events',
     component: ScreeningEventOverviewComponent,
   },
+
   {
     path: ':id',
     title: 'Event',
@@ -20,4 +21,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class EventRoutingModule {}
+export default class ScreeningEventRoutingModule {}
