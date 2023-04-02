@@ -3,11 +3,13 @@ import { createEntityAdapter, EntityAdapter, EntityState } from '@ngrx/entity';
 import { Report } from 'src/app/core/_models/report';
 import * as ReportActions from './report.actions';
 import {
-  setActiveReport,
   triggerReportCreation,
   triggerReportRemoval,
   triggerReportUpdate,
 } from 'src/app/features/report/report.actions';
+import { enteredReportDetails } from 'src/app/features/report/report-details/report-details.actions';
+import { enteredReportEdit } from 'src/app/features/report/report-edit/report-edit.actions';
+import { enteredReportOverview } from 'src/app/features/report/report-overview/report-overview.actions';
 
 export const reportFeatureKey = 'report';
 
@@ -45,7 +47,7 @@ export const initialState: State = reportAdapter.getInitialState({
 
 export const reducer = createReducer(
   initialState,
-  on(ReportActions.loadReports, (state: State) => {
+  on(ReportActions.loadReports, enteredReportOverview, (state: State) => {
     return {
       ...state,
       loadingStates: {
@@ -99,10 +101,10 @@ export const reducer = createReducer(
       },
     };
   }),
-  on(setActiveReport, (state: State, action) => {
+  on(enteredReportDetails, enteredReportEdit, (state: State, action) => {
     return {
       ...state,
-      activeRouteId: action.reportId,
+      activeRouteId: action.id,
     };
   }),
   on(triggerReportCreation, (state: State) => {

@@ -42,7 +42,7 @@ export class CalendarComponent {
       },
       eventMouseEnter: (arg) => {
         // TODO: Show Popup with Information
-        console.warn('TODO', arg, arg.event._def);
+        // console.warn('TODO', arg, arg.event._def);
       },
     };
   }

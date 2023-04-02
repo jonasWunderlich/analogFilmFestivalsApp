@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ReportService } from '../report.service';
 import { Report, ReportCreate } from 'src/app/core/_models/report';
+import { ReportEditService } from './report-edit.service';
 
 @Component({
   selector: 'app-report-edit',
@@ -9,17 +9,16 @@ import { Report, ReportCreate } from 'src/app/core/_models/report';
   styleUrls: ['./report-edit.component.scss'],
 })
 export class ReportEditComponent implements OnInit {
-  reportId = this.service.activeReportId;
   report$ = this.service.activeReport$;
 
   constructor(
     private readonly route: ActivatedRoute,
-    private readonly service: ReportService
+    private readonly service: ReportEditService
   ) {}
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
-      this.service.setActiveReport(params['id']);
+      this.service.setActiveId(params['id']);
     });
   }
 

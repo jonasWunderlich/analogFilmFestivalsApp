@@ -12,6 +12,9 @@ import { AnalogKinoBackendService } from 'src/app/core/services/analog-kino-http
 import { NotificationService } from 'src/app/core/services/notification.service';
 import * as EventActions from './screening-event.actions';
 import { NOTIFICATION_MESSAGES } from 'src/app/core/constants/notification-messages';
+import { enteredScreeningEventOverview } from 'src/app/features/screening-event/screening-event-overview/screening-event-overview.actions';
+import { enteredScreeningEventDetails } from 'src/app/features/screening-event/screening-event-details/screening-event-details.actions';
+import { enteredScreeningEventEdit } from 'src/app/features/screening-event/screening-event-edit/screening-event-edit.actions';
 
 @Injectable()
 export class EventEffects {
@@ -23,7 +26,7 @@ export class EventEffects {
 
   loadScreeningEvents$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(EventActions.loadScreeningEvents),
+      ofType(EventActions.loadScreeningEvents, enteredScreeningEventOverview),
       switchMap(() =>
         this.analogHttpService.getScreeningEvents().pipe(
           map((screeningEvents) =>
@@ -69,7 +72,11 @@ export class EventEffects {
 
   loadScreeningEventById$ = createEffect(() => {
     return this.actions$.pipe(
-      ofType(EventActions.loadScreeningEventById),
+      ofType(
+        EventActions.loadScreeningEventById,
+        enteredScreeningEventDetails,
+        enteredScreeningEventEdit
+      ),
       filter((params) => params?.id?.length > 0),
       switchMap((params) =>
         this.analogHttpService.getScreeningEventById(params.id).pipe(

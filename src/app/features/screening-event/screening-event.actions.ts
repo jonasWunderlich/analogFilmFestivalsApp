@@ -1,22 +1,17 @@
-import { createAction, props } from '@ngrx/store';
+import { createAction } from '@ngrx/store';
 import { ScreeningEventCreate } from 'src/app/core/_models/screening-event';
 
-export const setActiveScreeningEventId = createAction(
-  '[EventService] Active ScreeningEvent set',
-  props<{ cinemaId: string }>()
-);
-
 export const triggerScreeningEventUpdate = createAction(
-  '[EventService] Update ScreeningEvent triggered',
+  '[CommonEventService] Update ScreeningEvent triggered',
   (id: string, screeningEvent: ScreeningEventCreate) => ({ id, screeningEvent })
 );
 
 export const triggerScreeningEventCreation = createAction(
-  '[EventService] Create ScreeningEvent triggered',
+  '[CommonEventService] Create ScreeningEvent triggered',
   (screeningEvent: ScreeningEventCreate) => ({ screeningEvent })
 );
 
 export const triggerScreeningEventRemoval = createAction(
-  '[EventService] Delete ScreeningEvent triggered',
+  '[CommonEventService] Delete ScreeningEvent triggered',
   (id: string) => ({ id })
 );

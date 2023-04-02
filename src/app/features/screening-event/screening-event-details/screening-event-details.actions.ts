@@ -1,6 +1,6 @@
 import { createAction, props } from '@ngrx/store';
 
-export const setActiveScreeningEvent = createAction(
-  '[Screening Event Details] Active Screening Event set',
-  props<{ screeningEventId: string }>()
+export const enteredScreeningEventDetails = createAction(
+  '[ScreeningEventDetails] ScreeningEvent Details entered',
+  props<{ id: string }>()
 );

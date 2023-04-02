@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ProjectionService } from '../projection.service';
 import { Projection, ProjectionCreate } from 'src/app/core/_models/projection';
+import { ProjectionEditService } from './projection-edit.service';
 
 @Component({
   selector: 'app-projection-edit',
@@ -9,17 +9,16 @@ import { Projection, ProjectionCreate } from 'src/app/core/_models/projection';
   styleUrls: ['./projection-edit.component.scss'],
 })
 export class ProjectionEditComponent implements OnInit {
-  projectionId = this.service.activeProjectionId;
   projection$ = this.service.activeProjection$;
 
   constructor(
     private readonly route: ActivatedRoute,
-    private readonly service: ProjectionService
+    private readonly service: ProjectionEditService
   ) {}
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
-      this.service.setActiveProjection(params['id']);
+      this.service.setActiveId(params['id']);
     });
   }
 

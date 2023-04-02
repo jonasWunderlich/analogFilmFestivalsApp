@@ -1,13 +1,15 @@
 import { createEntityAdapter, EntityAdapter, EntityState } from '@ngrx/entity';
 import { createFeature, createReducer, on } from '@ngrx/store';
 import {
-  setActiveProjectionId,
   triggerProjectionCreation,
   triggerProjectionUpdate,
   triggerProjectionRemoval,
 } from 'src/app/features/projection/projection.actions';
 import * as ProjectionActions from './projection.actions';
 import { Projection } from 'src/app/core/_models/projection';
+import { enteredProjectionOverview } from 'src/app/features/projection/projection-overview/projection-overview.actions';
+import { enteredProjectionEdit } from 'src/app/features/projection/projection-edit/projection-edit.actions';
+import { enteredProjectionDetails } from 'src/app/features/projection/projection-details/projection-details.actions';
 
 export const projectionFeatureKey = 'projection';
 
@@ -44,15 +46,19 @@ export const initialState: State = projectionAdapter.getInitialState({
 
 export const reducer = createReducer(
   initialState,
-  on(ProjectionActions.loadProjections, (state: State) => {
-    return {
-      ...state,
-      loadingStates: {
-        ...state.loadingStates,
-        loadingProjections: true,
-      },
-    };
-  }),
+  on(
+    ProjectionActions.loadProjections,
+    enteredProjectionOverview,
+    (state: State) => {
+      return {
+        ...state,
+        loadingStates: {
+          ...state.loadingStates,
+          loadingProjections: true,
+        },
+      };
+    }
+  ),
   on(ProjectionActions.loadProjectionById, (state: State) => {
     return {
       ...state,
@@ -99,12 +105,16 @@ export const reducer = createReducer(
       },
     };
   }),
-  on(setActiveProjectionId, (state: State, action) => {
-    return {
-      ...state,
-      activeProjectionId: action.projectionId,
-    };
-  }),
+  on(
+    enteredProjectionEdit,
+    enteredProjectionDetails,
+    (state: State, action) => {
+      return {
+        ...state,
+        activeProjectionId: action.id,
+      };
+    }
+  ),
   on(triggerProjectionCreation, (state: State) => {
     return {
       ...state,

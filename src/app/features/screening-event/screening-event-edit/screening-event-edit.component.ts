@@ -4,7 +4,7 @@ import {
   ScreeningEvent,
   ScreeningEventCreate,
 } from 'src/app/core/_models/screening-event';
-import { ScreeningEventService } from '../screening-event.service';
+import { ScreeningEventEditService } from './screening-event-edit.service';
 
 @Component({
   selector: 'app-screening-event-edit',
@@ -12,24 +12,24 @@ import { ScreeningEventService } from '../screening-event.service';
   styleUrls: ['./screening-event-edit.component.scss'],
 })
 export class ScreeningEventEditComponent implements OnInit {
-  screeningEvent$ = this.service.event$;
+  screeningEvent$ = this.facade.event$;
 
   constructor(
     private readonly route: ActivatedRoute,
-    private readonly service: ScreeningEventService
+    private readonly facade: ScreeningEventEditService
   ) {}
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
-      this.service.setActiveScreeningEvent(params['id']);
+      this.facade.setActiveId(params['id']);
     });
   }
 
   update(item: ScreeningEventCreate) {
-    this.service.update(item);
+    this.facade.update(item);
   }
 
   delete(screeningEvent: ScreeningEvent) {
-    this.service.delete(screeningEvent.id);
+    this.facade.delete(screeningEvent.id);
   }
 }

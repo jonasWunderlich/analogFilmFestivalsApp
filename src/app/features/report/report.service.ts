@@ -8,7 +8,6 @@ import {
 } from 'src/app/+state/report-store/report.selectors';
 import { selectScreeningEvents } from 'src/app/+state/screening-event-store/screening-event.selectors';
 import {
-  setActiveReport,
   triggerReportCreation,
   triggerReportRemoval,
   triggerReportUpdate,
@@ -40,21 +39,6 @@ export class ReportService {
 
   constructor(private readonly store: Store, private readonly router: Router) {}
 
-  setActiveReport(id: string | undefined): void {
-    if (id) {
-      this.store.dispatch(
-        setActiveReport({
-          reportId: id,
-        })
-      );
-      this.activeReportId = id;
-    }
-  }
-
-  dispatchMovies(): void {
-    this.store.dispatch(searchMoviesByIds(MOCKED_TMDBIDS));
-  }
-
   create(report: ReportCreate): void {
     this.store.dispatch(triggerReportCreation(report));
     this.router.navigate(['/report']);
@@ -65,10 +49,8 @@ export class ReportService {
     this.router.navigate(['/report']);
   }
 
-  update(report: ReportCreate): void {
-    if (this.activeReportId) {
-      this.store.dispatch(triggerReportUpdate(this.activeReportId, report));
-      this.router.navigate(['/report']);
-    }
+  update(id: string, report: ReportCreate): void {
+    this.store.dispatch(triggerReportUpdate(id, report));
+    this.router.navigate(['/report']);
   }
 }

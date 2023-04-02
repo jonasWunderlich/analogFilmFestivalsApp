@@ -1,18 +1,14 @@
-<ng-container *ngIf="report$ | ngrxPush as report; else loading">
+<ng-container *ngIf="activeReport$ | ngrxPush as report">
   <i>Erfahrungsbericht</i>
   <h2>{{ report.title }}</h2>
   <p>{{ report.date | date }}</p>
   <p>{{ report.text }}</p>
-
-  <app-projection-list
-    [projections]="projections$ | ngrxPush"
-  ></app-projection-list>
 </ng-container>
 
-<ng-template #loading>
-  <app-loading></app-loading>
-</ng-template>
+<!-- <app-projection-list
+  [projections]="relatedProjections$ | ngrxPush"
+></app-projection-list>
 
-<app-cinema-list [cinemas]="cinemas$ | ngrxPush"></app-cinema-list>
+<app-cinema-list [cinemas]="relatedCinemas$ | ngrxPush"></app-cinema-list> -->
 
-<app-movie-list [movies]="movies$ | ngrxPush"></app-movie-list>
+<app-movie-list [movies]="relatedMovies$ | ngrxPush"></app-movie-list>

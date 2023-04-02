@@ -9,11 +9,13 @@ import {
 
 import { Cinema } from 'src/app/core/_models/cinema';
 import * as CinemaActions from './cinema.actions';
+import { enteredCinemaDetails } from 'src/app/features/cinema/cinema-details/cinema-details.actions';
 
 export const cinemaFeatureKey = 'cinema';
 
 export interface State extends EntityState<Cinema> {
   activeCinemaId: string | undefined;
+  cinemasOnMap: Cinema[];
   loadingStates: {
     loadingCinema: boolean;
     loadingCinemas: boolean;
@@ -35,6 +37,7 @@ export const cinemaAdapter: EntityAdapter<Cinema> = createEntityAdapter<Cinema>(
 
 export const initialState: State = cinemaAdapter.getInitialState({
   activeCinemaId: undefined,
+  cinemasOnMap: [],
   loadingStates: {
     loadingCinema: false,
     loadingCinemas: false,
@@ -105,6 +108,12 @@ export const reducer = createReducer(
     return {
       ...state,
       activeCinemaId: action.cinemaId,
+    };
+  }),
+  on(enteredCinemaDetails, (state: State) => {
+    return {
+      ...state,
+      // TODO ...
     };
   }),
   on(triggerCinemaCreation, (state: State) => {

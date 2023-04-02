@@ -12,6 +12,9 @@ import { AnalogKinoBackendService } from 'src/app/core/services/analog-kino-http
 import { NotificationService } from 'src/app/core/services/notification.service';
 import * as ProjectionActions from './projection.actions';
 import { NOTIFICATION_MESSAGES } from 'src/app/core/constants/notification-messages';
+import { enteredProjectionOverview } from 'src/app/features/projection/projection-overview/projection-overview.actions';
+import { enteredProjectionDetails } from 'src/app/features/projection/projection-details/projection-details.actions';
+import { enteredProjectionEdit } from 'src/app/features/projection/projection-edit/projection-edit.actions';
 
 @Injectable()
 export class ProjectionEffects {
@@ -23,7 +26,7 @@ export class ProjectionEffects {
 
   loadProjections$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(ProjectionActions.loadProjections),
+      ofType(ProjectionActions.loadProjections, enteredProjectionOverview),
       switchMap(() =>
         this.analogHttpService.getProjections().pipe(
           map((projections) =>
@@ -69,7 +72,11 @@ export class ProjectionEffects {
 
   loadProjectionById$ = createEffect(() => {
     return this.actions$.pipe(
-      ofType(ProjectionActions.loadProjectionById),
+      ofType(
+        ProjectionActions.loadProjectionById,
+        enteredProjectionDetails,
+        enteredProjectionEdit
+      ),
       filter((params) => params?.id?.length > 0),
       switchMap((params) =>
         this.analogHttpService.getProjectionById(params.id).pipe(

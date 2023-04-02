@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ReportService } from '../report.service';
+import { ReportDetailsService } from './report-details.service';
 
 @Component({
   selector: 'app-report-details',
@@ -9,21 +9,21 @@ import { ReportService } from '../report.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ReportDetailsComponent implements OnInit {
-  cinemas$ = this.reportService.cinemas$;
-  movies$ = this.reportService.movies$;
-  report$ = this.reportService.activeReport$;
-  screeningEvents$ = this.reportService.screeningEvents$;
-  projections$ = this.reportService.projections$;
+  activeReport$ = this.facade.activeReport$;
+  relatedMovies$ = this.facade.relatedMovies$;
+  // relatedCinemas$ = this.facade.relatedCinemas$;
+  // relatedEvents$ = this.facade.relatedEvents$;
+  // relatedProjections$ = this.facade.relatedProjections$;
 
   constructor(
     private readonly route: ActivatedRoute,
-    private readonly reportService: ReportService
+    private readonly facade: ReportDetailsService
   ) {}
 
   ngOnInit(): void {
-    this.reportService.dispatchMovies();
+    this.facade.dispatchMovies();
     this.route.params.subscribe((params) => {
-      this.reportService.setActiveReport(params['id']);
+      this.facade.setActiveId(params['id']);
     });
   }
 }

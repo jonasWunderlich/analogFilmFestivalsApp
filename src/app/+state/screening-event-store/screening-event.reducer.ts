@@ -1,6 +1,5 @@
 import { createEntityAdapter, EntityAdapter, EntityState } from '@ngrx/entity';
 import { createFeature, createReducer, on } from '@ngrx/store';
-import { setActiveScreeningEvent } from 'src/app/features/screening-event/screening-event-details/screening-event-details.actions';
 import {
   triggerScreeningEventCreation,
   triggerScreeningEventRemoval,
@@ -8,6 +7,9 @@ import {
 } from 'src/app/features/screening-event/screening-event.actions';
 import { ScreeningEvent } from 'src/app/core/_models/screening-event';
 import * as ScreeningEventActions from './screening-event.actions';
+import { enteredScreeningEventDetails } from 'src/app/features/screening-event/screening-event-details/screening-event-details.actions';
+import { enteredScreeningEventEdit } from 'src/app/features/screening-event/screening-event-edit/screening-event-edit.actions';
+import { enteredScreeningEventOverview } from 'src/app/features/screening-event/screening-event-overview/screening-event-overview.actions';
 
 export const screeningEventFeatureKey = 'screeningEvent';
 
@@ -44,15 +46,19 @@ export const initialState: State = screeningEventAdapter.getInitialState({
 
 export const reducer = createReducer(
   initialState,
-  on(ScreeningEventActions.loadScreeningEvents, (state: State) => {
-    return {
-      ...state,
-      loadingStates: {
-        ...state.loadingStates,
-        loadingScreeningEvents: true,
-      },
-    };
-  }),
+  on(
+    ScreeningEventActions.loadScreeningEvents,
+    enteredScreeningEventOverview,
+    (state: State) => {
+      return {
+        ...state,
+        loadingStates: {
+          ...state.loadingStates,
+          loadingScreeningEvents: true,
+        },
+      };
+    }
+  ),
   on(ScreeningEventActions.loadScreeningEventById, (state: State) => {
     return {
       ...state,
@@ -104,12 +110,16 @@ export const reducer = createReducer(
       },
     };
   }),
-  on(setActiveScreeningEvent, (state: State, action) => {
-    return {
-      ...state,
-      activeScreeningEventId: action.screeningEventId,
-    };
-  }),
+  on(
+    enteredScreeningEventDetails,
+    enteredScreeningEventEdit,
+    (state: State, action) => {
+      return {
+        ...state,
+        activeScreeningEventId: action.id,
+      };
+    }
+  ),
   on(triggerScreeningEventCreation, (state: State) => {
     return {
       ...state,

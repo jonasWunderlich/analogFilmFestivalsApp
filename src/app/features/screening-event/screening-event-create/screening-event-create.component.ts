@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ScreeningEventCreate } from 'src/app/core/_models/screening-event';
-import { ScreeningEventService } from '../screening-event.service';
+import { ScreeningEventCreateService } from './screening-event-create.service';
 
 @Component({
   selector: 'app-screening-event-create',
@@ -8,9 +8,9 @@ import { ScreeningEventService } from '../screening-event.service';
   styleUrls: ['./screening-event-create.component.scss'],
 })
 export class ScreeningEventCreateComponent {
-  constructor(private readonly eventService: ScreeningEventService) {}
+  constructor(private readonly facade: ScreeningEventCreateService) {}
 
-  create(screeningEvent: ScreeningEventCreate) {
-    this.eventService.create(screeningEvent);
+  create(facade: ScreeningEventCreate) {
+    this.facade.create(facade);
   }
 }

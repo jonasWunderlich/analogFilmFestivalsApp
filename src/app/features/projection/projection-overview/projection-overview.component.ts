@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ProjectionService } from '../projection.service';
+import { ProjectionOverviewService } from './projection-overview.service';
 
 @Component({
   selector: 'app-projection-overview',
@@ -8,12 +8,11 @@ import { ProjectionService } from '../projection.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProjectionOverviewComponent {
-  allCinemas$ = this.projectionService.allCinemas$;
-  allProjections$ = this.projectionService.allProjections$;
+  projections$ = this.facade.projections$;
 
-  constructor(private readonly projectionService: ProjectionService) {}
+  constructor(private readonly facade: ProjectionOverviewService) {}
 
   delete(id: string) {
-    this.projectionService.delete(id);
+    this.facade.delete(id);
   }
 }

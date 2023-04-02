@@ -20,7 +20,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { CinemaMapComponent } from './shared/ui/cinema-map/cinema-map.component';
 import { PushModule } from '@ngrx/component';
-import { LayoutComponent } from './shared/layout/layout/layout.component';
+import { LayoutComponent } from './layout/layout.component';
 registerLocaleData(localeDe);
 
 export const APP_TITLE = new InjectionToken<string>('app-title');

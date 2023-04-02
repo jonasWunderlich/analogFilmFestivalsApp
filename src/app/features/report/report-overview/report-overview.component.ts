@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ReportService } from '../report.service';
+import { ReportOverviewService } from './report-overview.service';
 
 @Component({
   selector: 'app-report-overview',
@@ -8,12 +8,11 @@ import { ReportService } from '../report.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ReportOverviewComponent {
-  reports$ = this.reportService.allReports$;
-  cinemas$ = this.reportService.cinemas$;
+  reports$ = this.facade.reports$;
 
-  constructor(private readonly reportService: ReportService) {}
+  constructor(private readonly facade: ReportOverviewService) {}
 
   delete(id: string) {
-    this.reportService.delete(id);
+    this.facade.delete(id);
   }
 }

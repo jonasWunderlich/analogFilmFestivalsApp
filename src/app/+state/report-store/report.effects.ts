@@ -13,6 +13,9 @@ import {
   triggerReportRemoval,
 } from 'src/app/features/report/report.actions';
 import { NOTIFICATION_MESSAGES } from 'src/app/core/constants/notification-messages';
+import { enteredReportOverview } from 'src/app/features/report/report-overview/report-overview.actions';
+import { enteredReportDetails } from 'src/app/features/report/report-details/report-details.actions';
+import { enteredReportEdit } from 'src/app/features/report/report-edit/report-edit.actions';
 
 @Injectable()
 export class ReportEffects {
@@ -22,7 +25,7 @@ export class ReportEffects {
 
   loadReports$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(ReportActions.loadReports),
+      ofType(ReportActions.loadReports, enteredReportOverview),
       switchMap(() =>
         this.analogHttpService.getReports().pipe(
           map((reports) => ReportActions.loadReportsSucceeded({ reports })),
@@ -62,7 +65,11 @@ export class ReportEffects {
 
   loadReportById$ = createEffect(() => {
     return this.actions$.pipe(
-      ofType(ReportActions.loadReportById),
+      ofType(
+        ReportActions.loadReportById,
+        enteredReportDetails,
+        enteredReportEdit
+      ),
       filter((params) => params?.id?.length > 0),
       switchMap((params) =>
         this.analogHttpService.getReportById(params.id).pipe(

@@ -1,4 +1,4 @@
-<ng-container *ngIf="activeProjection$ | ngrxPush as projection; else loading">
+<ng-container *ngIf="activeProjection$ | ngrxPush as projection">
   <i>Kino</i>
 
   <h2>{{ projection?.title }}</h2>
@@ -22,7 +22,3 @@
     {{ projection.agent }}
   </p>
 </ng-container>
-
-<ng-template #loading>
-  <app-loading></app-loading>
-</ng-template>

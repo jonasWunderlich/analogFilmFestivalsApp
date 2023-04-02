@@ -1,10 +1,5 @@
-import { createAction, props } from '@ngrx/store';
+import { createAction } from '@ngrx/store';
 import { ReportCreate } from 'src/app/core/_models/report';
-
-export const setActiveReport = createAction(
-  '[ReportService] Set Active Report Id triggered',
-  props<{ reportId: string }>()
-);
 
 export const triggerReportUpdate = createAction(
   '[ReportService] Update Report triggered',

@@ -104,3 +104,8 @@ export const selectCinemasLoading = createSelector(
   selectCinemaLoadingStates,
   (state) => state.loadingCinemas
 );
+
+export const selectCinemasOnMap = createSelector(
+  selectCinemaState,
+  (state) => state.cinemasOnMap
+);
