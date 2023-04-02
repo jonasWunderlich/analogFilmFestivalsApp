@@ -10,7 +10,7 @@
       <a routerLink="report">Erfahrungsberichte</a> |
     </li>
     <li routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
-      <a routerLink="projection">Projektionen</a> |
+      <a routerLink="projection">Projektionen</a>
     </li>
   </ul>
 </nav>
@@ -51,7 +51,21 @@
     >
       <a routerLink="admin/projection">Projektion+</a> |
     </li>
-    <button (click)="auth.login()" *ngIf="!auth.isAuthenticated">Login</button>
-    <button (click)="auth.logout()" *ngIf="auth.isAuthenticated">Logout</button>
+    <li>
+      <button
+        *ngIf="!auth.isAuthenticated"
+        class="small"
+        (click)="auth.login()"
+      >
+        Login
+      </button>
+      <button
+        *ngIf="auth.isAuthenticated"
+        class="small"
+        (click)="auth.logout()"
+      >
+        Logout
+      </button>
+    </li>
   </ul>
 </nav>
