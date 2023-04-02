@@ -15,7 +15,7 @@ const REPORT_DEFAULT_VALUES: Report = {
   These kind of things only happen for the first time once.When you get lost in your imaginatory vagueness, your foresight will become a nimble vagrant.The best way to communicate is compatible. Compatible communication is listening with open ears and an open mind, and not being fearful or judgemental about what you're hearing.
   I would like to give you a backstage pass to my imagination.You ever roasted doughnuts?The magic Indian is a mysterious spiritual force, and we're going to Cathedral Rock, and that's the vortex of the heart.I wrestled a bear once. A 750lbs black bear.`,
   date: randomDate(new Date(), new Date(2022, 9, 0)).toJSON(),
-  images: ['asdf', 'sdfg'],
+  images: 'bologna.jpg, bologna2.jpg',
 };
 
 /**

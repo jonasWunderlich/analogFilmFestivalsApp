@@ -22,7 +22,7 @@ const routes: Routes = [
       ),
   },
   {
-    path: 'cinema',
+    path: 'report',
     loadChildren: () =>
       import('./admin-report/admin-report.module').then(
         (m) => m.AdminReportModule

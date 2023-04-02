@@ -2,7 +2,7 @@ export interface ReportCreate {
   title: string;
   date: string;
   text: string;
-  images?: string[];
+  images?: string;
 }
 
 export interface Report extends ReportCreate {
@@ -13,5 +13,5 @@ export interface Report extends ReportCreate {
 
   date: string;
   text: string;
-  images?: string[];
+  images?: string;
 }

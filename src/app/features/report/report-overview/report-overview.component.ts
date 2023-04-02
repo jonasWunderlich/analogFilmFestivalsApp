@@ -8,8 +8,12 @@ import { ReportService } from '../report.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ReportOverviewComponent {
-  reports$ = this.reportService.reports$;
+  reports$ = this.reportService.allReports$;
   cinemas$ = this.reportService.cinemas$;
 
   constructor(private readonly reportService: ReportService) {}
+
+  delete(id: string) {
+    this.reportService.delete(id);
+  }
 }

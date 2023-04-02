@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ReportCreateComponent } from 'src/app/features/report/report-create/report-create.component';
+import { ReportEditComponent } from 'src/app/features/report/report-edit/report-edit.component';
 
 const routes: Routes = [
   {
@@ -8,11 +9,11 @@ const routes: Routes = [
     title: 'Erfahrungsbericht erstellen',
     component: ReportCreateComponent,
   },
-  // {
-  //   path: ':id',
-  //   title: 'Event bearbeiten',
-  //   component: ReportEditComponent,
-  // },
+  {
+    path: ':id',
+    title: 'Erfahrungsbericht bearbeiten',
+    component: ReportEditComponent,
+  },
 ];
 
 @NgModule({

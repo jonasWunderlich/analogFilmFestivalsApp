@@ -1,0 +1,14 @@
+<app-two-column-layout class="c-report-create">
+  <div column-one>
+    <i>Formular</i>
+    <h2>Erfahrungsbericht bearbeiten</h2>
+    <app-report-form
+      *ngIf="report$ | ngrxPush as report"
+      [report]="report"
+      (submitEvent)="update($event)"
+      (deleteEvent)="delete($event)"
+    ></app-report-form>
+  </div>
+
+  <div column-two class="right">+</div>
+</app-two-column-layout>

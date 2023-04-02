@@ -21,4 +21,5 @@
   </fieldset>
 
   <button [disabled]="reportForm.invalid" type="submit">Speichern</button>
+  <button *ngIf="editMode" type="button" (click)="delete()">Löschen</button>
 </form>

@@ -11,7 +11,7 @@ import { ReportService } from '../report.service';
 export class ReportDetailsComponent implements OnInit {
   cinemas$ = this.reportService.cinemas$;
   movies$ = this.reportService.movies$;
-  report$ = this.reportService.report$;
+  report$ = this.reportService.activeReport$;
   screeningEvents$ = this.reportService.screeningEvents$;
   projections$ = this.reportService.projections$;
 

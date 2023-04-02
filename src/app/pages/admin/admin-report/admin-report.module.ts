@@ -6,9 +6,10 @@ import { ReportFormComponent } from 'src/app/features/report/report-form/report-
 import { TwoColumnLayoutComponent } from 'src/app/shared/layout/two-column-layout/two-column-layout.component';
 import { CinemaMapComponent } from 'src/app/shared/ui/cinema-map/cinema-map.component';
 import { AdminReportRoutingModule } from './admin-report-routing.module';
+import { ReportEditComponent } from 'src/app/features/report/report-edit/report-edit.component';
 
 @NgModule({
-  declarations: [ReportCreateComponent],
+  declarations: [ReportCreateComponent, ReportEditComponent],
   imports: [
     CommonModule,
     AdminReportRoutingModule,

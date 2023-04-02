@@ -11,6 +11,6 @@ export class ReportCreateComponent {
   constructor(private readonly service: ReportService) {}
 
   create(report: ReportCreate) {
-    this.service.create(report).subscribe();
+    this.service.create(report);
   }
 }
