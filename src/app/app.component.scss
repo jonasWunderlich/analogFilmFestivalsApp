@@ -17,21 +17,6 @@ header {
       margin: 0.2em 0;
     }
   }
-
-  nav {
-    li {
-      display: inline;
-    }
-    a {
-      font-size: 24px;
-      font-weight: 600;
-      text-decoration: none;
-    }
-
-    .active a {
-      color: var(--color-black);
-    }
-  }
 }
 
 main {

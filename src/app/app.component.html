@@ -3,70 +3,7 @@
     ><h1>{{ appTitle }}</h1></a
   >
   <app-search></app-search>
-
-  <nav>
-    <ul>
-      <li routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
-        <a routerLink="event">Events</a> |
-      </li>
-      <li routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
-        <a routerLink="cinema">Kinos</a> |
-      </li>
-      <li routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
-        <a routerLink="report">Erfahrungsberichte</a> |
-      </li>
-      <li routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
-        <a routerLink="projection">Projektionen</a> |
-      </li>
-    </ul>
-  </nav>
-  <nav>
-    <ul>
-      <li
-        *ngIf="auth.isAuthenticated"
-        routerLinkActive="active"
-        [routerLinkActiveOptions]="{ exact: true }"
-      >
-        <a routerLink="admin/event">Event+</a> |
-      </li>
-      <li
-        *ngIf="auth.isAuthenticated"
-        routerLinkActive="active"
-        [routerLinkActiveOptions]="{ exact: true }"
-      >
-        <a routerLink="admin/cinema">Kino+</a> |
-      </li>
-      <li
-        *ngIf="auth.isAuthenticated"
-        routerLinkActive="active"
-        [routerLinkActiveOptions]="{ exact: true }"
-      >
-        <a routerLink="admin/report">Bericht+</a> |
-      </li>
-      <li
-        *ngIf="auth.isAuthenticated"
-        routerLinkActive="active"
-        [routerLinkActiveOptions]="{ exact: true }"
-      >
-        <a routerLink="admin/auditorium">Kinosaal+</a> |
-      </li>
-      <li
-        *ngIf="auth.isAuthenticated"
-        routerLinkActive="active"
-        [routerLinkActiveOptions]="{ exact: true }"
-      >
-        <a routerLink="admin/projection">Projektion+</a> |
-      </li>
-      <button (click)="auth.login()" *ngIf="!auth.isAuthenticated">
-        Login
-      </button>
-      <button (click)="auth.logout()" *ngIf="auth.isAuthenticated">
-        Logout
-      </button>
-    </ul>
-  </nav>
-
-  <!-- <app-login-form *ngIf="auth.isAuthenticated"></app-login-form> -->
+  <app-navigation></app-navigation>
 </header>
 
 <main>
@@ -74,7 +11,6 @@
 </main>
 
 <footer>
-  <!-- <p>Autoren: Tilman Schumacher / Jonas Wunderlich</p> -->
   <nav>
     <a href="/impressum">Impressum</a> | <a href="/privacy">Datenschutz</a> |
     <a href="mailto:jonas@systemkultur.de">Mail Us</a>
