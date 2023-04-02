@@ -16,41 +16,24 @@
 </nav>
 <nav>
   <ul>
-    <li
-      *ngIf="auth.isAuthenticated"
-      routerLinkActive="active"
-      [routerLinkActiveOptions]="{ exact: true }"
-    >
-      <a routerLink="admin/event">Event+</a> |
-    </li>
-    <li
-      *ngIf="auth.isAuthenticated"
-      routerLinkActive="active"
-      [routerLinkActiveOptions]="{ exact: true }"
-    >
-      <a routerLink="admin/cinema">Kino+</a> |
-    </li>
-    <li
-      *ngIf="auth.isAuthenticated"
-      routerLinkActive="active"
-      [routerLinkActiveOptions]="{ exact: true }"
-    >
-      <a routerLink="admin/report">Bericht+</a> |
-    </li>
-    <li
-      *ngIf="auth.isAuthenticated"
-      routerLinkActive="active"
-      [routerLinkActiveOptions]="{ exact: true }"
-    >
-      <a routerLink="admin/auditorium">Kinosaal+</a> |
-    </li>
-    <li
-      *ngIf="auth.isAuthenticated"
-      routerLinkActive="active"
-      [routerLinkActiveOptions]="{ exact: true }"
-    >
-      <a routerLink="admin/projection">Projektion+</a> |
-    </li>
+    <ng-container *ngIf="auth.isAuthenticated">
+      <li routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+        <a routerLink="admin/event">Event+</a> |
+      </li>
+      <li routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+        <a routerLink="admin/cinema">Kino+</a> |
+      </li>
+      <li routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+        <a routerLink="admin/report">Bericht+</a> |
+      </li>
+      <li routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+        <a routerLink="admin/auditorium">Kinosaal+</a> |
+      </li>
+      <li routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+        <a routerLink="admin/projection">Projektion+</a> |
+      </li>
+    </ng-container>
+
     <li>
       <button
         *ngIf="!auth.isAuthenticated"
