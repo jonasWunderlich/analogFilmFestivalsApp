@@ -11,6 +11,7 @@ import { CinemaMapComponent } from 'src/app/shared/ui/cinema-map/cinema-map.comp
 import { CinemaDetailsComponent } from 'src/app/features/cinema/cinema-details/cinema-details.component';
 import { CinemaOverviewComponent } from 'src/app/features/cinema/cinema-overview/cinema-overview.component';
 import { PushModule } from '@ngrx/component';
+import { OverviewListActionsComponent } from 'src/app/shared/view/overview-list-actions/overview-list-actions.component';
 
 @NgModule({
   declarations: [CinemaOverviewComponent, CinemaDetailsComponent],
@@ -24,6 +25,7 @@ import { PushModule } from '@ngrx/component';
     ReportListComponent,
     LoadingComponent,
     PushModule,
+    OverviewListActionsComponent,
   ],
 })
 export class CinemaModule {}

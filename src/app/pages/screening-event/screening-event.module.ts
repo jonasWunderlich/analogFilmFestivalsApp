@@ -12,6 +12,7 @@ import { MovieListComponent } from 'src/app/shared/view/movie-list/movie-list.co
 import { ProjectionListComponent } from 'src/app/shared/view/projection-list/projection-list.component';
 import { ReportListComponent } from 'src/app/shared/view/report-list/report-list.component';
 import ScreeningEventRoutingModule from './screening-event-routing.module';
+import { OverviewListActionsComponent } from 'src/app/shared/view/overview-list-actions/overview-list-actions.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import ScreeningEventRoutingModule from './screening-event-routing.module';
     ReportListComponent,
     LoadingComponent,
     PushModule,
+    OverviewListActionsComponent,
   ],
 })
 export class ScreeningEventModule {}

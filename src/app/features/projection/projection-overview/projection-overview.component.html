@@ -7,31 +7,29 @@
       *ngFor="let projection of allProjections$ | ngrxPush"
       class="c-projection-overview__projection"
     >
-      <div class="actions">
-        <button
-          class="small"
-          [routerLink]="['/admin/projection', projection.id]"
-        >
-          Bearbeiten
-        </button>
-        <button class="small" (click)="delete(projection.id)">Löschen</button>
-      </div>
-
       <div class="movie">
-        <p>
-          {{ projection.date | date }}
-          <a [routerLink]="['/', 'projection', projection.id]">
-            {{ projection.title }}</a
-          >
-        </p>
-
-        <p>
-          <strong>TMDB: </strong>{{ projection.tmdb }}<br /><strong
-            >Geschwärzt: </strong
-          >{{ projection.black }}<br /><strong>Agent: </strong
-          >{{ projection.agent }}
-        </p>
-        <p>{{ projection.text }}</p>
+        <div>
+          <p>
+            <a [routerLink]="['/', 'projection', projection.id]">
+              {{ projection.title }}</a
+            >
+          </p>
+          <p>{{ projection.text }}</p>
+        </div>
+        <div>
+          <p>
+            <br />
+            {{ projection.date | date }}<br /><strong>TMDB: </strong
+            >{{ projection.tmdb }}<br /><strong>Geschwärzt: </strong
+            >{{ projection.black }}<br /><strong>Agent: </strong
+            >{{ projection.agent }}
+          </p>
+          <app-overview-list-actions
+            path="projection"
+            [id]="projection.id"
+            (deleteEvent)="delete(projection.id)"
+          ></app-overview-list-actions>
+        </div>
       </div>
     </div>
 

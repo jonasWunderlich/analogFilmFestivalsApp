@@ -5,7 +5,10 @@ import { sample } from 'lodash';
 import { selectCinemas } from 'src/app/+state/cinema-store/cinema.selectors';
 import { searchMoviesByQuery } from 'src/app/+state/movie-store/movie.actions';
 import { selectQuerySearchedMovies } from 'src/app/+state/movie-store/movie.selectors';
-import { selectActiveScreeningEvent } from 'src/app/+state/screening-event-store/screening-event.selectors';
+import {
+  selectActiveScreeningEvent,
+  selectScreeningEvents,
+} from 'src/app/+state/screening-event-store/screening-event.selectors';
 import { MOCKED_TMDB_QUERIES } from 'src/app/core/_mock/constants';
 import { ScreeningEventCreate } from 'src/app/core/_models/screening-event';
 import { setActiveScreeningEvent } from './screening-event-details/screening-event-details.actions';
@@ -20,6 +23,7 @@ import {
 })
 export class ScreeningEventService {
   event$ = this.store.select(selectActiveScreeningEvent);
+  events$ = this.store.select(selectScreeningEvents);
   cinemas$ = this.store.select(selectCinemas);
   movies$ = this.store.select(selectQuerySearchedMovies);
   activeEventId?: string;

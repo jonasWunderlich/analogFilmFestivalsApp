@@ -8,6 +8,7 @@ import { ProjectionOverviewComponent } from 'src/app/features/projection/project
 import { ProjectionRoutingModule } from './projection-routing.module';
 import { ProjectionDetailsComponent } from 'src/app/features/projection/projection-details/projection-details.component';
 import { PushModule } from '@ngrx/component';
+import { OverviewListActionsComponent } from 'src/app/shared/view/overview-list-actions/overview-list-actions.component';
 
 @NgModule({
   declarations: [ProjectionOverviewComponent, ProjectionDetailsComponent],
@@ -18,6 +19,7 @@ import { PushModule } from '@ngrx/component';
     LoadingComponent,
     CinemaMapComponent,
     PushModule,
+    OverviewListActionsComponent,
   ],
 })
 export class ProjectionModule {}

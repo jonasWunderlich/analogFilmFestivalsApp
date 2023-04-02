@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { CalendarOptions } from '@fullcalendar/core';
-import { ScreeningEventsOverviewService } from './screening-events-overview.service';
+import { ScreeningEventService } from '../screening-event.service';
 
 @Component({
   selector: 'app-screening-event-overview',
@@ -11,9 +11,11 @@ import { ScreeningEventsOverviewService } from './screening-events-overview.serv
 export class ScreeningEventOverviewComponent {
   calendarOptions: CalendarOptions = {};
   cinemas$ = this.screeningEventsService.cinemas$;
-  screeningEvents$ = this.screeningEventsService.screeningEvents$;
+  screeningEvents$ = this.screeningEventsService.events$;
 
-  constructor(
-    private readonly screeningEventsService: ScreeningEventsOverviewService
-  ) {}
+  constructor(private readonly screeningEventsService: ScreeningEventService) {}
+
+  delete(id: string) {
+    this.screeningEventsService.delete(id);
+  }
 }

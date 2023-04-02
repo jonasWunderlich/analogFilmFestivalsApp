@@ -11,6 +11,7 @@ import { CinemaMapComponent } from 'src/app/shared/ui/cinema-map/cinema-map.comp
 import { ReportDetailsComponent } from 'src/app/features/report/report-details/report-details.component';
 import { ReportOverviewComponent } from 'src/app/features/report/report-overview/report-overview.component';
 import { PushModule } from '@ngrx/component';
+import { OverviewListActionsComponent } from 'src/app/shared/view/overview-list-actions/overview-list-actions.component';
 
 @NgModule({
   declarations: [ReportDetailsComponent, ReportOverviewComponent],
@@ -24,6 +25,7 @@ import { PushModule } from '@ngrx/component';
     MovieListComponent,
     LoadingComponent,
     PushModule,
+    OverviewListActionsComponent,
   ],
 })
 export class ReportModule {}

@@ -6,12 +6,17 @@
     <ng-container *ngFor="let report of reports$ | ngrxPush">
       <div class="report">
         <p class="prefix-date">{{ report.date | date }}</p>
-        <a [routerLink]="['/admin/report', report.id]">bearbeiten</a>
         <a [routerLink]="['/', 'report', report.id]"
           ><h3>{{ report.title }}</h3></a
         >
         <p>{{ report.text }}</p>
       </div>
+
+      <app-overview-list-actions
+        path="report"
+        [id]="report.id"
+        (deleteEvent)="delete(report.id)"
+      ></app-overview-list-actions>
     </ng-container>
 
     <ng-template #loading>
