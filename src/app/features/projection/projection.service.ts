@@ -36,10 +36,12 @@ export class ProjectionService {
 
   create(projection: ProjectionCreate): void {
     this.store.dispatch(triggerProjectionCreation(projection));
+    this.router.navigate(['/projection']);
   }
 
   delete(id: string): void {
     this.store.dispatch(triggerProjectionRemoval(id));
+    this.router.navigate(['/projection']);
   }
 
   update(projection: ProjectionCreate): void {

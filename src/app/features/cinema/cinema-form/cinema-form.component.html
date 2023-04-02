@@ -1,4 +1,4 @@
-<form [formGroup]="cinemaForm" (ngSubmit)="submitForm()">
+<form [formGroup]="form" (ngSubmit)="submitForm()">
   <fieldset>
     <legend>Main</legend>
     <label for="title">Titel</label>
@@ -41,6 +41,6 @@
     <input formControlName="linkOpeningHours" type="url" id="openingHours" />
   </fieldset>
 
-  <button [disabled]="cinemaForm.invalid" type="submit">Speichern</button>
+  <button [disabled]="form.invalid" type="submit">Speichern</button>
   <button *ngIf="editMode" type="button" (click)="delete()">Löschen</button>
 </form>

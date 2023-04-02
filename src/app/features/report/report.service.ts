@@ -57,10 +57,12 @@ export class ReportService {
 
   create(report: ReportCreate): void {
     this.store.dispatch(triggerReportCreation(report));
+    this.router.navigate(['/report']);
   }
 
   delete(id: string): void {
     this.store.dispatch(triggerReportRemoval(id));
+    this.router.navigate(['/report']);
   }
 
   update(report: ReportCreate): void {

@@ -22,11 +22,11 @@ export class CinemaEditComponent implements OnInit {
     });
   }
 
-  update(item: CinemaCreate) {
-    this.service.update(item);
-  }
-
   delete(cinema: Cinema) {
     this.service.delete(cinema.id);
+  }
+
+  update(item: CinemaCreate) {
+    this.service.update(item);
   }
 }

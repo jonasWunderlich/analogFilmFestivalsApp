@@ -4,7 +4,7 @@
     <h2>Event bearbeiten</h2>
     <app-cinema-form
       *ngIf="cinema$ | ngrxPush as cinema"
-      [cinema]="cinema"
+      [inputValue]="cinema"
       (submitEvent)="update($event)"
       (deleteEvent)="delete($event)"
     ></app-cinema-form>

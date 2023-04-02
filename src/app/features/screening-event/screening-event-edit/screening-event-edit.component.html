@@ -4,7 +4,7 @@
     <h2>Event bearbeiten</h2>
     <app-screening-event-form
       *ngIf="screeningEvent$ | ngrxPush as screeningEvent"
-      [screeningEvent]="screeningEvent"
+      [inputValue]="screeningEvent"
       (submitEvent)="update($event)"
       (deleteEvent)="delete($event)"
     ></app-screening-event-form>

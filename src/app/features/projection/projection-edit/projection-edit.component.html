@@ -4,7 +4,7 @@
     <h2>Projektion bearbeiten</h2>
     <app-projection-form
       *ngIf="projection$ | ngrxPush as projection"
-      [projection]="projection"
+      [inputValue]="projection"
       (submitEvent)="update($event)"
       (deleteEvent)="delete($event)"
     ></app-projection-form>

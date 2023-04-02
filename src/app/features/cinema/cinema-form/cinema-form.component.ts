@@ -1,26 +1,20 @@
 import { NgIf } from '@angular/common';
+import { Component, OnChanges, OnDestroy, OnInit } from '@angular/core';
+import { ReactiveFormsModule, Validators } from '@angular/forms';
 import {
-  Component,
-  EventEmitter,
-  inject,
-  Input,
-  OnChanges,
-  OnInit,
-  Output,
-} from '@angular/core';
-import {
-  NonNullableFormBuilder,
-  ReactiveFormsModule,
-  Validators,
-} from '@angular/forms';
-import { debounceTime, distinctUntilChanged, filter, switchMap } from 'rxjs';
+  Subscription,
+  debounceTime,
+  distinctUntilChanged,
+  filter,
+  switchMap,
+} from 'rxjs';
 import {
   PositionStackResults,
   PositionstackService,
 } from 'src/app/core/services/positionstack.service';
 import { Cinema, CinemaCreate } from 'src/app/core/_models/cinema';
-import { CinemaTitleValidatorService } from 'src/app/core/validators/cinema-title';
 import { postCodeFormat } from 'src/app/core/validators/postcode.validator';
+import { GenericContentFormComponent } from 'src/app/core/generics/generic-content-form.component';
 
 @Component({
   selector: 'app-cinema-form',
@@ -29,23 +23,24 @@ import { postCodeFormat } from 'src/app/core/validators/postcode.validator';
   standalone: true,
   imports: [ReactiveFormsModule, NgIf],
 })
-export class CinemaFormComponent implements OnInit, OnChanges {
-  @Input() cinema?: Cinema;
-  @Output() submitEvent = new EventEmitter<CinemaCreate>();
-  @Output() deleteEvent = new EventEmitter<Cinema>();
-  editMode = false;
-  fb = inject(NonNullableFormBuilder);
+export class CinemaFormComponent
+  extends GenericContentFormComponent<Cinema, CinemaCreate>
+  implements OnInit, OnChanges, OnDestroy
+{
+  subscrition = new Subscription();
+  constructor(private readonly ps: PositionstackService) {
+    super();
+  }
 
-  constructor(private readonly ps: PositionstackService) {}
-
-  cinemaForm = this.fb.group({
+  override form = this.fb.group({
     title: [
       '',
       {
         validators: [Validators.required],
-        asyncValidators: [
-          inject(CinemaTitleValidatorService).cinemaTitleAvailable(),
-        ],
+        // TODO: Fix async Validator
+        // asyncValidators: [
+        //   inject(CinemaTitleValidatorService).cinemaTitleAvailable(),
+        // ],
       },
     ],
     text: ['', []],
@@ -62,43 +57,30 @@ export class CinemaFormComponent implements OnInit, OnChanges {
   });
 
   ngOnInit() {
-    this.cinemaForm.valueChanges
-      .pipe(
-        filter(
-          (values) => !!values.postcode && !!values.city && !!values.street
-        ),
-        debounceTime(1000),
-        distinctUntilChanged((a, b) => JSON.stringify(a) === JSON.stringify(b)),
-        switchMap((values) =>
-          this.ps.getCoordinates(values.postcode, values.street, values.city)
+    this.subscrition.add(
+      this.form.valueChanges
+        .pipe(
+          filter(
+            (values) => !!values.postcode && !!values.city && !!values.street
+          ),
+          debounceTime(1000),
+          distinctUntilChanged(
+            (a, b) => JSON.stringify(a) === JSON.stringify(b)
+          ),
+          switchMap((values) =>
+            this.ps.getCoordinates(values.postcode, values.street, values.city)
+          )
         )
-      )
-      .subscribe((result: PositionStackResults) => {
-        this.cinemaForm.patchValue({
-          latitude: result.data[0].latitude,
-          longitude: result.data[0].longitude,
-        });
-      });
+        .subscribe((result: PositionStackResults) => {
+          this.form.patchValue({
+            latitude: result.data[0].latitude,
+            longitude: result.data[0].longitude,
+          });
+        })
+    );
   }
 
-  submitForm(): void {
-    this.submitEvent.emit(this.cinemaForm.getRawValue());
-  }
-
-  delete() {
-    if (this.editMode) {
-      this.deleteEvent.emit(this.cinema);
-    }
-  }
-
-  ngOnChanges(): void {
-    if (this.cinema?.id) {
-      this.editMode = true;
-      this.setFormValues(this.cinema);
-    }
-  }
-
-  setFormValues(cinema: Cinema) {
-    this.cinemaForm.patchValue(cinema);
+  ngOnDestroy(): void {
+    this.subscrition.unsubscribe();
   }
 }

@@ -4,7 +4,7 @@
     <h2>Erfahrungsbericht bearbeiten</h2>
     <app-report-form
       *ngIf="report$ | ngrxPush as report"
-      [report]="report"
+      [inputValue]="report"
       (submitEvent)="update($event)"
       (deleteEvent)="delete($event)"
     ></app-report-form>

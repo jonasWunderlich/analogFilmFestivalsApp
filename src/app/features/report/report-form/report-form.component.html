@@ -1,4 +1,4 @@
-<form [formGroup]="reportForm" (ngSubmit)="submitForm()">
+<form [formGroup]="form" (ngSubmit)="submitForm()">
   <fieldset>
     <legend>Main</legend>
     <label for="title">Titel</label>
@@ -20,6 +20,6 @@
     <input formControlName="images" type="text" id="images" />
   </fieldset>
 
-  <button [disabled]="reportForm.invalid" type="submit">Speichern</button>
+  <button [disabled]="form.invalid" type="submit">Speichern</button>
   <button *ngIf="editMode" type="button" (click)="delete()">Löschen</button>
 </form>

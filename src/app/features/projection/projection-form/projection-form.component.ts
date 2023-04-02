@@ -1,19 +1,9 @@
 import { NgFor, NgIf } from '@angular/common';
-import {
-  Component,
-  Output,
-  EventEmitter,
-  inject,
-  Input,
-  OnChanges,
-} from '@angular/core';
-import {
-  ReactiveFormsModule,
-  NonNullableFormBuilder,
-  Validators,
-} from '@angular/forms';
+import { Component, OnChanges } from '@angular/core';
+import { ReactiveFormsModule, Validators } from '@angular/forms';
 import { LocalIsoDateValueAccessorModule } from 'angular-date-value-accessor';
 import { Projection, ProjectionCreate } from 'src/app/core/_models/projection';
+import { GenericContentFormComponent } from 'src/app/core/generics/generic-content-form.component';
 
 @Component({
   selector: 'app-projection-form',
@@ -22,14 +12,11 @@ import { Projection, ProjectionCreate } from 'src/app/core/_models/projection';
   standalone: true,
   imports: [ReactiveFormsModule, NgFor, NgIf, LocalIsoDateValueAccessorModule],
 })
-export class ProjectionFormComponent implements OnChanges {
-  @Input() projection?: Projection;
-  @Output() deleteEvent = new EventEmitter<Projection>();
-  @Output() submitEvent = new EventEmitter<ProjectionCreate>();
-  editMode = false;
-  fb = inject(NonNullableFormBuilder);
-
-  form = this.fb.group({
+export class ProjectionFormComponent
+  extends GenericContentFormComponent<Projection, ProjectionCreate>
+  implements OnChanges
+{
+  override form = this.fb.group({
     title: ['', [Validators.required]],
     date: [new Date().toJSON(), [Validators.required]],
     tmdb: ['', []],
@@ -37,25 +24,4 @@ export class ProjectionFormComponent implements OnChanges {
     agent: ['', []],
     text: ['', []],
   });
-
-  submitForm(): void {
-    this.submitEvent.emit(this.form.getRawValue());
-  }
-
-  delete() {
-    if (this.editMode) {
-      this.deleteEvent.emit(this.projection);
-    }
-  }
-
-  ngOnChanges(): void {
-    if (this.projection?.id) {
-      this.setFormValues(this.projection);
-      this.editMode = true;
-    }
-  }
-
-  setFormValues(model: Projection) {
-    this.form.patchValue(model);
-  }
 }
