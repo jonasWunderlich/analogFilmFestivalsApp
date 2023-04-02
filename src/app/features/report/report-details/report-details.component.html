@@ -1,24 +1,18 @@
-<app-two-column-layout class="c-report-details">
-  <div column-one>
-    <ng-container *ngIf="report$ | ngrxPush as report; else loading">
-      <i>Erfahrungsbericht</i>
-      <h2>{{ report.title }}</h2>
-      <p>{{ report.date | date }}</p>
-      <p>{{ report.text }}</p>
+<ng-container *ngIf="report$ | ngrxPush as report; else loading">
+  <i>Erfahrungsbericht</i>
+  <h2>{{ report.title }}</h2>
+  <p>{{ report.date | date }}</p>
+  <p>{{ report.text }}</p>
 
-      <app-projection-list
-        [projections]="projections$ | ngrxPush"
-      ></app-projection-list>
-    </ng-container>
+  <app-projection-list
+    [projections]="projections$ | ngrxPush"
+  ></app-projection-list>
+</ng-container>
 
-    <ng-template #loading>
-      <app-loading></app-loading>
-    </ng-template>
+<ng-template #loading>
+  <app-loading></app-loading>
+</ng-template>
 
-    <app-cinema-list [cinemas]="cinemas$ | ngrxPush"></app-cinema-list>
+<app-cinema-list [cinemas]="cinemas$ | ngrxPush"></app-cinema-list>
 
-    <app-movie-list [movies]="movies$ | ngrxPush"></app-movie-list>
-  </div>
-
-  <app-cinema-map column-two [geoArray]="cinemas$ | ngrxPush"></app-cinema-map>
-</app-two-column-layout>
+<app-movie-list [movies]="movies$ | ngrxPush"></app-movie-list>

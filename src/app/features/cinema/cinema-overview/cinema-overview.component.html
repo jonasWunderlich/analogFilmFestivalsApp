@@ -1,29 +1,23 @@
-<app-two-column-layout class="c-cinema-overview">
-  <div column-one>
-    <i>Übersicht</i>
-    <h2>Kinos</h2>
+<i>Übersicht</i>
+<h2>Kinos</h2>
 
-    <div
-      *ngFor="let cinema of cinemas$ | ngrxPush"
-      class="c-cinema-overview__cinema"
-    >
-      <a [routerLink]="['/', 'cinema', cinema.id]"
-        ><h3>{{ cinema.title }}</h3></a
-      >
-      <p>{{ cinema.street }}</p>
-      <p>{{ cinema.postcode }} {{ cinema.city }}</p>
+<div
+  *ngFor="let cinema of cinemas$ | ngrxPush"
+  class="c-cinema-overview__cinema"
+>
+  <a [routerLink]="['/', 'cinema', cinema.id]"
+    ><h3>{{ cinema.title }}</h3></a
+  >
+  <p>{{ cinema.street }}</p>
+  <p>{{ cinema.postcode }} {{ cinema.city }}</p>
 
-      <app-overview-list-actions
-        path="cinema"
-        [id]="cinema.id"
-        (deleteEvent)="delete(cinema.id)"
-      ></app-overview-list-actions>
-    </div>
+  <app-overview-list-actions
+    path="cinema"
+    [id]="cinema.id"
+    (deleteEvent)="delete(cinema.id)"
+  ></app-overview-list-actions>
+</div>
 
-    <ng-template #loading>
-      <app-loading></app-loading>
-    </ng-template>
-  </div>
-
-  <app-cinema-map column-two [geoArray]="cinemas$ | ngrxPush"></app-cinema-map>
-</app-two-column-layout>
+<ng-template #loading>
+  <app-loading></app-loading>
+</ng-template>

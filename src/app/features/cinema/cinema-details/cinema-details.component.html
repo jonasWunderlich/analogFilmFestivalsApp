@@ -1,53 +1,45 @@
-<app-two-column-layout class="c-cinema-details">
-  <div column-one>
-    <ng-container *ngIf="cinema$ | ngrxPush as cinema; else loading">
-      <i>Kino</i>
+<ng-container *ngIf="cinema$ | ngrxPush as cinema; else loading">
+  <i>Kino</i>
 
-      <h2>{{ cinema.title }}</h2>
-      <img src="/assets/images/{{ cinema.images[0] }}" width="60%" alt="" />
-      <p>{{ cinema.text }}</p>
+  <h2>{{ cinema.title }}</h2>
+  <img src="/assets/images/{{ cinema.images[0] }}" width="60%" alt="" />
+  <p>{{ cinema.text }}</p>
 
-      <app-projection-list [projections]="projections"></app-projection-list>
-      <app-auditorium-list
-        [auditoriums]="cinema.auditoriums || []"
-      ></app-auditorium-list>
+  <app-projection-list [projections]="projections"></app-projection-list>
+  <app-auditorium-list
+    [auditoriums]="cinema.auditoriums || []"
+  ></app-auditorium-list>
 
-      <h3>Adresse:</h3>
-      <p>
-        {{ cinema.title }}<br />
-        {{ cinema.street }}<br />
-        {{ cinema.postcode }} {{ cinema.city }}
-      </p>
+  <h3>Adresse:</h3>
+  <p>
+    {{ cinema.title }}<br />
+    {{ cinema.street }}<br />
+    {{ cinema.postcode }} {{ cinema.city }}
+  </p>
 
-      <h3>Weiterführende Links:</h3>
-      <p>
-        Homepage:
-        <a href="{{ cinema.linkHomepage }}">{{ cinema.linkHomepage }}</a>
-      </p>
-      <p>
-        Programm:
-        <a href="{{ cinema.linkProgram }}">{{ cinema.linkProgram }}</a>
-      </p>
-      <p>
-        Öffnungszeiten:
-        <a href="{{ cinema.linkOpeningHours }}">{{
-          cinema.linkOpeningHours
-        }}</a>
-      </p>
-      <p>
-        Email: <a href="mailto://{{ cinema.mail }}">{{ cinema.mail }}</a>
-      </p>
-      <p>
-        Telefon: <a href="tel://{{ cinema.phone }}">{{ cinema.phone }}</a>
-      </p>
+  <h3>Weiterführende Links:</h3>
+  <p>
+    Homepage:
+    <a href="{{ cinema.linkHomepage }}">{{ cinema.linkHomepage }}</a>
+  </p>
+  <p>
+    Programm:
+    <a href="{{ cinema.linkProgram }}">{{ cinema.linkProgram }}</a>
+  </p>
+  <p>
+    Öffnungszeiten:
+    <a href="{{ cinema.linkOpeningHours }}">{{ cinema.linkOpeningHours }}</a>
+  </p>
+  <p>
+    Email: <a href="mailto://{{ cinema.mail }}">{{ cinema.mail }}</a>
+  </p>
+  <p>
+    Telefon: <a href="tel://{{ cinema.phone }}">{{ cinema.phone }}</a>
+  </p>
 
-      <app-report-list [reports]="cinema.reports || []"></app-report-list>
-    </ng-container>
+  <app-report-list [reports]="cinema.reports || []"></app-report-list>
+</ng-container>
 
-    <ng-template #loading>
-      <app-loading></app-loading>
-    </ng-template>
-  </div>
-
-  <app-cinema-map column-two [geoObject]="cinema$ | ngrxPush"></app-cinema-map>
-</app-two-column-layout>
+<ng-template #loading>
+  <app-loading></app-loading>
+</ng-template>

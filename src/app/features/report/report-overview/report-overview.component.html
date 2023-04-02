@@ -1,28 +1,22 @@
-<app-two-column-layout class="c-report-overview">
-  <div column-one>
-    <i>Übersicht</i>
-    <h2>Erfahrungsberichte</h2>
+<i>Übersicht</i>
+<h2>Erfahrungsberichte</h2>
 
-    <ng-container *ngFor="let report of reports$ | ngrxPush">
-      <div class="report">
-        <p class="prefix-date">{{ report.date | date }}</p>
-        <a [routerLink]="['/', 'report', report.id]"
-          ><h3>{{ report.title }}</h3></a
-        >
-        <p>{{ report.text }}</p>
-      </div>
-
-      <app-overview-list-actions
-        path="report"
-        [id]="report.id"
-        (deleteEvent)="delete(report.id)"
-      ></app-overview-list-actions>
-    </ng-container>
-
-    <ng-template #loading>
-      <app-loading></app-loading>
-    </ng-template>
+<ng-container *ngFor="let report of reports$ | ngrxPush">
+  <div class="report">
+    <p class="prefix-date">{{ report.date | date }}</p>
+    <a [routerLink]="['/', 'report', report.id]"
+      ><h3>{{ report.title }}</h3></a
+    >
+    <p>{{ report.text }}</p>
   </div>
 
-  <app-cinema-map column-two [geoArray]="cinemas$ | ngrxPush"></app-cinema-map>
-</app-two-column-layout>
+  <app-overview-list-actions
+    path="report"
+    [id]="report.id"
+    (deleteEvent)="delete(report.id)"
+  ></app-overview-list-actions>
+</ng-container>
+
+<ng-template #loading>
+  <app-loading></app-loading>
+</ng-template>

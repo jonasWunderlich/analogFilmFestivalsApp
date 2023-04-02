@@ -6,6 +6,7 @@ import { loadReports } from './+state/report-store/report.actions';
 import { loadScreeningEvents } from './+state/screening-event-store/screening-event.actions';
 import { AuthService } from './core/services/auth.service';
 import { loadProjections } from './+state/projection-store/projection.actions';
+import { selectCinemas } from './+state/cinema-store/cinema.selectors';
 
 @Component({
   selector: 'app-root',
@@ -14,6 +15,7 @@ import { loadProjections } from './+state/projection-store/projection.actions';
 })
 export class AppComponent implements OnInit {
   appTitle?: string;
+  $cinemas = this.store.select(selectCinemas);
   constructor(
     @Inject(APP_TITLE) appTitle: string,
     private readonly store: Store,

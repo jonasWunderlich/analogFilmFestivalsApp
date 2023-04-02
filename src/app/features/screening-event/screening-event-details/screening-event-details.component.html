@@ -1,60 +1,48 @@
-<app-two-column-layout class="c-event-details">
-  <div column-one>
-    <i>Event</i>
+<i>Event</i>
 
-    <div *ngIf="event$ | ngrxPush as screeningEvent; else loading">
-      <h2>{{ screeningEvent.title }} | {{ screeningEvent.type }}</h2>
-      <p>{{ screeningEvent.start | date }} - {{ screeningEvent.end | date }}</p>
-      <p>{{ screeningEvent.text }}</p>
-      <p>
-        Homepage:
-        <a href="{{ screeningEvent.linkHomepage }}">{{
-          screeningEvent.linkHomepage
-        }}</a>
-      </p>
-      <p>
-        Programm:
-        <a href="{{ screeningEvent.linkProgram }}">{{
-          screeningEvent.linkProgram
-        }}</a>
-      </p>
+<div *ngIf="event$ | ngrxPush as screeningEvent; else loading">
+  <h2>{{ screeningEvent.title }} | {{ screeningEvent.type }}</h2>
+  <p>{{ screeningEvent.start | date }} - {{ screeningEvent.end | date }}</p>
+  <p>{{ screeningEvent.text }}</p>
+  <p>
+    Homepage:
+    <a href="{{ screeningEvent.linkHomepage }}">{{
+      screeningEvent.linkHomepage
+    }}</a>
+  </p>
+  <p>
+    Programm:
+    <a href="{{ screeningEvent.linkProgram }}">{{
+      screeningEvent.linkProgram
+    }}</a>
+  </p>
 
-      <h3>Kontakt:</h3>
-      <p>
-        {{ screeningEvent.street }}<br />
-        {{ screeningEvent.postcode }} {{ screeningEvent.city }}
-      </p>
+  <h3>Kontakt:</h3>
+  <p>
+    {{ screeningEvent.street }}<br />
+    {{ screeningEvent.postcode }} {{ screeningEvent.city }}
+  </p>
 
-      <p>
-        <strong>Email: </strong
-        ><a href="mailto://{{ screeningEvent.mail }}">{{
-          screeningEvent.mail
-        }}</a>
-      </p>
-      <p>
-        <strong>Telefon: </strong
-        ><a href="tel://{{ screeningEvent.phone }}">{{
-          screeningEvent.phone
-        }}</a>
-      </p>
+  <p>
+    <strong>Email: </strong
+    ><a href="mailto://{{ screeningEvent.mail }}">{{ screeningEvent.mail }}</a>
+  </p>
+  <p>
+    <strong>Telefon: </strong
+    ><a href="tel://{{ screeningEvent.phone }}">{{ screeningEvent.phone }}</a>
+  </p>
 
-      <app-projection-list
-        [projections]="screeningEvent.projections || []"
-      ></app-projection-list>
+  <app-projection-list
+    [projections]="screeningEvent.projections || []"
+  ></app-projection-list>
 
-      <app-report-list
-        [reports]="screeningEvent.reports || []"
-      ></app-report-list>
-    </div>
+  <app-report-list [reports]="screeningEvent.reports || []"></app-report-list>
+</div>
 
-    <ng-template #loading>
-      <app-loading></app-loading>
-    </ng-template>
+<ng-template #loading>
+  <app-loading></app-loading>
+</ng-template>
 
-    <app-movie-list [movies]="movies$ | ngrxPush"></app-movie-list>
+<app-movie-list [movies]="movies$ | ngrxPush"></app-movie-list>
 
-    <app-cinema-list [cinemas]="cinemas$ | ngrxPush"></app-cinema-list>
-  </div>
-
-  <app-cinema-map column-two [geoArray]="cinemas$ | ngrxPush"></app-cinema-map>
-</app-two-column-layout>
+<app-cinema-list [cinemas]="cinemas$ | ngrxPush"></app-cinema-list>

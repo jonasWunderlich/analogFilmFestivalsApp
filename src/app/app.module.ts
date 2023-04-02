@@ -1,5 +1,4 @@
 import { InjectionToken, LOCALE_ID, NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
 import {
   HashLocationStrategy,
   LocationStrategy,
@@ -19,6 +18,9 @@ import { LoginFormComponent } from './shared/ui/login-form/login-form.component'
 import { NavigationComponent } from './shared/layout/navigation/navigation.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import { TwoColumnLayoutComponent } from './shared/layout/two-column-layout/two-column-layout.component';
+import { CinemaMapComponent } from './shared/ui/cinema-map/cinema-map.component';
+import { PushModule } from '@ngrx/component';
 registerLocaleData(localeDe);
 
 export const APP_TITLE = new InjectionToken<string>('app-title');
@@ -26,7 +28,6 @@ export const APP_TITLE = new InjectionToken<string>('app-title');
 @NgModule({
   declarations: [AppComponent],
   imports: [
-    BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     RootStoreModule,
@@ -38,6 +39,11 @@ export const APP_TITLE = new InjectionToken<string>('app-title');
       timeOut: 10000,
       positionClass: 'toast-bottom-right',
     }),
+
+    // TODO: Move to layout wrapper component
+    TwoColumnLayoutComponent,
+    CinemaMapComponent,
+    PushModule,
   ],
   providers: [
     { provide: APP_TITLE, useValue: 'analogkino.net' },
