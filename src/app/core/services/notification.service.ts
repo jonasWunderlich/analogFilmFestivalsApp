@@ -6,27 +6,27 @@ import { ToastrService } from 'ngx-toastr';
   providedIn: 'root',
 })
 export class NotificationService {
-  LOGGING_ACTIVE = false;
+  activated = true;
 
   toastr = inject(ToastrService);
 
   show(message: string, title?: string): void {
-    this.toastr.show(message, title);
+    this.activated && this.toastr.show(message, title);
   }
 
   success(message: string, title?: string): void {
-    this.toastr.success(message, title);
+    this.activated && this.toastr.success(message, title);
   }
 
   error(message: string, title?: string): void {
-    this.toastr.error(message, title);
+    this.activated && this.toastr.error(message, title);
   }
 
   info(message: string, title?: string): void {
-    this.toastr.info(message, title);
+    this.activated && this.toastr.info(message, title);
   }
 
   warning(message: string, title?: string): void {
-    this.toastr.warning(message, title);
+    this.activated && this.toastr.warning(message, title);
   }
 }
