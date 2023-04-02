@@ -1,25 +1,20 @@
 import { inject } from '@angular/core';
-import {
-  ActivatedRoute,
-  ActivatedRouteSnapshot,
-  CanActivateFn,
-  Router,
-  RouterStateSnapshot,
-} from '@angular/router';
+import { CanActivateFn, Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
+import { map, take } from 'rxjs';
 
-export const authGuard: CanActivateFn = (
-  route: ActivatedRouteSnapshot,
-  state: RouterStateSnapshot
-) => {
+export const authGuard: CanActivateFn = () => {
   const auth = inject(AuthService);
+  const router = inject(Router);
 
-  if (!auth.isAuthenticated) {
-    const router = inject(Router);
-    return router.createUrlTree(['../404'], {
-      relativeTo: inject(ActivatedRoute),
-    });
-  }
-
-  return auth.isAuthenticated;
+  return auth.isAuthenticated$.pipe(
+    take(1),
+    map((isAuthenticated) => {
+      if (isAuthenticated) {
+        return true;
+      } else {
+        return router.parseUrl('/404');
+      }
+    })
+  );
 };

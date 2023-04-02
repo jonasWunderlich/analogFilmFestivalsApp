@@ -17,6 +17,8 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './core/services/auth.interceptor';
 import { LoginFormComponent } from './shared/ui/login-form/login-form.component';
 import { NavigationComponent } from './shared/layout/navigation/navigation.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 registerLocaleData(localeDe);
 
 export const APP_TITLE = new InjectionToken<string>('app-title');
@@ -25,12 +27,17 @@ export const APP_TITLE = new InjectionToken<string>('app-title');
   declarations: [AppComponent],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     RootStoreModule,
     NgxTmdbApiModule.forRoot({ apiKey: '05180a707de5ada5dc9a38cd1f8da87b' }),
     SearchComponent,
     LoginFormComponent,
     NavigationComponent,
+    ToastrModule.forRoot({
+      timeOut: 10000,
+      positionClass: 'toast-bottom-right',
+    }),
   ],
   providers: [
     { provide: APP_TITLE, useValue: 'analogkino.net' },

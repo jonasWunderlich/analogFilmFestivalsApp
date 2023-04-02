@@ -11,6 +11,7 @@ import { AnalogKinoBackendService } from 'src/app/core/services/analog-kino-http
 
 import { NotificationService } from 'src/app/core/services/notification.service';
 import * as EventActions from './screening-event.actions';
+import { NOTIFICATION_MESSAGES } from 'src/app/core/constants/notification-messages';
 
 @Injectable()
 export class EventEffects {
@@ -40,7 +41,12 @@ export class EventEffects {
     () =>
       this.actions$.pipe(
         ofType(EventActions.loadScreeningEventsSucceeded),
-        tap(() => this.notificationService.success('Events.loadingSucceeded'))
+        tap(() =>
+          this.notificationService.success(
+            NOTIFICATION_MESSAGES.loadAllSuccess,
+            'Event'
+          )
+        )
       ),
     { dispatch: false }
   );
@@ -49,7 +55,12 @@ export class EventEffects {
     () =>
       this.actions$.pipe(
         ofType(EventActions.loadScreeningEventsFailed),
-        tap(() => this.notificationService.error('Events.loadingFailed'))
+        tap(() =>
+          this.notificationService.error(
+            NOTIFICATION_MESSAGES.loadAllFail,
+            'Event'
+          )
+        )
       ),
     { dispatch: false }
   );
@@ -77,7 +88,12 @@ export class EventEffects {
     () =>
       this.actions$.pipe(
         ofType(EventActions.loadScreeningEventByIdSucceeded),
-        tap(() => this.notificationService.success('Event.loadingSucceeded'))
+        tap(() =>
+          this.notificationService.success(
+            NOTIFICATION_MESSAGES.loadOneSuccess,
+            'Event'
+          )
+        )
       ),
     { dispatch: false }
   );
@@ -86,7 +102,12 @@ export class EventEffects {
     () =>
       this.actions$.pipe(
         ofType(EventActions.loadScreeningEventByIdFailed),
-        tap(() => this.notificationService.error('Event.loadingFailed'))
+        tap(() =>
+          this.notificationService.error(
+            NOTIFICATION_MESSAGES.loadOneFail,
+            'Event'
+          )
+        )
       ),
     { dispatch: false }
   );
@@ -116,7 +137,12 @@ export class EventEffects {
     () =>
       this.actions$.pipe(
         ofType(EventActions.createScreeningEventSucceeded),
-        tap(() => this.notificationService.success('Event.createSucceeded'))
+        tap(() =>
+          this.notificationService.success(
+            NOTIFICATION_MESSAGES.createdSuccess,
+            'Event'
+          )
+        )
       ),
     { dispatch: false }
   );
@@ -125,7 +151,12 @@ export class EventEffects {
     () =>
       this.actions$.pipe(
         ofType(EventActions.createScreeningEventFailed),
-        tap(() => this.notificationService.error('Event.createFailed'))
+        tap(() =>
+          this.notificationService.error(
+            NOTIFICATION_MESSAGES.createdFail,
+            'Event'
+          )
+        )
       ),
     { dispatch: false }
   );
@@ -159,7 +190,12 @@ export class EventEffects {
     () =>
       this.actions$.pipe(
         ofType(EventActions.updateScreeningEventSucceeded),
-        tap(() => this.notificationService.success('Event.updateSucceeded'))
+        tap(() =>
+          this.notificationService.success(
+            NOTIFICATION_MESSAGES.updatedSuccess,
+            'Event'
+          )
+        )
       ),
     { dispatch: false }
   );
@@ -168,7 +204,12 @@ export class EventEffects {
     () =>
       this.actions$.pipe(
         ofType(EventActions.updateScreeningEventFailed),
-        tap(() => this.notificationService.error('Event.updateFailed'))
+        tap(() =>
+          this.notificationService.error(
+            NOTIFICATION_MESSAGES.updatedFail,
+            'Event'
+          )
+        )
       ),
     { dispatch: false }
   );
@@ -194,7 +235,12 @@ export class EventEffects {
     () =>
       this.actions$.pipe(
         ofType(EventActions.deleteScreeningEventSucceeded),
-        tap(() => this.notificationService.success('Event.deleteSucceeded'))
+        tap(() =>
+          this.notificationService.success(
+            NOTIFICATION_MESSAGES.deletedSuccess,
+            'Event'
+          )
+        )
       ),
     { dispatch: false }
   );
@@ -203,7 +249,12 @@ export class EventEffects {
     () =>
       this.actions$.pipe(
         ofType(EventActions.deleteScreeningEventFailed),
-        tap(() => this.notificationService.error('Event.deleteFailed'))
+        tap(() =>
+          this.notificationService.error(
+            NOTIFICATION_MESSAGES.deletedFail,
+            'Event'
+          )
+        )
       ),
     { dispatch: false }
   );

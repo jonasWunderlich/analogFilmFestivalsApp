@@ -12,6 +12,7 @@ import {
   triggerReportUpdate,
   triggerReportRemoval,
 } from 'src/app/features/report/report.actions';
+import { NOTIFICATION_MESSAGES } from 'src/app/core/constants/notification-messages';
 
 @Injectable()
 export class ReportEffects {
@@ -35,7 +36,12 @@ export class ReportEffects {
     () =>
       this.actions$.pipe(
         ofType(ReportActions.loadReportsSucceeded),
-        tap(() => this.notificationService.success('report.loadingSucceed'))
+        tap(() =>
+          this.notificationService.success(
+            NOTIFICATION_MESSAGES.loadAllSuccess,
+            'Erfahrungsbericht'
+          )
+        )
       ),
     { dispatch: false }
   );
@@ -44,7 +50,12 @@ export class ReportEffects {
     () =>
       this.actions$.pipe(
         ofType(ReportActions.loadReportsFailed),
-        tap(() => this.notificationService.error('report.loadingFailed'))
+        tap(() =>
+          this.notificationService.error(
+            NOTIFICATION_MESSAGES.loadOneFail,
+            'Erfahrungsbericht'
+          )
+        )
       ),
     { dispatch: false }
   );
@@ -63,6 +74,34 @@ export class ReportEffects {
       )
     );
   });
+
+  loadReportByIdSucceeded$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(ReportActions.loadReportByIdSucceeded),
+        tap(() =>
+          this.notificationService.success(
+            NOTIFICATION_MESSAGES.loadOneSuccess,
+            'Erfahrungsbericht'
+          )
+        )
+      ),
+    { dispatch: false }
+  );
+
+  loadReportByIdFailed$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(ReportActions.loadReportByIdFailed),
+        tap(() =>
+          this.notificationService.error(
+            NOTIFICATION_MESSAGES.loadOneFail,
+            'Erfahrungsbericht'
+          )
+        )
+      ),
+    { dispatch: false }
+  );
 
   /* CREATE SCREENING EVENT BY ID */
 
@@ -83,7 +122,12 @@ export class ReportEffects {
     () =>
       this.actions$.pipe(
         ofType(ReportActions.createReportSucceeded),
-        tap(() => this.notificationService.success('Report.createSucceeded'))
+        tap(() =>
+          this.notificationService.success(
+            NOTIFICATION_MESSAGES.createdSuccess,
+            'Erfahrungsbericht'
+          )
+        )
       ),
     { dispatch: false }
   );
@@ -92,7 +136,12 @@ export class ReportEffects {
     () =>
       this.actions$.pipe(
         ofType(ReportActions.createReportFailed),
-        tap(() => this.notificationService.error('Report.createFailed'))
+        tap(() =>
+          this.notificationService.error(
+            NOTIFICATION_MESSAGES.createdFail,
+            'Erfahrungsbericht'
+          )
+        )
       ),
     { dispatch: false }
   );
@@ -120,7 +169,12 @@ export class ReportEffects {
     () =>
       this.actions$.pipe(
         ofType(ReportActions.updateReportSucceeded),
-        tap(() => this.notificationService.success('Report.updateSucceeded'))
+        tap(() =>
+          this.notificationService.success(
+            NOTIFICATION_MESSAGES.updatedSuccess,
+            'Erfahrungsbericht'
+          )
+        )
       ),
     { dispatch: false }
   );
@@ -129,7 +183,12 @@ export class ReportEffects {
     () =>
       this.actions$.pipe(
         ofType(ReportActions.updateReportFailed),
-        tap(() => this.notificationService.error('Report.updateFailed'))
+        tap(() =>
+          this.notificationService.error(
+            NOTIFICATION_MESSAGES.updatedFail,
+            'Erfahrungsbericht'
+          )
+        )
       ),
     { dispatch: false }
   );
@@ -153,7 +212,12 @@ export class ReportEffects {
     () =>
       this.actions$.pipe(
         ofType(ReportActions.deleteReportSucceeded),
-        tap(() => this.notificationService.success('Report.deleteSucceeded'))
+        tap(() =>
+          this.notificationService.success(
+            NOTIFICATION_MESSAGES.deletedSuccess,
+            'Erfahrungsbericht'
+          )
+        )
       ),
     { dispatch: false }
   );
@@ -162,7 +226,12 @@ export class ReportEffects {
     () =>
       this.actions$.pipe(
         ofType(ReportActions.deleteReportFailed),
-        tap(() => this.notificationService.error('Report.deleteFailed'))
+        tap(() =>
+          this.notificationService.error(
+            NOTIFICATION_MESSAGES.deletedFail,
+            'Erfahrungsbericht'
+          )
+        )
       ),
     { dispatch: false }
   );

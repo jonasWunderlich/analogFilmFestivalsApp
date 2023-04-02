@@ -13,6 +13,8 @@ const routes: Routes = [
     path: ':id',
     title: 'Kino bearbeiten',
     component: CinemaEditComponent,
+    // TODO: Disable navigation if form has unsaved changes
+    // canDeactivate: [(comp: CinemaEditComponent) => ...]
   },
 ];
 

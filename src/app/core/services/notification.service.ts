@@ -1,34 +1,32 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
+// import { ToastrService } from 'ngx-toastr';
 
 @Injectable({
-  providedIn: 'platform',
+  providedIn: 'root',
 })
 export class NotificationService {
   LOGGING_ACTIVE = false;
 
-  show(message: string, title = ''): void {
-    this.logNotification('show', message, title);
+  toastr = inject(ToastrService);
+
+  show(message: string, title?: string): void {
+    this.toastr.show(message, title);
   }
 
-  success(message: string, title = ''): void {
-    this.logNotification('success', message, title);
+  success(message: string, title?: string): void {
+    this.toastr.success(message, title);
   }
 
-  error(message: string, title = ''): void {
-    this.logNotification('error', message, title);
+  error(message: string, title?: string): void {
+    this.toastr.error(message, title);
   }
 
-  info(message: string, title = ''): void {
-    this.logNotification('info', message, title);
+  info(message: string, title?: string): void {
+    this.toastr.info(message, title);
   }
 
-  warning(message: string, title = ''): void {
-    this.logNotification('warning', message, title);
-  }
-
-  logNotification(type: string, message: string, title: string) {
-    if (this.LOGGING_ACTIVE) {
-      console.log('NotificationService:', type, message, title);
-    }
+  warning(message: string, title?: string): void {
+    this.toastr.warning(message, title);
   }
 }

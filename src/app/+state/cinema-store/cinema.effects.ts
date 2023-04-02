@@ -12,6 +12,7 @@ import { neitherNullNorUndefined } from 'src/app/core/utilities/null-or-undefine
 import { AnalogKinoBackendService } from 'src/app/core/services/analog-kino-http.service';
 import { NotificationService } from 'src/app/core/services/notification.service';
 import * as CinemaActions from './cinema.actions';
+import { NOTIFICATION_MESSAGES } from 'src/app/core/constants/notification-messages';
 
 @Injectable()
 export class CinemaEffects {
@@ -36,7 +37,12 @@ export class CinemaEffects {
     () =>
       this.actions$.pipe(
         ofType(CinemaActions.loadCinemasSucceeded),
-        tap(() => this.notificationService.success('cinema.loadingSucceed'))
+        tap(() =>
+          this.notificationService.success(
+            NOTIFICATION_MESSAGES.loadAllSuccess,
+            'Kino'
+          )
+        )
       ),
     { dispatch: false }
   );
@@ -45,7 +51,12 @@ export class CinemaEffects {
     () =>
       this.actions$.pipe(
         ofType(CinemaActions.loadCinemasFailed),
-        tap(() => this.notificationService.error('cinema.loadingFailed'))
+        tap(() =>
+          this.notificationService.error(
+            NOTIFICATION_MESSAGES.loadAllFail,
+            'Kino'
+          )
+        )
       ),
     { dispatch: false }
   );
@@ -72,7 +83,10 @@ export class CinemaEffects {
       this.actions$.pipe(
         ofType(CinemaActions.loadCinemaByIdSucceeded),
         tap(() =>
-          this.notificationService.success('cinema.loadCinemaByIdSucceed')
+          this.notificationService.success(
+            NOTIFICATION_MESSAGES.loadOneSuccess,
+            'Kino'
+          )
         )
       ),
     { dispatch: false }
@@ -82,7 +96,12 @@ export class CinemaEffects {
     () =>
       this.actions$.pipe(
         ofType(CinemaActions.loadCinemaByIdFailed),
-        tap(() => this.notificationService.error('cinema.loadCinemaByIdFailed'))
+        tap(() =>
+          this.notificationService.error(
+            NOTIFICATION_MESSAGES.loadOneFail,
+            'Kino'
+          )
+        )
       ),
     { dispatch: false }
   );
@@ -106,7 +125,12 @@ export class CinemaEffects {
     () =>
       this.actions$.pipe(
         ofType(CinemaActions.createCinemaSucceeded),
-        tap(() => this.notificationService.success('Event.createSucceeded'))
+        tap(() =>
+          this.notificationService.success(
+            NOTIFICATION_MESSAGES.createdSuccess,
+            'Kino'
+          )
+        )
       ),
     { dispatch: false }
   );
@@ -115,7 +139,12 @@ export class CinemaEffects {
     () =>
       this.actions$.pipe(
         ofType(CinemaActions.createCinemaFailed),
-        tap(() => this.notificationService.error('Event.createFailed'))
+        tap(() =>
+          this.notificationService.error(
+            NOTIFICATION_MESSAGES.createdFail,
+            'Kino'
+          )
+        )
       ),
     { dispatch: false }
   );
@@ -143,7 +172,12 @@ export class CinemaEffects {
     () =>
       this.actions$.pipe(
         ofType(CinemaActions.updateCinemaSucceeded),
-        tap(() => this.notificationService.success('Event.updateSucceeded'))
+        tap(() =>
+          this.notificationService.success(
+            NOTIFICATION_MESSAGES.updatedSuccess,
+            'Kino'
+          )
+        )
       ),
     { dispatch: false }
   );
@@ -152,7 +186,12 @@ export class CinemaEffects {
     () =>
       this.actions$.pipe(
         ofType(CinemaActions.updateCinemaFailed),
-        tap(() => this.notificationService.error('Event.updateFailed'))
+        tap(() =>
+          this.notificationService.error(
+            NOTIFICATION_MESSAGES.updatedFail,
+            'Kino'
+          )
+        )
       ),
     { dispatch: false }
   );
@@ -176,7 +215,12 @@ export class CinemaEffects {
     () =>
       this.actions$.pipe(
         ofType(CinemaActions.deleteCinemaSucceeded),
-        tap(() => this.notificationService.success('Event.deleteSucceeded'))
+        tap(() =>
+          this.notificationService.success(
+            NOTIFICATION_MESSAGES.deletedSuccess,
+            'Kino'
+          )
+        )
       ),
     { dispatch: false }
   );
@@ -185,7 +229,12 @@ export class CinemaEffects {
     () =>
       this.actions$.pipe(
         ofType(CinemaActions.deleteCinemaFailed),
-        tap(() => this.notificationService.error('Event.deleteFailed'))
+        tap(() =>
+          this.notificationService.error(
+            NOTIFICATION_MESSAGES.deletedFail,
+            'Kino'
+          )
+        )
       ),
     { dispatch: false }
   );

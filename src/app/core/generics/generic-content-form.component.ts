@@ -12,10 +12,11 @@ import { NonNullableFormBuilder } from '@angular/forms';
 export abstract class GenericContentFormComponent<T extends { id: string }, TC>
   implements OnChanges
 {
+  editMode = false;
   fb = inject(NonNullableFormBuilder);
   form?: any;
   formOptionsObject?: object;
-  editMode = false;
+  hasUnsavedChanges = false;
 
   @Input() inputValue?: T;
   @Output() submitEvent = new EventEmitter<TC>();

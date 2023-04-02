@@ -37,7 +37,7 @@ export class MovieEffects {
       this.actions$.pipe(
         ofType(MovieActions.searchMoviesByQuerySuccess),
         tap(() =>
-          this.notificationService.success('tmdb.searchMoviesByQuerySucceed')
+          this.notificationService.success('Queryabfrage erfolgreich', 'TMDB')
         )
       ),
     { dispatch: false }
@@ -48,7 +48,7 @@ export class MovieEffects {
       this.actions$.pipe(
         ofType(MovieActions.searchMoviesByQueryFailed),
         tap(() =>
-          this.notificationService.error('projection.searchMoviesByQueryFailed')
+          this.notificationService.error('Queryabfrage fehlgeschlagen', 'TMDB')
         )
       ),
     { dispatch: false }
@@ -76,7 +76,7 @@ export class MovieEffects {
       this.actions$.pipe(
         ofType(MovieActions.searchMovieByIdSuccess),
         tap(() =>
-          this.notificationService.success('tmdb.searchMovieByIdSucceed')
+          this.notificationService.success('Filme nach Id ermittelt', 'TMDB')
         )
       ),
     { dispatch: false }
@@ -87,7 +87,10 @@ export class MovieEffects {
       this.actions$.pipe(
         ofType(MovieActions.searchMovieByIdFailed),
         tap(() =>
-          this.notificationService.error('projection.searchMovieByFailed')
+          this.notificationService.error(
+            'Filmsuche über Id fehlgeschlagen',
+            'TMDB'
+          )
         )
       ),
     { dispatch: false }
@@ -110,27 +113,12 @@ export class MovieEffects {
     );
   });
 
-  searchMoviesByIds2$ = createEffect(() => {
-    return this.actions$.pipe(
-      ofType(MovieActions.searchMoviesByIds),
-      filter((params) => params?.movieIds?.length > 0),
-      switchMap((params) =>
-        this.tmdbhttpService.getListOfMovies(params.movieIds).pipe(
-          map((movies) => MovieActions.searchMoviesByIdsSuccess({ movies })),
-          catchError((error) =>
-            of(MovieActions.searchMoviesByIdsFailed({ error }))
-          )
-        )
-      )
-    );
-  });
-
   searchMoviesByIdsSuccess$ = createEffect(
     () =>
       this.actions$.pipe(
         ofType(MovieActions.searchMoviesByIdsSuccess),
         tap(() =>
-          this.notificationService.success('tmdb.searchMoviesByIdsSucceed')
+          this.notificationService.success('Arrayabfrage erfolgreich', 'TMDB')
         )
       ),
     { dispatch: false }
@@ -141,7 +129,7 @@ export class MovieEffects {
       this.actions$.pipe(
         ofType(MovieActions.searchMoviesByIdsFailed),
         tap(() =>
-          this.notificationService.error('projection.searchMoviesByIdsFailed')
+          this.notificationService.error('Arrayabfrage fehlgeschlagen', 'TMDB')
         )
       ),
     { dispatch: false }

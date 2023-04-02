@@ -11,6 +11,7 @@ import { neitherNullNorUndefined } from 'src/app/core/utilities/null-or-undefine
 import { AnalogKinoBackendService } from 'src/app/core/services/analog-kino-http.service';
 import { NotificationService } from 'src/app/core/services/notification.service';
 import * as ProjectionActions from './projection.actions';
+import { NOTIFICATION_MESSAGES } from 'src/app/core/constants/notification-messages';
 
 @Injectable()
 export class ProjectionEffects {
@@ -40,7 +41,12 @@ export class ProjectionEffects {
     () =>
       this.actions$.pipe(
         ofType(ProjectionActions.loadProjectionsSucceeded),
-        tap(() => this.notificationService.success('projection.loadingSucceed'))
+        tap(() =>
+          this.notificationService.success(
+            NOTIFICATION_MESSAGES.loadAllSuccess,
+            'Projektion'
+          )
+        )
       ),
     { dispatch: false }
   );
@@ -49,7 +55,12 @@ export class ProjectionEffects {
     () =>
       this.actions$.pipe(
         ofType(ProjectionActions.loadProjectionsFailed),
-        tap(() => this.notificationService.error('projection.loadingFailed'))
+        tap(() =>
+          this.notificationService.error(
+            NOTIFICATION_MESSAGES.loadAllFail,
+            'Projektion'
+          )
+        )
       ),
     { dispatch: false }
   );
@@ -79,7 +90,8 @@ export class ProjectionEffects {
         ofType(ProjectionActions.loadProjectionByIdSucceeded),
         tap(() =>
           this.notificationService.success(
-            'projection.loadProjectionByIdSucceed'
+            NOTIFICATION_MESSAGES.loadOneSuccess,
+            'Projektion'
           )
         )
       ),
@@ -91,7 +103,10 @@ export class ProjectionEffects {
       this.actions$.pipe(
         ofType(ProjectionActions.loadProjectionByIdFailed),
         tap(() =>
-          this.notificationService.error('projection.loadProjectionByIdFailed')
+          this.notificationService.error(
+            NOTIFICATION_MESSAGES.loadOneFail,
+            'Projektion'
+          )
         )
       ),
     { dispatch: false }
@@ -120,7 +135,12 @@ export class ProjectionEffects {
     () =>
       this.actions$.pipe(
         ofType(ProjectionActions.createProjectionSucceeded),
-        tap(() => this.notificationService.success('Event.createSucceeded'))
+        tap(() =>
+          this.notificationService.success(
+            NOTIFICATION_MESSAGES.createdSuccess,
+            'Projektion'
+          )
+        )
       ),
     { dispatch: false }
   );
@@ -129,7 +149,12 @@ export class ProjectionEffects {
     () =>
       this.actions$.pipe(
         ofType(ProjectionActions.createProjectionFailed),
-        tap(() => this.notificationService.error('Event.createFailed'))
+        tap(() =>
+          this.notificationService.error(
+            NOTIFICATION_MESSAGES.createdFail,
+            'Projektion'
+          )
+        )
       ),
     { dispatch: false }
   );
@@ -163,7 +188,12 @@ export class ProjectionEffects {
     () =>
       this.actions$.pipe(
         ofType(ProjectionActions.updateProjectionSucceeded),
-        tap(() => this.notificationService.success('Event.updateSucceeded'))
+        tap(() =>
+          this.notificationService.success(
+            NOTIFICATION_MESSAGES.updatedSuccess,
+            'Projektion'
+          )
+        )
       ),
     { dispatch: false }
   );
@@ -172,7 +202,12 @@ export class ProjectionEffects {
     () =>
       this.actions$.pipe(
         ofType(ProjectionActions.updateProjectionFailed),
-        tap(() => this.notificationService.error('Event.updateFailed'))
+        tap(() =>
+          this.notificationService.error(
+            NOTIFICATION_MESSAGES.updatedFail,
+            'Projektion'
+          )
+        )
       ),
     { dispatch: false }
   );
@@ -198,7 +233,12 @@ export class ProjectionEffects {
     () =>
       this.actions$.pipe(
         ofType(ProjectionActions.deleteProjectionSucceeded),
-        tap(() => this.notificationService.success('Event.deleteSucceeded'))
+        tap(() =>
+          this.notificationService.success(
+            NOTIFICATION_MESSAGES.deletedSuccess,
+            'Projektion'
+          )
+        )
       ),
     { dispatch: false }
   );
@@ -207,7 +247,12 @@ export class ProjectionEffects {
     () =>
       this.actions$.pipe(
         ofType(ProjectionActions.deleteProjectionFailed),
-        tap(() => this.notificationService.error('Event.deleteFailed'))
+        tap(() =>
+          this.notificationService.error(
+            NOTIFICATION_MESSAGES.deletedFail,
+            'Projektion'
+          )
+        )
       ),
     { dispatch: false }
   );
