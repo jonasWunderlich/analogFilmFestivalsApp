@@ -7,7 +7,6 @@ import {
   triggerCinemaRemoval,
   triggerCinemaUpdate,
 } from './cinema.actions';
-import { Observable, map } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',

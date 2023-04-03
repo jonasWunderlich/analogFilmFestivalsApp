@@ -14,8 +14,6 @@ import {
 } from './report.actions';
 import { ReportCreate } from 'src/app/core/_models/report';
 import { selectIdSearchedMovies } from 'src/app/+state/movie-store/movie.selectors';
-import { searchMoviesByIds } from 'src/app/+state/movie-store/movie.actions';
-import { MOCKED_TMDBIDS } from 'src/app/core/_mock/constants';
 import { Router } from '@angular/router';
 import { selectProjections } from 'src/app/+state/projection-store/projection.selectors';
 

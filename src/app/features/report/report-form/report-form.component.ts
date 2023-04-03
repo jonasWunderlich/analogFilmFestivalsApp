@@ -1,17 +1,6 @@
 import { NgFor, NgIf } from '@angular/common';
-import {
-  Component,
-  EventEmitter,
-  inject,
-  Input,
-  OnChanges,
-  Output,
-} from '@angular/core';
-import {
-  NonNullableFormBuilder,
-  ReactiveFormsModule,
-  Validators,
-} from '@angular/forms';
+import { Component, OnChanges } from '@angular/core';
+import { ReactiveFormsModule, Validators } from '@angular/forms';
 import { LocalIsoDateValueAccessorModule } from 'angular-date-value-accessor';
 import { Report, ReportCreate } from 'src/app/core/_models/report';
 import { GenericContentFormComponent } from 'src/app/core/generics/generic-content-form.component';

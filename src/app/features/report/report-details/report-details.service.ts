@@ -1,12 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { selectCinemas } from 'src/app/+state/cinema-store/cinema.selectors';
 import {
   searchMoviesByIds,
   searchMoviesByQuery,
 } from 'src/app/+state/movie-store/movie.actions';
 import { selectQuerySearchedMovies } from 'src/app/+state/movie-store/movie.selectors';
-import { selectActiveScreeningEvent } from 'src/app/+state/screening-event-store/screening-event.selectors';
 import {
   MOCKED_TMDBIDS,
   MOCKED_TMDB_QUERIES,
@@ -22,7 +20,6 @@ import { selectActiveReport } from 'src/app/+state/report-store/report.selectors
 export class ReportDetailsService {
   activeReport$ = this.store.select(selectActiveReport);
   relatedMovies$ = this.store.select(selectQuerySearchedMovies);
-
   // relatedCinemas$ = this.store.select(selectRelatedCinemas);
   // relatedEvents$ = this.store.select(selectRelatedEvents);
   // relatedProjections$ = this.store.select(selectRelatedProjections);
