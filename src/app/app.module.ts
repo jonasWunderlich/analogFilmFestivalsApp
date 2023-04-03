@@ -15,11 +15,11 @@ import { SearchComponent } from './shared/ui/search/search.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './core/services/auth.interceptor';
 import { LoginFormComponent } from './shared/ui/login-form/login-form.component';
-import { NavigationComponent } from './shared/layout/navigation/navigation.component';
+import { NavigationComponent } from './layout/navigation/navigation.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { PushModule } from '@ngrx/component';
-import { LayoutComponent } from './layout/layout.component';
+import { LayoutComponent } from './layout/layout/layout.component';
 import { GeoMapComponent } from './shared/ui/geo-map/geo-map.component';
 registerLocaleData(localeDe);
 
