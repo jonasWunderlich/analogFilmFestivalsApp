@@ -1,4 +1,4 @@
-<ng-container *ngIf="cinema$ | ngrxPush as cinema; else loading">
+<ng-container *ngIf="cinema$ | ngrxPush as cinema">
   <i>Kino</i>
 
   <h2>{{ cinema.title }}</h2>
@@ -39,7 +39,3 @@
 
   <app-report-list [reports]="cinema.reports || []"></app-report-list>
 </ng-container>
-
-<ng-template #loading>
-  <app-loading></app-loading>
-</ng-template>

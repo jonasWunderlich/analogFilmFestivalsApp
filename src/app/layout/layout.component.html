@@ -2,9 +2,9 @@
   <div class="column-one">
     <ng-content></ng-content>
   </div>
-  <app-cinema-map
+  <app-geo-map
     class="column-two"
     column-two
     [geoArray]="$selectedGeoData | ngrxPush"
-  ></app-cinema-map>
+  ></app-geo-map>
 </div>

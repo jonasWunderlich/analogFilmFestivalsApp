@@ -18,9 +18,9 @@ import { LoginFormComponent } from './shared/ui/login-form/login-form.component'
 import { NavigationComponent } from './shared/layout/navigation/navigation.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
-import { CinemaMapComponent } from './shared/ui/cinema-map/cinema-map.component';
 import { PushModule } from '@ngrx/component';
 import { LayoutComponent } from './layout/layout.component';
+import { GeoMapComponent } from './shared/ui/geo-map/geo-map.component';
 registerLocaleData(localeDe);
 
 export const APP_TITLE = new InjectionToken<string>('app-title');
@@ -41,7 +41,7 @@ export const APP_TITLE = new InjectionToken<string>('app-title');
     }),
 
     // TODO: Move to layout wrapper component
-    CinemaMapComponent,
+    GeoMapComponent,
     PushModule,
   ],
   providers: [

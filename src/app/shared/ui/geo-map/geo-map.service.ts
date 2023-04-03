@@ -19,7 +19,7 @@ import { selectCinemas } from 'src/app/+state/cinema-store/cinema.selectors';
 @Injectable({
   providedIn: 'root',
 })
-export class MapService {
+export class GeoMapService {
   $selectedGeoData = this.store.select(selectCinemas);
   map?: Map;
 

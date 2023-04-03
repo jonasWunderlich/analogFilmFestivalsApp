@@ -1,6 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { Map } from 'ol';
-import { MapService } from './map.service';
 import {
   GeometryObject,
   buildVectorLayer,
@@ -8,6 +7,7 @@ import {
   extractCoordinates,
 } from './geo-mapping.helper';
 import { centerView } from './geo.interaction.utilities';
+import { GeoMapService } from './geo-map.service';
 
 export enum MapMode {
   POINT = 'POINT',
@@ -15,22 +15,21 @@ export enum MapMode {
 }
 
 @Component({
-  selector: 'app-cinema-map',
-  templateUrl: './cinema-map.component.html',
-  styleUrls: ['./cinema-map.component.scss'],
+  selector: 'app-geo-map',
+  templateUrl: './geo-map.component.html',
+  styleUrls: ['./geo-map.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
 })
-export class CinemaMapComponent {
+export class GeoMapComponent {
   map?: Map;
   mode?: MapMode;
 
   @Input()
   set geoObject(obj: GeometryObject | undefined) {
-    console.log(obj);
     if (obj) {
       if (!this.map || this.mode === MapMode.POINTS) {
-        this.mapService.buildSingleFeatureMap(
+        this.geoMapService.buildSingleFeatureMap(
           obj.geoCoordinates || [],
           'ol-map'
         );
@@ -40,15 +39,15 @@ export class CinemaMapComponent {
     }
     this.mode = MapMode.POINT;
   }
+
   @Input()
   set geoArray(arr: GeometryObject[] | undefined) {
-    console.log(arr);
     if (arr) {
       const featureList = createFeatureList(arr, 'cinema');
       const coordinates = extractCoordinates(arr);
       const layer = buildVectorLayer(featureList);
       if (!this.map || this.mode === MapMode.POINTS) {
-        this.mapService.buildMultiFeatureMap(layer, coordinates, 'ol-map');
+        this.geoMapService.buildMultiFeatureMap(layer, coordinates, 'ol-map');
       } else {
         this.map.getLayers().setAt(1, layer);
         centerView(this.map, coordinates);
@@ -57,5 +56,5 @@ export class CinemaMapComponent {
     this.mode = MapMode.POINT;
   }
 
-  constructor(private readonly mapService: MapService) {}
+  constructor(private readonly geoMapService: GeoMapService) {}
 }

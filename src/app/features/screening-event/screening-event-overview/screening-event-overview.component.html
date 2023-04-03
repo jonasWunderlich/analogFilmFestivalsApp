@@ -2,9 +2,7 @@
   <i>Übersicht</i>
   <h2>Events</h2>
 
-  <ng-container
-    *ngIf="screeningEvents$ | ngrxPush as screeningEvents; else loading"
-  >
+  <ng-container *ngIf="screeningEvents$ | ngrxPush as screeningEvents">
     <app-calendar [calendarEvents]="screeningEvents"></app-calendar>
 
     <ng-container *ngFor="let screeningEvent of screeningEvents">
@@ -38,8 +36,4 @@
       </div>
     </ng-container>
   </ng-container>
-
-  <ng-template #loading>
-    <app-loading></app-loading>
-  </ng-template>
 </div>

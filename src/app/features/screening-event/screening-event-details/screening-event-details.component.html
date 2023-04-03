@@ -1,6 +1,6 @@
 <i>Event</i>
 
-<div *ngIf="event$ | ngrxPush as screeningEvent; else loading">
+<div *ngIf="event$ | ngrxPush as screeningEvent">
   <h2>{{ screeningEvent.title }} | {{ screeningEvent.type }}</h2>
   <p>{{ screeningEvent.start | date }} - {{ screeningEvent.end | date }}</p>
   <p>{{ screeningEvent.text }}</p>
@@ -38,10 +38,6 @@
 
   <app-report-list [reports]="screeningEvent.reports || []"></app-report-list>
 </div>
-
-<ng-template #loading>
-  <app-loading></app-loading>
-</ng-template>
 
 <app-movie-list [movies]="movies$ | ngrxPush"></app-movie-list>
 

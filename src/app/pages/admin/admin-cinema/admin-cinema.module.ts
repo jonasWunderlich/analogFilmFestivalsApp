@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { CinemaCreateComponent } from 'src/app/features/cinema/cinema-create/cinema-create.component';
 import { CinemaEditComponent } from 'src/app/features/cinema/cinema-edit/cinema-edit.component';
 import { CinemaFormComponent } from 'src/app/features/cinema/cinema-form/cinema-form.component';
-import { CinemaMapComponent } from 'src/app/shared/ui/cinema-map/cinema-map.component';
 import { PushModule } from '@ngrx/component';
 import { AdminCinemaRoutingModule } from './admin-cinema-routing.module';
 
@@ -13,7 +12,6 @@ import { AdminCinemaRoutingModule } from './admin-cinema-routing.module';
     CommonModule,
     AdminCinemaRoutingModule,
     CinemaFormComponent,
-    CinemaMapComponent,
     PushModule,
   ],
 })
