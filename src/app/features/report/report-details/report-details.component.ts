@@ -11,9 +11,9 @@ import { ReportDetailsService } from './report-details.service';
 export class ReportDetailsComponent implements OnInit {
   activeReport$ = this.facade.activeReport$;
   relatedMovies$ = this.facade.relatedMovies$;
-  // relatedCinemas$ = this.facade.relatedCinemas$;
-  // relatedEvents$ = this.facade.relatedEvents$;
-  // relatedProjections$ = this.facade.relatedProjections$;
+  relatedCinema$ = this.facade.relatedCinema$;
+  relatedEvent$ = this.facade.relatedEvent$;
+  relatedProjections$ = this.facade.relatedProjections$;
 
   constructor(
     private readonly route: ActivatedRoute,
@@ -21,7 +21,7 @@ export class ReportDetailsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.facade.dispatchMovies();
+    this.facade.dispatch();
     this.route.params.subscribe((params) => {
       this.facade.setActiveId(params['id']);
     });

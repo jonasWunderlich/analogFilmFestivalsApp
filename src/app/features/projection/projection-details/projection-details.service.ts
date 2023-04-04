@@ -3,6 +3,8 @@ import { Store } from '@ngrx/store';
 import { selectActiveProjection } from 'src/app/+state/projection-store/projection.selectors';
 import { ProjectionService } from '../projection.service';
 import { enteredProjectionDetails } from './projection-details.actions';
+import { first } from 'rxjs';
+import { updateCinemasOnMap } from 'src/app/+state/cinema-store/cinema.actions';
 
 @Injectable({
   providedIn: 'root',
@@ -23,5 +25,14 @@ export class ProjectionDetailsService {
 
   delete(id: string): void {
     this.common.delete(id);
+  }
+
+  dispatch(): void {
+    // TODO: find more elegant way to dispatch id collection (without subscription)
+    this.activeProjection$.pipe(first()).subscribe((proj) => {
+      if (proj?.cinemaRef) {
+        this.store.dispatch(updateCinemasOnMap({ ids: [proj?.cinemaRef] }));
+      }
+    });
   }
 }

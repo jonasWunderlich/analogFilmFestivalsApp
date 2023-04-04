@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { CalendarOptions } from '@fullcalendar/core';
 import { ScreeningEventOverviewService } from './screening-event-overview.service';
 
@@ -8,12 +8,14 @@ import { ScreeningEventOverviewService } from './screening-event-overview.servic
   styleUrls: ['./screening-event-overview.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ScreeningEventOverviewComponent {
+export class ScreeningEventOverviewComponent implements OnInit {
   calendarOptions: CalendarOptions = {};
   screeningEvents$ = this.facade.events$;
 
-  constructor(private readonly facade: ScreeningEventOverviewService) {
-    this.facade.dispatchEnter();
+  constructor(private readonly facade: ScreeningEventOverviewService) {}
+
+  ngOnInit() {
+    this.facade.dispatch();
   }
 
   delete(id: string) {

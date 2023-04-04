@@ -70,7 +70,6 @@ export const reducer = createReducer(
       },
     };
   }),
-
   on(CinemaActions.loadCinemasSucceeded, (state: State, action) => {
     return cinemaAdapter.setAll(action.cinemas, {
       ...state,
@@ -162,6 +161,12 @@ export const reducer = createReducer(
         deleteCinema: false,
       },
     });
+  }),
+  on(CinemaActions.updateCinemasOnMap, (state: State, action) => {
+    return {
+      ...state,
+      cinemasOnMap: action.ids,
+    };
   })
 );
 

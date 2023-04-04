@@ -21,6 +21,7 @@ export class ScreeningEventDetailsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.facade.dispatch();
     this.route.params.subscribe((params) => {
       this.facade.setActiveId(params['id']);
     });

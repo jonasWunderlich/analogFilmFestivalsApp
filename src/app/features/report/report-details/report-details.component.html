@@ -5,10 +5,15 @@
   <p>{{ report.text }}</p>
 </ng-container>
 
-<!-- <app-projection-list
+<app-projection-list
   [projections]="relatedProjections$ | ngrxPush"
 ></app-projection-list>
 
-<app-cinema-list [cinemas]="relatedCinemas$ | ngrxPush"></app-cinema-list> -->
+<ng-container *ngIf="relatedCinema$ | ngrxPush as cinema">
+  <a [routerLink]="['/', 'cinema', cinema.id]"
+    ><strong>{{ cinema.title }}</strong></a
+  >
+  | {{ cinema.street }}<br />
+</ng-container>
 
 <app-movie-list [movies]="relatedMovies$ | ngrxPush"></app-movie-list>

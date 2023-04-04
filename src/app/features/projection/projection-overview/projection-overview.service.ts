@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { selectProjections } from 'src/app/+state/projection-store/projection.selectors';
-import { ProjectionService } from '../projection.service';
 import { enteredProjectionOverview } from './projection-overview.actions';
+import { first } from 'rxjs';
+import { updateCinemasOnMap } from 'src/app/+state/cinema-store/cinema.actions';
+import { ReportService } from '../../report/report.service';
 
 @Injectable({
   providedIn: 'root',
@@ -12,14 +14,22 @@ export class ProjectionOverviewService {
 
   constructor(
     private readonly store: Store,
-    private readonly common: ProjectionService
+    private readonly common: ReportService
   ) {}
-
-  public dispatchEnter(): void {
-    this.store.dispatch(enteredProjectionOverview());
-  }
 
   delete(id: string): void {
     this.common.delete(id);
+  }
+
+  dispatchEnter(): void {
+    this.store.dispatch(enteredProjectionOverview());
+    // TODO: find more elegant way to dispatch id collection (without subscription)
+    this.projections$.pipe(first()).subscribe((projection) => {
+      const cinemaRefs = projection
+        .filter((projection) => projection.cinemaRef)
+        .map((ev) => ev.cinemaRef && ev.cinemaRef);
+      const removeDuplicates = [...new Set(cinemaRefs)] as string[];
+      this.store.dispatch(updateCinemasOnMap({ ids: removeDuplicates }));
+    });
   }
 }

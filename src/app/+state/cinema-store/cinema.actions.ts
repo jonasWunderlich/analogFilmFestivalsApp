@@ -55,7 +55,7 @@ export const deleteCinemaFailed = createAction(
   props<{ error: string }>()
 );
 
-export const sendMapData = createAction(
+export const updateCinemasOnMap = createAction(
   '[CinemaStore] send updated Map data',
   props<{ ids: string[] }>()
 );

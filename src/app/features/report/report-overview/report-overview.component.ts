@@ -11,7 +11,7 @@ export class ReportOverviewComponent {
   reports$ = this.facade.reports$;
 
   constructor(private readonly facade: ReportOverviewService) {
-    this.facade.dispatchEnter();
+    this.facade.dispatch();
   }
 
   public delete(id: string) {
