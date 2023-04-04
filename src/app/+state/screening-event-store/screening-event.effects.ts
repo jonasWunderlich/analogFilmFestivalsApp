@@ -26,7 +26,7 @@ export class EventEffects {
 
   loadScreeningEvents$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(enteredScreeningEventOverview),
+      ofType(EventActions.loadScreeningEvents, enteredScreeningEventOverview),
       switchMap(() =>
         this.analogHttpService.getScreeningEvents().pipe(
           map((screeningEvents) =>

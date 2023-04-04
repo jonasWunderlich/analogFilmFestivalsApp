@@ -26,7 +26,7 @@ export class CinemaEffects {
 
   loadCinemas$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(enteredCinemaOverview),
+      ofType(CinemaActions.loadCinemas, enteredCinemaOverview),
       switchMap(() =>
         this.analogHttpService.getCinemas().pipe(
           map((cinemas) => CinemaActions.loadCinemasSucceeded({ cinemas })),

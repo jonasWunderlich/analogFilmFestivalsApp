@@ -1,6 +1,10 @@
 import { createAction, props } from '@ngrx/store';
 import { Projection } from 'src/app/core/_models/projection';
 
+export const loadProjections = createAction(
+  '[ProjectionStore] loading Projections triggerd'
+);
+
 export const loadProjectionsSucceeded = createAction(
   '[Projection] Projections successfully loaded',
   props<{ projections: Projection[] }>()

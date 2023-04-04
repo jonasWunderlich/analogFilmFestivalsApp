@@ -1,6 +1,10 @@
 import { createAction, props } from '@ngrx/store';
 import { ScreeningEvent } from 'src/app/core/_models/screening-event';
 
+export const loadScreeningEvents = createAction(
+  '[ScreeningEventStore] loading ScreeningEvents triggerd'
+);
+
 export const loadScreeningEventsSucceeded = createAction(
   '[Event] ScreeningEvents successfully loaded',
   props<{ screeningEvents: ScreeningEvent[] }>()

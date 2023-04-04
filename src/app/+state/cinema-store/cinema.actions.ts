@@ -1,6 +1,10 @@
 import { createAction, props } from '@ngrx/store';
 import { Cinema } from 'src/app/core/_models/cinema';
 
+export const loadCinemas = createAction(
+  '[CinemaStore] loading Cinemas triggerd'
+);
+
 export const loadCinemasSucceeded = createAction(
   '[Cinema] Cinemas successfully loaded',
   props<{ cinemas: Cinema[] }>()
@@ -49,4 +53,9 @@ export const deleteCinemaSucceeded = createAction(
 export const deleteCinemaFailed = createAction(
   '[Cinema] delete Cinema failed',
   props<{ error: string }>()
+);
+
+export const sendMapData = createAction(
+  '[CinemaStore] send updated Map data',
+  props<{ ids: string[] }>()
 );

@@ -1,6 +1,10 @@
 import { createAction, props } from '@ngrx/store';
 import { Report } from 'src/app/core/_models/report';
 
+export const loadReports = createAction(
+  '[ReportStore] loading Reports triggerd'
+);
+
 export const loadReportsSucceeded = createAction(
   '[Report] All Reports successfully loaded',
   props<{ reports: Report[] }>()

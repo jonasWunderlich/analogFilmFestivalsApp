@@ -107,6 +107,8 @@ export const selectCinemasLoading = createSelector(
   (state) => state.loadingCinemas
 );
 
+/* Select Cinemas for Geo Map */
+
 export const selectCinemasOnMap = createSelector(
   selectCinemaState,
   selectCinemas,
@@ -114,6 +116,8 @@ export const selectCinemasOnMap = createSelector(
     return selectReferencedObjects(cinemas, state.cinemasOnMap);
   }
 );
+
+/* Select Filtered Cinemas by References */
 
 export const selectScreeningEventCinemas = createSelector(
   selectActiveScreeningEvent,

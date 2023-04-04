@@ -27,7 +27,7 @@ export class ReportEffects {
 
   loadReports$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(enteredReportOverview),
+      ofType(ReportActions.loadReports, enteredReportOverview),
       switchMap(() =>
         this.analogHttpService.getReports().pipe(
           map((reports) => ReportActions.loadReportsSucceeded({ reports })),

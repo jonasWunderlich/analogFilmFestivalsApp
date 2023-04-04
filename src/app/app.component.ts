@@ -2,10 +2,10 @@ import { Component, Inject } from '@angular/core';
 import { APP_TITLE } from './app.module';
 import { AuthService } from './core/services/auth.service';
 import { Store } from '@ngrx/store';
-import { enteredCinemaOverview } from './features/cinema/cinema-overview/cinema-overview.actions';
-import { enteredProjectionOverview } from './features/projection/projection-overview/projection-overview.actions';
-import { enteredReportOverview } from './features/report/report-overview/report-overview.actions';
-import { enteredScreeningEventOverview } from './features/screening-event/screening-event-overview/screening-event-overview.actions';
+import { loadCinemas } from './+state/cinema-store/cinema.actions';
+import { loadProjections } from './+state/projection-store/projection.actions';
+import { loadScreeningEvents } from './+state/screening-event-store/screening-event.actions';
+import { loadReports } from './+state/report-store/report.actions';
 
 @Component({
   selector: 'app-root',
@@ -21,9 +21,9 @@ export class AppComponent {
   ) {
     this.appTitle = appTitle;
 
-    this.store.dispatch(enteredScreeningEventOverview());
-    this.store.dispatch(enteredProjectionOverview());
-    this.store.dispatch(enteredCinemaOverview());
-    this.store.dispatch(enteredReportOverview());
+    this.store.dispatch(loadScreeningEvents());
+    this.store.dispatch(loadProjections());
+    this.store.dispatch(loadCinemas());
+    this.store.dispatch(loadReports());
   }
 }
