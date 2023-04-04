@@ -67,7 +67,7 @@ export function buildRefrencedApiMocks(): ReferencedMockData {
       const eventCinemaProjections = mockProjections(
         event.type === ScreeningEventType.SINGLE
           ? mockNumber(1, 2)
-          : mockNumber(2, 4),
+          : mockNumber(2, 5),
         new Date(event.start),
         400, // TOOD: use event end
         cinema.id
@@ -124,7 +124,7 @@ export function buildRefrencedApiMocks(): ReferencedMockData {
   });
 
   return {
-    cinemas: allCinemas.filter((cinema) => cinema.eventRef),
+    cinemas: allCinemas.filter((cinema) => cinema.eventRef?.length),
     auditoriums: allAuditoriums,
     screeningEvents: allScreeningEvents,
     projections: allProjections,

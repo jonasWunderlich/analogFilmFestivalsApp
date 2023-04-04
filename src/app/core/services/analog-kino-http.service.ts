@@ -25,13 +25,6 @@ export enum CONTENT_TYPE {
 export class AnalogKinoBackendService {
   refApiMocks = buildRefrencedApiMocks();
 
-  constructor() {
-    console.log('CINEMA', this.refApiMocks.cinemas[0]);
-    console.log('EVENT', this.refApiMocks.screeningEvents[0]);
-    console.log('REPORT', this.refApiMocks.reports[0]);
-    console.log('PROJECTION', this.refApiMocks.projections[0]);
-  }
-
   /** HTTP GET Cinema(s) */
 
   public getCinemas(): Observable<Cinema[]> {
