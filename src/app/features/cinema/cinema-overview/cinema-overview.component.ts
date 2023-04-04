@@ -10,7 +10,9 @@ import { CinemaOverviewService } from './cinema-overview.service';
 export class CinemaOverviewComponent {
   cinemas$ = this.facade.cinemas$;
 
-  constructor(private readonly facade: CinemaOverviewService) {}
+  constructor(private readonly facade: CinemaOverviewService) {
+    this.facade.dispatchEnter();
+  }
 
   delete(id: string) {
     this.facade.delete(id);

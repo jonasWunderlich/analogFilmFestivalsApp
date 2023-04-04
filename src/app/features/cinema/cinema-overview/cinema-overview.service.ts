@@ -13,11 +13,13 @@ export class CinemaOverviewService {
   constructor(
     private readonly store: Store,
     private readonly common: CinemaService
-  ) {
+  ) {}
+
+  public dispatchEnter(): void {
     this.store.dispatch(enteredCinemaOverview());
   }
 
-  delete(id: string): void {
+  public delete(id: string): void {
     this.common.delete(id);
   }
 }
