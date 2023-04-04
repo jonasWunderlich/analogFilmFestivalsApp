@@ -16,7 +16,7 @@ export const cinemaFeatureKey = 'cinema';
 
 export interface State extends EntityState<Cinema> {
   activeCinemaId: string | undefined;
-  cinemasOnMap: Cinema[];
+  cinemasOnMap: string[];
   loadingStates: {
     loadingCinema: boolean;
     loadingCinemas: boolean;
@@ -71,7 +71,7 @@ export const reducer = createReducer(
   on(CinemaActions.loadCinemasSucceeded, (state: State, action) => {
     return cinemaAdapter.setAll(action.cinemas, {
       ...state,
-      cinemasOnMap: action.cinemas,
+      cinemasOnMap: action.cinemas.map((cinema) => cinema.id),
       loadingStates: {
         ...state.loadingStates,
         loadingCinemas: false,
@@ -82,6 +82,7 @@ export const reducer = createReducer(
     return cinemaAdapter.setOne(action.cinema, {
       ...state,
       activeCinemaId: action.cinema.id,
+      cinemasOnMap: [action.cinema.id],
       loadingStates: {
         ...state.loadingStates,
         loadingCinema: false,
@@ -110,6 +111,7 @@ export const reducer = createReducer(
     return {
       ...state,
       activeCinemaId: action.id,
+      cinemasOnMap: [action.id],
     };
   }),
   on(triggerCinemaCreation, (state: State) => {

@@ -107,5 +107,10 @@ export const selectCinemasLoading = createSelector(
 
 export const selectCinemasOnMap = createSelector(
   selectCinemaState,
-  (state) => state.cinemasOnMap
+  selectCinemas,
+  (state, cinemas): Cinema[] => {
+    return cinemas.filter(
+      (cinema) => state.cinemasOnMap.indexOf(cinema.id) > -1
+    );
+  }
 );
