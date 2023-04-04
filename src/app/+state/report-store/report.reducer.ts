@@ -47,7 +47,7 @@ export const initialState: State = reportAdapter.getInitialState({
 
 export const reducer = createReducer(
   initialState,
-  on(ReportActions.loadReports, enteredReportOverview, (state: State) => {
+  on(enteredReportOverview, (state: State) => {
     return {
       ...state,
       loadingStates: {
@@ -56,9 +56,10 @@ export const reducer = createReducer(
       },
     };
   }),
-  on(ReportActions.loadReportById, (state: State) => {
+  on(enteredReportDetails, enteredReportEdit, (state: State, action) => {
     return {
       ...state,
+      activeRouteId: action.id,
       loadingStates: {
         ...state.loadingStates,
         loadingReport: true,
@@ -74,15 +75,7 @@ export const reducer = createReducer(
       },
     });
   }),
-  on(ReportActions.loadReportByIdSucceeded, (state: State, action) => {
-    return reportAdapter.setOne(action.report, {
-      ...state,
-      loadingStates: {
-        ...state.loadingStates,
-        loadingReport: false,
-      },
-    });
-  }),
+
   on(ReportActions.loadReportsFailed, (state: State) => {
     return {
       ...state,
@@ -92,6 +85,15 @@ export const reducer = createReducer(
       },
     };
   }),
+  on(ReportActions.loadReportByIdSucceeded, (state: State, action) => {
+    return reportAdapter.setOne(action.report, {
+      ...state,
+      loadingStates: {
+        ...state.loadingStates,
+        loadingReport: false,
+      },
+    });
+  }),
   on(ReportActions.loadReportByIdFailed, (state: State) => {
     return {
       ...state,
@@ -99,12 +101,6 @@ export const reducer = createReducer(
         ...state.loadingStates,
         loadingReport: false,
       },
-    };
-  }),
-  on(enteredReportDetails, enteredReportEdit, (state: State, action) => {
-    return {
-      ...state,
-      activeRouteId: action.id,
     };
   }),
   on(triggerReportCreation, (state: State) => {
@@ -125,6 +121,15 @@ export const reducer = createReducer(
       },
     });
   }),
+  on(ReportActions.createReportFailed, (state: State) => {
+    return {
+      ...state,
+      loadingStates: {
+        ...state.loadingStates,
+        createReport: false,
+      },
+    };
+  }),
   on(triggerReportUpdate, (state: State) => {
     return {
       ...state,
@@ -143,6 +148,15 @@ export const reducer = createReducer(
       },
     });
   }),
+  on(ReportActions.updateReportFailed, (state: State) => {
+    return {
+      ...state,
+      loadingStates: {
+        ...state.loadingStates,
+        updateReport: false,
+      },
+    };
+  }),
   on(triggerReportRemoval, (state: State) => {
     return {
       ...state,
@@ -160,6 +174,15 @@ export const reducer = createReducer(
         deleteReport: false,
       },
     });
+  }),
+  on(ReportActions.deleteReportFailed, (state: State) => {
+    return {
+      ...state,
+      loadingStates: {
+        ...state.loadingStates,
+        deleteReport: false,
+      },
+    };
   })
 );
 

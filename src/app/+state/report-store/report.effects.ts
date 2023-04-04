@@ -23,9 +23,11 @@ export class ReportEffects {
   private analogHttpService = inject(AnalogKinoBackendService);
   private notificationService = inject(NotificationService);
 
+  /* LOAD ALL REPORT */
+
   loadReports$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(ReportActions.loadReports, enteredReportOverview),
+      ofType(enteredReportOverview),
       switchMap(() =>
         this.analogHttpService.getReports().pipe(
           map((reports) => ReportActions.loadReportsSucceeded({ reports })),
@@ -63,13 +65,11 @@ export class ReportEffects {
     { dispatch: false }
   );
 
+  /* LOAD REPORT BY ID */
+
   loadReportById$ = createEffect(() => {
     return this.actions$.pipe(
-      ofType(
-        ReportActions.loadReportById,
-        enteredReportDetails,
-        enteredReportEdit
-      ),
+      ofType(enteredReportDetails, enteredReportEdit),
       filter((params) => params?.id?.length > 0),
       switchMap((params) =>
         this.analogHttpService.getReportById(params.id).pipe(
@@ -110,7 +110,7 @@ export class ReportEffects {
     { dispatch: false }
   );
 
-  /* CREATE SCREENING EVENT BY ID */
+  /* CREATE REPORT BY ID */
 
   createReport$ = createEffect(() => {
     return this.actions$.pipe(
@@ -153,7 +153,7 @@ export class ReportEffects {
     { dispatch: false }
   );
 
-  /* UPDATE SCREENING EVENT BY ID */
+  /* UPDATE REPORT BY ID */
 
   updateReport$ = createEffect(() => {
     return this.actions$.pipe(
@@ -200,7 +200,7 @@ export class ReportEffects {
     { dispatch: false }
   );
 
-  /* DELETE SCREENING EVENT BY ID */
+  /* DELETE REPORT BY ID */
 
   deleteReport$ = createEffect(() => {
     return this.actions$.pipe(
