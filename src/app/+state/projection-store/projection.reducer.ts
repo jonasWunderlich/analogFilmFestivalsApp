@@ -46,28 +46,29 @@ export const initialState: State = projectionAdapter.getInitialState({
 
 export const reducer = createReducer(
   initialState,
-  on(
-    ProjectionActions.loadProjections,
-    enteredProjectionOverview,
-    (state: State) => {
-      return {
-        ...state,
-        loadingStates: {
-          ...state.loadingStates,
-          loadingProjections: true,
-        },
-      };
-    }
-  ),
-  on(ProjectionActions.loadProjectionById, (state: State) => {
+  on(enteredProjectionOverview, (state: State) => {
     return {
       ...state,
       loadingStates: {
         ...state.loadingStates,
-        loadingProjection: true,
+        loadingProjections: true,
       },
     };
   }),
+  on(
+    enteredProjectionEdit,
+    enteredProjectionDetails,
+    (state: State, action) => {
+      return {
+        ...state,
+        activeProjectionId: action.id,
+        loadingStates: {
+          ...state.loadingStates,
+          loadingProjection: true,
+        },
+      };
+    }
+  ),
   on(ProjectionActions.loadProjectionsSucceeded, (state: State, action) => {
     return projectionAdapter.setAll(action.projections, {
       ...state,
@@ -76,6 +77,16 @@ export const reducer = createReducer(
         loadingProjections: false,
       },
     });
+  }),
+
+  on(ProjectionActions.loadProjectionsFailed, (state: State) => {
+    return {
+      ...state,
+      loadingStates: {
+        ...state.loadingStates,
+        loadingProjections: false,
+      },
+    };
   }),
   on(ProjectionActions.loadProjectionByIdSucceeded, (state: State, action) => {
     return projectionAdapter.setOne(action.projection, {
@@ -87,15 +98,6 @@ export const reducer = createReducer(
       },
     });
   }),
-  on(ProjectionActions.loadProjectionsFailed, (state: State) => {
-    return {
-      ...state,
-      loadingStates: {
-        ...state.loadingStates,
-        loadingProjections: false,
-      },
-    };
-  }),
   on(ProjectionActions.loadProjectionByIdFailed, (state: State) => {
     return {
       ...state,
@@ -105,16 +107,6 @@ export const reducer = createReducer(
       },
     };
   }),
-  on(
-    enteredProjectionEdit,
-    enteredProjectionDetails,
-    (state: State, action) => {
-      return {
-        ...state,
-        activeProjectionId: action.id,
-      };
-    }
-  ),
   on(triggerProjectionCreation, (state: State) => {
     return {
       ...state,
@@ -132,6 +124,15 @@ export const reducer = createReducer(
         createProjection: false,
       },
     });
+  }),
+  on(ProjectionActions.createProjectionFailed, (state: State) => {
+    return {
+      ...state,
+      loadingStates: {
+        ...state.loadingStates,
+        createProjection: false,
+      },
+    };
   }),
   on(triggerProjectionUpdate, (state: State) => {
     return {
@@ -151,6 +152,15 @@ export const reducer = createReducer(
       },
     });
   }),
+  on(ProjectionActions.updateProjectionFailed, (state: State) => {
+    return {
+      ...state,
+      loadingStates: {
+        ...state.loadingStates,
+        updateProjection: false,
+      },
+    };
+  }),
   on(triggerProjectionRemoval, (state: State) => {
     return {
       ...state,
@@ -168,6 +178,15 @@ export const reducer = createReducer(
         deleteProjection: false,
       },
     });
+  }),
+  on(ProjectionActions.deleteProjectionFailed, (state: State) => {
+    return {
+      ...state,
+      loadingStates: {
+        ...state.loadingStates,
+        deleteProjection: false,
+      },
+    };
   })
 );
 

@@ -26,7 +26,7 @@ export class ProjectionEffects {
 
   loadProjections$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(ProjectionActions.loadProjections, enteredProjectionOverview),
+      ofType(enteredProjectionOverview),
       switchMap(() =>
         this.analogHttpService.getProjections().pipe(
           map((projections) =>
@@ -72,11 +72,7 @@ export class ProjectionEffects {
 
   loadProjectionById$ = createEffect(() => {
     return this.actions$.pipe(
-      ofType(
-        ProjectionActions.loadProjectionById,
-        enteredProjectionDetails,
-        enteredProjectionEdit
-      ),
+      ofType(enteredProjectionDetails, enteredProjectionEdit),
       filter((params) => params?.id?.length > 0),
       switchMap((params) =>
         this.analogHttpService.getProjectionById(params.id).pipe(

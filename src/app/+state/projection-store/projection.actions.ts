@@ -1,8 +1,6 @@
 import { createAction, props } from '@ngrx/store';
 import { Projection } from 'src/app/core/_models/projection';
 
-export const loadProjections = createAction('[Projection] Load Projections');
-
 export const loadProjectionsSucceeded = createAction(
   '[Projection] Projections successfully loaded',
   props<{ projections: Projection[] }>()
@@ -11,11 +9,6 @@ export const loadProjectionsSucceeded = createAction(
 export const loadProjectionsFailed = createAction(
   '[Projection] load Projections failed',
   props<{ error: string }>()
-);
-
-export const loadProjectionById = createAction(
-  '[Projection] Load Projections by Id',
-  (id: string) => ({ id })
 );
 
 export const loadProjectionByIdSucceeded = createAction(
