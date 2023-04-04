@@ -21,7 +21,7 @@ export class ScreeningEventOverviewService {
   }
 
   dispatch(): void {
-    // TODO: find more elegant way to dispatch id collection (without subscription)
+    // TODO: find more elegant way to dispatch id collection
     this.events$.pipe(first()).subscribe((screeningEvents) => {
       const cinemaRefs = screeningEvents.map((ev) => ev.cinemaRefs).flat();
       const withoutDuplicates = [...new Set(cinemaRefs)];

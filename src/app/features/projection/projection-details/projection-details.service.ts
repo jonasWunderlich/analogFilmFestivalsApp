@@ -28,7 +28,7 @@ export class ProjectionDetailsService {
   }
 
   dispatch(): void {
-    // TODO: find more elegant way to dispatch id collection (without subscription)
+    // TODO: find more elegant way to dispatch id collection
     this.activeProjection$.pipe(first()).subscribe((proj) => {
       if (proj?.cinemaRef) {
         this.store.dispatch(updateCinemasOnMap({ ids: [proj?.cinemaRef] }));

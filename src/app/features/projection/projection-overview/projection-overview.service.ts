@@ -23,7 +23,7 @@ export class ProjectionOverviewService {
 
   dispatchEnter(): void {
     this.store.dispatch(enteredProjectionOverview());
-    // TODO: find more elegant way to dispatch id collection (without subscription)
+    // TODO: find more elegant way to dispatch id collection
     this.projections$.pipe(first()).subscribe((projection) => {
       const cinemaRefs = projection
         .filter((projection) => projection.cinemaRef)

@@ -11,7 +11,7 @@ import { selectScreeningEventProjections } from 'src/app/+state/projection-store
 import { selectScreeningEventMovies } from 'src/app/+state/movie-store/movie.selectors';
 import { first } from 'rxjs';
 import { enteredScreeningEventDetails } from './screening-event-details.actions';
-import { updateCinemasOnMap } from 'src/app/+state/cinema-store/cinema.actions';
+import { dispatchMap } from 'src/app/core/utilities/store-selectors.utilities';
 
 @Injectable({
   providedIn: 'root',
@@ -42,10 +42,9 @@ export class ScreeningEventDetailsService {
     this.store.dispatch(
       searchMoviesByQuery(sample(MOCKED_TMDB_QUERIES) || 'ass')
     );
-    // TODO: find more elegant way to dispatch id collection (without subscription)
     this.event$.pipe(first()).subscribe((event) => {
-      event?.cinemaRefs &&
-        this.store.dispatch(updateCinemasOnMap({ ids: event?.cinemaRefs }));
+      // TODO: find more elegant way to dispatch id collection
+      dispatchMap(event?.cinemaRefs, this.store);
     });
   }
 }
