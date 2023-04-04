@@ -46,28 +46,29 @@ export const initialState: State = screeningEventAdapter.getInitialState({
 
 export const reducer = createReducer(
   initialState,
-  on(
-    ScreeningEventActions.loadScreeningEvents,
-    enteredScreeningEventOverview,
-    (state: State) => {
-      return {
-        ...state,
-        loadingStates: {
-          ...state.loadingStates,
-          loadingScreeningEvents: true,
-        },
-      };
-    }
-  ),
-  on(ScreeningEventActions.loadScreeningEventById, (state: State) => {
+  on(enteredScreeningEventOverview, (state: State) => {
     return {
       ...state,
       loadingStates: {
         ...state.loadingStates,
-        loadingScreeningEvent: true,
+        loadingScreeningEvents: true,
       },
     };
   }),
+  on(
+    enteredScreeningEventDetails,
+    enteredScreeningEventEdit,
+    (state: State, action) => {
+      return {
+        ...state,
+        activeScreeningEventId: action.id,
+        loadingStates: {
+          ...state.loadingStates,
+          loadingScreeningEvent: true,
+        },
+      };
+    }
+  ),
   on(
     ScreeningEventActions.loadScreeningEventsSucceeded,
     (state: State, action) => {
@@ -76,18 +77,6 @@ export const reducer = createReducer(
         loadingStates: {
           ...state.loadingStates,
           loadingScreeningEvents: false,
-        },
-      });
-    }
-  ),
-  on(
-    ScreeningEventActions.loadScreeningEventByIdSucceeded,
-    (state: State, action) => {
-      return screeningEventAdapter.setOne(action.screeningEvent, {
-        ...state,
-        loadingStates: {
-          ...state.loadingStates,
-          loadingScreeningEvent: false,
         },
       });
     }
@@ -101,6 +90,18 @@ export const reducer = createReducer(
       },
     };
   }),
+  on(
+    ScreeningEventActions.loadScreeningEventByIdSucceeded,
+    (state: State, action) => {
+      return screeningEventAdapter.setOne(action.screeningEvent, {
+        ...state,
+        loadingStates: {
+          ...state.loadingStates,
+          loadingScreeningEvent: false,
+        },
+      });
+    }
+  ),
   on(ScreeningEventActions.loadScreeningEventByIdFailed, (state: State) => {
     return {
       ...state,
@@ -110,16 +111,6 @@ export const reducer = createReducer(
       },
     };
   }),
-  on(
-    enteredScreeningEventDetails,
-    enteredScreeningEventEdit,
-    (state: State, action) => {
-      return {
-        ...state,
-        activeScreeningEventId: action.id,
-      };
-    }
-  ),
   on(triggerScreeningEventCreation, (state: State) => {
     return {
       ...state,
@@ -141,6 +132,15 @@ export const reducer = createReducer(
       });
     }
   ),
+  on(ScreeningEventActions.createScreeningEventFailed, (state: State) => {
+    return {
+      ...state,
+      loadingStates: {
+        ...state.loadingStates,
+        createScreeningEvent: false,
+      },
+    };
+  }),
   on(triggerScreeningEventUpdate, (state: State) => {
     return {
       ...state,
@@ -162,6 +162,15 @@ export const reducer = createReducer(
       });
     }
   ),
+  on(ScreeningEventActions.updateScreeningEventFailed, (state: State) => {
+    return {
+      ...state,
+      loadingStates: {
+        ...state.loadingStates,
+        updateScreeningEvent: false,
+      },
+    };
+  }),
   on(triggerScreeningEventRemoval, (state: State) => {
     return {
       ...state,
@@ -182,7 +191,16 @@ export const reducer = createReducer(
         },
       });
     }
-  )
+  ),
+  on(ScreeningEventActions.deleteScreeningEventFailed, (state: State) => {
+    return {
+      ...state,
+      loadingStates: {
+        ...state.loadingStates,
+        deleteScreeningEvent: false,
+      },
+    };
+  })
 );
 
 export const screeningEventFeature = createFeature({

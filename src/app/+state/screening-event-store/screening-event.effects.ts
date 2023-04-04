@@ -26,7 +26,7 @@ export class EventEffects {
 
   loadScreeningEvents$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(EventActions.loadScreeningEvents, enteredScreeningEventOverview),
+      ofType(enteredScreeningEventOverview),
       switchMap(() =>
         this.analogHttpService.getScreeningEvents().pipe(
           map((screeningEvents) =>
@@ -72,11 +72,7 @@ export class EventEffects {
 
   loadScreeningEventById$ = createEffect(() => {
     return this.actions$.pipe(
-      ofType(
-        EventActions.loadScreeningEventById,
-        enteredScreeningEventDetails,
-        enteredScreeningEventEdit
-      ),
+      ofType(enteredScreeningEventDetails, enteredScreeningEventEdit),
       filter((params) => params?.id?.length > 0),
       switchMap((params) =>
         this.analogHttpService.getScreeningEventById(params.id).pipe(

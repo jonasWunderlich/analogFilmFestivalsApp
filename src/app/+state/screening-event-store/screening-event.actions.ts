@@ -1,13 +1,6 @@
 import { createAction, props } from '@ngrx/store';
 import { ScreeningEvent } from 'src/app/core/_models/screening-event';
 
-export const loadScreeningEvents = createAction('[Event] Load ScreeningEvents');
-
-export const loadScreeningEventById = createAction(
-  '[Event] Load ScreeningEvent',
-  (id: string) => ({ id })
-);
-
 export const loadScreeningEventsSucceeded = createAction(
   '[Event] ScreeningEvents successfully loaded',
   props<{ screeningEvents: ScreeningEvent[] }>()
