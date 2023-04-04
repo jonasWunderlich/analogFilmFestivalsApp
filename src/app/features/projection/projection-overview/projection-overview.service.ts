@@ -13,7 +13,9 @@ export class ProjectionOverviewService {
   constructor(
     private readonly store: Store,
     private readonly common: ProjectionService
-  ) {
+  ) {}
+
+  public dispatchEnter(): void {
     this.store.dispatch(enteredProjectionOverview());
   }
 

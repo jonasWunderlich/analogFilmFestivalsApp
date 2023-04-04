@@ -13,11 +13,13 @@ export class ReportOverviewService {
   constructor(
     private readonly store: Store,
     private readonly common: ReportService
-  ) {
+  ) {}
+
+  public dispatchEnter(): void {
     this.store.dispatch(enteredReportOverview());
   }
 
-  delete(id: string): void {
+  public delete(id: string): void {
     this.common.delete(id);
   }
 }

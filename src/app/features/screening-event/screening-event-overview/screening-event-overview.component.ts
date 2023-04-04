@@ -12,7 +12,9 @@ export class ScreeningEventOverviewComponent {
   calendarOptions: CalendarOptions = {};
   screeningEvents$ = this.facade.events$;
 
-  constructor(private readonly facade: ScreeningEventOverviewService) {}
+  constructor(private readonly facade: ScreeningEventOverviewService) {
+    this.facade.dispatchEnter();
+  }
 
   delete(id: string) {
     this.facade.delete(id);

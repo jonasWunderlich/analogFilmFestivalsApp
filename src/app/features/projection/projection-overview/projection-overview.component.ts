@@ -10,9 +10,11 @@ import { ProjectionOverviewService } from './projection-overview.service';
 export class ProjectionOverviewComponent {
   projections$ = this.facade.projections$;
 
-  constructor(private readonly facade: ProjectionOverviewService) {}
+  constructor(private readonly facade: ProjectionOverviewService) {
+    this.facade.dispatchEnter();
+  }
 
-  delete(id: string) {
+  public delete(id: string) {
     this.facade.delete(id);
   }
 }

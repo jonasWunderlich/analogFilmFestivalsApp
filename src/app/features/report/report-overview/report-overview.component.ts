@@ -10,9 +10,11 @@ import { ReportOverviewService } from './report-overview.service';
 export class ReportOverviewComponent {
   reports$ = this.facade.reports$;
 
-  constructor(private readonly facade: ReportOverviewService) {}
+  constructor(private readonly facade: ReportOverviewService) {
+    this.facade.dispatchEnter();
+  }
 
-  delete(id: string) {
+  public delete(id: string) {
     this.facade.delete(id);
   }
 }

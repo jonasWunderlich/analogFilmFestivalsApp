@@ -13,11 +13,13 @@ export class ScreeningEventOverviewService {
   constructor(
     private readonly store: Store,
     private readonly common: ScreeningEventService
-  ) {
+  ) {}
+
+  public dispatchEnter(): void {
     this.store.dispatch(enteredScreeningEventOverview());
   }
 
-  delete(id: string): void {
+  public delete(id: string): void {
     this.common.delete(id);
   }
 }
