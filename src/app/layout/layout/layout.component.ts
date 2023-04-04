@@ -7,7 +7,7 @@ import { LayoutService } from './layout.service';
   styleUrls: ['./layout.component.scss'],
 })
 export class LayoutComponent {
-  $selectedGeoData = this.service.$selectedCinemasOnMap;
+  $selectedGeoData = this.service.$selectedGeoData;
 
   constructor(private readonly service: LayoutService) {}
 }

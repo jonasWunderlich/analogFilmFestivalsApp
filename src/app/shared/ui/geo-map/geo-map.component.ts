@@ -46,8 +46,12 @@ export class GeoMapComponent {
       const featureList = createFeatureList(arr, 'cinema');
       const coordinates = extractCoordinates(arr);
       const layer = buildVectorLayer(featureList);
-      if (!this.map || this.mode === MapMode.POINTS) {
-        this.geoMapService.buildMultiFeatureMap(layer, coordinates, 'ol-map');
+      if (!this.map) {
+        this.map = this.geoMapService.buildMultiFeatureMap(
+          layer,
+          coordinates,
+          'ol-map'
+        );
       } else {
         this.map.getLayers().setAt(1, layer);
         centerView(this.map, coordinates);

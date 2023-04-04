@@ -9,7 +9,7 @@ import { enteredCinemaEdit } from './cinema-edit.actions';
   providedIn: 'root',
 })
 export class CinemaEditService {
-  activeCinemaId?: string;
+  private _activeCinemaId?: string;
   activeCinema$ = this.store.select(selectActiveCinema);
 
   constructor(
@@ -20,7 +20,7 @@ export class CinemaEditService {
   setActiveId(id: string | undefined): void {
     if (id) {
       this.store.dispatch(enteredCinemaEdit({ id }));
-      this.activeCinemaId = id;
+      this._activeCinemaId = id;
     }
   }
 
@@ -29,8 +29,8 @@ export class CinemaEditService {
   }
 
   update(item: CinemaCreate): void {
-    if (this.activeCinemaId) {
-      this.common.update(this.activeCinemaId, item);
+    if (this._activeCinemaId) {
+      this.common.update(this._activeCinemaId, item);
     }
   }
 }

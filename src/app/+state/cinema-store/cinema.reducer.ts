@@ -71,6 +71,7 @@ export const reducer = createReducer(
   on(CinemaActions.loadCinemasSucceeded, (state: State, action) => {
     return cinemaAdapter.setAll(action.cinemas, {
       ...state,
+      cinemasOnMap: action.cinemas,
       loadingStates: {
         ...state.loadingStates,
         loadingCinemas: false,
