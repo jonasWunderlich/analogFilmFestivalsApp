@@ -1,6 +1,5 @@
 import { TestBed } from '@angular/core/testing';
-
-import { AnalogKinoBackendService } from './analog-kino-backend.service';
+import { AnalogKinoBackendService } from './analog-kino-http.service';
 
 describe('AnalogKinoBackendService', () => {
   let service: AnalogKinoBackendService;

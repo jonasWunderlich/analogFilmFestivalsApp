@@ -12,6 +12,8 @@ export class ScreeningEventDetailsComponent implements OnInit {
   event$ = this.facade.event$;
   cinemas$ = this.facade.relatedCinemas$;
   movies$ = this.facade.relatedMovies$;
+  reports$ = this.facade.relatedReports;
+  projections$ = this.facade.relatedProjections$;
 
   constructor(
     private readonly route: ActivatedRoute,

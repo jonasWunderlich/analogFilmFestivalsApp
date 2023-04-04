@@ -66,6 +66,7 @@ export interface Auditorium extends AuditoriumCreate {
   text: string;
 
   // TODO: Fix reference models
+  cinemaRef?: string;
   reports?: Report[];
   reportRefs?: string[];
 }

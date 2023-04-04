@@ -1,7 +1,5 @@
 import { Coordinate } from 'ol/coordinate';
 import { Auditorium } from './auditorium';
-import { Projection } from './projection';
-import { Report } from './report';
 
 export interface CinemaCreate {
   title: string;
@@ -38,9 +36,8 @@ export interface Cinema extends CinemaCreate {
 
   // TODO: Fix reference models
   auditoriums?: Auditorium[];
-  reports?: Report[];
-  projection?: Projection[];
   auditoriumRefs?: string[];
-  reportRefs?: string[];
+  eventRef?: string[];
   projectionRefs?: string[];
+  reportRefs?: string[];
 }

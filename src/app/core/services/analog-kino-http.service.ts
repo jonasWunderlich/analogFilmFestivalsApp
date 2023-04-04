@@ -1,14 +1,5 @@
 import { Injectable } from '@angular/core';
 import { EMPTY, Observable, of, throwError } from 'rxjs';
-import { mockCinemas } from '../_mock/cinema.mock';
-import { mockScreeningEvents } from '../_mock/event.mock';
-import {
-  getRandomSubarray,
-  mockNumber,
-  sortByISODate,
-} from '../utilities/mock-data';
-import { mockProjections } from '../_mock/projection.mock';
-import { mockReports } from '../_mock/report.mocks';
 import { Auditorium, AuditoriumCreate } from '../_models/auditorium';
 import { Cinema, CinemaCreate } from '../_models/cinema';
 import { Projection, ProjectionCreate } from '../_models/projection';
@@ -18,6 +9,7 @@ import {
   ScreeningEventCreate,
 } from '../_models/screening-event';
 import { uniqueId } from 'lodash';
+import { buildRefrencedApiMocks } from '../utilities/build-referenced-mocks';
 
 export enum CONTENT_TYPE {
   EVENT = 'EVENT',
@@ -31,61 +23,23 @@ export enum CONTENT_TYPE {
   providedIn: 'platform',
 })
 export class AnalogKinoBackendService {
-  cinemas: Cinema[] = [];
-  auditoriums: Auditorium[] = [];
-  screeningEvents: ScreeningEvent[] = [];
-  projections: Projection[] = [];
-  reports: Report[] = [];
+  refApiMocks = buildRefrencedApiMocks();
 
   constructor() {
-    this.buildMocks();
-  }
-
-  /** M O C K S */
-
-  private buildMocks() {
-    this.reports = mockReports(40).sort((a, b) =>
-      sortByISODate(a.date, b.date)
-    );
-    this.projections = mockProjections(100, new Date(), 400).sort((a, b) =>
-      sortByISODate(a.date, b.date)
-    );
-    this.cinemas = mockCinemas(20);
-    this.screeningEvents = mockScreeningEvents(40).sort((a, b) =>
-      sortByISODate(a.start, b.start)
-    );
-    this.screeningEvents.forEach((event) => {
-      event.cinemaRefs = getRandomSubarray(this.cinemas, mockNumber(1, 10)).map(
-        (item) => item.id
-      );
-      event.projectionRefs = getRandomSubarray(
-        this.projections,
-        mockNumber(1, 10)
-      ).map((item) => item.id);
-      event.reportRefs = getRandomSubarray(this.reports, mockNumber(1, 10)).map(
-        (item) => item.id
-      );
-    });
-    this.cinemas.forEach((cinema) => {
-      cinema.projectionRefs = getRandomSubarray(
-        this.projections,
-        mockNumber(1, 10)
-      ).map((item) => item.id);
-      cinema.reportRefs = getRandomSubarray(
-        this.reports,
-        mockNumber(1, 10)
-      ).map((item) => item.id);
-    });
+    console.log('CINEMA', this.refApiMocks.cinemas[0]);
+    console.log('EVENT', this.refApiMocks.screeningEvents[0]);
+    console.log('REPORT', this.refApiMocks.reports[0]);
+    console.log('PROJECTION', this.refApiMocks.projections[0]);
   }
 
   /** HTTP GET Cinema(s) */
 
   public getCinemas(): Observable<Cinema[]> {
-    return of(this.cinemas);
+    return of(this.refApiMocks.cinemas);
   }
 
   public getCinemaById(id: string): Observable<Cinema> {
-    return this.getById(id, this.cinemas);
+    return this.getById(id, this.refApiMocks.cinemas);
   }
 
   /** HTTP CRUD Cinmea */
@@ -100,14 +54,14 @@ export class AnalogKinoBackendService {
   }
 
   public deleteCinema(id: string): Observable<string> {
-    return this.deleteGeneric(id, this.cinemas);
+    return this.deleteGeneric(id, this.refApiMocks.cinemas);
   }
 
   public updateCinema(
     id: string,
     updateItem: CinemaCreate
   ): Observable<Cinema> {
-    const orgCinema = this.cinemas.find((item) => item.id === id);
+    const orgCinema = this.refApiMocks.cinemas.find((item) => item.id === id);
     if (orgCinema === undefined) {
       return throwError(() => new Error('ERROR updating screening event'));
     }
@@ -118,11 +72,11 @@ export class AnalogKinoBackendService {
   /** HTTP GET ScreeningEvent(s) */
 
   public getScreeningEvents(): Observable<ScreeningEvent[]> {
-    return of(this.screeningEvents);
+    return of(this.refApiMocks.screeningEvents);
   }
 
   public getScreeningEventById(id: string): Observable<ScreeningEvent> {
-    return this.getById(id, this.screeningEvents);
+    return this.getById(id, this.refApiMocks.screeningEvents);
   }
 
   /** HTTP CRUD ScreeningEvent */
@@ -134,13 +88,13 @@ export class AnalogKinoBackendService {
   }
 
   public deleteScreeningEvent(id: string): Observable<string> {
-    return this.deleteGeneric(id, this.screeningEvents);
+    return this.deleteGeneric(id, this.refApiMocks.screeningEvents);
   }
 
   public updateScreeningEvent(
     id: string,
     updateItem: ScreeningEventCreate,
-    arr = this.screeningEvents
+    arr = this.refApiMocks.screeningEvents
   ): Observable<ScreeningEvent> {
     return this.updateGeneric<ScreeningEvent, ScreeningEventCreate>(
       id,
@@ -152,11 +106,11 @@ export class AnalogKinoBackendService {
   /** HTTP GET Report(s) */
 
   public getReports(): Observable<Report[]> {
-    return of(this.reports);
+    return of(this.refApiMocks.reports);
   }
 
   public getReportById(id: string): Observable<Report> {
-    return this.getById(id, this.reports);
+    return this.getById(id, this.refApiMocks.reports);
   }
 
   /** HTTP CRUD Report */
@@ -166,13 +120,13 @@ export class AnalogKinoBackendService {
   }
 
   public deleteReport(id: string): Observable<string> {
-    return this.deleteGeneric(id, this.reports);
+    return this.deleteGeneric(id, this.refApiMocks.reports);
   }
 
   public updateReport(
     id: string,
     updateItem: ReportCreate,
-    arr = this.reports
+    arr = this.refApiMocks.reports
   ): Observable<Report> {
     return this.updateGeneric<Report, ReportCreate>(
       id,
@@ -184,11 +138,11 @@ export class AnalogKinoBackendService {
   /** HTTP GET Auditorium(s) */
 
   public getAuditoriums(): Observable<Auditorium[]> {
-    return of(this.auditoriums);
+    return of(this.refApiMocks.auditoriums);
   }
 
   public getAuditoriumById(id: string): Observable<Auditorium> {
-    return this.getById(id, this.auditoriums);
+    return this.getById(id, this.refApiMocks.auditoriums);
   }
 
   /** HTTP CRUD Auditorium */
@@ -198,13 +152,13 @@ export class AnalogKinoBackendService {
   }
 
   public deleteAuditorium(id: string): Observable<string> {
-    return this.deleteGeneric(id, this.auditoriums);
+    return this.deleteGeneric(id, this.refApiMocks.auditoriums);
   }
 
   public updateAuditorium(
     id: string,
     updateItem: AuditoriumCreate,
-    arr = this.auditoriums
+    arr = this.refApiMocks.auditoriums
   ): Observable<Auditorium> {
     return this.updateGeneric<Auditorium, AuditoriumCreate>(
       id,
@@ -216,11 +170,11 @@ export class AnalogKinoBackendService {
   /** HTTP GET Projection(s) */
 
   public getProjections(): Observable<Projection[]> {
-    return of(this.projections);
+    return of(this.refApiMocks.projections);
   }
 
   public getProjectionById(id: string): Observable<Projection> {
-    return this.getById(id, this.projections);
+    return this.getById(id, this.refApiMocks.projections);
   }
 
   /** HTTP CRUD Projection */
@@ -230,13 +184,13 @@ export class AnalogKinoBackendService {
   }
 
   public deleteProjection(id: string): Observable<string> {
-    return this.removeFromMocks(this.projections, id);
+    return this.removeFromMocks(this.refApiMocks.projections, id);
   }
 
   public updateProjection(
     id: string,
     updateItem: ProjectionCreate,
-    arr = this.projections
+    arr = this.refApiMocks.projections
   ): Observable<Projection> {
     return this.updateGeneric<Projection, ProjectionCreate>(
       id,

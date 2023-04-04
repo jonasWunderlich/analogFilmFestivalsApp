@@ -1,5 +1,3 @@
-import { Cinema } from './cinema';
-import { Report } from './report';
 import { ProjectionCharacter } from './projection-character';
 
 export interface ProjectionCreate {
@@ -25,9 +23,6 @@ export interface Projection extends ProjectionCreate {
   black?: boolean;
   agent?: string;
 
-  // TODO: Fix reference models
-  cinema?: Cinema;
   cinemaRef?: string;
-  reports?: Report[];
   reportRefs?: string[];
 }

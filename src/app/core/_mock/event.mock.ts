@@ -10,14 +10,12 @@ import {
   randomDate,
   sortByISODate,
 } from '../utilities/mock-data';
-import { mockProjections } from './projection.mock';
 import {
   MOCKED_CITIES,
   MOCKED_EVENT_NAMES,
   MOCKED_EVENT_TEXTS,
   MOCKED_STREETS,
 } from './constants';
-import { mockReports } from './report.mocks';
 
 const SCREENING_EVENT_DEFAULT_VALUES: ScreeningEvent = {
   id: '0',
@@ -25,10 +23,8 @@ const SCREENING_EVENT_DEFAULT_VALUES: ScreeningEvent = {
   lastModifiedAt: '2020-11-30T10:32:19.196720000+0000',
   title: MOCKED_EVENT_NAMES[1],
   text: MOCKED_EVENT_TEXTS[1],
-  reports: [],
   start: randomDate(new Date(), new Date(2023, 6, 0)).toJSON(),
   end: randomDate(new Date(), new Date(2023, 12, 0)).toJSON(),
-  projections: [],
   street: 'Spinnereistrasse 1',
   postcode: '04177',
   city: 'Leipzig',
@@ -59,10 +55,6 @@ export function mockScreeningEvent(
     ScreeningEventType.SINGLE,
   ]);
   const eventLength = mockNumber(1, 14);
-  const projectionCount =
-    eventType !== ScreeningEventType.SINGLE
-      ? mockNumber(4, 24)
-      : mockNumber(1, 2);
   const defaultValues: ScreeningEvent = {
     id,
     createdAt: SCREENING_EVENT_DEFAULT_VALUES.createdAt,
@@ -70,15 +62,11 @@ export function mockScreeningEvent(
     title: sample(MOCKED_EVENT_NAMES) || SCREENING_EVENT_DEFAULT_VALUES.title,
     type: eventType,
     text: sample(MOCKED_EVENT_TEXTS),
-    reports: mockReports(mockNumber(0, 3)),
     start: start.toJSON(),
     end:
       eventType !== ScreeningEventType.SINGLE
         ? addDays(start, eventLength).toJSON()
         : undefined,
-    projections: mockProjections(projectionCount, start, eventLength).sort(
-      (a, b) => sortByISODate(a.date, b.date)
-    ),
     city: sample(MOCKED_CITIES),
     street: `${sample(MOCKED_STREETS)} ${mockNumber(1, 400)}`,
     postcode: mockCharString(5, CHAR_NUMBERS),
@@ -86,6 +74,10 @@ export function mockScreeningEvent(
     linkProgram: SCREENING_EVENT_DEFAULT_VALUES.linkProgram,
     mail: SCREENING_EVENT_DEFAULT_VALUES.mail,
     phone: SCREENING_EVENT_DEFAULT_VALUES.phone,
+    cinemaRefs: [],
+    projectionRefs: [],
+    reportRefs: [],
+    auditoriumRefs: [],
   };
   return {
     ...defaultValues,
@@ -106,7 +98,7 @@ export function mockScreeningEvent(
 export function mockScreeningEvents(amount: number): ScreeningEvent[] {
   const events: ScreeningEvent[] = [];
   for (let i = 0; i < amount; i++) {
-    events.push(mockScreeningEvent({ id: i.toString() }));
+    events.push(mockScreeningEvent({}));
   }
-  return events;
+  return events.sort((a, b) => sortByISODate(a.start, b.start));
 }

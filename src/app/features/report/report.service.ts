@@ -29,11 +29,11 @@ export class ReportService {
   movies$ = this.store.select(selectIdSearchedMovies);
   projections$ = this.store.select(selectProjections);
   screeningEvents$ = this.store.select(selectScreeningEvents);
-  reports$ = this.screeningEvents$.pipe(
-    take(1),
-    map((arr) => arr[0].reports),
-    filter((val) => val === undefined)
-  );
+  // reports$ = this.screeningEvents$.pipe(
+  //   take(1),
+  //   map((arr) => arr[0].reports),
+  //   filter((val) => val === undefined)
+  // );
 
   constructor(private readonly store: Store, private readonly router: Router) {}
 

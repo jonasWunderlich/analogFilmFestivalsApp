@@ -33,10 +33,10 @@
   </p>
 
   <app-projection-list
-    [projections]="screeningEvent.projections || []"
+    [projections]="projections$ | ngrxPush"
   ></app-projection-list>
 
-  <app-report-list [reports]="screeningEvent.reports || []"></app-report-list>
+  <app-report-list [reports]="reports$ | ngrxPush"></app-report-list>
 </div>
 
 <app-movie-list [movies]="movies$ | ngrxPush"></app-movie-list>

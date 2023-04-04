@@ -1,7 +1,12 @@
 import { sample, uniqueId } from 'lodash';
 import { DeepPartial } from '@ngneat/reactive-forms/lib/types';
 import { Projection } from '../_models/projection';
-import { addDays, mockNumber, randomDate } from '../utilities/mock-data';
+import {
+  addDays,
+  mockNumber,
+  randomDate,
+  sortByISODate,
+} from '../utilities/mock-data';
 import { MOCKED_PROJECTION_NAMES, MOCKED_TMDBIDS } from './constants';
 
 const PROJECTION_DEFAULT_VALUES: Projection = {
@@ -9,7 +14,6 @@ const PROJECTION_DEFAULT_VALUES: Projection = {
   createdAt: '2020-10-30T09:32:19.196720000+0000',
   lastModifiedAt: '2020-11-30T10:32:19.196720000+0000',
   title: 'Time and Tide',
-  reports: [],
   date: randomDate(new Date(), new Date(2023, 6, 0)).toJSON(),
   tmdb: MOCKED_TMDBIDS[0],
   text: `Have you drained your bladder? Are you free? Because if you haven't it will only come out later. I'm giving you some information that your bodily fluids may penetrate your clothing fibre's without warning.
@@ -38,7 +42,6 @@ export function mockProjection(
     createdAt: PROJECTION_DEFAULT_VALUES.createdAt,
     lastModifiedAt: PROJECTION_DEFAULT_VALUES.lastModifiedAt,
     title: sample(MOCKED_PROJECTION_NAMES) || PROJECTION_DEFAULT_VALUES.title,
-    reports: PROJECTION_DEFAULT_VALUES.reports,
     date: date.toJSON(),
     tmdb: sample(MOCKED_TMDBIDS),
     text: PROJECTION_DEFAULT_VALUES.text,
@@ -59,23 +62,24 @@ export function mockProjection(
  *
  * @param amount: Length of List
  * @param date: The starting Date of projections
- * @param amount: the count of days the projections days span to
+ * @param length: the count of days the projections days span to
  *
  * @example mockProjections(10)
  */
 export function mockProjections(
   amount: number,
   date: Date,
-  length: number
+  length: number,
+  cinemaRef?: string
 ): Projection[] {
   const projections: Projection[] = [];
   for (let i = 0; i < amount; i++) {
     projections.push(
       mockProjection({
-        id: i.toString(),
         date: addDays(date, mockNumber(0, length)).toJSON(),
+        cinemaRef: cinemaRef,
       })
     );
   }
-  return projections;
+  return projections.sort((a, b) => sortByISODate(a.date, b.date));
 }

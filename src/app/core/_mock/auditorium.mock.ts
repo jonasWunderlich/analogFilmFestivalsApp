@@ -77,10 +77,13 @@ export function mockAuditorium(
  *
  * @example mockAuditoriums(10)
  */
-export function mockAuditoriums(amount: number): Auditorium[] {
+export function mockAuditoriums(
+  amount: number,
+  value: Partial<Auditorium> = {}
+): Auditorium[] {
   const auditoriums: Auditorium[] = [];
   for (let i = 0; i < amount; i++) {
-    auditoriums.push(mockAuditorium({ id: i.toString() }));
+    auditoriums.push(mockAuditorium(value));
   }
   return auditoriums;
 }

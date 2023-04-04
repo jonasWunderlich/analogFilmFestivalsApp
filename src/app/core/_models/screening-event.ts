@@ -36,11 +36,8 @@ export interface ScreeningEvent extends ScreeningEventCreate {
   linkHomepage?: string;
   linkProgram?: string;
 
-  // TODO: Fix reference models
-  cinemas?: Cinema[];
-  projections?: Projection[];
-  reports?: Report[];
   cinemaRefs?: string[];
   projectionRefs?: string[];
   reportRefs?: string[];
+  auditoriumRefs?: string[];
 }

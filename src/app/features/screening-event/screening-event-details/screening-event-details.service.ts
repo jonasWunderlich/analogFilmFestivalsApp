@@ -1,21 +1,22 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { selectCinemas } from 'src/app/+state/cinema-store/cinema.selectors';
 import { searchMoviesByQuery } from 'src/app/+state/movie-store/movie.actions';
-import { selectQuerySearchedMovies } from 'src/app/+state/movie-store/movie.selectors';
 import { selectActiveScreeningEvent } from 'src/app/+state/screening-event-store/screening-event.selectors';
 import { MOCKED_TMDB_QUERIES } from 'src/app/core/_mock/constants';
 import { ScreeningEventService } from '../screening-event.service';
 import { enteredScreeningEventDetails } from './screening-event-details.actions';
 import { sample } from 'lodash';
+import { of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ScreeningEventDetailsService {
   event$ = this.store.select(selectActiveScreeningEvent);
-  relatedCinemas$ = this.store.select(selectCinemas);
-  relatedMovies$ = this.store.select(selectQuerySearchedMovies);
+  relatedCinemas$ = of([]); // this.store.select(selectScreeningEventCinemas);
+  relatedMovies$ = of([]); // this.store.select(selectScreeningEventMovies);
+  relatedProjections$ = of([]); // this.store.select(screeningEventProjections);
+  relatedReports = of([]); // this.store.select(selectScreeningEventReports)
 
   constructor(
     private readonly store: Store,
