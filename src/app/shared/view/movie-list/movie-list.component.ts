@@ -13,5 +13,15 @@ import { TooltipModule } from 'src/app/shared/ui/tooltip/tooltip.module';
   imports: [NgFor, NgIf, RouterLink, TooltipModule],
 })
 export class MovieListComponent {
-  @Input() movies: TMDbMovieDetails[] = [];
+  private _movies: TMDbMovieDetails[] = [];
+
+  @Input()
+  set movies(value: TMDbMovieDetails[] | undefined) {
+    if (value) {
+      this._movies = value;
+    }
+  }
+  get movies() {
+    return this._movies;
+  }
 }

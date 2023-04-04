@@ -18,7 +18,7 @@
           <h3>{{ screeningEvent.type }} | {{ screeningEvent.title }}</h3>
         </a>
         <app-projection-list
-          [projections]="screeningEvent.projections || []"
+          [projections]="projections$ | ngrxPush"
           [showTitle]="false"
         ></app-projection-list>
         <p>{{ screeningEvent.text }}</p>

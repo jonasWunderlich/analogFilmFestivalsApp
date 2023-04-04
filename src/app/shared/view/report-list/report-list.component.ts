@@ -12,5 +12,15 @@ import { Report } from 'src/app/core/_models/report';
   imports: [RouterLink, NgFor, DatePipe],
 })
 export class ReportListComponent {
-  @Input() reports: Report[] = [];
+  private _reports: Report[] = [];
+
+  @Input()
+  set reports(value: Report[] | undefined) {
+    if (value) {
+      this._reports = value;
+    }
+  }
+  get reports() {
+    return this._reports;
+  }
 }
