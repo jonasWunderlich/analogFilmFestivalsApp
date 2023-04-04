@@ -6,17 +6,20 @@ import { MOCKED_TMDB_QUERIES } from 'src/app/core/_mock/constants';
 import { ScreeningEventService } from '../screening-event.service';
 import { enteredScreeningEventDetails } from './screening-event-details.actions';
 import { sample } from 'lodash';
-import { of } from 'rxjs';
+import { selectScreeningEventCinemas } from 'src/app/+state/cinema-store/cinema.selectors';
+import { selectScreeningEventReports } from 'src/app/+state/report-store/report.selectors';
+import { selectScreeningEventProjections } from 'src/app/+state/projection-store/projection.selectors';
+import { selectScreeningEventMovies } from 'src/app/+state/movie-store/movie.selectors';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ScreeningEventDetailsService {
   event$ = this.store.select(selectActiveScreeningEvent);
-  relatedCinemas$ = of([]); // this.store.select(selectScreeningEventCinemas);
-  relatedMovies$ = of([]); // this.store.select(selectScreeningEventMovies);
-  relatedProjections$ = of([]); // this.store.select(screeningEventProjections);
-  relatedReports = of([]); // this.store.select(selectScreeningEventReports)
+  relatedCinemas$ = this.store.select(selectScreeningEventCinemas);
+  relatedMovies$ = this.store.select(selectScreeningEventMovies);
+  relatedProjections$ = this.store.select(selectScreeningEventProjections);
+  relatedReports = this.store.select(selectScreeningEventReports);
 
   constructor(
     private readonly store: Store,

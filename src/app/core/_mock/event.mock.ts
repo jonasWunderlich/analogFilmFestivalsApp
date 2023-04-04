@@ -32,6 +32,7 @@ const SCREENING_EVENT_DEFAULT_VALUES: ScreeningEvent = {
   phone: '+49123456789',
   linkHomepage: 'https://www.kommkino.de/festival/hofbauer-kongress',
   linkProgram: 'https://www.example.com',
+  cinemaRefs: [],
 };
 
 /**

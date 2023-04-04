@@ -8,6 +8,9 @@ import { selectRouteParams } from 'src/app/+state/routing-store/router.reducer';
 import { neitherNullNorUndefined } from 'src/app/core/utilities/null-or-undefined';
 import { Report } from 'src/app/core/_models/report';
 import * as fromReport from './report.reducer';
+import { selectReferencedObjects } from 'src/app/core/utilities/store-selectors.utilities';
+import { selectActiveScreeningEvent } from '../screening-event-store/screening-event.selectors';
+import { selectActiveCinema } from '../cinema-store/cinema.selectors';
 
 export const selectReportState = createFeatureSelector<fromReport.State>(
   fromReport.reportFeatureKey
@@ -101,4 +104,24 @@ export const selectReportLoading = createSelector(
 export const selectReportsLoading = createSelector(
   selectReportLoadingStates,
   (state) => state.loadingReports
+);
+
+export const selectScreeningEventReports = createSelector(
+  selectActiveScreeningEvent,
+  selectReports,
+  (event, reports): Report[] => {
+    return event?.reportRefs
+      ? selectReferencedObjects(reports, event?.reportRefs)
+      : [];
+  }
+);
+
+export const selectCinemaReports = createSelector(
+  selectActiveCinema,
+  selectReports,
+  (cinema, reports): Report[] => {
+    return cinema?.reportRefs
+      ? selectReferencedObjects(reports, cinema?.reportRefs)
+      : [];
+  }
 );

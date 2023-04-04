@@ -1,21 +1,18 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { selectActiveCinema } from 'src/app/+state/cinema-store/cinema.selectors';
-import { randomDate, sortByISODate } from 'src/app/core/utilities/mock-data';
-import { mockProjections } from 'src/app/core/_mock/projection.mock';
 import { enteredCinemaDetails } from './cinema-details.actions';
 import { ProjectionService } from '../../projection/projection.service';
+import { selectCinemaProjections } from 'src/app/+state/projection-store/projection.selectors';
+import { selectCinemaReports } from 'src/app/+state/report-store/report.selectors';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CinemaDetailsService {
   cinema$ = this.store.select(selectActiveCinema);
-  projections = mockProjections(
-    12,
-    randomDate(new Date(), new Date(2023, 1, 0)),
-    90
-  ).sort((a, b) => sortByISODate(a.date, b.date));
+  projections$ = this.store.select(selectCinemaProjections);
+  reports$ = this.store.select(selectCinemaReports);
 
   constructor(
     private readonly store: Store,

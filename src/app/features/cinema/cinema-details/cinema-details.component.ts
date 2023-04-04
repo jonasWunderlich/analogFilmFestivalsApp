@@ -10,7 +10,8 @@ import { CinemaDetailsService } from './cinema-details.service';
 })
 export class CinemaDetailsComponent implements OnInit {
   cinema$ = this.facade.cinema$;
-  projections = this.facade.projections;
+  projections$ = this.facade.projections$;
+  reports$ = this.facade.reports$;
 
   constructor(
     private readonly facade: CinemaDetailsService,

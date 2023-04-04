@@ -8,6 +8,9 @@ import { selectRouteParams } from 'src/app/+state/routing-store/router.reducer';
 import { neitherNullNorUndefined } from 'src/app/core/utilities/null-or-undefined';
 import * as fromProjection from './projection.reducer';
 import { Projection } from 'src/app/core/_models/projection';
+import { selectReferencedObjects } from 'src/app/core/utilities/store-selectors.utilities';
+import { selectActiveScreeningEvent } from '../screening-event-store/screening-event.selectors';
+import { selectActiveCinema } from '../cinema-store/cinema.selectors';
 
 export const selectProjectionState =
   createFeatureSelector<fromProjection.State>(
@@ -106,4 +109,24 @@ export const selectProjectionLoading = createSelector(
 export const selectProjectionsLoading = createSelector(
   selectProjectionLoadingStates,
   (state) => state.loadingProjections
+);
+
+export const selectScreeningEventProjections = createSelector(
+  selectActiveScreeningEvent,
+  selectProjections,
+  (event, projections): Projection[] => {
+    return event?.projectionRefs
+      ? selectReferencedObjects(projections, event?.projectionRefs)
+      : [];
+  }
+);
+
+export const selectCinemaProjections = createSelector(
+  selectActiveCinema,
+  selectProjections,
+  (cinema, projections): Projection[] => {
+    return cinema?.projectionRefs
+      ? selectReferencedObjects(projections, cinema?.projectionRefs)
+      : [];
+  }
 );

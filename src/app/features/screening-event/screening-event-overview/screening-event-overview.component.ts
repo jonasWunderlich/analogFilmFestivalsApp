@@ -11,7 +11,6 @@ import { ScreeningEventOverviewService } from './screening-event-overview.servic
 export class ScreeningEventOverviewComponent {
   calendarOptions: CalendarOptions = {};
   screeningEvents$ = this.facade.events$;
-  projections$ = this.facade.projections$;
 
   constructor(private readonly facade: ScreeningEventOverviewService) {
     this.facade.dispatchEnter();

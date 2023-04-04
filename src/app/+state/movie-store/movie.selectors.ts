@@ -1,4 +1,4 @@
-import { createFeatureSelector, createSelector } from '@ngrx/store';
+import { createFeatureSelector, createSelector, select } from '@ngrx/store';
 import * as fromMovie from './movie.reducer';
 
 export const selectMovieState = createFeatureSelector<fromMovie.MoviesState>(
@@ -18,4 +18,9 @@ export const selectQuerySearchedMovies = createSelector(
 export const selectIdSearchedMovies = createSelector(
   selectMovieState,
   (state: fromMovie.MoviesState): any => state.moviesById || []
+);
+
+export const selectScreeningEventMovies = createSelector(
+  selectMovieState,
+  (state: fromMovie.MoviesState): any => state.moviesByQuery || []
 );

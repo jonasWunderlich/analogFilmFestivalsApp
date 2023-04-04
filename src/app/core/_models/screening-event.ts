@@ -1,7 +1,4 @@
 import { ScreeningEventType } from './sceening-event-type';
-import { Projection } from './projection';
-import { Report } from './report';
-import { Cinema } from './cinema';
 
 export interface ScreeningEventCreate {
   title: string;
@@ -36,7 +33,7 @@ export interface ScreeningEvent extends ScreeningEventCreate {
   linkHomepage?: string;
   linkProgram?: string;
 
-  cinemaRefs?: string[];
+  cinemaRefs: string[];
   projectionRefs?: string[];
   reportRefs?: string[];
   auditoriumRefs?: string[];

@@ -5,7 +5,10 @@
   <img src="/assets/images/{{ cinema.images[0] }}" width="60%" alt="" />
   <p>{{ cinema.text }}</p>
 
-  <app-projection-list [projections]="projections"></app-projection-list>
+  <app-projection-list
+    [projections]="projections$ | ngrxPush"
+  ></app-projection-list>
+
   <app-auditorium-list
     [auditoriums]="cinema.auditoriums || []"
   ></app-auditorium-list>
@@ -37,5 +40,5 @@
     Telefon: <a href="tel://{{ cinema.phone }}">{{ cinema.phone }}</a>
   </p>
 
-  <!-- <app-report-list [reports]="cinema.reportRefs || []"></app-report-list> -->
+  <app-report-list [reports]="reports$ | ngrxPush"></app-report-list>
 </ng-container>

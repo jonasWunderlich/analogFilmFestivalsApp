@@ -8,6 +8,8 @@ import { selectRouteParams } from 'src/app/+state/routing-store/router.reducer';
 import { neitherNullNorUndefined } from 'src/app/core/utilities/null-or-undefined';
 import { Cinema } from 'src/app/core/_models/cinema';
 import * as fromCinema from './cinema.reducer';
+import { selectActiveScreeningEvent } from '../screening-event-store/screening-event.selectors';
+import { selectReferencedObjects } from 'src/app/core/utilities/store-selectors.utilities';
 
 export const selectCinemaState = createFeatureSelector<fromCinema.State>(
   fromCinema.cinemaFeatureKey
@@ -109,8 +111,16 @@ export const selectCinemasOnMap = createSelector(
   selectCinemaState,
   selectCinemas,
   (state, cinemas): Cinema[] => {
-    return cinemas.filter(
-      (cinema) => state.cinemasOnMap.indexOf(cinema.id) > -1
-    );
+    return selectReferencedObjects(cinemas, state.cinemasOnMap);
+  }
+);
+
+export const selectScreeningEventCinemas = createSelector(
+  selectActiveScreeningEvent,
+  selectCinemas,
+  (event, cinemas): Cinema[] => {
+    return event?.cinemaRefs
+      ? selectReferencedObjects(cinemas, event?.cinemaRefs)
+      : [];
   }
 );

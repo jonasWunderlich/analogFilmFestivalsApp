@@ -35,10 +35,10 @@
   <app-projection-list
     [projections]="projections$ | ngrxPush"
   ></app-projection-list>
-
-  <app-report-list [reports]="reports$ | ngrxPush"></app-report-list>
 </div>
+
+<app-cinema-list [cinemas]="cinemas$ | ngrxPush"></app-cinema-list>
 
 <app-movie-list [movies]="movies$ | ngrxPush"></app-movie-list>
 
-<app-cinema-list [cinemas]="cinemas$ | ngrxPush"></app-cinema-list>
+<app-report-list [reports]="reports$ | ngrxPush"></app-report-list>
