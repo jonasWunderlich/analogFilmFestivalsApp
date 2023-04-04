@@ -50,7 +50,7 @@ export const initialState: State = cinemaAdapter.getInitialState({
 
 export const reducer = createReducer(
   initialState,
-  on(CinemaActions.loadCinemas, enteredCinemaOverview, (state: State) => {
+  on(enteredCinemaOverview, (state: State) => {
     return {
       ...state,
       loadingStates: {
@@ -59,15 +59,18 @@ export const reducer = createReducer(
       },
     };
   }),
-  on(CinemaActions.loadCinemaById, (state: State) => {
+  on(enteredCinemaDetails, enteredCinemaEdit, (state: State, action) => {
     return {
       ...state,
+      activeCinemaId: action.id,
+      cinemasOnMap: [action.id],
       loadingStates: {
         ...state.loadingStates,
         loadingCinema: true,
       },
     };
   }),
+
   on(CinemaActions.loadCinemasSucceeded, (state: State, action) => {
     return cinemaAdapter.setAll(action.cinemas, {
       ...state,
@@ -75,17 +78,6 @@ export const reducer = createReducer(
       loadingStates: {
         ...state.loadingStates,
         loadingCinemas: false,
-      },
-    });
-  }),
-  on(CinemaActions.loadCinemaByIdSucceeded, (state: State, action) => {
-    return cinemaAdapter.setOne(action.cinema, {
-      ...state,
-      activeCinemaId: action.cinema.id,
-      cinemasOnMap: [action.cinema.id],
-      loadingStates: {
-        ...state.loadingStates,
-        loadingCinema: false,
       },
     });
   }),
@@ -98,6 +90,16 @@ export const reducer = createReducer(
       },
     };
   }),
+
+  on(CinemaActions.loadCinemaByIdSucceeded, (state: State, action) => {
+    return cinemaAdapter.setOne(action.cinema, {
+      ...state,
+      loadingStates: {
+        ...state.loadingStates,
+        loadingCinema: false,
+      },
+    });
+  }),
   on(CinemaActions.loadCinemaByIdFailed, (state: State) => {
     return {
       ...state,
@@ -105,13 +107,6 @@ export const reducer = createReducer(
         ...state.loadingStates,
         loadingCinema: false,
       },
-    };
-  }),
-  on(enteredCinemaDetails, enteredCinemaEdit, (state: State, action) => {
-    return {
-      ...state,
-      activeCinemaId: action.id,
-      cinemasOnMap: [action.id],
     };
   }),
   on(triggerCinemaCreation, (state: State) => {
