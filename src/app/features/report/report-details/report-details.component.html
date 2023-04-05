@@ -1,5 +1,10 @@
 <ng-container *ngIf="activeReport$ | ngrxPush as report">
   <i>Erfahrungsbericht</i>
+  <app-overview-list-actions
+    path="report"
+    [id]="report.id"
+    (deleteEvent)="delete(report.id)"
+  ></app-overview-list-actions>
   <h2>{{ report.title }}</h2>
   <p>{{ report.date | date }}</p>
   <p>{{ report.text }}</p>

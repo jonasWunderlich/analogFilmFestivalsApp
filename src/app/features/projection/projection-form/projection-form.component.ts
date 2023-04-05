@@ -1,6 +1,7 @@
 import { NgFor, NgIf } from '@angular/common';
 import { ChangeDetectionStrategy, Component, OnChanges } from '@angular/core';
 import { ReactiveFormsModule, Validators } from '@angular/forms';
+import { RouterLink } from '@angular/router';
 import { LocalIsoDateValueAccessorModule } from 'angular-date-value-accessor';
 import { Projection, ProjectionCreate } from 'src/app/core/_models/projection';
 import { GenericContentFormComponent } from 'src/app/core/generics/generic-content-form.component';
@@ -11,7 +12,13 @@ import { GenericContentFormComponent } from 'src/app/core/generics/generic-conte
   styleUrls: ['./projection-form.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [ReactiveFormsModule, NgFor, NgIf, LocalIsoDateValueAccessorModule],
+  imports: [
+    NgFor,
+    NgIf,
+    LocalIsoDateValueAccessorModule,
+    ReactiveFormsModule,
+    RouterLink,
+  ],
 })
 export class ProjectionFormComponent
   extends GenericContentFormComponent<Projection, ProjectionCreate>

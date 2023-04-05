@@ -12,7 +12,6 @@ import { AnalogKinoBackendService } from 'src/app/core/services/analog-kino-http
 import { NotificationService } from 'src/app/core/services/notification.service';
 import * as ProjectionActions from './projection.actions';
 import { NOTIFICATION_MESSAGES } from 'src/app/core/constants/notification-messages';
-import { enteredProjectionOverview } from 'src/app/features/projection/projection-overview/projection-overview.actions';
 import { enteredProjectionDetails } from 'src/app/features/projection/projection-details/projection-details.actions';
 import { enteredProjectionEdit } from 'src/app/features/projection/projection-edit/projection-edit.actions';
 
@@ -26,7 +25,7 @@ export class ProjectionEffects {
 
   loadProjections$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(ProjectionActions.loadProjections, enteredProjectionOverview),
+      ofType(ProjectionActions.loadProjections),
       switchMap(() =>
         this.analogHttpService.getProjections().pipe(
           map((projections) =>

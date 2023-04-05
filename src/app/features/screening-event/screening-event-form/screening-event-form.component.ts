@@ -9,6 +9,7 @@ import {
   ScreeningEventCreate,
 } from 'src/app/core/_models/screening-event';
 import { GenericContentFormComponent } from 'src/app/core/generics/generic-content-form.component';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-screening-event-form',
@@ -16,7 +17,13 @@ import { GenericContentFormComponent } from 'src/app/core/generics/generic-conte
   styleUrls: ['./screening-event-form.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [ReactiveFormsModule, NgFor, NgIf, LocalIsoDateValueAccessorModule],
+  imports: [
+    NgFor,
+    NgIf,
+    LocalIsoDateValueAccessorModule,
+    ReactiveFormsModule,
+    RouterLink,
+  ],
 })
 export class ScreeningEventFormComponent
   extends GenericContentFormComponent<ScreeningEvent, ScreeningEventCreate>

@@ -22,4 +22,8 @@ export class ProjectionDetailsComponent implements OnInit {
       this.facade.setActiveId(params['id']);
     });
   }
+
+  delete(id: string): void {
+    this.facade.delete(id);
+  }
 }

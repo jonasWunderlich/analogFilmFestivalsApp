@@ -13,7 +13,6 @@ import { AnalogKinoBackendService } from 'src/app/core/services/analog-kino-http
 import { NotificationService } from 'src/app/core/services/notification.service';
 import * as CinemaActions from './cinema.actions';
 import { NOTIFICATION_MESSAGES } from 'src/app/core/constants/notification-messages';
-import { enteredCinemaOverview } from 'src/app/features/cinema/cinema-overview/cinema-overview.actions';
 import { enteredCinemaDetails } from 'src/app/features/cinema/cinema-details/cinema-details.actions';
 import { enteredCinemaEdit } from 'src/app/features/cinema/cinema-edit/cinema-edit.actions';
 
@@ -26,7 +25,7 @@ export class CinemaEffects {
 
   loadCinemas$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(CinemaActions.loadCinemas, enteredCinemaOverview),
+      ofType(CinemaActions.loadCinemas),
       switchMap(() =>
         this.analogHttpService.getCinemas().pipe(
           map((cinemas) => CinemaActions.loadCinemasSucceeded({ cinemas })),

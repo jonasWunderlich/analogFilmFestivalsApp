@@ -2,9 +2,9 @@ import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { selectActiveCinema } from 'src/app/+state/cinema-store/cinema.selectors';
 import { enteredCinemaDetails } from './cinema-details.actions';
-import { ProjectionService } from '../../projection/projection.service';
 import { selectCinemaProjections } from 'src/app/+state/projection-store/projection.selectors';
 import { selectCinemaReports } from 'src/app/+state/report-store/report.selectors';
+import { CinemaService } from '../cinema.service';
 
 @Injectable({
   providedIn: 'root',
@@ -16,7 +16,7 @@ export class CinemaDetailsService {
 
   constructor(
     private readonly store: Store,
-    private readonly common: ProjectionService
+    private readonly common: CinemaService
   ) {}
 
   setActiveId(id: string | undefined): void {

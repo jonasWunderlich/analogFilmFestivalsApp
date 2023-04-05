@@ -4,7 +4,7 @@ import { selectProjections } from 'src/app/+state/projection-store/projection.se
 import { enteredProjectionOverview } from './projection-overview.actions';
 import { first } from 'rxjs';
 import { updateCinemasOnMap } from 'src/app/+state/cinema-store/cinema.actions';
-import { ReportService } from '../../report/report.service';
+import { ProjectionService } from '../projection.service';
 
 @Injectable({
   providedIn: 'root',
@@ -14,7 +14,7 @@ export class ProjectionOverviewService {
 
   constructor(
     private readonly store: Store,
-    private readonly common: ReportService
+    private readonly common: ProjectionService
   ) {}
 
   delete(id: string): void {

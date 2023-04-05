@@ -13,7 +13,6 @@ import {
   triggerReportRemoval,
 } from 'src/app/features/report/report.actions';
 import { NOTIFICATION_MESSAGES } from 'src/app/core/constants/notification-messages';
-import { enteredReportOverview } from 'src/app/features/report/report-overview/report-overview.actions';
 import { enteredReportDetails } from 'src/app/features/report/report-details/report-details.actions';
 import { enteredReportEdit } from 'src/app/features/report/report-edit/report-edit.actions';
 
@@ -27,7 +26,7 @@ export class ReportEffects {
 
   loadReports$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(ReportActions.loadReports, enteredReportOverview),
+      ofType(ReportActions.loadReports),
       switchMap(() =>
         this.analogHttpService.getReports().pipe(
           map((reports) => ReportActions.loadReportsSucceeded({ reports })),

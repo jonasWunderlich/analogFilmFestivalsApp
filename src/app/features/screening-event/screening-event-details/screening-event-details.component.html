@@ -1,6 +1,12 @@
 <i>Event</i>
 
 <div *ngIf="event$ | ngrxPush as screeningEvent">
+  <app-overview-list-actions
+    path="event"
+    [id]="screeningEvent.id"
+    (deleteEvent)="delete(screeningEvent.id)"
+  ></app-overview-list-actions>
+
   <h2>{{ screeningEvent.title }} | {{ screeningEvent.type }}</h2>
   <p>{{ screeningEvent.start | date }} - {{ screeningEvent.end | date }}</p>
   <p>{{ screeningEvent.text }}</p>

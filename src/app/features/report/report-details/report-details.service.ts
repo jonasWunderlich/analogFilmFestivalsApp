@@ -5,12 +5,12 @@ import { selectQuerySearchedMovies } from 'src/app/+state/movie-store/movie.sele
 import { MOCKED_TMDB_QUERIES } from 'src/app/core/_mock/constants';
 import { sample } from 'lodash';
 import { enteredReportDetails } from './report-details.actions';
-import { ScreeningEventService } from '../../screening-event/screening-event.service';
 import { selectActiveReport } from 'src/app/+state/report-store/report.selectors';
 import { Subscription, first, of } from 'rxjs';
 import { updateCinemasOnMap } from 'src/app/+state/cinema-store/cinema.actions';
 import { selectActiveCinema } from 'src/app/+state/cinema-store/cinema.selectors';
 import { selectActiveScreeningEvent } from 'src/app/+state/screening-event-store/screening-event.selectors';
+import { ReportService } from '../report.service';
 
 @Injectable({
   providedIn: 'root',
@@ -25,7 +25,7 @@ export class ReportDetailsService {
 
   constructor(
     private readonly store: Store,
-    private readonly common: ScreeningEventService
+    private readonly common: ReportService
   ) {}
 
   setActiveId(id: string | undefined): void {

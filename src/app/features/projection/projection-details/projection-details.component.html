@@ -1,6 +1,12 @@
 <ng-container *ngIf="activeProjection$ | ngrxPush as projection">
   <i>Kino</i>
 
+  <app-overview-list-actions
+    path="projection"
+    [id]="projection.id"
+    (deleteEvent)="delete(projection.id)"
+  ></app-overview-list-actions>
+
   <h2>{{ projection?.title }}</h2>
   <p>{{ projection?.text }}</p>
 

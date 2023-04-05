@@ -22,6 +22,7 @@ import { Cinema, CinemaCreate } from 'src/app/core/_models/cinema';
 import { postCodeFormat } from 'src/app/core/validators/postcode.validator';
 import { GenericContentFormComponent } from 'src/app/core/generics/generic-content-form.component';
 import { Store } from '@ngrx/store';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-cinema-form',
@@ -29,7 +30,7 @@ import { Store } from '@ngrx/store';
   styleUrls: ['./cinema-form.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [ReactiveFormsModule, NgIf],
+  imports: [ReactiveFormsModule, NgIf, RouterLink],
 })
 export class CinemaFormComponent
   extends GenericContentFormComponent<Cinema, CinemaCreate>

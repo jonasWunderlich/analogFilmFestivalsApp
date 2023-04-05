@@ -1,4 +1,4 @@
-<div class="actions">
+<div class="actions" *ngIf="isAuthenticated$ | ngrxPush">
   <button class="small" [routerLink]="['/admin', path, id]">Bearbeiten</button>
   <button class="small" (click)="delete()">Löschen</button>
 </div>
