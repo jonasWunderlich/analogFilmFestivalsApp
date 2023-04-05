@@ -5,8 +5,13 @@ import { authGuard } from './core/guards/auth.guard';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'event',
+    redirectTo: 'about',
     pathMatch: 'full',
+  },
+  {
+    path: 'about',
+    loadChildren: () =>
+      import('./pages/about/about.module').then((m) => m.AboutModule),
   },
   {
     path: 'event',
