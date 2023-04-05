@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Projection, ProjectionCreate } from 'src/app/core/_models/projection';
 import { ProjectionEditService } from './projection-edit.service';
@@ -7,6 +7,7 @@ import { ProjectionEditService } from './projection-edit.service';
   selector: 'app-projection-edit',
   templateUrl: './projection-edit.component.html',
   styleUrls: ['./projection-edit.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProjectionEditComponent implements OnInit {
   projection$ = this.service.activeProjection$;

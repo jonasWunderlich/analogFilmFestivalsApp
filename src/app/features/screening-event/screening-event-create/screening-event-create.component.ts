@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ScreeningEventCreate } from 'src/app/core/_models/screening-event';
 import { ScreeningEventCreateService } from './screening-event-create.service';
 
@@ -6,6 +6,7 @@ import { ScreeningEventCreateService } from './screening-event-create.service';
   selector: 'app-screening-event-create',
   templateUrl: './screening-event-create.component.html',
   styleUrls: ['./screening-event-create.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScreeningEventCreateComponent {
   constructor(private readonly facade: ScreeningEventCreateService) {}

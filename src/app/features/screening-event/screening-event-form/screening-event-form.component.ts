@@ -1,5 +1,5 @@
 import { NgFor, NgIf } from '@angular/common';
-import { Component, OnChanges } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnChanges } from '@angular/core';
 import { ReactiveFormsModule, Validators } from '@angular/forms';
 import { LocalIsoDateValueAccessorModule } from 'angular-date-value-accessor';
 import { generateSelectOptionsFromEnum } from 'src/app/core/utilities/utilities';
@@ -14,6 +14,7 @@ import { GenericContentFormComponent } from 'src/app/core/generics/generic-conte
   selector: 'app-screening-event-form',
   templateUrl: './screening-event-form.component.html',
   styleUrls: ['./screening-event-form.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
   imports: [ReactiveFormsModule, NgFor, NgIf, LocalIsoDateValueAccessorModule],
 })

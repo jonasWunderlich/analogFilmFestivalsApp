@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Report, ReportCreate } from 'src/app/core/_models/report';
 import { ReportEditService } from './report-edit.service';
@@ -7,6 +7,7 @@ import { ReportEditService } from './report-edit.service';
   selector: 'app-report-edit',
   templateUrl: './report-edit.component.html',
   styleUrls: ['./report-edit.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ReportEditComponent implements OnInit {
   report$ = this.service.activeReport$;

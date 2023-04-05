@@ -1,5 +1,11 @@
 import { NgIf } from '@angular/common';
-import { Component, OnChanges, OnDestroy, OnInit } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  OnChanges,
+  OnDestroy,
+  OnInit,
+} from '@angular/core';
 import { ReactiveFormsModule, Validators } from '@angular/forms';
 import {
   Subscription,
@@ -15,11 +21,13 @@ import {
 import { Cinema, CinemaCreate } from 'src/app/core/_models/cinema';
 import { postCodeFormat } from 'src/app/core/validators/postcode.validator';
 import { GenericContentFormComponent } from 'src/app/core/generics/generic-content-form.component';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-cinema-form',
   templateUrl: './cinema-form.component.html',
   styleUrls: ['./cinema-form.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
   imports: [ReactiveFormsModule, NgIf],
 })
@@ -28,7 +36,10 @@ export class CinemaFormComponent
   implements OnInit, OnChanges, OnDestroy
 {
   subscrition = new Subscription();
-  constructor(private readonly ps: PositionstackService) {
+  constructor(
+    private readonly ps: PositionstackService,
+    private readonly store: Store
+  ) {
     super();
   }
 
@@ -76,6 +87,7 @@ export class CinemaFormComponent
             latitude: result.data[0].latitude,
             longitude: result.data[0].longitude,
           });
+          // TODO: find a way to update the map with entered coordinates
         })
     );
   }

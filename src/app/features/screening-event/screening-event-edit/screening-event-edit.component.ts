@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import {
   ScreeningEvent,
@@ -10,6 +10,7 @@ import { ScreeningEventEditService } from './screening-event-edit.service';
   selector: 'app-screening-event-edit',
   templateUrl: './screening-event-edit.component.html',
   styleUrls: ['./screening-event-edit.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScreeningEventEditComponent implements OnInit {
   screeningEvent$ = this.facade.event$;

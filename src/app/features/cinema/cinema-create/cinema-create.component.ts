@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { GeometryObject } from 'src/app/shared/ui/geo-map/geo-mapping.helper';
 import { CinemaCreate } from 'src/app/core/_models/cinema';
 import { CinemaService } from '../cinema.service';
@@ -7,6 +7,7 @@ import { CinemaService } from '../cinema.service';
   selector: 'app-cinema-create',
   templateUrl: './cinema-create.component.html',
   styleUrls: ['./cinema-create.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CinemaCreateComponent {
   constructor(private readonly service: CinemaService) {}

@@ -3,8 +3,6 @@ import { NgModule } from '@angular/core';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import { StoreModule } from '@ngrx/store';
-import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { environment } from 'src/environments/environment';
 import { CinemaStoreModule } from './cinema-store/cinema-store.module';
 import { MovieStoreModule } from './movie-store/movie-store.module';
 import { ReportStoreModule } from './report-store/report.module';
@@ -29,10 +27,11 @@ import { ProjectionStoreModule } from './projection-store/projection-store.modul
     ),
     EffectsModule.forRoot([]),
     StoreRouterConnectingModule.forRoot(),
-    StoreDevtoolsModule.instrument({
-      maxAge: 25, // Retains last 25 states
-      logOnly: environment.production, // Restrict extension to log-only mode
-    }),
+    // HINT: There seems to be an issue if the angular dev tools are running simultanesly
+    // StoreDevtoolsModule.instrument({
+    //   maxAge: 25, // Retains last 25 states
+    //   logOnly: environment.production, // Restrict extension to log-only mode
+    // }),
     CommonModule,
     ReportStoreModule,
     ScreeningEventStoreModule,

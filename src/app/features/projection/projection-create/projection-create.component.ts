@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ProjectionCreate } from 'src/app/core/_models/projection';
 import { ProjectionService } from '../projection.service';
 
@@ -6,6 +6,7 @@ import { ProjectionService } from '../projection.service';
   selector: 'app-projection-create',
   templateUrl: './projection-create.component.html',
   styleUrls: ['./projection-create.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProjectionCreateComponent {
   constructor(private readonly service: ProjectionService) {}

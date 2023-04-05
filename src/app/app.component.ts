@@ -1,4 +1,4 @@
-import { Component, Inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Inject } from '@angular/core';
 import { APP_TITLE } from './app.module';
 import { AuthService } from './core/services/auth.service';
 import { Store } from '@ngrx/store';
@@ -11,6 +11,7 @@ import { loadReports } from './+state/report-store/report.actions';
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent {
   appTitle?: string;

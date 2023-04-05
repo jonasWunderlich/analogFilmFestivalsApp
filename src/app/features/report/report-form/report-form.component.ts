@@ -1,5 +1,5 @@
 import { NgFor, NgIf } from '@angular/common';
-import { Component, OnChanges } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnChanges } from '@angular/core';
 import { ReactiveFormsModule, Validators } from '@angular/forms';
 import { LocalIsoDateValueAccessorModule } from 'angular-date-value-accessor';
 import { Report, ReportCreate } from 'src/app/core/_models/report';
@@ -9,6 +9,7 @@ import { GenericContentFormComponent } from 'src/app/core/generics/generic-conte
   selector: 'app-report-form',
   templateUrl: './report-form.component.html',
   styleUrls: ['./report-form.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
   imports: [NgFor, NgIf, ReactiveFormsModule, LocalIsoDateValueAccessorModule],
 })

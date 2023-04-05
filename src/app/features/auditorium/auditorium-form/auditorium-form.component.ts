@@ -1,5 +1,11 @@
 import { NgFor } from '@angular/common';
-import { Component, EventEmitter, inject, Output } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  inject,
+  Output,
+} from '@angular/core';
 import {
   NonNullableFormBuilder,
   ReactiveFormsModule,
@@ -20,6 +26,7 @@ import {
   selector: 'app-auditorium-form',
   templateUrl: './auditorium-form.component.html',
   styleUrls: ['./auditorium-form.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
   imports: [ReactiveFormsModule, NgFor],
 })
