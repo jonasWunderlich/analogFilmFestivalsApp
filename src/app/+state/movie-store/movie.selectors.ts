@@ -1,4 +1,4 @@
-import { createFeatureSelector, createSelector, select } from '@ngrx/store';
+import { createFeatureSelector, createSelector } from '@ngrx/store';
 import * as fromMovie from './movie.reducer';
 
 export const selectMovieState = createFeatureSelector<fromMovie.MoviesState>(

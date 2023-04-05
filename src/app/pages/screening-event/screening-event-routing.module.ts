@@ -9,7 +9,6 @@ const routes: Routes = [
     title: 'Events',
     component: ScreeningEventOverviewComponent,
   },
-
   {
     path: ':id',
     title: 'Event',

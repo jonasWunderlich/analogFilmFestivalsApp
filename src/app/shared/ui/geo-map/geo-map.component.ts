@@ -9,11 +9,6 @@ import {
 import { centerView } from './geo.interaction.utilities';
 import { GeoMapService } from './geo-map.service';
 
-export enum MapMode {
-  POINT = 'POINT',
-  POINTS = 'POINTS',
-}
-
 @Component({
   selector: 'app-geo-map',
   templateUrl: './geo-map.component.html',
@@ -23,22 +18,6 @@ export enum MapMode {
 })
 export class GeoMapComponent {
   map?: Map;
-  mode?: MapMode;
-
-  @Input()
-  set geoObject(obj: GeometryObject | undefined) {
-    if (obj) {
-      if (!this.map || this.mode === MapMode.POINTS) {
-        this.geoMapService.buildSingleFeatureMap(
-          obj.geoCoordinates || [],
-          'ol-map'
-        );
-      } else {
-        console.log('update point');
-      }
-    }
-    this.mode = MapMode.POINT;
-  }
 
   @Input()
   set geoArray(arr: GeometryObject[] | undefined) {
@@ -57,7 +36,6 @@ export class GeoMapComponent {
         centerView(this.map, coordinates);
       }
     }
-    this.mode = MapMode.POINT;
   }
 
   constructor(private readonly geoMapService: GeoMapService) {}
