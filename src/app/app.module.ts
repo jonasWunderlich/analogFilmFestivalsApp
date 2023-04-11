@@ -23,7 +23,24 @@ import { LayoutComponent } from './layout/layout/layout.component';
 import { GeoMapComponent } from './shared/ui/geo-map/geo-map.component';
 registerLocaleData(localeDe);
 
-export const APP_TITLE = new InjectionToken<string>('app-title');
+export interface AppConfig {
+  title: string;
+  theme: string;
+  enableAdmin: boolean;
+  mockMode: boolean;
+}
+
+const defaultConfig: AppConfig = {
+  title: 'analogkino.net',
+  theme: 'dark',
+  enableAdmin: true,
+  mockMode: true,
+};
+
+export const APP_CONFIG = new InjectionToken<AppConfig>('app-config', {
+  providedIn: 'root',
+  factory: () => defaultConfig,
+});
 
 @NgModule({
   declarations: [AppComponent, LayoutComponent],
@@ -45,7 +62,7 @@ export const APP_TITLE = new InjectionToken<string>('app-title');
     PushModule,
   ],
   providers: [
-    { provide: APP_TITLE, useValue: 'analogkino.net' },
+    { provide: APP_CONFIG, useValue: defaultConfig },
     { provide: LOCALE_ID, useValue: 'de-DE' },
     { provide: LocationStrategy, useClass: HashLocationStrategy },
     { provide: TitleStrategy, useClass: CustomTitleStrategy },

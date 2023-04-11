@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { LayoutService } from './layout.service';
 
 @Component({
@@ -9,7 +9,6 @@ import { LayoutService } from './layout.service';
   providers: [LayoutService],
 })
 export class LayoutComponent {
+  service = inject(LayoutService);
   $selectedGeoData = this.service.$selectedGeoData;
-
-  constructor(private readonly service: LayoutService) {}
 }

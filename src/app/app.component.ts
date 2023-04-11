@@ -1,5 +1,5 @@
-import { ChangeDetectionStrategy, Component, Inject } from '@angular/core';
-import { APP_TITLE } from './app.module';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { APP_CONFIG } from './app.module';
 import { AuthService } from './core/services/auth.service';
 import { Store } from '@ngrx/store';
 import { loadCinemas } from './+state/cinema-store/cinema.actions';
@@ -14,14 +14,13 @@ import { loadReports } from './+state/report-store/report.actions';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent {
-  appTitle?: string;
-  constructor(
-    @Inject(APP_TITLE) appTitle: string,
-    public readonly auth: AuthService,
-    public readonly store: Store
-  ) {
-    this.appTitle = appTitle;
+  auth = inject(AuthService);
+  store = inject(Store);
+  appConfig = inject(APP_CONFIG);
+  appTitle = this.appConfig.title;
+  theme = this.appConfig.theme;
 
+  constructor() {
     this.store.dispatch(loadScreeningEvents());
     this.store.dispatch(loadProjections());
     this.store.dispatch(loadCinemas());
