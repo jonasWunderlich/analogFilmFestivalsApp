@@ -1,9 +1,10 @@
-import { sample, uniqueId } from 'lodash';
+import { uniqueId } from 'lodash';
 import { DeepPartial } from '@ngneat/reactive-forms/lib/types';
 import { Projection } from '../_models/projection';
 import {
   addDays,
   mockNumber,
+  pickRandom,
   randomDate,
   sortByISODate,
 } from '../utilities/mock-data';
@@ -41,12 +42,12 @@ export function mockProjection(
     id,
     createdAt: PROJECTION_DEFAULT_VALUES.createdAt,
     lastModifiedAt: PROJECTION_DEFAULT_VALUES.lastModifiedAt,
-    title: sample(MOCKED_PROJECTION_NAMES) || PROJECTION_DEFAULT_VALUES.title,
+    title: pickRandom(MOCKED_PROJECTION_NAMES),
     date: date.toJSON(),
-    tmdb: sample(MOCKED_TMDBIDS),
+    tmdb: pickRandom(MOCKED_TMDBIDS),
     text: PROJECTION_DEFAULT_VALUES.text,
     agent: PROJECTION_DEFAULT_VALUES.agent,
-    black: sample([true, false]) || false,
+    black: pickRandom([true, false]) || false,
   };
   return {
     ...defaultValues,

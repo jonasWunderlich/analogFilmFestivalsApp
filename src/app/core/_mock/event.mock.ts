@@ -1,4 +1,4 @@
-import { sample, uniqueId } from 'lodash';
+import { uniqueId } from 'lodash';
 import { DeepPartial } from '@ngneat/reactive-forms/lib/types';
 import { ScreeningEvent } from '../_models/screening-event';
 import { ScreeningEventType } from '../_models/sceening-event-type';
@@ -7,6 +7,7 @@ import {
   CHAR_NUMBERS,
   mockCharString,
   mockNumber,
+  pickRandom,
   randomDate,
   sortByISODate,
 } from '../utilities/mock-data';
@@ -50,7 +51,7 @@ export function mockScreeningEvent(
 ): ScreeningEvent {
   const id = uniqueId();
   const start = randomDate(new Date(), new Date(2023, 12, 0));
-  const eventType = sample([
+  const eventType = pickRandom([
     ScreeningEventType.FESTIVAL,
     ScreeningEventType.SERIES,
     ScreeningEventType.SINGLE,
@@ -60,16 +61,16 @@ export function mockScreeningEvent(
     id,
     createdAt: SCREENING_EVENT_DEFAULT_VALUES.createdAt,
     lastModifiedAt: SCREENING_EVENT_DEFAULT_VALUES.lastModifiedAt,
-    title: sample(MOCKED_EVENT_NAMES) || SCREENING_EVENT_DEFAULT_VALUES.title,
+    title: pickRandom(MOCKED_EVENT_NAMES),
     type: eventType,
-    text: sample(MOCKED_EVENT_TEXTS),
+    text: pickRandom(MOCKED_EVENT_TEXTS),
     start: start.toJSON(),
     end:
       eventType !== ScreeningEventType.SINGLE
         ? addDays(start, eventLength).toJSON()
         : undefined,
-    city: sample(MOCKED_CITIES),
-    street: `${sample(MOCKED_STREETS)} ${mockNumber(1, 400)}`,
+    city: pickRandom(MOCKED_CITIES),
+    street: `${pickRandom(MOCKED_STREETS)} ${mockNumber(1, 400)}`,
     postcode: mockCharString(5, CHAR_NUMBERS),
     linkHomepage: SCREENING_EVENT_DEFAULT_VALUES.linkHomepage,
     linkProgram: SCREENING_EVENT_DEFAULT_VALUES.linkProgram,

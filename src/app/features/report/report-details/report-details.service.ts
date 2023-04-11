@@ -3,7 +3,6 @@ import { Store } from '@ngrx/store';
 import { searchMoviesByQuery } from 'src/app/+state/movie-store/movie.actions';
 import { selectQuerySearchedMovies } from 'src/app/+state/movie-store/movie.selectors';
 import { MOCKED_TMDB_QUERIES } from 'src/app/core/_mock/constants';
-import { sample } from 'lodash';
 import { enteredReportDetails } from './report-details.actions';
 import { selectActiveReport } from 'src/app/+state/report-store/report.selectors';
 import { Subscription, first, of } from 'rxjs';
@@ -11,6 +10,7 @@ import { updateCinemasOnMap } from 'src/app/+state/cinema-store/cinema.actions';
 import { selectActiveCinema } from 'src/app/+state/cinema-store/cinema.selectors';
 import { selectActiveScreeningEvent } from 'src/app/+state/screening-event-store/screening-event.selectors';
 import { ReportService } from '../report.service';
+import { pickRandom } from 'src/app/core/utilities/mock-data';
 
 @Injectable({
   providedIn: 'root',
@@ -40,9 +40,7 @@ export class ReportDetailsService {
 
   dispatch(): void {
     // this.store.dispatch(searchMoviesByIds(MOCKED_TMDBIDS));
-    this.store.dispatch(
-      searchMoviesByQuery(sample(MOCKED_TMDB_QUERIES) || 'ass')
-    );
+    this.store.dispatch(searchMoviesByQuery(pickRandom(MOCKED_TMDB_QUERIES)));
     this.activeReport$.pipe(first()).subscribe((report) => {
       // TODO: find more elegant way to dispatch id collection
       if (report?.cinemaRef) {

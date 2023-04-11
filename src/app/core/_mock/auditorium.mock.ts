@@ -1,7 +1,11 @@
-import { sample, uniqueId } from 'lodash';
+import { uniqueId } from 'lodash';
 import { DeepPartial } from '@ngneat/reactive-forms/lib/types';
 
-import { getRandomSubarray, mockNumber } from '../utilities/mock-data';
+import {
+  getRandomSubarray,
+  mockNumber,
+  pickRandom,
+} from '../utilities/mock-data';
 import { Auditorium } from '../_models/auditorium';
 
 const AUDITORIUM_DEFAULT_VALUES: Auditorium = {
@@ -59,7 +63,7 @@ export function mockAuditorium(
       AUDITORIUM_DEFAULT_VALUES.attributes,
       mockNumber(0, AUDITORIUM_DEFAULT_VALUES.attributes?.length)
     ),
-    seats: sample([40, 300, 200, 90]) || AUDITORIUM_DEFAULT_VALUES.seats,
+    seats: pickRandom([40, 300, 200, 90]),
     screen: AUDITORIUM_DEFAULT_VALUES.screen,
     reportRefs: AUDITORIUM_DEFAULT_VALUES.reportRefs,
     images: [],

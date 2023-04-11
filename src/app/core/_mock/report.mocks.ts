@@ -1,6 +1,6 @@
-import { sample, uniqueId } from 'lodash';
+import { uniqueId } from 'lodash';
 import { DeepPartial } from '@ngneat/reactive-forms/lib/types';
-import { randomDate, sortByISODate } from '../utilities/mock-data';
+import { pickRandom, randomDate, sortByISODate } from '../utilities/mock-data';
 import { Report } from '../_models/report';
 import { MOCKED_REPORT_NAMES, MOCKED_REPORT_TEXTS } from './constants';
 
@@ -35,8 +35,8 @@ export function mockReport(reportValues: DeepPartial<Report>): Report {
     id,
     createdAt: REPORT_DEFAULT_VALUES.createdAt,
     lastModifiedAt: REPORT_DEFAULT_VALUES.lastModifiedAt,
-    title: sample(MOCKED_REPORT_NAMES) || REPORT_DEFAULT_VALUES.title,
-    text: sample(MOCKED_REPORT_TEXTS) || REPORT_DEFAULT_VALUES.text,
+    title: pickRandom(MOCKED_REPORT_NAMES),
+    text: pickRandom(MOCKED_REPORT_TEXTS),
     date: date.toJSON(),
     images: REPORT_DEFAULT_VALUES.images,
   };

@@ -1,4 +1,3 @@
-import { sample, uniqueId } from 'lodash';
 import { DeepPartial } from '@ngneat/reactive-forms/lib/types';
 
 import { Cinema } from '../_models/cinema';
@@ -7,6 +6,7 @@ import {
   mockCharString,
   mockCoordinates,
   mockNumber,
+  pickRandom,
 } from '../utilities/mock-data';
 import {
   MOCKED_CINEMA_IMAGES,
@@ -15,6 +15,7 @@ import {
   MOCKED_STREETS,
 } from './constants';
 import { mockAuditoriums } from './auditorium.mock';
+import { uniqueId } from 'lodash';
 
 const CINEMA_DEFAULT_VALUES: Cinema = {
   id: '0',
@@ -55,19 +56,19 @@ export function mockCinema(cinemaValues: DeepPartial<Cinema>): Cinema {
     id,
     createdAt: CINEMA_DEFAULT_VALUES.createdAt,
     lastModifiedAt: CINEMA_DEFAULT_VALUES.lastModifiedAt,
-    title: sample(MOCKED_CINEMA_NAMES) || CINEMA_DEFAULT_VALUES.title,
+    title: pickRandom(MOCKED_CINEMA_NAMES),
     geoCoordinates: mockCoordinates(),
     text: CINEMA_DEFAULT_VALUES.text,
     linkOpeningHours: CINEMA_DEFAULT_VALUES.linkOpeningHours,
-    city: sample(MOCKED_CITIES),
-    street: `${sample(MOCKED_STREETS)} ${mockNumber(1, 400)}`,
+    city: pickRandom(MOCKED_CITIES),
+    street: `${pickRandom(MOCKED_STREETS)} ${mockNumber(1, 400)}`,
     postcode: mockCharString(5, CHAR_NUMBERS),
     linkHomepage: CINEMA_DEFAULT_VALUES.linkHomepage,
     linkProgram: CINEMA_DEFAULT_VALUES.linkProgram,
     mail: CINEMA_DEFAULT_VALUES.mail,
     phone: CINEMA_DEFAULT_VALUES.phone,
     //auditoriums: mockAuditoriums(mockNumber(1, 12), { cinemaRef: id }),
-    images: [sample(MOCKED_CINEMA_IMAGES) || CINEMA_DEFAULT_VALUES.images[0]],
+    images: [pickRandom(MOCKED_CINEMA_IMAGES)],
     reportRefs: [],
     eventRefs: [],
     auditoriumRefs: [],

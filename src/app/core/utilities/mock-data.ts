@@ -3,6 +3,10 @@ import { Coordinate } from 'ol/coordinate';
 export const CHAR_NUMBERS = '0123456789';
 export const CHAR_FULL = 'abcdefghijklmnopqrstuvwxyz0123456789';
 
+export function pickRandom<T>(arr: Array<T>): T {
+  return arr[mockNumber(0, arr.length - 1)];
+}
+
 export function mockNumber(min: number, max: number): number {
   return Math.round(Math.random() * (max - min)) + min;
 }
