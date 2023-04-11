@@ -7,9 +7,7 @@ import { selectCinemaReports } from 'src/app/+state/report-store/report.selector
 import { CinemaService } from '../cinema.service';
 import { of } from 'rxjs';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
 export class CinemaDetailsService {
   cinema$ = this.store.select(selectActiveCinema);
   projections$ = this.store.select(selectCinemaProjections);

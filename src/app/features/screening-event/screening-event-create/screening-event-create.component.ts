@@ -7,6 +7,7 @@ import { ScreeningEventCreateService } from './screening-event-create.service';
   templateUrl: './screening-event-create.component.html',
   styleUrls: ['./screening-event-create.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [ScreeningEventCreateService],
 })
 export class ScreeningEventCreateComponent {
   constructor(private readonly facade: ScreeningEventCreateService) {}

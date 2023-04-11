@@ -6,6 +6,7 @@ import { ReportOverviewService } from './report-overview.service';
   templateUrl: './report-overview.component.html',
   styleUrls: ['./report-overview.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [ReportOverviewService],
 })
 export class ReportOverviewComponent {
   reports$ = this.facade.reports$;

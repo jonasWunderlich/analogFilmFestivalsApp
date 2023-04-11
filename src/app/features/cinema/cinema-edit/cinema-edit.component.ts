@@ -8,6 +8,7 @@ import { CinemaEditService } from './cinema-edit.service';
   templateUrl: './cinema-edit.component.html',
   styleUrls: ['./cinema-edit.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [CinemaEditService],
 })
 export class CinemaEditComponent implements OnInit {
   cinema$ = this.service.activeCinema$;

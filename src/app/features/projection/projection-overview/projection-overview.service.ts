@@ -6,9 +6,7 @@ import { first } from 'rxjs';
 import { updateCinemasOnMap } from 'src/app/+state/cinema-store/cinema.actions';
 import { ProjectionService } from '../projection.service';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
 export class ProjectionOverviewService {
   projections$ = this.store.select(selectProjections);
 

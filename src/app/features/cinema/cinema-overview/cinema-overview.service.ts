@@ -4,9 +4,7 @@ import { selectCinemas } from 'src/app/+state/cinema-store/cinema.selectors';
 import { CinemaService } from '../cinema.service';
 import { enteredCinemaOverview } from './cinema-overview.actions';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
 export class CinemaOverviewService {
   cinemas$ = this.store.select(selectCinemas);
 

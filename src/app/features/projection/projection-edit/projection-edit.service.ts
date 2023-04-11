@@ -5,9 +5,7 @@ import { ProjectionCreate } from 'src/app/core/_models/projection';
 import { ProjectionService } from '../projection.service';
 import { enteredProjectionEdit } from './projection-edit.actions';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
 export class ProjectionEditService {
   activeProjectionId?: string;
   activeProjection$ = this.store.select(selectActiveProjection);

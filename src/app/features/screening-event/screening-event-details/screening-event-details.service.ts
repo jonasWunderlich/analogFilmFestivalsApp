@@ -13,9 +13,7 @@ import { enteredScreeningEventDetails } from './screening-event-details.actions'
 import { dispatchMap } from 'src/app/core/utilities/store-selectors.utilities';
 import { pickRandom } from 'src/app/core/utilities/mock-data';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
 export class ScreeningEventDetailsService {
   event$ = this.store.select(selectActiveScreeningEvent);
   relatedCinemas$ = this.store.select(selectScreeningEventCinemas);

@@ -8,6 +8,7 @@ import { ProjectionEditService } from './projection-edit.service';
   templateUrl: './projection-edit.component.html',
   styleUrls: ['./projection-edit.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [ProjectionEditService],
 })
 export class ProjectionEditComponent implements OnInit {
   projection$ = this.service.activeProjection$;

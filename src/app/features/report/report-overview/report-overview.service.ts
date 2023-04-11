@@ -6,9 +6,7 @@ import { enteredReportOverview } from './report-overview.actions';
 import { first } from 'rxjs';
 import { updateCinemasOnMap } from 'src/app/+state/cinema-store/cinema.actions';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
 export class ReportOverviewService {
   reports$ = this.store.select(selectReports);
 

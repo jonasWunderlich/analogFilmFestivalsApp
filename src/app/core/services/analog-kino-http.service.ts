@@ -20,7 +20,7 @@ export enum CONTENT_TYPE {
 }
 
 @Injectable({
-  providedIn: 'platform',
+  providedIn: 'root',
 })
 export class AnalogKinoBackendService {
   refApiMocks = buildRefrencedApiMocks();

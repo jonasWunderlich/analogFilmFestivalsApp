@@ -6,6 +6,7 @@ import { CinemaOverviewService } from './cinema-overview.service';
   templateUrl: './cinema-overview.component.html',
   styleUrls: ['./cinema-overview.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [CinemaOverviewService],
 })
 export class CinemaOverviewComponent {
   cinemas$ = this.facade.cinemas$;

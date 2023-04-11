@@ -12,9 +12,7 @@ import { selectActiveScreeningEvent } from 'src/app/+state/screening-event-store
 import { ReportService } from '../report.service';
 import { pickRandom } from 'src/app/core/utilities/mock-data';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
 export class ReportDetailsService {
   activeReport$ = this.store.select(selectActiveReport);
   relatedMovies$ = this.store.select(selectQuerySearchedMovies);

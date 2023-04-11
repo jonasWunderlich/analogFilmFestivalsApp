@@ -11,7 +11,7 @@ import { Observable, forkJoin } from 'rxjs';
 const TMDB_API_KEY = '05180a707de5ada5dc9a38cd1f8da87b';
 
 @Injectable({
-  providedIn: 'platform',
+  providedIn: 'root',
 })
 export class TmdbHttpService {
   searchMovies(query: string): Observable<TMDbSearchMovies | null> {

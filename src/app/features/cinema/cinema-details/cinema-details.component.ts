@@ -7,6 +7,7 @@ import { CinemaDetailsService } from './cinema-details.service';
   templateUrl: './cinema-details.component.html',
   styleUrls: ['./cinema-details.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [CinemaDetailsService],
 })
 export class CinemaDetailsComponent implements OnInit {
   cinema$ = this.facade.cinema$;

@@ -7,6 +7,7 @@ import { ScreeningEventDetailsService } from './screening-event-details.service'
   templateUrl: './screening-event-details.component.html',
   styleUrls: ['./screening-event-details.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [ScreeningEventDetailsService],
 })
 export class ScreeningEventDetailsComponent implements OnInit {
   event$ = this.facade.event$;

@@ -6,6 +6,7 @@ import { ProjectionOverviewService } from './projection-overview.service';
   templateUrl: './projection-overview.component.html',
   styleUrls: ['./projection-overview.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [ProjectionOverviewService],
 })
 export class ProjectionOverviewComponent {
   projections$ = this.facade.projections$;

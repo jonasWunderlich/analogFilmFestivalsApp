@@ -8,6 +8,7 @@ import { ReportEditService } from './report-edit.service';
   templateUrl: './report-edit.component.html',
   styleUrls: ['./report-edit.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [ReportEditService],
 })
 export class ReportEditComponent implements OnInit {
   report$ = this.service.activeReport$;

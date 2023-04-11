@@ -7,6 +7,7 @@ import { ProjectionDetailsService } from './projection-details.service';
   templateUrl: './projection-details.component.html',
   styleUrls: ['./projection-details.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [ProjectionDetailsService],
 })
 export class ProjectionDetailsComponent implements OnInit {
   activeProjection$ = this.facade.activeProjection$;

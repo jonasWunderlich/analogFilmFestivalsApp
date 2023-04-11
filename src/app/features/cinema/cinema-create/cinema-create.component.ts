@@ -12,6 +12,8 @@ import { CinemaService } from '../cinema.service';
 export class CinemaCreateComponent {
   constructor(private readonly service: CinemaService) {}
 
+  hasUnsavedChanges = false;
+
   // TODO: Share Placeholder model between form & map
   geoPlaceholder: GeometryObject = {
     geoCoordinates: [12.3195136, 51.3266199],

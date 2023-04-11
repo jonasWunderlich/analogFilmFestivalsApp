@@ -7,6 +7,7 @@ import { ReportDetailsService } from './report-details.service';
   templateUrl: './report-details.component.html',
   styleUrls: ['./report-details.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [ReportDetailsService],
 })
 export class ReportDetailsComponent implements OnInit {
   activeReport$ = this.facade.activeReport$;

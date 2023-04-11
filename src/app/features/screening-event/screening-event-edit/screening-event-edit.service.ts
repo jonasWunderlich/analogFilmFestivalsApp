@@ -7,9 +7,7 @@ import { ScreeningEventService } from '../screening-event.service';
 import { enteredScreeningEventEdit } from './screening-event-edit.actions';
 import { ScreeningEventCreate } from 'src/app/core/_models/screening-event';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
 export class ScreeningEventEditService {
   activeEventId?: string;
   event$ = this.store.select(selectActiveScreeningEvent);

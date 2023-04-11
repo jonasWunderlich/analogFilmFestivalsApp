@@ -7,6 +7,7 @@ import { ScreeningEventOverviewService } from './screening-event-overview.servic
   templateUrl: './screening-event-overview.component.html',
   styleUrls: ['./screening-event-overview.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [ScreeningEventOverviewService],
 })
 export class ScreeningEventOverviewComponent implements OnInit {
   calendarOptions: CalendarOptions = {};

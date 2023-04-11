@@ -11,6 +11,7 @@ import { ScreeningEventEditService } from './screening-event-edit.service';
   templateUrl: './screening-event-edit.component.html',
   styleUrls: ['./screening-event-edit.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [ScreeningEventEditService],
 })
 export class ScreeningEventEditComponent implements OnInit {
   screeningEvent$ = this.facade.event$;

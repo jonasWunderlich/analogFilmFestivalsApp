@@ -5,9 +5,7 @@ import { ReportCreate } from 'src/app/core/_models/report';
 import { ReportService } from '../report.service';
 import { enteredReportEdit } from './report-edit.actions';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
 export class ReportEditService {
   activeReportId?: string;
   activeReport$ = this.store.select(selectActiveReport);

@@ -2,9 +2,7 @@ import { Injectable } from '@angular/core';
 import { ScreeningEventCreate } from 'src/app/core/_models/screening-event';
 import { ScreeningEventService } from '../screening-event.service';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
 export class ScreeningEventCreateService {
   constructor(private readonly common: ScreeningEventService) {}
 

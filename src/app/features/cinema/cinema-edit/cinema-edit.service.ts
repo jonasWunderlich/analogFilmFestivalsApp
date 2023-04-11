@@ -5,9 +5,7 @@ import { CinemaCreate } from 'src/app/core/_models/cinema';
 import { CinemaService } from '../cinema.service';
 import { enteredCinemaEdit } from './cinema-edit.actions';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
 export class CinemaEditService {
   private _activeCinemaId?: string;
   activeCinema$ = this.store.select(selectActiveCinema);

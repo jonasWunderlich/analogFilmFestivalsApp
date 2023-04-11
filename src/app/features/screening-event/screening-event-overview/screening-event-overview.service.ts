@@ -5,9 +5,7 @@ import { ScreeningEventService } from '../screening-event.service';
 import { first } from 'rxjs';
 import { updateCinemasOnMap } from 'src/app/+state/cinema-store/cinema.actions';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
 export class ScreeningEventOverviewService {
   events$ = this.store.select(selectScreeningEvents);
 
