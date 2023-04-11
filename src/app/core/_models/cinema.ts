@@ -21,8 +21,7 @@ export interface Cinema extends CinemaCreate {
   createdAt?: string;
   lastModifiedAt?: string;
   title: string;
-
-  geoCoordinates: Coordinate;
+  geoCoordinates: number[];
   text?: string;
   street?: string;
   postcode?: string;
@@ -33,11 +32,8 @@ export interface Cinema extends CinemaCreate {
   linkProgram?: string;
   linkOpeningHours?: string;
   images: string[];
-
-  // TODO: Fix reference models
-  auditoriums?: Auditorium[];
-  auditoriumRefs?: string[];
-  eventRef?: string[];
-  projectionRefs?: string[];
-  reportRefs?: string[];
+  auditoriumRefs: string[];
+  projectionRefs: string[];
+  reportRefs: string[];
+  eventRefs: string[];
 }

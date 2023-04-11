@@ -22,7 +22,9 @@ const AUDITORIUM_DEFAULT_VALUES: Auditorium = {
     'Loge',
     'Bar',
   ],
-  reports: [],
+  images: [],
+  cinemaRef: '',
+  reportRefs: [],
 };
 
 /**
@@ -59,7 +61,9 @@ export function mockAuditorium(
     ),
     seats: sample([40, 300, 200, 90]) || AUDITORIUM_DEFAULT_VALUES.seats,
     screen: AUDITORIUM_DEFAULT_VALUES.screen,
-    reports: AUDITORIUM_DEFAULT_VALUES.reports,
+    reportRefs: AUDITORIUM_DEFAULT_VALUES.reportRefs,
+    images: [],
+    cinemaRef: '',
   };
   return {
     ...defaultValues,

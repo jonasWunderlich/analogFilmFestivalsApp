@@ -16,13 +16,13 @@ export interface Projection extends ProjectionCreate {
   lastModifiedAt?: string;
   title: string;
   text: string;
-
   date: string;
+  images?: string[];
   tmdb?: string;
-  character?: ProjectionCharacter[];
   black?: boolean;
   agent?: string;
-
-  cinemaRef?: string;
   reportRefs?: string[];
+  cinemaRef?: string;
+  eventRef?: string;
+  auditoriumRef?: string;
 }

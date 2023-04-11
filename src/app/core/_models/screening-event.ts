@@ -19,7 +19,6 @@ export interface ScreeningEvent extends ScreeningEventCreate {
   id: string;
   createdAt?: string;
   lastModifiedAt?: string;
-
   title: string;
   start: string;
   end?: string;
@@ -32,7 +31,7 @@ export interface ScreeningEvent extends ScreeningEventCreate {
   phone?: string;
   linkHomepage?: string;
   linkProgram?: string;
-
+  images?: string[];
   cinemaRefs: string[];
   projectionRefs?: string[];
   reportRefs?: string[];

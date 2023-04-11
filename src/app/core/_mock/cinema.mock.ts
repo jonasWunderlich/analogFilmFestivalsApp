@@ -26,14 +26,17 @@ const CINEMA_DEFAULT_VALUES: Cinema = {
   street: 'Spinnereistrasse 1',
   postcode: '04177',
   city: 'Leipzig',
-  auditoriums: mockAuditoriums(2),
+  //auditoriums: mockAuditoriums(2),
   mail: 'kontakt@mockedcinema.de',
   phone: '+49123456789',
   linkHomepage: 'https://www.example.com',
   linkProgram: 'https://www.example.com',
   linkOpeningHours: 'https://www.cinema.de/hours',
-  reportRefs: [],
   images: [MOCKED_CINEMA_IMAGES[0]],
+  reportRefs: [],
+  eventRefs: [],
+  auditoriumRefs: [],
+  projectionRefs: [],
 };
 
 /**
@@ -63,11 +66,12 @@ export function mockCinema(cinemaValues: DeepPartial<Cinema>): Cinema {
     linkProgram: CINEMA_DEFAULT_VALUES.linkProgram,
     mail: CINEMA_DEFAULT_VALUES.mail,
     phone: CINEMA_DEFAULT_VALUES.phone,
-    auditoriums: mockAuditoriums(mockNumber(1, 12), { cinemaRef: id }),
-    reportRefs: [],
+    //auditoriums: mockAuditoriums(mockNumber(1, 12), { cinemaRef: id }),
     images: [sample(MOCKED_CINEMA_IMAGES) || CINEMA_DEFAULT_VALUES.images[0]],
-    projectionRefs: [],
+    reportRefs: [],
+    eventRefs: [],
     auditoriumRefs: [],
+    projectionRefs: [],
   };
   return {
     ...defaultValues,

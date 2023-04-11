@@ -64,9 +64,7 @@ export interface Auditorium extends AuditoriumCreate {
   seats: number;
   sound: string[];
   text: string;
-
-  // TODO: Fix reference models
+  images: string[];
   cinemaRef?: string;
-  reports?: Report[];
   reportRefs?: string[];
 }

@@ -2,7 +2,7 @@ export interface ReportCreate {
   title: string;
   date: string;
   text: string;
-  images?: string;
+  images?: string[];
 }
 
 export interface Report extends ReportCreate {
@@ -10,11 +10,9 @@ export interface Report extends ReportCreate {
   createdAt: string;
   lastModifiedAt: string;
   title: string;
-
-  date: string;
   text: string;
-  images?: string;
-
+  date: string;
+  images?: string[];
   eventRef?: string;
   projectionRef?: string;
   cinemaRef?: string;

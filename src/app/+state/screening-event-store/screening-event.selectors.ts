@@ -8,6 +8,7 @@ import { selectRouteParams } from 'src/app/+state/routing-store/router.reducer';
 import { neitherNullNorUndefined } from 'src/app/core/utilities/null-or-undefined';
 import { ScreeningEvent } from 'src/app/core/_models/screening-event';
 import * as fromScreeningEvent from './screening-event.reducer';
+import { filterEntitiesByIds } from 'src/app/core/utilities/store-selectors.utilities';
 
 export const selectScreeningEventState =
   createFeatureSelector<fromScreeningEvent.State>(
@@ -31,7 +32,7 @@ export const selectScreeningEvents = createSelector(
   selectAllProjection
 );
 
-/* select screeningEvent via id */
+/* select screeningEvent via ids */
 
 export const selectScreeningEventByIds = (
   ids: string[]
@@ -43,9 +44,7 @@ export const selectScreeningEventByIds = (
   return createSelector(
     selectScreeningEvents,
     (screeningEvents: ScreeningEvent[] = []): ScreeningEvent[] =>
-      screeningEvents.filter(
-        (screeningEvent) => ids.indexOf(screeningEvent.id) > -1
-      )
+      filterEntitiesByIds(ids, screeningEvents)
   );
 };
 

@@ -5,6 +5,7 @@ import { enteredCinemaDetails } from './cinema-details.actions';
 import { selectCinemaProjections } from 'src/app/+state/projection-store/projection.selectors';
 import { selectCinemaReports } from 'src/app/+state/report-store/report.selectors';
 import { CinemaService } from '../cinema.service';
+import { of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -13,6 +14,7 @@ export class CinemaDetailsService {
   cinema$ = this.store.select(selectActiveCinema);
   projections$ = this.store.select(selectCinemaProjections);
   reports$ = this.store.select(selectCinemaReports);
+  events$ = of([]);
 
   constructor(
     private readonly store: Store,

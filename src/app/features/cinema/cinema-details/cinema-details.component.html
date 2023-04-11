@@ -1,6 +1,10 @@
 <ng-container *ngIf="cinema$ | ngrxPush as cinema">
   <i>Kino</i>
 
+  <!-- <ul *ngIf="events$ | ngrxPush as events">
+    <li *ngFor="let event of events | ngrxPush">{{ event.title }}</li>
+  </ul> -->
+
   <app-overview-list-actions
     path="cinema"
     [id]="cinema.id"
@@ -15,9 +19,9 @@
     [projections]="projections$ | ngrxPush"
   ></app-projection-list>
 
-  <app-auditorium-list
+  <!-- <app-auditorium-list
     [auditoriums]="cinema.auditoriums || []"
-  ></app-auditorium-list>
+  ></app-auditorium-list> -->
 
   <h3>Adresse:</h3>
   <p>
