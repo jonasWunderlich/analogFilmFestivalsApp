@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { filter, map, take } from 'rxjs';
 import { selectCinemas } from 'src/app/+state/cinema-store/cinema.selectors';
 import {
   selectActiveReport,
@@ -17,9 +16,7 @@ import { selectIdSearchedMovies } from 'src/app/+state/movie-store/movie.selecto
 import { Router } from '@angular/router';
 import { selectProjections } from 'src/app/+state/projection-store/projection.selectors';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
 export class ReportService {
   activeReportId?: string;
   activeReport$ = this.store.select(selectActiveReport);

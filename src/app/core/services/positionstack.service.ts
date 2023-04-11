@@ -13,9 +13,7 @@ export interface PositionStackResults {
   data: PositionStackResult[];
 }
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
 export class PositionstackService {
   constructor(private readonly http: HttpClient) {}
 

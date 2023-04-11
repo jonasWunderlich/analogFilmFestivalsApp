@@ -5,6 +5,7 @@ import { ScreeningEventCreateComponent } from 'src/app/features/screening-event/
 import { ScreeningEventFormComponent } from 'src/app/features/screening-event/screening-event-form/screening-event-form.component';
 import { AdminScreeningEventRoutingModule } from './admin-event-routing.module';
 import { ScreeningEventEditComponent } from 'src/app/features/screening-event/screening-event-edit/screening-event-edit.component';
+import { ScreeningEventService } from 'src/app/features/screening-event/screening-event.service';
 
 @NgModule({
   declarations: [ScreeningEventCreateComponent, ScreeningEventEditComponent],
@@ -14,5 +15,6 @@ import { ScreeningEventEditComponent } from 'src/app/features/screening-event/sc
     ScreeningEventFormComponent,
     PushModule,
   ],
+  providers: [ScreeningEventService],
 })
 export class AdminEventModule {}

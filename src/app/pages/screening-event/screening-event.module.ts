@@ -10,6 +10,7 @@ import { ProjectionListComponent } from 'src/app/shared/view/projection-list/pro
 import { ReportListComponent } from 'src/app/shared/view/report-list/report-list.component';
 import ScreeningEventRoutingModule from './screening-event-routing.module';
 import { OverviewListActionsComponent } from 'src/app/shared/view/overview-list-actions/overview-list-actions.component';
+import { ScreeningEventService } from 'src/app/features/screening-event/screening-event.service';
 
 @NgModule({
   declarations: [
@@ -27,5 +28,6 @@ import { OverviewListActionsComponent } from 'src/app/shared/view/overview-list-
     PushModule,
     OverviewListActionsComponent,
   ],
+  providers: [ScreeningEventService],
 })
 export class ScreeningEventModule {}

@@ -8,9 +8,7 @@ import {
   triggerScreeningEventUpdate,
 } from './screening-event.actions';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
 export class ScreeningEventService {
   constructor(private readonly store: Store, private readonly router: Router) {}
 

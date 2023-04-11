@@ -3,6 +3,7 @@ import { StoreModule } from '@ngrx/store';
 import * as fromEvent from './screening-event.reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { EventEffects } from './screening-event.effects';
+import { AnalogKinoBackendService } from 'src/app/core/services/analog-kino-http.service';
 
 @NgModule({
   declarations: [],
@@ -13,5 +14,6 @@ import { EventEffects } from './screening-event.effects';
     ),
     EffectsModule.forFeature([EventEffects]),
   ],
+  providers: [AnalogKinoBackendService],
 })
 export class ScreeningEventStoreModule {}

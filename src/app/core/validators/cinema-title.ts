@@ -3,7 +3,7 @@ import { AsyncValidatorFn } from '@angular/forms';
 import { map } from 'rxjs';
 import { CinemaService } from 'src/app/features/cinema/cinema.service';
 
-@Injectable({ providedIn: 'root' })
+@Injectable()
 export class CinemaTitleValidatorService {
   constructor(private readonly service: CinemaService) {}
 

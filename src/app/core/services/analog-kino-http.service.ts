@@ -19,9 +19,7 @@ export enum CONTENT_TYPE {
   AUDITORIUM = 'AUDITORIUM',
 }
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
 export class AnalogKinoBackendService {
   refApiMocks = buildRefrencedApiMocks();
 

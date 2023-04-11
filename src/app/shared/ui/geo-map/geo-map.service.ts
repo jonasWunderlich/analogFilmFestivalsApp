@@ -12,9 +12,7 @@ import {
   centerView,
 } from './geo.interaction.utilities';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
 export class GeoMapService {
   map?: Map;
 

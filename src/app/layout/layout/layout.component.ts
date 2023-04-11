@@ -6,6 +6,7 @@ import { LayoutService } from './layout.service';
   templateUrl: './layout.component.html',
   styleUrls: ['./layout.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [LayoutService],
 })
 export class LayoutComponent {
   $selectedGeoData = this.service.$selectedGeoData;

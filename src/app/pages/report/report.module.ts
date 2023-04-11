@@ -9,6 +9,7 @@ import { ReportDetailsComponent } from 'src/app/features/report/report-details/r
 import { ReportOverviewComponent } from 'src/app/features/report/report-overview/report-overview.component';
 import { PushModule } from '@ngrx/component';
 import { OverviewListActionsComponent } from 'src/app/shared/view/overview-list-actions/overview-list-actions.component';
+import { ReportService } from 'src/app/features/report/report.service';
 
 @NgModule({
   declarations: [ReportDetailsComponent, ReportOverviewComponent],
@@ -21,5 +22,6 @@ import { OverviewListActionsComponent } from 'src/app/shared/view/overview-list-
     PushModule,
     OverviewListActionsComponent,
   ],
+  providers: [ReportService],
 })
 export class ReportModule {}

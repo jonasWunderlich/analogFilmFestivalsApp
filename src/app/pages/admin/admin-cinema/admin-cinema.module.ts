@@ -5,6 +5,7 @@ import { CinemaEditComponent } from 'src/app/features/cinema/cinema-edit/cinema-
 import { CinemaFormComponent } from 'src/app/features/cinema/cinema-form/cinema-form.component';
 import { PushModule } from '@ngrx/component';
 import { AdminCinemaRoutingModule } from './admin-cinema-routing.module';
+import { CinemaService } from 'src/app/features/cinema/cinema.service';
 
 @NgModule({
   declarations: [CinemaCreateComponent, CinemaEditComponent],
@@ -14,5 +15,6 @@ import { AdminCinemaRoutingModule } from './admin-cinema-routing.module';
     CinemaFormComponent,
     PushModule,
   ],
+  providers: [CinemaService],
 })
 export class AdminCinemaModule {}

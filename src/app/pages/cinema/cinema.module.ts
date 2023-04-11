@@ -9,6 +9,7 @@ import { CinemaDetailsComponent } from 'src/app/features/cinema/cinema-details/c
 import { CinemaOverviewComponent } from 'src/app/features/cinema/cinema-overview/cinema-overview.component';
 import { PushModule } from '@ngrx/component';
 import { OverviewListActionsComponent } from 'src/app/shared/view/overview-list-actions/overview-list-actions.component';
+import { CinemaService } from 'src/app/features/cinema/cinema.service';
 
 @NgModule({
   declarations: [CinemaOverviewComponent, CinemaDetailsComponent],
@@ -21,5 +22,6 @@ import { OverviewListActionsComponent } from 'src/app/shared/view/overview-list-
     PushModule,
     OverviewListActionsComponent,
   ],
+  providers: [CinemaService],
 })
 export class CinemaModule {}

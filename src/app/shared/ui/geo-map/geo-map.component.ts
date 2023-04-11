@@ -14,6 +14,7 @@ import { GeoMapService } from './geo-map.service';
   templateUrl: './geo-map.component.html',
   styleUrls: ['./geo-map.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [GeoMapService],
   standalone: true,
 })
 export class GeoMapComponent {

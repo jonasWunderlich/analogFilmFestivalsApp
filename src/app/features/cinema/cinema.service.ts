@@ -8,9 +8,7 @@ import {
   triggerCinemaUpdate,
 } from './cinema.actions';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
 export class CinemaService {
   constructor(private readonly store: Store, private readonly router: Router) {}
 

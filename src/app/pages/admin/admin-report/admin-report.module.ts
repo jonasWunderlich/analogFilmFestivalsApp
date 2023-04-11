@@ -5,6 +5,7 @@ import { ReportCreateComponent } from 'src/app/features/report/report-create/rep
 import { ReportFormComponent } from 'src/app/features/report/report-form/report-form.component';
 import { AdminReportRoutingModule } from './admin-report-routing.module';
 import { ReportEditComponent } from 'src/app/features/report/report-edit/report-edit.component';
+import { ReportService } from 'src/app/features/report/report.service';
 
 @NgModule({
   declarations: [ReportCreateComponent, ReportEditComponent],
@@ -14,5 +15,6 @@ import { ReportEditComponent } from 'src/app/features/report/report-edit/report-
     ReportFormComponent,
     PushModule,
   ],
+  providers: [ReportService],
 })
 export class AdminReportModule {}

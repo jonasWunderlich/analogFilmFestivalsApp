@@ -8,7 +8,7 @@ import {
 } from './projection.actions';
 import { Router } from '@angular/router';
 
-@Injectable({ providedIn: 'root' })
+@Injectable()
 export class ProjectionService {
   constructor(private readonly store: Store, private readonly router: Router) {}
 

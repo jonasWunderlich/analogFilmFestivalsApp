@@ -31,6 +31,7 @@ import { RouterLink } from '@angular/router';
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
   imports: [ReactiveFormsModule, NgIf, RouterLink],
+  providers: [PositionstackService],
 })
 export class CinemaFormComponent
   extends GenericContentFormComponent<Cinema, CinemaCreate>

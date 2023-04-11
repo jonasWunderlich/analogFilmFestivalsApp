@@ -8,7 +8,7 @@ import {
 import { Store } from '@ngrx/store';
 import { selectActiveCinema } from 'src/app/+state/cinema-store/cinema.selectors';
 
-@Injectable({ providedIn: 'root' })
+@Injectable()
 export class AuditoriumService {
   cinema$ = this.store.select(selectActiveCinema);
   activeAuditoriumId?: string;
