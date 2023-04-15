@@ -3,7 +3,7 @@
   <ng-container *ngFor="let movie of movies">
     <span
       *ngIf="movie.poster_path"
-      [tooltip]="movie.title + ' (' + movie.release_date + ')'"
+      [appTooltip]="movie.title + ' (' + movie.release_date + ')'"
     >
       <img
         class="movie-poster"

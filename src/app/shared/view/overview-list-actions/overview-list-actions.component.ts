@@ -3,12 +3,13 @@ import {
   ChangeDetectionStrategy,
   Component,
   EventEmitter,
+  inject,
   Input,
   Output,
-  inject,
 } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { PushModule } from '@ngrx/component';
+import { ConfirmDirective } from 'src/app/core/directives/confirm.directive';
 import { AuthService } from 'src/app/core/services/auth.service';
 
 @Component({
@@ -17,7 +18,7 @@ import { AuthService } from 'src/app/core/services/auth.service';
   styleUrls: ['./overview-list-actions.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [RouterLink, NgIf, PushModule],
+  imports: [RouterLink, NgIf, PushModule, ConfirmDirective],
 })
 export class OverviewListActionsComponent {
   @Input() id = '';

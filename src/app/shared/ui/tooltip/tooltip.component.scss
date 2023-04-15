@@ -1,11 +1,13 @@
+$color-tooltip-bg: rgba(0, 0, 0, 0.777);
+$pointer-size: 15px;
+
 .tooltip {
   position: fixed;
-  background-color: black;
+  background-color: $color-tooltip-bg;
   border-radius: 4px;
   color: #ffffff;
-  font-family: Arial;
-  padding: 4px 8px;
-  font-size: 14px;
+  padding: 16px 16px;
+  font-size: 1.2em;
   margin-top: 5px;
   transform: translateX(-50%);
 
@@ -13,11 +15,11 @@
     content: "";
     width: 0;
     height: 0;
-    border-left: 5px solid transparent;
-    border-right: 5px solid transparent;
-    border-bottom: 5px solid black;
+    border-left: $pointer-size solid transparent;
+    border-right: $pointer-size solid transparent;
+    border-bottom: $pointer-size solid $color-tooltip-bg;
     position: absolute;
-    left: calc(50% - 5px);
-    top: -5px;
+    left: calc(50% - $pointer-size);
+    top: -$pointer-size;
   }
 }

@@ -1,4 +1,10 @@
 <div class="actions" *ngIf="isAuthenticated$ | ngrxPush">
   <button class="small" [routerLink]="['/admin', path, id]">Bearbeiten</button>
-  <button class="small" (click)="delete()">Löschen</button>
+  <button
+    class="small"
+    appConfirm="Bitte bestätiten Sie die Löschanfrage"
+    (confirm)="delete()"
+  >
+    Löschen
+  </button>
 </div>

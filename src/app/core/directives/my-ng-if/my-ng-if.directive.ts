@@ -1,27 +1,21 @@
 import {
   Directive,
   Input,
-  OnInit,
   TemplateRef,
   ViewContainerRef,
+  inject,
 } from '@angular/core';
 
 @Directive({
   selector: '[appMyNgIf]',
 })
-export class MyNgIfDirective implements OnInit {
-  @Input() myNgIf = true;
+export class MyNgIfDirective {
+  viewContainer = inject(ViewContainerRef);
+  templateRef = inject(TemplateRef<object>);
 
-  constructor(
-    private viewContainer: ViewContainerRef,
-    private template: TemplateRef<object>
-  ) {}
-
-  ngOnInit() {
-    const condition = this.myNgIf;
-
+  @Input() set myNgIf(condition: boolean) {
     if (condition) {
-      this.viewContainer.createEmbeddedView(this.template);
+      this.viewContainer.createEmbeddedView(this.templateRef);
     } else {
       this.viewContainer.clear();
     }

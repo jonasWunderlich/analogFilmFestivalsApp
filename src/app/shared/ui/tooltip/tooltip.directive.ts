@@ -13,10 +13,10 @@ import {
 import { TooltipComponent } from './tooltip.component';
 
 @Directive({
-  selector: '[tooltip]',
+  selector: '[appTooltip]',
 })
 export class TooltipDirective implements OnDestroy {
-  @Input() tooltip = '';
+  @Input('appTooltip') tooltip = '';
 
   private componentRef: ComponentRef<TooltipComponent> | null = null;
 
@@ -29,9 +29,9 @@ export class TooltipDirective implements OnDestroy {
 
   private setTooltipComponentProperties() {
     if (this.componentRef !== null) {
-      this.componentRef.instance.tooltip = this.tooltip;
       const { left, right, bottom } =
         this.elementRef.nativeElement.getBoundingClientRect();
+      this.componentRef.instance.tooltip = this.tooltip;
       this.componentRef.instance.left = (right - left) / 2 + left;
       this.componentRef.instance.top = bottom;
     }
@@ -39,6 +39,7 @@ export class TooltipDirective implements OnDestroy {
 
   @HostListener('mouseenter') onMouseEnter(): void {
     if (this.componentRef === null) {
+      this.elementRef.nativeElement.style.opacity = '.8';
       // TODO: Resolve issue with deprecated resolver
       const componentFactory =
         this.componentFactoryResolver.resolveComponentFactory(TooltipComponent);
@@ -62,6 +63,7 @@ export class TooltipDirective implements OnDestroy {
 
   destroy(): void {
     if (this.componentRef !== null) {
+      this.elementRef.nativeElement.style.opacity = '1';
       this.appRef.detachView(this.componentRef.hostView);
       this.componentRef.destroy();
       this.componentRef = null;
