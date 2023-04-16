@@ -36,6 +36,7 @@
     "lodash": "^4.17.21",
     "ngx-toastr": "^16.1.0",
     "ol": "^7.3.0",
+    "prettier-plugin-organize-imports": "^3.2.2",
     "rbush": "^3.0.1",
     "rxjs": "~7.5.0",
     "tslib": "^2.5.0",

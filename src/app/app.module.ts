@@ -1,26 +1,26 @@
-import { InjectionToken, LOCALE_ID, NgModule } from '@angular/core';
 import {
   HashLocationStrategy,
   LocationStrategy,
   registerLocaleData,
 } from '@angular/common';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import localeDe from '@angular/common/locales/de';
+import { InjectionToken, LOCALE_ID, NgModule } from '@angular/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { TitleStrategy } from '@angular/router';
 import { NgxTmdbApiModule } from '@igorissen/ngx-tmdb-api';
+import { PushModule } from '@ngrx/component';
+import { ToastrModule } from 'ngx-toastr';
+import { RootStoreModule } from './+state/root-store.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { RootStoreModule } from './+state/root-store.module';
-import { TitleStrategy } from '@angular/router';
-import { CustomTitleStrategy } from './core/services/custom-title-strategy.service';
-import { SearchComponent } from './shared/ui/search/search.component';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './core/services/auth.interceptor';
-import { LoginFormComponent } from './shared/ui/login-form/login-form.component';
-import { NavigationComponent } from './layout/navigation/navigation.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ToastrModule } from 'ngx-toastr';
-import { PushModule } from '@ngrx/component';
+import { CustomTitleStrategy } from './core/services/custom-title-strategy.service';
 import { LayoutComponent } from './layout/layout/layout.component';
+import { NavigationComponent } from './layout/navigation/navigation.component';
 import { GeoMapComponent } from './shared/ui/geo-map/geo-map.component';
+import { LoginFormComponent } from './shared/ui/login-form/login-form.component';
+import { SearchComponent } from './shared/ui/search/search.component';
 registerLocaleData(localeDe);
 
 export interface AppConfig {
