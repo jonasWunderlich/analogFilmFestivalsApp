@@ -1,4 +1,4 @@
-<div class="actions" *ngIf="isAuthenticated$ | ngrxPush">
+<div class="actions" *appLoggedinOnly>
   <button class="small" [routerLink]="['/admin', path, id]">Bearbeiten</button>
   <button
     class="small"

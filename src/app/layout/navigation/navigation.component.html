@@ -16,7 +16,7 @@
 </nav>
 <nav>
   <ul>
-    <ng-container *ngIf="auth.isAuthenticated">
+    <ng-container *appLoggedinOnly>
       <li routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
         <a routerLink="admin/event">Event+</a> |
       </li>
