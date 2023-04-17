@@ -1,17 +1,21 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { selectActiveCinema } from 'src/app/+state/cinema-store/cinema.selectors';
-import { enteredCinemaDetails } from './cinema-details.actions';
+import { of } from 'rxjs';
+import {
+  selectActiveCinema,
+  selectCinemaLoading,
+} from 'src/app/+state/cinema-store/cinema.selectors';
 import { selectCinemaProjections } from 'src/app/+state/projection-store/projection.selectors';
 import { selectCinemaReports } from 'src/app/+state/report-store/report.selectors';
 import { CinemaService } from '../cinema.service';
-import { of } from 'rxjs';
+import { enteredCinemaDetails } from './cinema-details.actions';
 
 @Injectable()
 export class CinemaDetailsService {
   cinema$ = this.store.select(selectActiveCinema);
   projections$ = this.store.select(selectCinemaProjections);
   reports$ = this.store.select(selectCinemaReports);
+  loading$ = this.store.select(selectCinemaLoading);
   events$ = of([]);
 
   constructor(

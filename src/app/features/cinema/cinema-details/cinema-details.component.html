@@ -1,10 +1,11 @@
+<i>Kino</i>
+
+<app-loading
+  title="Kinodetails werden geladen..."
+  *ngIf="loading$ | ngrxPush"
+></app-loading>
+
 <ng-container *ngIf="cinema$ | ngrxPush as cinema">
-  <i>Kino</i>
-
-  <!-- <ul *ngIf="events$ | ngrxPush as events">
-    <li *ngFor="let event of events | ngrxPush">{{ event.title }}</li>
-  </ul> -->
-
   <app-overview-list-actions
     path="cinema"
     [id]="cinema.id"
@@ -14,14 +15,6 @@
   <h2>{{ cinema.title }}</h2>
   <img src="/assets/images/{{ cinema.images[0] }}" width="60%" alt="" />
   <p>{{ cinema.text }}</p>
-
-  <app-projection-list
-    [projections]="projections$ | ngrxPush"
-  ></app-projection-list>
-
-  <!-- <app-auditorium-list
-    [auditoriums]="cinema.auditoriums || []"
-  ></app-auditorium-list> -->
 
   <h3>Adresse:</h3>
   <p>
@@ -49,6 +42,18 @@
   <p>
     Telefon: <a href="tel://{{ cinema.phone }}">{{ cinema.phone }}</a>
   </p>
-
-  <app-report-list [reports]="reports$ | ngrxPush"></app-report-list>
 </ng-container>
+
+<app-projection-list
+  [projections]="projections$ | ngrxPush"
+></app-projection-list>
+
+<app-report-list [reports]="reports$ | ngrxPush"></app-report-list>
+
+<!-- <ul *ngIf="events$ | ngrxPush as events">
+<li *ngFor="let event of events | ngrxPush">{{ event.title }}</li>
+</ul> -->
+
+<!-- <app-auditorium-list
+[auditoriums]="cinema.auditoriums || []"
+></app-auditorium-list> -->

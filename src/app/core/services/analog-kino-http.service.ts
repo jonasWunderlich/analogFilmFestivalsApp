@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
-import { EMPTY, Observable, of, throwError } from 'rxjs';
+import { uniqueId } from 'lodash';
+import { delay, EMPTY, Observable, of, throwError } from 'rxjs';
+import { buildRefrencedApiMocks } from '../utilities/build-referenced-mocks';
 import { Auditorium, AuditoriumCreate } from '../_models/auditorium';
 import { Cinema, CinemaCreate } from '../_models/cinema';
 import { Projection, ProjectionCreate } from '../_models/projection';
@@ -8,8 +10,6 @@ import {
   ScreeningEvent,
   ScreeningEventCreate,
 } from '../_models/screening-event';
-import { uniqueId } from 'lodash';
-import { buildRefrencedApiMocks } from '../utilities/build-referenced-mocks';
 
 export enum CONTENT_TYPE {
   EVENT = 'EVENT',
@@ -26,7 +26,7 @@ export class AnalogKinoBackendService {
   /** HTTP GET Cinema(s) */
 
   public getCinemas(): Observable<Cinema[]> {
-    return of(this.refApiMocks.cinemas);
+    return of(this.refApiMocks.cinemas).pipe(delay(1000));
   }
 
   public getCinemaById(id: string): Observable<Cinema> {
@@ -45,7 +45,7 @@ export class AnalogKinoBackendService {
   }
 
   public deleteCinema(id: string): Observable<string> {
-    return this.deleteGeneric(id, this.refApiMocks.cinemas);
+    return this.deleteGeneric(id, this.refApiMocks.cinemas).pipe(delay(1000));
   }
 
   public updateCinema(
@@ -63,7 +63,7 @@ export class AnalogKinoBackendService {
   /** HTTP GET ScreeningEvent(s) */
 
   public getScreeningEvents(): Observable<ScreeningEvent[]> {
-    return of(this.refApiMocks.screeningEvents);
+    return of(this.refApiMocks.screeningEvents).pipe(delay(1000));
   }
 
   public getScreeningEventById(id: string): Observable<ScreeningEvent> {
@@ -129,7 +129,7 @@ export class AnalogKinoBackendService {
   /** HTTP GET Auditorium(s) */
 
   public getAuditoriums(): Observable<Auditorium[]> {
-    return of(this.refApiMocks.auditoriums);
+    return of(this.refApiMocks.auditoriums).pipe(delay(1000));
   }
 
   public getAuditoriumById(id: string): Observable<Auditorium> {
@@ -161,7 +161,7 @@ export class AnalogKinoBackendService {
   /** HTTP GET Projection(s) */
 
   public getProjections(): Observable<Projection[]> {
-    return of(this.refApiMocks.projections);
+    return of(this.refApiMocks.projections).pipe(delay(1000));
   }
 
   public getProjectionById(id: string): Observable<Projection> {

@@ -6,10 +6,10 @@ import {
 } from '@ngrx/store';
 import { selectRouteParams } from 'src/app/+state/routing-store/router.reducer';
 import { neitherNullNorUndefined } from 'src/app/core/utilities/null-or-undefined';
-import { Cinema } from 'src/app/core/_models/cinema';
-import * as fromCinema from './cinema.reducer';
-import { selectActiveScreeningEvent } from '../screening-event-store/screening-event.selectors';
 import { selectReferencedObjects } from 'src/app/core/utilities/store-selectors.utilities';
+import { Cinema } from 'src/app/core/_models/cinema';
+import { selectActiveScreeningEvent } from '../screening-event-store/screening-event.selectors';
+import * as fromCinema from './cinema.reducer';
 
 export const selectCinemaState = createFeatureSelector<fromCinema.State>(
   fromCinema.cinemaFeatureKey

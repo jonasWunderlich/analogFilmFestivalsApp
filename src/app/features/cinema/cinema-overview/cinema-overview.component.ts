@@ -10,6 +10,7 @@ import { CinemaOverviewService } from './cinema-overview.service';
 })
 export class CinemaOverviewComponent {
   cinemas$ = this.facade.cinemas$;
+  loading$ = this.facade.loading$;
 
   constructor(private readonly facade: CinemaOverviewService) {
     this.facade.dispatchEnter();

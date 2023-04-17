@@ -1,6 +1,11 @@
 <i>Übersicht</i>
 <h2>Kinos</h2>
 
+<app-loading
+  *ngIf="loading$ | ngrxPush"
+  title="Kinos werden geladen..."
+></app-loading>
+
 <div
   *ngFor="let cinema of cinemas$ | ngrxPush"
   class="c-cinema-overview__cinema"

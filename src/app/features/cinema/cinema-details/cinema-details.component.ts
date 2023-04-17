@@ -14,6 +14,7 @@ export class CinemaDetailsComponent implements OnInit {
   projections$ = this.facade.projections$;
   reports$ = this.facade.reports$;
   events$ = this.facade.events$;
+  loading$ = this.facade.loading$;
 
   constructor(
     private readonly facade: CinemaDetailsService,

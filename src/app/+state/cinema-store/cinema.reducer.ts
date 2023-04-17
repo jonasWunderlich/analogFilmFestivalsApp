@@ -2,15 +2,14 @@ import { createEntityAdapter, EntityAdapter, EntityState } from '@ngrx/entity';
 import { createFeature, createReducer, on } from '@ngrx/store';
 import {
   triggerCinemaCreation,
-  triggerCinemaUpdate,
   triggerCinemaRemoval,
+  triggerCinemaUpdate,
 } from 'src/app/features/cinema/cinema.actions';
 
 import { Cinema } from 'src/app/core/_models/cinema';
-import * as CinemaActions from './cinema.actions';
 import { enteredCinemaDetails } from 'src/app/features/cinema/cinema-details/cinema-details.actions';
 import { enteredCinemaEdit } from 'src/app/features/cinema/cinema-edit/cinema-edit.actions';
-import { enteredCinemaOverview } from 'src/app/features/cinema/cinema-overview/cinema-overview.actions';
+import * as CinemaActions from './cinema.actions';
 
 export const cinemaFeatureKey = 'cinema';
 
@@ -50,7 +49,7 @@ export const initialState: State = cinemaAdapter.getInitialState({
 
 export const reducer = createReducer(
   initialState,
-  on(enteredCinemaOverview, (state: State) => {
+  on(CinemaActions.loadCinemas, (state: State) => {
     return {
       ...state,
       loadingStates: {

@@ -1,20 +1,20 @@
-import { Injectable, inject } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { of } from 'rxjs';
 
 import { catchError, filter, map, switchMap, tap } from 'rxjs/operators';
-import {
-  triggerCinemaCreation,
-  triggerCinemaUpdate,
-  triggerCinemaRemoval,
-} from 'src/app/features/cinema/cinema.actions';
-import { neitherNullNorUndefined } from 'src/app/core/utilities/null-or-undefined';
+import { NOTIFICATION_MESSAGES } from 'src/app/core/constants/notification-messages';
 import { AnalogKinoBackendService } from 'src/app/core/services/analog-kino-http.service';
 import { NotificationService } from 'src/app/core/services/notification.service';
-import * as CinemaActions from './cinema.actions';
-import { NOTIFICATION_MESSAGES } from 'src/app/core/constants/notification-messages';
+import { neitherNullNorUndefined } from 'src/app/core/utilities/null-or-undefined';
 import { enteredCinemaDetails } from 'src/app/features/cinema/cinema-details/cinema-details.actions';
 import { enteredCinemaEdit } from 'src/app/features/cinema/cinema-edit/cinema-edit.actions';
+import {
+  triggerCinemaCreation,
+  triggerCinemaRemoval,
+  triggerCinemaUpdate,
+} from 'src/app/features/cinema/cinema.actions';
+import * as CinemaActions from './cinema.actions';
 
 @Injectable()
 export class CinemaEffects {

@@ -1,19 +1,19 @@
-import { Injectable, inject } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { catchError, filter, map, of, switchMap, tap } from 'rxjs';
+import { AnalogKinoBackendService } from 'src/app/core/services/analog-kino-http.service';
+import { neitherNullNorUndefined } from 'src/app/core/utilities/null-or-undefined';
 import {
   triggerScreeningEventCreation,
   triggerScreeningEventRemoval,
   triggerScreeningEventUpdate,
 } from 'src/app/features/screening-event/screening-event.actions';
-import { neitherNullNorUndefined } from 'src/app/core/utilities/null-or-undefined';
-import { AnalogKinoBackendService } from 'src/app/core/services/analog-kino-http.service';
 
-import { NotificationService } from 'src/app/core/services/notification.service';
-import * as EventActions from './screening-event.actions';
 import { NOTIFICATION_MESSAGES } from 'src/app/core/constants/notification-messages';
+import { NotificationService } from 'src/app/core/services/notification.service';
 import { enteredScreeningEventDetails } from 'src/app/features/screening-event/screening-event-details/screening-event-details.actions';
 import { enteredScreeningEventEdit } from 'src/app/features/screening-event/screening-event-edit/screening-event-edit.actions';
+import * as EventActions from './screening-event.actions';
 
 @Injectable()
 export class EventEffects {
