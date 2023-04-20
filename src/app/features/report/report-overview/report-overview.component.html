@@ -1,7 +1,9 @@
 <i>Übersicht</i>
 <h2>Erfahrungsberichte</h2>
 
-<ng-container *ngFor="let report of reports$ | ngrxPush">
+<ng-container
+  *ngFor="let report of reports$ | ngrxPush; trackBy: trackByReportId"
+>
   <div class="report">
     <p class="prefix-date">{{ report.date | date }}</p>
     <a [routerLink]="['/', 'report', report.id]"

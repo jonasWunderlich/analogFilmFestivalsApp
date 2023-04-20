@@ -2,7 +2,10 @@
 <h2>Projektionen</h2>
 
 <div
-  *ngFor="let projection of projections$ | ngrxPush"
+  *ngFor="
+    let projection of projections$ | ngrxPush;
+    trackBy: trackByProjectionId
+  "
   class="c-projection-overview__projection"
 >
   <div class="movie">

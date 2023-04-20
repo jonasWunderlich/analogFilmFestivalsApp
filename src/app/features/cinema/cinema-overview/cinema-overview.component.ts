@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { Cinema } from 'src/app/core/_models/cinema';
 import { CinemaOverviewService } from './cinema-overview.service';
 
 @Component({
@@ -18,5 +19,9 @@ export class CinemaOverviewComponent {
 
   delete(id: string) {
     this.facade.delete(id);
+  }
+
+  trackByCinemaId(index: number, item: Cinema): string {
+    return item.id;
   }
 }

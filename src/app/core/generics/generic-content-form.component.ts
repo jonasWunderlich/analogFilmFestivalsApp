@@ -1,10 +1,10 @@
 import {
-  OnChanges,
+  Component,
+  EventEmitter,
   inject,
   Input,
+  OnChanges,
   Output,
-  EventEmitter,
-  Component,
 } from '@angular/core';
 import { NonNullableFormBuilder } from '@angular/forms';
 

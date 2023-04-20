@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { Report } from 'src/app/core/_models/report';
 import { ReportOverviewService } from './report-overview.service';
 
 @Component({
@@ -17,5 +18,9 @@ export class ReportOverviewComponent {
 
   public delete(id: string) {
     this.facade.delete(id);
+  }
+
+  public trackByReportId(index: number, item: Report): string {
+    return item.id;
   }
 }

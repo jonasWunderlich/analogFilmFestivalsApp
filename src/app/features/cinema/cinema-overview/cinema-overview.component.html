@@ -7,7 +7,7 @@
 ></app-loading>
 
 <div
-  *ngFor="let cinema of cinemas$ | ngrxPush"
+  *ngFor="let cinema of cinemas$ | ngrxPush; trackBy: trackByCinemaId"
   class="c-cinema-overview__cinema"
 >
   <a [routerLink]="['/', 'cinema', cinema.id]"

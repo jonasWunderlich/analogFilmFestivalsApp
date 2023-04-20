@@ -5,7 +5,9 @@
   <ng-container *ngIf="screeningEvents$ | ngrxPush as screeningEvents">
     <app-calendar [calendarEvents]="screeningEvents"></app-calendar>
 
-    <ng-container *ngFor="let screeningEvent of screeningEvents">
+    <ng-container
+      *ngFor="let screeningEvent of screeningEvents; trackBy: trackByEventId"
+    >
       <div class="event">
         <p class="prefix-date">
           {{ screeningEvent.start | date

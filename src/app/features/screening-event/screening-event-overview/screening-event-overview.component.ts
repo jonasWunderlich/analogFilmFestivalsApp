@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { CalendarOptions } from '@fullcalendar/core';
+import { ScreeningEvent } from 'src/app/core/_models/screening-event';
 import { ScreeningEventOverviewService } from './screening-event-overview.service';
 
 @Component({
@@ -21,5 +22,9 @@ export class ScreeningEventOverviewComponent implements OnInit {
 
   delete(id: string) {
     this.facade.delete(id);
+  }
+
+  trackByEventId(index: number, item: ScreeningEvent): string {
+    return item.id;
   }
 }

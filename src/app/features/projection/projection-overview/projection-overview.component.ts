@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { Projection } from 'src/app/core/_models/projection';
 import { ProjectionOverviewService } from './projection-overview.service';
 
 @Component({
@@ -17,5 +18,9 @@ export class ProjectionOverviewComponent {
 
   public delete(id: string) {
     this.facade.delete(id);
+  }
+
+  public trackByProjectionId(index: number, item: Projection): string {
+    return item.id;
   }
 }
