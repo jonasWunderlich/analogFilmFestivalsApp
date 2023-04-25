@@ -1,17 +1,17 @@
 /** M O C K S */
 
+import { mockAuditoriums } from '../_mock/auditorium.mock';
 import { mockCinemas } from '../_mock/cinema.mock';
 import { mockScreeningEvents } from '../_mock/event.mock';
 import { mockProjections } from '../_mock/projection.mock';
 import { mockReports } from '../_mock/report.mocks';
 import { Auditorium } from '../_models/auditorium';
 import { Cinema } from '../_models/cinema';
-import { Report } from '../_models/report';
-import { getRandomSubarray, mockNumber } from './mock-data';
-import { ScreeningEvent } from '../_models/screening-event';
 import { Projection } from '../_models/projection';
+import { Report } from '../_models/report';
 import { ScreeningEventType } from '../_models/sceening-event-type';
-import { mockAuditoriums } from '../_mock/auditorium.mock';
+import { ScreeningEvent } from '../_models/screening-event';
+import { getRandomSubarray, mockNumber } from './mock-data';
 
 const MAX_CINEMAS = 100;
 const MAX_EVENTS = 20;
