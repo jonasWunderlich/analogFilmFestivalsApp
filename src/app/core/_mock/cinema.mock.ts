@@ -1,6 +1,6 @@
 import { DeepPartial } from '@ngneat/reactive-forms/lib/types';
 
-import { Cinema } from '../_models/cinema';
+import { uniqueId } from 'lodash';
 import {
   CHAR_NUMBERS,
   mockCharString,
@@ -8,14 +8,13 @@ import {
   mockNumber,
   pickRandom,
 } from '../utilities/mock-data';
+import { Cinema } from '../_models/cinema';
 import {
   MOCKED_CINEMA_IMAGES,
   MOCKED_CINEMA_NAMES,
   MOCKED_CITIES,
   MOCKED_STREETS,
 } from './constants';
-import { mockAuditoriums } from './auditorium.mock';
-import { uniqueId } from 'lodash';
 
 const CINEMA_DEFAULT_VALUES: Cinema = {
   id: '0',

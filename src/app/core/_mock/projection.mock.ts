@@ -1,6 +1,5 @@
-import { uniqueId } from 'lodash';
 import { DeepPartial } from '@ngneat/reactive-forms/lib/types';
-import { Projection } from '../_models/projection';
+import { uniqueId } from 'lodash';
 import {
   addDays,
   mockNumber,
@@ -8,6 +7,7 @@ import {
   randomDate,
   sortByISODate,
 } from '../utilities/mock-data';
+import { Projection } from '../_models/projection';
 import { MOCKED_PROJECTION_NAMES, MOCKED_TMDBIDS } from './constants';
 
 const PROJECTION_DEFAULT_VALUES: Projection = {

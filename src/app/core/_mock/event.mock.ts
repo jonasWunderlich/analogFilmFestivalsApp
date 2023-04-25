@@ -1,7 +1,5 @@
-import { uniqueId } from 'lodash';
 import { DeepPartial } from '@ngneat/reactive-forms/lib/types';
-import { ScreeningEvent } from '../_models/screening-event';
-import { ScreeningEventType } from '../_models/sceening-event-type';
+import { uniqueId } from 'lodash';
 import {
   addDays,
   CHAR_NUMBERS,
@@ -11,6 +9,8 @@ import {
   randomDate,
   sortByISODate,
 } from '../utilities/mock-data';
+import { ScreeningEventType } from '../_models/sceening-event-type';
+import { ScreeningEvent } from '../_models/screening-event';
 import {
   MOCKED_CITIES,
   MOCKED_EVENT_NAMES,
