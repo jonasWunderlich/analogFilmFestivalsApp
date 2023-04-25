@@ -1,14 +1,14 @@
 # AnalogCinemaApp
 
-Angular Frontend App für eine Archiv von analogen Filmevents
+Angular Frontend App für ein Kalender Archiv analoger Filmevents
+
+# !! Important !!
+
+Aufgrund von einem Versionierungsproblem mit dem package `@igorissen/ngx-tmdb-api` müssen packages via `npm install --force` installiert werden. Die Lösung ist ein eigener fork. (siehe TODOs)
 
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
 ## Build
 
@@ -26,19 +26,18 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
 
+# TODOs
 
-## TODOs
-
-- Mocks einmalig generieren
+- fork von `@igorissen/ngx-tmdb-api`
 - Popup in Kalender
 - Popup in Karte
 - Festival als einheitliche Punkte in Karte
 - Punkte in Karte schöner gestalten
-- Events in Festivals, Reihe und Specials aufteilen
+- Events via Navigation in Festivals, Reihen und Specials aufteilen
 
-## Geplante Backend Endpunkte
+# Geplante Backend Endpunkte (bisher nur statisch gemockt)
 
-Events: 
+Events:
 `analogkino.net/backend/event`
 `analogkino.net/backend/event/:id`
 `analogkino.net/backend/event/:id/auditoriums`
